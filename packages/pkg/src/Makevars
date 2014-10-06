@@ -1,1 +1,0 @@
-PKG_LIBS=-L${R_HOME}/lib -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -liomp5

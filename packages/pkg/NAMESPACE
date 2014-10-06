@@ -1,0 +1,9 @@
+exportPattern(".*MKLthreads")
+export("revo")
+export("forum")
+export("readme")
+export("RevoLicense")
+export("readNews")
+export("getRevoRepos")
+export("totalSystemMemory")
+

@@ -42,7 +42,7 @@ DOC_INFO_FILES = AUTHORS COPYING FAQ RESOURCES THANKS CHANGES \
   NEWS NEWS.0 NEWS.1 NEWS.2 
 GW_INFO_FILES = COPYRIGHTS README.Rterm ../../doc/manual/rw-FAQ
 
-ETC_FILES = Rprofile.site Rconsole Rdevga rgb.txt repositories Rcmd_environ checkpoint.R
+ETC_FILES = Rprofile.site Rconsole Rdevga rgb.txt repositories Rcmd_environ checkpoint.R REV_14419_Clark_2C.ico
 
 
 # we don't want share/{Makefile.in,java,sh} installed

@@ -1,12 +1,12 @@
 [Icons]
-Name: "{group}\RRO i386 @RVER@"; Filename: "{app}\bin\i386\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
-Name: "{group}\RRO x64 @RVER@"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode
+Name: "{group}\RRO Rgui @RVER@ 32-bit"; Filename: "{app}\bin\i386\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
+Name: "{group}\RRO Rgui @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode
 
-Name: "{commondesktop}\RRO i386 @RVER@"; Filename: "{app}\bin\i386\Rgui.exe"; MinVersion: 0,5.0; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: desktopicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
-Name: "{commondesktop}\RRO x64 @RVER@"; Filename: "{app}\bin\x64\Rgui.exe"; MinVersion: 0,5.0; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: desktopicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode
+Name: "{commondesktop}\RRO Rqui @RVER@ 32-bit"; Filename: "{app}\bin\i386\Rgui.exe"; MinVersion: 0,5.0; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: desktopicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
+Name: "{commondesktop}\RRO Rgui @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; MinVersion: 0,5.0; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: desktopicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode
 
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RRO i386 @RVER@"; Filename: "{app}\bin\i386\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: quicklaunchicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RRO x64 @RVER@"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: quicklaunchicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode 
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RRO Rgui @RVER@" 32-bit; Filename: "{app}\bin\i386\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: quicklaunchicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('i386')
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\RRO Rgui @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: quicklaunchicon; WorkingDir: "{userdocs}"; Parameters: {code:CmdParms}; Check: isComponentSelected('x64') and Is64BitInstallMode 
 
 [Registry] 
 Root: HKLM; Subkey: "Software\@Producer@"; Flags: uninsdeletekeyifempty; Tasks: recordversion; Check: IsAdmin and isComponentSelected('x64') and Is64BitInstallMode

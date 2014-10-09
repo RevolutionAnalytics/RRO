@@ -100,7 +100,7 @@
             file = con, sep = "")
     cat("\n", file = con)
 
-    cat('Source: "R-3.1.1\\license.txt', '"; ',
+    cat('Source: "R-3.1.1\\etc\\license.txt', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

@@ -43,9 +43,9 @@ cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz
 cd Mac-GUI-1.65
-xcodebuild -target R -configuration SnowLeopard64
+xcodebuild -target RRO -configuration SnowLeopard64
 cd ../
-sudo cp -a Mac-GUI-1.65/build/Release/R.app /Applications
+sudo cp -a Mac-GUI-1.65/build/Release/RRO.app /Applications
 ls -l /Applications
 #pkgbuild --identifier com.R.pkg.app --scripts Scripts --install-location / --root ./R R-3.1.1.pkg
 #curl --ftp-create-dirs -T R-3.1.1.pkg -u ftpuser:revo-ftp ftp://162.242.172.183

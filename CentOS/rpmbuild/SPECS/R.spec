@@ -67,8 +67,10 @@ fi
 if grep -q "release 5" /etc/redhat-release; then
 pwd
 cp ../../../../packages/Rprofile.site /usr/lib64/RRO-8.0/R-3.1.1/lib64/R/etc
+cp ../../../../license.txt /usr/lib64/RRO-8.0/R-3.1.1
 else
 cp ../../../../packages/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib64/R/etc
+cp ../../../../license.txt  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1
 pwd
 fi
 

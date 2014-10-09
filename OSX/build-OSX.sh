@@ -38,6 +38,7 @@ cp ../mkl/*.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
 sudo cp /Users/travis/build/RevolutionAnalytics/RRO/packages/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
+sudo cp /Users/travis/build/RevolutionAnalytics/RRO/license.txt /Library/Frameworks/R.framework
 cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz

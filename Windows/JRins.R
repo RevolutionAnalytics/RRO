@@ -100,6 +100,13 @@
             file = con, sep = "")
     cat("\n", file = con)
 
+    cat('Source: "R-3.1.1\\license.txt', '"; ',
+            'DestDir: "{app}', '"; ',
+            'Flags: ignoreversion; ',
+            'Components: main', 
+            file = con, sep = "")
+    cat("\n", file = con)
+
     setwd(srcdir)
     files <- sub("^./", "",
                  list.files(".", full.names = TRUE, recursive = TRUE))

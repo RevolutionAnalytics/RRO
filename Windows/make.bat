@@ -12,9 +12,7 @@ cp ../../../../packages/Rprofile.site fixed/etc
 cp -rp C:/opt/bitmaps/* bitmap
  
 make 32-bit
-pwd
 cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
-cp ../../../../../license.txt ../../
 
 cd ../../../
 mkdir R64
@@ -40,7 +38,7 @@ cp -rp C:/opt/bitmaps/* bitmap
 make distribution
 pwd
 cp C:/opt/Intel_MKL/Win/64/*.dll ../../bin/x64
-cp ../../../../../../license.txt ../../
+cp ../../../../../license.txt ../
 ..\..\bin\R CMD INSTALL ../../../../../packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer

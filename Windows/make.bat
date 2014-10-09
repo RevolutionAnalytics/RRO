@@ -1,8 +1,8 @@
 mkdir c:\tmp
 set tmpdir=c:/tmp
-tar -xzf ../RRO-3.1.1.tar.gz
-cp -rp c:/R/Tcl RRO-3.1.1
-cd RRO-3.1.1/src/gnuwin32/installer
+tar -xzf ../R-3.1.1.tar.gz
+cp -rp c:/R/Tcl R-3.1.1
+cd R-3.1.1/src/gnuwin32/installer
 cp ../../../../clarkSmall.bmp .
 cp ../../../../Makefile .
 cp ../../../../header1.iss .
@@ -17,11 +17,11 @@ cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
 cd ../../../
 mkdir R64
 cd R64
-tar -xzf ../../RRO-3.1.1.tar.gz
-cp -rp c:/R64/Tcl RRO-3.1.1
-cp ../checkpoint.R RRO-3.1.1/etc
-cp ../REV_14419_Clark_2C.ico RRO-3.1.1/etc
-cd RRO-3.1.1/src/gnuwin32/installer
+tar -xzf ../../R-3.1.1.tar.gz
+cp -rp c:/R64/Tcl R-3.1.1
+cp ../checkpoint.R R-3.1.1/etc
+cp ../REV_14419_Clark_2C.ico R-3.1.1/etc
+cd R-3.1.1/src/gnuwin32/installer
 cp ../../../../../clarkSmall.bmp .
 cp ../../../../../Makefile .
 cp ../../../../../header1.iss .
@@ -40,6 +40,6 @@ cp C:/opt/Intel_MKL/Win/64/*.dll ../../bin/x64
 ..\..\bin\R CMD INSTALL ../../../../../packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
-cp RRO-3.1.1-win.exe RRO-8.0-Beta-win.exe
+cp R-3.1.1-win.exe RRO-8.0-Beta-win.exe
 cp RRO-8.0-Beta-win.exe ../../../../../../
 cd

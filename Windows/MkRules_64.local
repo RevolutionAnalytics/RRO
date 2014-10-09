@@ -118,8 +118,8 @@ ISDIR=C:/packages/Inno
 QPDF=
 
 # home of 32-bit files for combined installer on 64-bit build
-# HOME32=C:/R/RRO-3.1.1
-HOME32=C:/opt/hudson/workspace/marmoset-windows-build/Windows/RRO-3.1.1
+# HOME32=C:/R/R-3.1.1
+HOME32=C:/opt/hudson/workspace/marmoset-windows-build/Windows/R-3.1.1
 
 # Full paths of extra DLLs that need to be shipped
 # e.g

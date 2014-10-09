@@ -57,7 +57,7 @@
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("LicenseFile=License.txt", sep=""),
         paste("InfoBeforeFile=Intro.txt", sep=""),
-        if(Producer == "R-core") "AppPublisher=R Core Team"
+        if(Producer == "R-core") "AppPublisher=Revolution Analytics"
         else paste("AppPublisher=", Producer, sep = ""),
         file = con, sep = "\n")
 

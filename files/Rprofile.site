@@ -1,4 +1,5 @@
-Revo.version <- "R-3.1.1"
+Revo.version <- list(major=8,minor=0)
+library(Revobase)
 options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2014-10-01"))
 if (.Platform$OS.type == "windows" ) {
  options(help_type="html")

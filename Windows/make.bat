@@ -8,7 +8,7 @@ cp ../../../../Makefile .
 cp ../../../../header1.iss .
 cp ../../../../../packages/Revobase_7.3.0.zip .
 cd ../
-cp ../../../../packages/Rprofile.site fixed/etc
+cp ../../../../files/Rprofile.site fixed/etc
 cp -rp C:/opt/bitmaps/* bitmap
  
 make 32-bit
@@ -33,7 +33,7 @@ cp ../../../../../../files/intro.txt .
 cp ../../../../../../COPYING .
 cp ../../../../../../packages/Revobase_7.3.0.zip .
 cd ../
-cp ../../../../../packages/Rprofile.site fixed/etc
+cp ../../../../../files/Rprofile.site fixed/etc
 cp ../../../../MkRules_64.local MkRules.local
 cp -rp C:/opt/bitmaps/* bitmap
 make distribution

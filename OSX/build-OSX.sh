@@ -41,7 +41,7 @@ cp /usr/local/opt/readline/lib/libreadline.6.3.dylib lib
 cp ../mkl/*.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/packages/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
+sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
 sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/COPYING /Library/Frameworks/R.framework
 sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/README-legal.txt /Library/Frameworks/R.framework
 cd /Users/travis/build/RevolutionAnalytics/RRO/OSX

@@ -30,7 +30,7 @@ cp ../../../../../header1.iss .
 cp ../../../../../reg3264.iss .
 cp ../../../../../JRins.R .
 cp ../../../../../../files/intro.txt .
-cp ../../../../../../OSX/project/License.txt .
+cp ../../../../../../files/COPYING .
 cp ../../../../../../packages/Revobase_7.3.0.zip .
 cd ../
 cp ../../../../../packages/Rprofile.site fixed/etc

@@ -20,7 +20,8 @@ cd R64
 tar -xzf ../../R-3.1.1.tar.gz
 cp -rp c:/R64/Tcl R-3.1.1
 cp ../checkpoint.R R-3.1.1/etc
-cp ../license.txt ../
+cp ../../files/README-legal.txt  R-3.1.1/etc
+cp ../../files/COPYING R-3.1.1/etc 
 cp ../REV_14419_Clark_2C.ico R-3.1.1/etc
 cd R-3.1.1/src/gnuwin32/installer
 cp ../../../../../clarkSmall.bmp .
@@ -28,7 +29,7 @@ cp ../../../../../Makefile .
 cp ../../../../../header1.iss .
 cp ../../../../../reg3264.iss .
 cp ../../../../../JRins.R .
-cp ../../../../../../OSX/project/Intro.txt .
+cp ../../../../../../files/intro.txt .
 cp ../../../../../../OSX/project/License.txt .
 cp ../../../../../../packages/Revobase_7.3.0.zip .
 cd ../

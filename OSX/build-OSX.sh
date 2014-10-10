@@ -2,6 +2,9 @@
 uname -a
 pwd
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+cp files/COPYING OSX/project
+cp files/README-legal.txt OSX/project
+cp files/intro.txt OSX/project
 cd OSX
 tar xzf NcFTP.tar.gz
 sudo installer -package NcFTP.pkg -target /
@@ -38,7 +41,8 @@ cp ../mkl/*.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
 sudo cp /Users/travis/build/RevolutionAnalytics/RRO/packages/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/license.txt /Library/Frameworks/R.framework
+sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/COPYING /Library/Frameworks/R.framework
+sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/README-legal.txt /Library/Frameworks/R.framework
 cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz

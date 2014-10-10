@@ -55,8 +55,9 @@ if [ -e /opt/Intel_MKL/64 ]; then
 #cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/lib
 cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/lib
 fi
-cp ../../../../packages/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/etc
-cp ../../../../license.txt  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/etc
+cp ../../../../files/README-legal.txt license.txt  %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../files/COPYING license.txt  %{buildroot}%{_libdir}/RRO-8.0
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

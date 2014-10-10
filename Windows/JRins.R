@@ -56,7 +56,7 @@
         paste("DefaultDirName={code:UserPF}\\RRO\\", RW, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("LicenseFile=License.txt", sep=""),
-        paste("InfoBeforeFile=Intro.txt", sep=""),
+        paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"
         else paste("AppPublisher=", Producer, sep = ""),
         file = con, sep = "\n")
@@ -100,7 +100,14 @@
             file = con, sep = "")
     cat("\n", file = con)
 
-    cat('Source: "R-3.1.1\\etc\\license.txt', '"; ',
+    cat('Source: "R-3.1.1\\etc\\README-legal.txt', '"; ',
+            'DestDir: "{app}', '"; ',
+            'Flags: ignoreversion; ',
+            'Components: main', 
+            file = con, sep = "")
+    cat("\n", file = con)
+
+    cat('Source: "R-3.1.1\\etc\\COPYING', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

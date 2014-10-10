@@ -1,1 +1,1 @@
-install.packages("checkpoint",repos="http://cran.revolutionanalytics.com")
+install.packages("checkpoint",repos="http://cran.r-project.org",verbose=FALSE,quiet=TRUE)

@@ -71,8 +71,8 @@ cp ../../../../files/README-legal.txt /usr/lib64/RRO-8.0
 cp ../../../../files/COPYING /usr/lib64/RRO-8.0
 else
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib64/R/etc
-cp ../../../../files/README-legal.txt license.txt  %{buildroot}%{_libdir}/RRO-8.0
-cp ../../../../files/COPYING license.txt  %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../files/README-legal.txt %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../files/COPYING %{buildroot}%{_libdir}/RRO-8.0
 pwd
 fi
 

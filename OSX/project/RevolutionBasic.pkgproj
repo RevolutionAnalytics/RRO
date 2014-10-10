@@ -524,7 +524,7 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>/Applications/R.app</string>
+									<string>/Applications/RRO.app</string>
 									<key>PATH_TYPE</key>
 									<integer>0</integer>
 									<key>PERMISSIONS</key>
@@ -982,7 +982,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>R.app</string>
+				<string>RRO.app</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
@@ -1158,7 +1158,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>Intro.txt</string>
+							<string>../../files/intro.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -1177,7 +1177,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>License.txt</string>
+							<string>../../files/COPYING.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>

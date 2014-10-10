@@ -3,6 +3,7 @@ uname -a
 pwd
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 cp files/COPYING OSX/project
+cp files/COPYING files/COPYING.txt
 cp files/README-legal.txt OSX/project
 cp files/intro.txt OSX/project
 cd OSX

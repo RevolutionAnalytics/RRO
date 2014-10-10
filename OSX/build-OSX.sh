@@ -48,7 +48,7 @@ cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz
 cd Mac-GUI-1.65
-xcodebuild -target "Revoluton R Open" 
+xcodebuild -target "Revolution R Open" 
 cd ../
 sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
 ls -l /Applications

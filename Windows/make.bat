@@ -2,6 +2,7 @@ mkdir c:\tmp
 set tmpdir=c:/tmp
 tar -xzf ../R-3.1.1.tar.gz
 cp -rp c:/R/Tcl R-3.1.1
+sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
 cd R-3.1.1/src/gnuwin32/installer
 cp ../../../../clarkSmall.bmp .
 cp ../../../../Makefile .
@@ -29,7 +30,7 @@ cp ../../../../../Makefile .
 cp ../../../../../header1.iss .
 cp ../../../../../reg3264.iss .
 cp ../../../../../JRins.R .
-cp ../../../../../../files/intro.txt .
+cp ../../../../../intro.txt .
 cp ../../../../../../COPYING .
 cp ../../../../../../packages/Revobase_7.3.0.zip .
 cd ../

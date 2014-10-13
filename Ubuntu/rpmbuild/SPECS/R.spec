@@ -57,6 +57,7 @@ cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/lib
 fi
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/etc
 cp ../../../../README-legal.txt %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-8.0
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-8.0
 
 %post

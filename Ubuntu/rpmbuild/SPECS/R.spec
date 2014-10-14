@@ -61,7 +61,7 @@ cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-8.0
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-8.0
 
 %post
-apt-git -y install gcc gfortran-4.8 make liblzma-dev
+apt-get -y install gcc gfortran-4.8 make liblzma-dev
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr/
 fi

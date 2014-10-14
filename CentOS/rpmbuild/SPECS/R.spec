@@ -6,6 +6,12 @@ Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
+BuildRequires: ed, gcc, gcc-c++, gcc-objc
+BuildRequires: gcc-fortran, perl, texinfo
+BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
+BuildRequires: xorg-x11-devel, pango-devel
+BuildRequires: cairo-devel, ncurses-devel
+Requires: libpng, libjpeg, readline, libtiff
 
 Requires(post): info
 Requires(preun): info

@@ -85,6 +85,7 @@ pwd
 fi
 
 %post
+yum -y install gcc make
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr
 fi

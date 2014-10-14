@@ -5,7 +5,7 @@ Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
-Requires: gcc, make , gfortran-4.8, liblzma-dev
+Requires: gcc, make, gfortran-4.8, liblzma-dev
 Requires(post): info
 Requires(preun): info
 
@@ -61,7 +61,6 @@ cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-8.0
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-8.0
 
 %post
-apt-get -y install gcc gfortran-4.8 make liblzma-dev
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr/
 fi

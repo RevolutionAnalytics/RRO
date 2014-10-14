@@ -6,7 +6,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
 
-BuildRequires:  make, liblzma-dev, gfrotran-4.8, g++
+BuildRequires:  liblzma-dev
 Requires(post): info
 Requires(preun): info
 

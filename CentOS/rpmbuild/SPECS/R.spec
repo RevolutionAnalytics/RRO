@@ -11,7 +11,7 @@ BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel
 BuildRequires: cairo-devel, ncurses-devel
-Requires: libpng, libjpeg, readline, libtiff
+Requires: libpng, libjpeg, readline, libtiff, gcc, make
 
 Requires(post): info
 Requires(preun): info
@@ -85,7 +85,6 @@ pwd
 fi
 
 %post
-yum -y install gcc make
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr
 fi

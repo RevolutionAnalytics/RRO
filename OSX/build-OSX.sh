@@ -1,4 +1,5 @@
 #!/bin/bash
+
 uname -a
 pwd
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig

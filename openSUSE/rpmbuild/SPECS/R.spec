@@ -7,7 +7,6 @@ License: GPLv3+
 Group: Development/Tools
 
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
-BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel
 BuildRequires: cairo-devel, ncurses-devel

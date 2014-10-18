@@ -12,7 +12,7 @@ BuildRequires: libpng-devel, libjpeg-devel, readline5-devel, libtiff-devel
 BuildRequires: libSM-devel, libX11-devel, libICE-devel,
 BuildRequires: libXt-devel, libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
-Requires: libpng, libjpeg, readline, cairo-devel, libgfortran48
+Requires: libpng, libjpeg, readline, cairo-devel
 Requires: libtiff, ghostscript-fonts-std
 Requires(post): info
 Requires(preun): info

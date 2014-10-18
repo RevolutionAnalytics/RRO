@@ -7,14 +7,13 @@ License: GPLv3+
 Group: Development/Tools
 
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
-BuildRequires: gcc-fortran, perl, texinfo
+BuildRequires: perl, texinfo
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
-BuildRequires: xorg-x11-libSM-devel, xorg-x11-libX11-devel, xorg-x11-libICE-devel,
-BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
+BuildRequires: libSM-devel, libX11-devel, libICE-devel,
+BuildRequires: libXt-devel, libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
-Requires: libpng, libjpeg, readline, cairo-devel, libgfortran43
+Requires: libpng, libjpeg, readline, cairo-devel, libgfortran48
 Requires: libtiff, ghostscript-fonts-std
-Requires: Revo_Core, python, python-devel
 Requires(post): info
 Requires(preun): info
 
@@ -44,7 +43,7 @@ if [ -e /opt/Intel_MKL/64 ]; then
 MKL_LIB_PATH=/opt/Intel_MKL/64
 export LD_LIBRARY_PATH=$MKL_LIB_PATH
 MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-tk-config=/usr/lib64/tkConfig.sh --with-tcl-config=/usr/lib64/tclConfig.sh --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-tk-config=/usr/lib64/tkConfig.sh --with-tcl-config=/usr/lib64/tclConfig.sh --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 # %configure_no --prefix=/usr/lib/RRO-3.1/R-3.1.1/ --enable-R-shlib --with-blas="$MKL" --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 else
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling

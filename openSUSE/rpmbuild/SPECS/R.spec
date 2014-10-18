@@ -8,7 +8,7 @@ Group: Development/Tools
 
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: perl, texinfo
-BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
+BuildRequires: libpng-devel, libjpeg-devel, readline5-devel, libtiff-devel
 BuildRequires: libSM-devel, libX11-devel, libICE-devel,
 BuildRequires: libXt-devel, libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel

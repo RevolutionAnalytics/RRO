@@ -9,9 +9,10 @@ Group: Development/Tools
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
-BuildRequires: pango-devel
+BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
+Requires: ghostscript-fonts, libgfortran, cairo-devel 
 
 Requires(post): info
 Requires(preun): info
@@ -43,7 +44,6 @@ MKL_LIB_PATH=/opt/Intel_MKL/64
 export LD_LIBRARY_PATH=$MKL_LIB_PATH
 MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-# %configure_no --prefix=/usr/lib/RRO-3.1/R-3.1.2/ --enable-R-shlib --with-blas="$MKL" --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 else
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 fi

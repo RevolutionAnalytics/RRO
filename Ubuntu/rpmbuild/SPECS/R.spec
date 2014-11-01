@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
 Name: RRO
-Version: 3.1.1
+Version: 3.1.2
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
@@ -10,8 +10,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib
-%define DIR_VERSION 8.0
-%define version 3.1.1
+%define DIR_VERSION 8.0.1
+%define version 3.1.2
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -53,12 +53,12 @@ fi
 rm -f %{buildroot}/%{_infodir}/dir
 if [ -e /opt/Intel_MKL/64 ]; then
 #cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/lib
-cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/lib
+cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/lib
 fi
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib/R/etc
-cp ../../../../README-legal.txt %{buildroot}%{_libdir}/RRO-8.0
-cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-8.0
-cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
+cp ../../../../README-legal.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

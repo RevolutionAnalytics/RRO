@@ -39,14 +39,14 @@ and called at run time.
 %setup -q
 
 %build
-#if [ -e /opt/Intel_MKL/64 ]; then
-#MKL_LIB_PATH=/opt/Intel_MKL/64
-#export LD_LIBRARY_PATH=$MKL_LIB_PATH
-#MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
-#./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-#else
+if [ -e /opt/Intel_MKL/64 ]; then
+MKL_LIB_PATH=/opt/Intel_MKL/64
+export LD_LIBRARY_PATH=$MKL_LIB_PATH
+MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
+./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+else
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-#fi
+fi
 make -j2
 if [ -e /opt/Intel_MKL/64 ]; then
 cp /opt/Intel_MKL/64/*.so lib

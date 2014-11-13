@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
 Name: R
-Version: 3.1.1
+Version: 3.1.2
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -11,8 +11,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 3.1
-%define version 3.1.1
+%define DIR_VERSION 3.2
+%define version 3.1.2
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -38,7 +38,7 @@ MKL_LIB_PATH=/opt/Intel_MKL/64
 export LD_LIBRARY_PATH=$MKL_LIB_PATH
 MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
 ./configure --prefix=%{_libdir}/Revo-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-# %configure_no --prefix=/usr/lib/Revo-3.1/R-3.1.1/ --enable-R-shlib --with-blas="$MKL" --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+# %configure_no --prefix=/usr/lib/Revo-3.2/R-3.1.2/ --enable-R-shlib --with-blas="$MKL" --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 else
 ./configure --prefix=%{_libdir}/Revo-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 fi
@@ -55,7 +55,7 @@ make install-tests
 else 
 %make_install
 make install-tests
-cp -a tests %{buildroot}%{_libdir}/Revo-3.1/R-3.1.1/lib64/R
+cp -a tests %{buildroot}%{_libdir}/Revo-3.2/R-3.1.2/lib64/R
 tar czf test.tar.gz tests
 cp test.tar.gz /opt/hudson/workspace
 fi
@@ -64,9 +64,9 @@ rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
 if [ -e /opt/Intel_MKL/64 ]; then
 if grep -q "release 5" /etc/redhat-release; then
-cp /opt/Intel_MKL/64/*.so /usr/lib64/Revo-3.1/R-3.1.1/lib64/R/lib
+cp /opt/Intel_MKL/64/*.so /usr/lib64/Revo-3.2/R-3.1.2/lib64/R/lib
 else
-cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/Revo-3.1/R-3.1.1/lib64/R/lib
+cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/Revo-3.2/R-3.1.2/lib64/R/lib
 fi
 fi
 

@@ -1,5 +1,5 @@
 Summary: The "Cran R" program from GNU
-Name: RRO
+Name: RRO-8.0.1
 Version: 3.1.2
 %define debug_package %{nil}
 Release: 1%{?dist}

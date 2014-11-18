@@ -32,7 +32,7 @@
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
-    Rver <- "8.0-Beta"
+    Rver <- "8.0.1-Beta"
 
 
     con <- file("R.iss", "w")

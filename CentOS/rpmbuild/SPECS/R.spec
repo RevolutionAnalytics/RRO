@@ -1,9 +1,9 @@
 Summary: The "Cran R" program from GNU
-Name: RRO
+Name: RRO-8.0.1
 Version: 3.1.2
 %define debug_package %{nil}
 Release: 1%{?dist}
-Source0: R-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
 BuildRequires: ed, gcc, gcc-c++, gcc-objc

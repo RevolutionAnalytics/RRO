@@ -14,7 +14,7 @@ sudo installer -package NcFTP.pkg -target /
 mkdir mkl
 cd mkl
 ncftp -u ftpuser -p revo-ftp 23.253.35.131 << FOO1
-cd lib.8.0.1
+cd lib
 mget *.dylib
 quit
 FOO1

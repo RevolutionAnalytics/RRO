@@ -16,6 +16,7 @@ cd mkl
 ncftp -u ftpuser -p revo-ftp 23.253.35.131 << FOO1
 cd lib
 mget *.dylib
+mget *.a
 quit
 FOO1
 cd ../

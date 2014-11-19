@@ -9,6 +9,6 @@ cd rpmbuild/SOURCES
 tar xzf R-3.1.2.tar.gz
 mv R-3.1.2 RRO-8.0.1-3.1.2
 tar czf RRO-8.0.1-3.1.2.tar.gz RRO-8.0.1-3.1.2
-rm R-3.1.2.tar.gz
+rm -rf R-3.1.2.tar.gz RRO-8.0.1-3.1.2
 cd ../
 rpmbuild -ba SPECS/R.spec

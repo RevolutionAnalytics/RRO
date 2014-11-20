@@ -1,1 +1,1 @@
-install.packages("checkpoint",repos="http://cran.mtu.edu/")
+install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-11-20")

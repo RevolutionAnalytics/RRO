@@ -20,7 +20,7 @@
 .make_R.iss <- function(RW, srcdir, MDISDI=0, HelpStyle=1, Internet=0,
                        Producer = "R-core", ISDIR)
 {
-    have32bit <- file_test("-d", file.path(srcdir, "bin", "i386"))
+    ## have32bit <- file_test("-d", file.path(srcdir, "bin", "i386"))
     have64bit <- file_test("-d", file.path(srcdir, "bin", "x64"))
 
     ## need DOS-style paths

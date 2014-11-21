@@ -1,21 +1,21 @@
 mkdir c:\tmp
 set tmpdir=c:/tmp
 tar -xzf ../R-3.1.2.tar.gz
-### cp -rp c:/R/Tcl R-3.1.2
-### sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
-### cd R-3.1.2/src/gnuwin32/installer
-### cp ../../../../clarkSmall.bmp .
-### cp ../../../../Makefile .
-### cp ../../../../header1.iss .
-### cp ../../../../../packages/Revobase_7.3.0.zip .
-### cd ../
-### cp ../../../../files/Rprofile.site fixed/etc
-### cp -rp C:/opt/bitmaps/* bitmap
+REM cp -rp c:/R/Tcl R-3.1.2
+REM sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
+REM cd R-3.1.2/src/gnuwin32/installer
+REM cp ../../../../clarkSmall.bmp .
+REM cp ../../../../Makefile .
+REM cp ../../../../header1.iss .
+REM cp ../../../../../packages/Revobase_7.3.0.zip .
+REM cd ../
+REM cp ../../../../files/Rprofile.site fixed/etc
+REM cp -rp C:/opt/bitmaps/* bitmap
  
-### make 32-bit
-### cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
+REM make 32-bit
+REM cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
 
-cd ../../../
+REM cd ../../../
 mkdir R64
 cd R64
 tar -xzf ../../R-3.1.2.tar.gz

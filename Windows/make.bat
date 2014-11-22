@@ -12,8 +12,8 @@ cd ../
 cp ../../../../files/Rprofile.site fixed/etc
 cp -rp C:/opt/bitmaps/* bitmap
  
-make 32-bit
-cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
+rem make 32-bit
+rem cp C:/opt/Intel_MKL/Win/32/*.dll ../../bin/i386
 
 cd ../../../
 mkdir R64

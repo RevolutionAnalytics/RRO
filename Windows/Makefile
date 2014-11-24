@@ -120,8 +120,6 @@ PDF_FILES = $(wildcard $(RPREFIX)/library/*/doc/*.pdf)
 
 fixups:
 	echo "make.packages.html(.Library,temp=FALSE,verbose=FALSE)" | $(RPREFIX)/$(BINDIR)/Rterm.exe --vanilla --slave LC_COLLATE=C
-	@echo "adding package Revobase"  
-	echo "install.packages('Revobase_7.3.0.zip')" | $(RPREFIX)/$(BINDIR)/Rterm.exe --vanilla --slave LC_COLLATE=C
 	$(CP) -R $(R_HOME)/Tcl $(RPREFIX)
 	$(RM) $(RPREFIX)/Tcl*/lib/*.lib
 ifneq ($(strip $(QPDF)),)

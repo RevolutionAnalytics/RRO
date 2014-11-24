@@ -24,6 +24,7 @@ cp ../checkpoint.R R-3.1.2/etc
 cp ../../README-legal.txt  R-3.1.2/etc
 cp ../../README.txt  R-3.1.2/etc
 cp ../../COPYING R-3.1.2/etc 
+cp ../../RRO-NEWS.txt R-3.1.2/etc 
 cp ../REV_14419_Clark_2C.ico R-3.1.2/etc
 cp ../../packages/Revobase_7.3.0.zip R-3.1.2/etc
 cd R-3.1.2/src/gnuwin32/installer
@@ -34,7 +35,6 @@ cp ../../../../../reg3264.iss .
 cp ../../../../../JRins.R .
 cp ../../../../../intro.txt .
 cp ../../../../../../COPYING .
-cp ../../../../../../packages/Revobase_7.3.0.zip .
 cd ../
 cp ../../../../../files/Rprofile.site fixed/etc
 cp ../../../../MkRules_64.local MkRules.local

@@ -7,6 +7,7 @@ cp COPYING OSX/project
 cp COPYING COPYING.txt
 cp README-legal.txt OSX/project
 cp README.txt OSX/project
+cp RRO-NEWS.txt OSX/project
 cp files/intro.txt OSX/project
 cd OSX
 tar xzf NcFTP.tar.gz

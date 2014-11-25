@@ -99,6 +99,7 @@ fi
 %defattr(-, root, root)
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
 %{_libdir}/RRO-%{DIR_VERSION}/COPYING
+%{_libdir}/RRO-%{DIR_VERSION}/RRO-NEWS-txt
 %{_libdir}/RRO-%{DIR_VERSION}/README-legal.txt
 %{_libdir}/RRO-%{DIR_VERSION}/README.txt
 #  %{_libdir}/RRO-%{DIR_VERSION}/sources/

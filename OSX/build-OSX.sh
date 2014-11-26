@@ -2,6 +2,7 @@
 
 uname -a
 pwd
+BUILD_DIR=/Users/travis/build/RevolutionAnalytics
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 cp COPYING OSX/project
 cp COPYING COPYING.txt
@@ -20,22 +21,22 @@ brew install jpeg
 curl -O http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2
 bzip2 -d gfortran-4.8.2-darwin13.tar.bz2
 cd /
-sudo tar xf /Users/travis/build/RevolutionAnalytics/RRO/OSX/gfortran-4.8.2-darwin13.tar
-cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
+sudo tar xf $BUILD_DIR/RRO/OSX/gfortran-4.8.2-darwin13.tar
+cd $BUILD_DIR/RRO/OSX
 mkdir rd64
 cd rd64
-export MKLROOT="/Users/travis/build/RevolutionAnalytics/RRO/OSX/mkl"
-export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_intel -lmkl_core -lmkl_intel_ilp64 -lmkl_intel_thread -lpthread -lm"
-../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'F77=gfortran-4.8' 'FC=gfortran-4.8' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2' 'F77FLAGS=-Wall -g -O2' --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--with-libtiff=no' 
+### export MKLROOT="$BUILD_DIR/RRO/OSX/mkl"
+### export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_intel -lmkl_core -lmkl_intel_ilp64 -lmkl_intel_thread -lpthread -lm"
+### ../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'F77=gfortran-4.8' 'FC=gfortran-4.8' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2' 'F77FLAGS=-Wall -g -O2' --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--with-libtiff=no' 
+../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'F77=gfortran-4.8' 'FC=gfortran-4.8' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2' 'F77FLAGS=-Wall -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--with-libtiff=no' 
 mkdir lib
-cp ../mkl/libiomp5.dylib lib
-cp ../mkl/libmkl_avx.dylib lib
-cp ../mkl/libmkl_core.dylib lib
-cp ../mkl/libmkl_intel_ilp64.dylib lib
-cp ../mkl/libmkl_intel_lp64.dylib lib
-cp ../mkl/libmkl_intel_thread.dylib lib
-cp ../mkl/libmkl_mc.dylib lib
-## cp ../mkl/*.dylib lib
+###cp ../mkl/libiomp5.dylib lib
+###cp ../mkl/libmkl_avx.dylib lib
+###cp ../mkl/libmkl_core.dylib lib
+###cp ../mkl/libmkl_intel_ilp64.dylib lib
+###cp ../mkl/libmkl_intel_lp64.dylib lib
+###cp ../mkl/libmkl_intel_thread.dylib lib
+###cp ../mkl/libmkl_mc.dylib lib
 make
 bin/R CMD INSTALL ../../packages/Revobase_OSX_7.3.0.tgz
 cp /usr/local/lib/libquadmath.0.dylib lib
@@ -45,11 +46,11 @@ cp /usr/local/lib/libgcc_s.1.dylib lib
 cp /usr/local/opt/readline/lib/libreadline.6.3.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/files/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/COPYING /Library/Frameworks/R.framework
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/README-legal.txt /Library/Frameworks/R.framework
-sudo cp /Users/travis/build/RevolutionAnalytics/RRO/README.txt /Library/Frameworks/R.framework
-cd /Users/travis/build/RevolutionAnalytics/RRO/OSX
+sudo cp $BUILD_DIR/RRO/files/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
+sudo cp $BUILD_DIR/RRO/COPYING /Library/Frameworks/R.framework
+sudo cp $BUILD_DIR/RRO/README-legal.txt /Library/Frameworks/R.framework
+sudo cp $BUILD_DIR/RRO/README.txt /Library/Frameworks/R.framework
+cd $BUILD_DIR/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz
 cd Mac-GUI-1.65
@@ -64,7 +65,7 @@ curl -O http://s.sudre.free.fr/Software/files/Packages.dmg
 sudo hdiutil mount Packages.dmg
 cd /Volumes/Packages/packages
 sudo installer -package Packages.pkg -target /
-cd /Users/travis/build/RevolutionAnalytics/RRO/OSX/project
+cd $BUILD_DIR/RRO/OSX/project
 /usr/local/bin/packagesbuild RevolutionBasic.pkgproj
 cp ./build/RevolutionBasic.pkg R-3.1.2.pkg 
 ncftp -u ftpuser -p revo-ftp 23.253.35.131 << FOO/project

@@ -13,7 +13,6 @@ cp files/intro.txt OSX/project
 cd OSX
 tar xzf NcFTP.tar.gz
 sudo installer -package NcFTP.pkg -target /
-cd ../
 tar xzf ../R-3.1.2.tar.gz
 cp Makefile.fw R-3.1.2
 brew install cairo
@@ -68,8 +67,3 @@ sudo installer -package Packages.pkg -target /
 cd $BUILD_DIR/RRO/OSX/project
 /usr/local/bin/packagesbuild RevolutionBasic.pkgproj
 cp ./build/RevolutionBasic.pkg R-3.1.2.pkg 
-ncftp -u ftpuser -p revo-ftp 23.253.35.131 << FOO/project
-rm R-3.1.2.pkg
-put R-3.1.2.pkg
-quit
-FOO

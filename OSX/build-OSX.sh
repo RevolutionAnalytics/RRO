@@ -12,14 +12,6 @@ cp files/intro.txt OSX/project
 cd OSX
 tar xzf NcFTP.tar.gz
 sudo installer -package NcFTP.pkg -target /
-mkdir mkl
-cd mkl
-ncftp -u ftpuser -p revo-ftp 23.253.35.131 << FOO1
-cd lib
-mget *.dylib
-mget *.a
-quit
-FOO1
 cd ../
 tar xzf ../R-3.1.2.tar.gz
 cp Makefile.fw R-3.1.2

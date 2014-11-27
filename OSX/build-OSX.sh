@@ -4,6 +4,7 @@ uname -a
 pwd
 BUILD_DIR=/Users/travis/build/RevolutionAnalytics
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+cd ../
 cp COPYING OSX/project
 cp COPYING COPYING.txt
 cp README-legal.txt OSX/project
@@ -11,17 +12,10 @@ cp README.txt OSX/project
 cp RRO-NEWS.txt OSX/project
 cp files/intro.txt OSX/project
 cd OSX
-tar xzf NcFTP.tar.gz
-sudo installer -package NcFTP.pkg -target /
 tar xzf ../R-3.1.2.tar.gz
 cp Makefile.fw R-3.1.2
-brew install cairo
-brew install jpeg
-curl -O http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2
-bzip2 -d gfortran-4.8.2-darwin13.tar.bz2
-cd /
-sudo tar xf $BUILD_DIR/RRO/OSX/gfortran-4.8.2-darwin13.tar
-cd $BUILD_DIR/RRO/OSX
+# brew install cairo
+# brew install jpeg
 mkdir rd64
 cd rd64
 ### export MKLROOT="$BUILD_DIR/RRO/OSX/mkl"
@@ -49,6 +43,7 @@ sudo cp $BUILD_DIR/RRO/files/Rprofile.site /Library/Frameworks/R.framework/Resou
 sudo cp $BUILD_DIR/RRO/COPYING /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO/README-legal.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO/README.txt /Library/Frameworks/R.framework
+sudo cp $BUILD_DIR/RRO/RRO-NEWS.txt /Library/Frameworks/R.framework
 cd $BUILD_DIR/RRO/OSX
 ## OS X GUI
 tar xzf Mac-GUI-1.65.tar.gz
@@ -57,13 +52,7 @@ xcodebuild -target "Revolution R Open"
 cd ../
 sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
 ls -l /Applications
-#pkgbuild --identifier com.R.pkg.app --scripts Scripts --install-location / --root ./R R-3.1.2.pkg
-#curl --ftp-create-dirs -T R-3.1.2.pkg -u ftpuser:revo-ftp ftp://162.242.172.183
 ## make package
-curl -O http://s.sudre.free.fr/Software/files/Packages.dmg
-sudo hdiutil mount Packages.dmg
-cd /Volumes/Packages/packages
-sudo installer -package Packages.pkg -target /
 cd $BUILD_DIR/RRO/OSX/project
 /usr/local/bin/packagesbuild RevolutionBasic.pkgproj
 cp ./build/RevolutionBasic.pkg R-3.1.2.pkg 

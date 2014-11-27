@@ -1,4 +1,0 @@
-language: objective-c
-# Change this to your needs
-script:  ./OSX/build-OSX.sh
-

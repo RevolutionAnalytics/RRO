@@ -3,7 +3,7 @@
 cd ../
 uname -a
 pwd
-BUILD_DIR=/Users/travis/build/RevolutionAnalytics
+BUILD_DIR=/Users/builder/
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 cp COPYING OSX/project
 cp COPYING COPYING.txt

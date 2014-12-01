@@ -31,7 +31,7 @@ mkdir lib
 ###cp ../mkl/libmkl_intel_thread.dylib lib
 ###cp ../mkl/libmkl_mc.dylib lib
 make
-bin/R CMD INSTALL ../../packages/Revobase_OSX_7.3.0.tgz
+### bin/R CMD INSTALL ../../packages/Revobase_OSX_7.3.0.tgz
 cp /usr/local/lib/libquadmath.0.dylib lib
 cp /usr/local/lib/libgfortran.3.dylib lib
 cp /usr/local/lib/libgcc_s_x86_64.1.dylib lib

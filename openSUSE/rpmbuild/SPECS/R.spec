@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO
-Version: 3.1.1
+Name: RRO-8.0.1
+Version: 3.1.2
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
@@ -18,8 +18,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 8.0
-%define version 3.1.1
+%define DIR_VERSION 8.0.1
+%define version 3.1.2
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -43,8 +43,7 @@ if [ -e /opt/Intel_MKL/64 ]; then
 MKL_LIB_PATH=/opt/Intel_MKL/64
 export LD_LIBRARY_PATH=$MKL_LIB_PATH
 MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-tk-config=/usr/lib64/tkConfig.sh --with-tcl-config=/usr/lib64/tclConfig.sh --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-# %configure_no --prefix=/usr/lib/RRO-3.1/R-3.1.1/ --enable-R-shlib --with-blas="$MKL" --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib -with-tcltk --with-tk-config=/usr/lib64/tkConfig.sh --with-tcl-config=/usr/lib64/tclConfig.sh --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 else
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 fi
@@ -61,22 +60,25 @@ fi
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
 if [ -e /opt/Intel_MKL/64 ]; then
-cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib64/R/lib
+cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/lib
 fi
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-8.0/R-3.1.1/lib64/R/etc
-cp ../../../../README-legal.txt %{buildroot}%{_libdir}/RRO-8.0
-cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-8.0
-cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-8.0
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
+cp ../../../../README-legal.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../RRO-NEWS.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr/
 fi
+rm -f /usr/bin/R
+rm -f /usr/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://cran.revolutionanalytics.com")' | R -q --vanilla
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01"))' | R -q --vanilla
 %postun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/
@@ -97,6 +99,7 @@ fi
 %defattr(-, root, root)
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
 %{_libdir}/RRO-%{DIR_VERSION}/COPYING
+%{_libdir}/RRO-%{DIR_VERSION}/RRO-NEWS.txt
 %{_libdir}/RRO-%{DIR_VERSION}/README-legal.txt
 %{_libdir}/RRO-%{DIR_VERSION}/README.txt
 #  %{_libdir}/RRO-%{DIR_VERSION}/sources/

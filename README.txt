@@ -1,4 +1,4 @@
-Revolution R Open, version 8.0 beta
+Revolution R Open, version 8.0.1 beta
 Revolution R Open is the enhanced distribution of R, from Revolution Analytics.
 
 Revolution R Open is based on R, Copyright (C) The R Foundation for Statistical Computing. Visit www.r-project.org for information about the R Project. R is the creation of many contributors, for details visit http://www.r-project.org/contributors.html .

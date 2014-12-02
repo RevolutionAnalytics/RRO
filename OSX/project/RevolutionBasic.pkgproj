@@ -1236,6 +1236,13 @@ Install Revolution R Open 8.0 beta</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
+			<key>CERTIFICATE</key>
+			<dict>
+				<key>NAME</key>
+				<string>Mac Installer Distribution: Revolution Analytics, Inc (622V99MUYL)</string>
+				<key>PATH</key>
+				<string>/Users/nriesland/Library/Keychains/login.keychain</string>
+			</dict>
 			<key>EXCLUDED_FILES</key>
 			<array>
 				<dict>

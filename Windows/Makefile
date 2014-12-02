@@ -42,7 +42,7 @@ DOC_INFO_FILES = AUTHORS COPYING FAQ RESOURCES THANKS CHANGES \
   NEWS NEWS.0 NEWS.1 NEWS.2 
 GW_INFO_FILES = COPYRIGHTS README.Rterm ../../doc/manual/rw-FAQ
 
-ETC_FILES = Rprofile.site Rconsole Rdevga rgb.txt repositories Rcmd_environ checkpoint.R REV_14419_Clark_2C.ico COPYING README-legal.txt README.txt
+ETC_FILES = Rprofile.site Rconsole Rdevga rgb.txt repositories Rcmd_environ checkpoint.R REV_14419_Clark_2C.ico COPYING README-legal.txt README.txt RRO-NEWS.txt Revobase_7.3.0.zip
 
 
 # we don't want share/{Makefile.in,java,sh} installed
@@ -120,8 +120,6 @@ PDF_FILES = $(wildcard $(RPREFIX)/library/*/doc/*.pdf)
 
 fixups:
 	echo "make.packages.html(.Library,temp=FALSE,verbose=FALSE)" | $(RPREFIX)/$(BINDIR)/Rterm.exe --vanilla --slave LC_COLLATE=C
-	@echo "adding package Revobase"  
-	echo "install.packages('Revobase_7.3.0.zip')" | $(RPREFIX)/$(BINDIR)/Rterm.exe --vanilla --slave LC_COLLATE=C
 	$(CP) -R $(R_HOME)/Tcl $(RPREFIX)
 	$(RM) $(RPREFIX)/Tcl*/lib/*.lib
 ifneq ($(strip $(QPDF)),)

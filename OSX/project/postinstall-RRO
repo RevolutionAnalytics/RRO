@@ -5,33 +5,33 @@
 # create convenience links to R and Rscript
 pwd
 cd /usr/bin
-## rm -f R Rscript
-## ln -s /Library/Frameworks/R.framework/Resources/bin/R .
-## ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01")' | /Library/Frameworks/R.framework/Resources/bin/R -q --vanilla
+rm -f R Rscript
+ln -s /Library/Frameworks/RRO.framework/Resources/bin/R .
+ln -s /Library/Frameworks/RRO.framework/Resources/bin/Rscript .
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01")' | R -q --vanilla
 
 # update font cache (if this R includes fontconfig)
-if [ -e /Library/Frameworks/R.framework/Resources/bin/fc-cache ]; then
-    /Library/Frameworks/R.framework/Resources/bin/fc-cache
+if [ -e /Library/Frameworks/RRO.framework/Resources/bin/fc-cache ]; then
+    /Library/Frameworks/RRO.framework/Resources/bin/fc-cache
 fi
 
 # remove llvm- prefix and -4.2 suffix from compilers on 10.8+ where we can encounter Xcode 5+
 if uname -r | grep '^1[2-7]' >/dev/null; then
-   sed -e 's:llvm-g\(..\)-4.2:g\1:g' /Library/Frameworks/R.framework/Resources/etc/Makeconf > /Library/Frameworks/R.framework/Resources/etc/Makeconf.new && mv /Library/Frameworks/R.framework/Resources/etc/Makeconf.new /Library/Frameworks/R.framework/Resources/etc/Makeconf
-   echo '' >> /Library/Frameworks/R.framework/Resources/etc/Makeconf
-   echo '## NOTE: originally compiled with llvm-gcc-4.2, post-processed by postflight script to use gcc' >> /Library/Frameworks/R.framework/Resources/etc/Makeconf
+   sed -e 's:llvm-g\(..\)-4.2:g\1:g' /Library/Frameworks/RRO.framework/Resources/etc/Makeconf > /Library/Frameworks/RRO.framework/Resources/etc/Makeconf.new && mv /Library/Frameworks/RRO.framework/Resources/etc/Makeconf.new /Library/Frameworks/RRO.framework/Resources/etc/Makeconf
+   echo '' >> /Library/Frameworks/RRO.framework/Resources/etc/Makeconf
+   echo '## NOTE: originally compiled with llvm-gcc-4.2, post-processed by postflight script to use gcc' >> /Library/Frameworks/RRO.framework/Resources/etc/Makeconf
 fi
 
 # make sure the framework is admin-writable
-chown -Rh root:admin /Library/Frameworks/R.framework
-chmod -R g+w /Library/Frameworks/R.framework
+chown -Rh root:admin /Library/Frameworks/RRO.framework
+chmod -R g+w /Library/Frameworks/RRO.framework
 
 # some jobs needed specifically on Mac OS X 10.6 (Snow Leopard) and 10.7 (Lion)
 
 # we ship with R-BLAS due to bugs in vecLib, but so far it seems Lion has fixed those so we can go back to vecLib
 # update: (2.14.0) no we don't, sicne vecLib crashes in Lion, possibly due to ABI issues, so we still use R BLAS
 #if uname -r | grep ^11 >/dev/null; then
-#    ln -sfn libRblas.vecLib.dylib /Library/Frameworks/R.framework/Resources/lib/libRblas.dylib
+#    ln -sfn libRblas.vecLib.dylib /Library/Frameworks/RRO.framework/Resources/lib/libRblas.dylib
 #fi
 
 # check gfortran - if it's our previously installed Xcode 3.1.x build, remove it since it breaks on SL

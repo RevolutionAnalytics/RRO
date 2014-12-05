@@ -64,7 +64,7 @@ List of Open Source Components
 Revolution R Open includes the following open source components, distributed 
 under the terms of the indicated licenses:
 
-- R 3.1.1 (R Foundation for Statistical Computing) GPLv2
+- R 3.1.2 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution Analytics) GPLv2
 
 The terms of the GPLv2 license can be found in the accompanying file COPYING 

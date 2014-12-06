@@ -3,7 +3,7 @@
 cd ../
 uname -a
 pwd
-BUILD_DIR=/Users/nriesland
+BUILD_DIR=/Users/builder
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 cp COPYING OSX/project
 cp COPYING COPYING.txt
@@ -20,19 +20,18 @@ cp Makefile-RRO.fw R-3.1.2/Makefile.fw
 cp Makeconf-RRO.in R-3.1.2/Makeconf.in
 mkdir rd64-RRO
 cd rd64-RRO
-export MKLROOT="/opt/intel/composer_xe_2015.0.077/mkl"
-# bad export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_intel_ilp64 -lmkl_intel_sequential -lmkl_core -lpthread -lm"
-## works export MKL=" -L${MKLROOT}/lib -lmkl_intel -lmkl_core -lmkl_intel_thread "
-export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_intel -lmkl_core -lmkl_intel_thread "
+export MKLROOT="$BUILD_DIR/RRO/OSX/mkl"
+export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_rt "
 ../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'F77=gfortran-4.8' 'FC=gfortran-4.8' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2' 'F77FLAGS=-Wall -g -O2' --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--with-libtiff=yes' --disable-openmp
 mkdir lib
-cp /opt/intel/composer_xe_2015.0.077/compiler/lib/libiomp5.dylib lib
+cp $MKLROOT/lib/libiomp5.dylib lib
 cp $MKLROOT/lib/libmkl_avx.dylib lib
 cp $MKLROOT/lib/libmkl_core.dylib lib
 cp $MKLROOT/lib/libmkl_intel_ilp64.dylib lib
 cp $MKLROOT/lib/libmkl_intel_lp64.dylib lib
 cp $MKLROOT/lib/libmkl_intel_thread.dylib lib
 cp $MKLROOT/lib/libmkl_mc.dylib lib
+cp $MKLROOT/lib/libmkl_rt.dylib lib
 make
 bin/R CMD INSTALL $BUILD_DIR/RRO/packages/Revobase_OSX_7.3.0.tgz
 cp /usr/local/lib/libquadmath.0.dylib lib
@@ -75,6 +74,7 @@ sudo cp $BUILD_DIR/RRO/README.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO/RRO-NEWS.txt /Library/Frameworks/R.framework
 cd $BUILD_DIR/RRO/OSX
 ## OS X GUI
+rm -rf Mac-GUI-1.65
 tar xzf Mac-GUI-1.65.tar.gz
 cd Mac-GUI-1.65
 xcodebuild -target "Revolution R Open" 

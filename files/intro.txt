@@ -1,4 +1,3 @@
-Install Revolution R Open
 Welcome to the Revolution R Open Installer
 
 Revolution R Open is an enhanced distribution of R from Revolution Analytics. 

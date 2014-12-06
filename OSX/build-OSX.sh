@@ -1,7 +1,12 @@
 #!/bin/bash
 
-pwd
+uname -a
+## clean up previous installs
+sudo rm -rf /Library/Frameworks/R.framework
+sudo rm -rf /Library/Frameworks/RRO.framework
+sudo rm -rf /Applications/Revo*.app
 cd ../
+pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
@@ -12,7 +17,6 @@ cp README.txt OSX/project
 cp RRO-NEWS.txt OSX/project
 cp files/intro.txt OSX/project
 cd OSX
-cp -a /opt/intel/mkl .
 ### build RRO.framework
 rm -rf R-3.1.2
 rm -rf rd64-RRO
@@ -21,7 +25,7 @@ cp Makefile-RRO.fw R-3.1.2/Makefile.fw
 cp Makeconf-RRO.in R-3.1.2/Makeconf.in
 mkdir rd64-RRO
 cd rd64-RRO
-export MKLROOT="$BUILD_DIR/OSX/mkl"
+export MKLROOT="/opt/intel/mkl"
 export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_rt "
 ../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'F77=gfortran-4.8' 'FC=gfortran-4.8' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2' 'F77FLAGS=-Wall -g -O2' --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--with-libtiff=yes' --disable-openmp
 mkdir lib

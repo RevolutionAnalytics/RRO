@@ -12,6 +12,7 @@ cp README.txt OSX/project
 cp RRO-NEWS.txt OSX/project
 cp files/intro.txt OSX/project
 cd OSX
+cp -a /opt/intel/mkl .
 ### build RRO.framework
 rm -rf R-3.1.2
 rm -rf rd64-RRO

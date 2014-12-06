@@ -1,6 +1,7 @@
 #!/bin/bash
 
 pwd
+cd ../
 PWDD=`pwd`
 BUILD_DIR=$PWDD
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig

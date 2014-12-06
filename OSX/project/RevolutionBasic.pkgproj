@@ -1520,18 +1520,18 @@
 			<key>BACKGROUND</key>
 			<dict>
 				<key>ALIGNMENT</key>
-				<integer>4</integer>
+				<integer>6</integer>
 				<key>BACKGROUND_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>clarkbg.png</string>
+					<string>clarkInstall.png</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
 				<key>CUSTOM</key>
 				<integer>1</integer>
 				<key>SCALING</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>INSTALLATION TYPE</key>
 			<dict>
@@ -1727,8 +1727,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>Revolution R Open installer.
-Install Revolution R Open 8.0 beta</string>
+						<string>Revolution R Open</string>
 					</dict>
 				</array>
 			</dict>

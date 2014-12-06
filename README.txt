@@ -68,7 +68,8 @@ the checkpoint package to manage R package versions.
 -----------------------
 Known Issues
 -----------------------
-Read about known issues here: 
+To see a list of known issues in this release, visit the Release Notes 
+on Github at: <<GITHUB-URL>>
 
 
 -----------------------

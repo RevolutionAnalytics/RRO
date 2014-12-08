@@ -1,6 +1,6 @@
 # Revolution R Open
 
-This is the build system for Revolution R Open. It starts with the unmodified R-3.1.1 distribution, and incorporates the Revolution R Open modifications, and then builds executables on various platforms.
+This is the build system for Revolution R Open. It starts with the unmodified R-3.1.2 distribution, and incorporates the Revolution R Open modifications, and then builds executables on various platforms.
 
 ## To build Revolution R Open
 

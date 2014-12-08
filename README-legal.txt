@@ -1,3 +1,33 @@
+Revolution R Open includes R, various other open source components and one 
+proprietary third party component (the Intel MKL).
+
+The open source components that comprise this software offering are licensed 
+by Revolution Analytics and various third parties including the R Foundation 
+for Statistical Computing. Such components are licensed pursuant to the GNU 
+GPLv2 license and other open source licenses. A list of the open source 
+components and links to the text of the applicable licenses can be found in 
+this file README-legal.txt in the root folder where this software is installed.
+
+Revolution R Open includes R, which is licensed under the terms if the GNU
+GENERAL PUBLIC LICENSE Version 2, June 1991. The terms of this license are in a 
+file called COPYING which you should have received with this software. If you 
+have not received a copy of this file you can obtain one via WWW at 
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+A small number of R files (the API header files and export files, listed in 
+R_HOME/COPYRIGHTS) are distributed under the LESSER GNU GENERAL PUBLIC LICENSE 
+version 2.1. This can be obtained via WWW at 
+http://www.gnu.org/copyleft/lgpl.html
+
+The above licenses govern distribution, not use.
+
+Revolution R Open includes the Intel(R) Math Kernel Library (the "MKL"). The MKL
+is  distributed to you by Revolution Analytics. The MKL is provided "AS IS" 
+without warranty of any kind. Please below for further details.
+
+``Share and Enjoy.''
+
+
 -----------------
 LEGAL INFORMATION
 -----------------
@@ -52,7 +82,7 @@ Trademarks
 ----------
 Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
 
-“Revolution Analytics”, “Revolution R Open” and the monkey logo are trademarks
+"Revolution Analytics", "Revolution R Open" and the monkey logo are trademarks
 of Revolution Analytics, Inc. in the U.S. and/or other countries.
 
 R is a trademark of the R Foundation for Statistical Computing.
@@ -61,11 +91,12 @@ R is a trademark of the R Foundation for Statistical Computing.
 ------------------------------
 List of Open Source Components
 ------------------------------
-Revolution R Open includes the following open source components, distributed 
-under the terms of the indicated licenses:
+This Revolution R Open distribution includes the following open source components, 
+distributed under the terms of the indicated licenses:
 
 - R 3.1.2 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution Analytics) GPLv2
+- Revobase package (Revolution Analytics) GPLv2
 
 The terms of the GPLv2 license can be found in the accompanying file COPYING 
 and at http://www.r-project.org/COPYING

@@ -34,7 +34,7 @@ cp ../../../../../header1.iss .
 cp ../../../../../reg3264.iss .
 cp ../../../../../JRins.R .
 cp ../../../../../intro.txt .
-cp ../../../../../../COPYING .
+cp ../../../../../../README-legal.txt .
 cd ../
 cp ../../../../../files/Rprofile.site fixed/etc
 cp ../../../../MkRules_64.local MkRules.local

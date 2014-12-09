@@ -55,7 +55,7 @@
         paste("VersionInfoVersion=", Rver0, sep = ""),
         paste("DefaultDirName={code:UserPF}\\RRO\\", RW, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
-        paste("LicenseFile=COPYING", sep=""),
+        paste("LicenseFile=README-legal.txt", sep=""),
         paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"
         else paste("AppPublisher=", Producer, sep = ""),

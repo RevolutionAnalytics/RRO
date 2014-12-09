@@ -69,7 +69,8 @@ the checkpoint package to manage R package versions.
 Known Issues
 -----------------------
 To see a list of known issues in this release, visit the Release Notes 
-on Github at: <<GITHUB-URL>>
+on Github at: https://github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.1-beta
+
 
 
 -----------------------

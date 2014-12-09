@@ -88,4 +88,7 @@ sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
 ## make package
 cd $BUILD_DIR/OSX/project
 /usr/local/bin/packagesbuild RevolutionBasic.pkgproj
-cp ./build/RevolutionBasic.pkg R-3.1.2.pkg 
+cd build
+productsign --sign "Developer ID Installer: Revolution Analytics, Inc (622V99MUYL)" RevolutionBasic.pkg RevolutionBasic-signed.pkg
+cd ../
+cp ./build/RevolutionBasic-signed.pkg R-3.1.2.pkg 

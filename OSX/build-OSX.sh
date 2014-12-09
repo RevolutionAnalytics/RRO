@@ -89,7 +89,7 @@ sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
 cd $BUILD_DIR/OSX/project
 /usr/local/bin/packagesbuild RevolutionBasic.pkgproj
 cd build
-security unlock-keychain -p "m;java"
+security unlock-keychain -p "B0bthebuilder1"
 productsign --sign "Developer ID Installer: Revolution Analytics, Inc (622V99MUYL)" RevolutionBasic.pkg RevolutionBasic-signed.pkg
 security lock-keychain
 cd ../

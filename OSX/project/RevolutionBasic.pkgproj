@@ -1758,13 +1758,6 @@
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
-			<key>CERTIFICATE</key>
-			<dict>
-				<key>NAME</key>
-				<string>Developer ID Installer: Revolution Analytics, Inc (622V99MUYL)</string>
-				<key>PATH</key>
-				<string>/Users/builder/Library/Keychains/login.keychain</string>
-			</dict>
 			<key>EXCLUDED_FILES</key>
 			<array>
 				<dict>

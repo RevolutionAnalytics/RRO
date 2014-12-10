@@ -31,12 +31,12 @@ export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/li
 mkdir lib
 cp $MKLROOT/lib/libiomp5.dylib lib
 cp $MKLROOT/lib/libmkl_avx.dylib lib
+cp $MKLROOT/lib/libmkl_avx2.dylib lib
 cp $MKLROOT/lib/libmkl_core.dylib lib
 cp $MKLROOT/lib/libmkl_intel_ilp64.dylib lib
 cp $MKLROOT/lib/libmkl_intel_lp64.dylib lib
 cp $MKLROOT/lib/libmkl_intel_thread.dylib lib
 cp $MKLROOT/lib/libmkl_mc.dylib lib
-cp $MKLROOT/lib/libmkl_mc3.dylib lib
 cp $MKLROOT/lib/libmkl_rt.dylib lib
 make
 bin/R CMD INSTALL $BUILD_DIR/packages/Revobase_OSX_7.3.0.tgz

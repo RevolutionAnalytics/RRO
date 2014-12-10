@@ -96,7 +96,7 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01"))' | R -q --vanilla
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01")' | R -q --vanilla
 %postun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/

@@ -5,9 +5,9 @@
 # create convenience links to R and Rscript
 pwd
 cd /usr/bin
-## rm -f R Rscript
-## ln -s /Library/Frameworks/R.framework/Resources/bin/R .
-## ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .
+rm -f R Rscript
+ln -s /Library/Frameworks/R.framework/Resources/bin/R .
+ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .
 echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2014-12-01")' | /Library/Frameworks/R.framework/Resources/bin/R -q --vanilla
 
 # update font cache (if this R includes fontconfig)

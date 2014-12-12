@@ -6,6 +6,7 @@ sudo rm -rf /Library/Frameworks/R.framework
 sudo rm -rf /Library/Frameworks/RRO.framework
 sudo rm -rf /Applications/Revo*.app
 cd ../
+BUILD_RRO_FRAMEWORK=0
 pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD
@@ -16,6 +17,7 @@ cp README-legal.txt OSX/project
 cp README.txt OSX/project
 cp RRO-NEWS.txt OSX/project
 cp files/intro.txt OSX/project
+if [ $BUILD_RRO_FRAMEWORK -eq 1 ] ; then
 cd OSX
 ### build RRO.framework
 rm -rf R-3.1.2
@@ -53,6 +55,7 @@ sudo cp $BUILD_DIR/README-legal.txt /Library/Frameworks/RRO.framework
 sudo cp $BUILD_DIR/README.txt /Library/Frameworks/RRO.framework
 sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/RRO.framework
 ## done building RRO.framework
+fi
 
 cd $BUILD_DIR/OSX
 rm -rf R-3.1.2

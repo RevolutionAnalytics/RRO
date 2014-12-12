@@ -10,11 +10,11 @@ Please report any problems or suggestions to the RRO Google Group at http://grou
 2. Supported platforms include:
    + Ubuntu 12.04, 14.04; CentOS / Red Hat Enterprise Linux 5.8, 6.5, 7.0
    + Mac OS X Mavericks (10.9)
-   + Windows® 7.0 (SP 1), 8.0, 8.1, Windows Server® 2008 R2 (SP1) and 2012
+   + WindowsÂ® 7.0 (SP 1), 8.0, 8.1, Windows ServerÂ® 2008 R2 (SP1) and 2012
 
 3. Experimental platforms include: OpenSUSE 13.1 and Mac OS X Yosemite (10.10) RRO has not been fully tested on these experimental platforms, but we expect it to work. Please report any issues to the RRO Google Group.
 
-4. The default CRAN mirror was updated to the static snapshot of CRAN from November 20, 2014.
+4. The default CRAN mirror was updated to the static snapshot of CRAN from December 1, 2014.
 
 
 
@@ -34,11 +34,9 @@ Learn more about each issue at https://github.com/RevolutionAnalytics/RRO/issues
 
 1. A problem that caused RRO on the Mac to default to building packages from source has been resolved. [Issue #32]
 
-2. An issue with the Mac build linking to the MKL has been resolved. [Issue #27]
+2. Fixed some installation issues on CentOS. [Issue #36 and #9]
 
-3. Fixed some installation issues on CentOS. [Issue #36 and #9]
-
-4. The RPM package name now includes the RRO version number. [Issue #10]
+3. The RPM package name now includes the RRO version number. [Issue #10]
 
 
 

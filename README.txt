@@ -1,6 +1,6 @@
---------------------------------------
-Revolution R Open, version 8.0.1 beta
---------------------------------------
+---------------------------------------
+Revolution R Open, version 8.0.1 beta 2
+---------------------------------------
 Revolution R Open is the enhanced distribution of R, from 
 Revolution Analytics.
 
@@ -23,7 +23,6 @@ Revolution R Open, visit mran.revolutionanalytics.com/open.
 
 Technical support and a limited warranty for 
 Revolution R Open are available from Revolution Analytics, 
-
 with a paid subscription for “Revolution R Plus”. 
 
 For more information, visit 
@@ -56,16 +55,14 @@ About Revolution R Open
 Revolution R Open builds on R 3.1.2 by making the following
 additions and changes:
 
-Revolution R Open is linked with the Intel Mark Kernel 
-Libraries for improved performance. For more information 
-about Intel MKL, visit 
-https://software.intel.com/en-us/intel-mkl 
+Revolution R Open is linked with the Mac
+Accelerate Framework, enabling multi-threaded computation.
 
 The default CRAN repository for Revolution R Open is 
 http://mran.revolutionanalytics.com/snapshot/2014-10-01/. 
 
 Unlike a CRAN mirror, this is a static copy of CRAN, 
-created on Oct. 1, 2014. Newer versions of packages will 
+created on Dec 1, 2014. Newer versions of packages will 
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint 
 package described below.

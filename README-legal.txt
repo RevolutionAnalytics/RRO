@@ -1,16 +1,6 @@
 Revolution R Open includes R and various other open source 
 components.
 
-The open source components that comprise this software 
-offering are licensed by Revolution Analytics and various 
-third parties including the R Foundation for Statistical 
-Computing. Such components are licensed pursuant to the GNU
-GPLv2 license and other open source licenses. A list of the
-open source components and links to the text of the 
-applicable licenses can be found in this file 
-README-legal.txt in the root folder where this software is 
-installed.
-
 Revolution R Open includes R, which is licensed under the 
 terms if the GNU GENERAL PUBLIC LICENSE Version 2, June 
 1991. The terms of this license are in a file called 
@@ -24,6 +14,15 @@ files, listed in R_HOME/COPYRIGHTS) are distributed under
 the LESSER GNU GENERAL PUBLIC LICENSE version 2.1. This 
 can be obtained via WWW at 
 http://www.gnu.org/copyleft/lgpl.html
+
+Other open-source components that comprise this software 
+offering are licensed by Revolution Analytics and various 
+third partie. Such components are licensed pursuant to the 
+GNU GPLv2 license and other open source licenses. A list of 
+the open source components and links to the text of the 
+applicable licenses can be found in this file 
+README-legal.txt in the root folder where this software is 
+installed.
 
 The above licenses govern distribution, not use.
 

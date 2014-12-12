@@ -17,7 +17,7 @@ http://www.gnu.org/copyleft/lgpl.html
 
 Other open-source components that comprise this software 
 offering are licensed by Revolution Analytics and various 
-third partie. Such components are licensed pursuant to the 
+third parties. Such components are licensed pursuant to the 
 GNU GPLv2 license and other open source licenses. A list of 
 the open source components and links to the text of the 
 applicable licenses can be found in this file 

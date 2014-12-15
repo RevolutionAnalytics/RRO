@@ -5,7 +5,7 @@ if (.Platform$OS.type == "windows" ) {
 }
 quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
-                cat("Revolution R Open 8.0.1 beta\n",sep="")
+                cat("Revolution R Open 8.0.1 beta2\n",sep="")
                 cat("The enhanced R distribution from Revolution Analytics\n",sep="")
                 cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
                 cat("about additional features and technical support options.\n\n",sep="")

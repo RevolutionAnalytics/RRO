@@ -23,7 +23,7 @@ Revolution R Open, visit mran.revolutionanalytics.com/open.
 
 Technical support and a limited warranty for 
 Revolution R Open are available from Revolution Analytics, 
-with a paid subscription for “Revolution R Plus”. 
+with a paid subscription for Revolution R Plus�. 
 
 For more information, visit 
 www.revolutionanalytics.com/plus.
@@ -81,7 +81,7 @@ Known Issues
 -----------------------
 To see a list of known issues in this release, visit the 
 Release Notes on Github at: 
-github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.1-beta
+github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.1-beta2
 
 
 -----------------------

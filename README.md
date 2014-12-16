@@ -32,7 +32,7 @@ chmod +x build.sh
 
 ### OSX:
 
-The OSX build uses Travis CI's build environment (https://travis-ci.com/) 
+The OSX build uses Travis CI's build environment (https://travis-ci.com/)
 
 ```
 git clone https://github.com/RevolutionAnalytics/RRO.git rro-osx-build
@@ -52,7 +52,7 @@ chmod +x build.sh
 
 ## Test Suite
 
-To test the build, peform the following
+To test the build, perform the following
 
 1. build the test bundle
 
@@ -70,8 +70,12 @@ To test the build, peform the following
 
 ## About the Intel MKL
 
+<<<<<<< HEAD
 To build Revolution R Open with the Intel Math Kernel Libraries, you will need the [Intel MKL developer kit.](https://software.intel.com/en-us/intel-mkl).
 If you have the MKL developer kit, refer to `build.sh` file for the appropriate platform to configure the build to use the MKL libraries. 
 If you do not have the Intel MKL developer kit, Revolution R Open will build with the standard R BLAS/LAPACK libraries.
 
 We have successfully tested RRO with Intel MKL on Windows and Linux platforms. We do not recommend building with MKL on Mac, where the default build uses the Mac Accelerate Performance and has comparable performance to MKL builds.
+=======
+To build Revolution R Open with the Intel Math Kernel Licenses, you will need the Intel MKL developer kit. (https://software.intel.com/en-us/intel-mkl). If you have the MKL developer kit, refer to `build.sh` file for the appropriate platform to configure the build to use the MKL libraries. If you do not have the Intel MKL developer kit, Revolution R Open will build with the standard R BLAS/LAPACK libraries.
+>>>>>>> 26733d2... Creating one copy of README and README-legal for each platform. Fix for https://github.com/RevolutionAnalytics/RRO/82

@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 Revo.version <- structure(list(major = "8", minor = "0.2-beta2"), class = "simple.list")
 options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2015-03-01"))
+=======
+Revo.version <- structure(list(major = "8", minor = "0.1-beta3"), class = "simple.list")
+options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2014-12-01"))
+>>>>>>> d2805ad... update version to beta3
 if (.Platform$OS.type == "windows" ) {
  options(help_type="html")
 }
 quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
+<<<<<<< HEAD
                 cat("Revolution R Open 8.0.2 beta\n",sep="")
+=======
+                cat("Revolution R Open 8.0.1 beta3\n",sep="")
+>>>>>>> d2805ad... update version to beta3
                 cat("The enhanced R distribution from Revolution Analytics\n",sep="")
                 cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
                 cat("about additional features and technical support options.\n\n",sep="")

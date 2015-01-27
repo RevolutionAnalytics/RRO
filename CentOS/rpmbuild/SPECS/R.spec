@@ -18,7 +18,7 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 8.0.1
+%define DIR_VERSION 8.0.2
 %define version 3.1.2
 
 %description

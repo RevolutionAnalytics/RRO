@@ -1,8 +1,9 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-8.0.1
+Name: RRO-8.0.2
 Version: 3.1.2
 %define debug_package %{nil}
 Release: 1%{?dist}
+Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
@@ -35,6 +36,7 @@ computationally intensive tasks, C, C++ and Fortran code can be linked
 and called at run time.
 
 %prep
+%setup -q 
 
 %build
 if [ -e /opt/Intel_MKL/64 ]; then

@@ -3,7 +3,7 @@ HOME=`pwd`
 export HOME
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}
-cp -p ../R-src rpmbuild/SOURCES
+cp -pr ../R-src rpmbuild/SOURCES
 cp ../packages/RevoBase.tar.gz rpmbuild
 cd rpmbuild/SOURCES
 mv R-src RRO-8.0.2-3.1.2

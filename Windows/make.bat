@@ -45,6 +45,6 @@ cp C:/opt/Intel_MKL/Win/64/*.dll ../../bin/x64
 ..\..\bin\R CMD INSTALL ../../../../../packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
-cp R-3.1.2-win.exe RRO-8.0.1-Beta-win.exe
-cp RRO-8.0.1-Beta-win.exe ../../../../../../
+cp R-3.1.2-win.exe RRO-8.0.2-Beta-win.exe
+cp RRO-8.0.2-Beta-win.exe ../../../../../../
 cd

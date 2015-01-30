@@ -39,19 +39,20 @@ and called at run time.
 %setup -q 
 
 %build
-if [ -e /opt/Intel_MKL/64 ]; then
-MKL_LIB_PATH=/opt/Intel_MKL/64
-export LD_LIBRARY_PATH=$MKL_LIB_PATH
-MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
+#if [ -e /opt/Intel_MKL/64 ]; then
+#MKL_LIB_PATH=/opt/Intel_MKL/64
+#export LD_LIBRARY_PATH=$MKL_LIB_PATH
+#MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -fopenmp -lpthread"
+#./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+#else
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-else
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-fi
+#./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+#fi
 make -j2
-if [ -e /opt/Intel_MKL/64 ]; then
-cp /opt/Intel_MKL/64/*.so lib
-bin/R CMD INSTALL ../../RevoBase.tar.gz
-fi
+#if [ -e /opt/Intel_MKL/64 ]; then
+#cp /opt/Intel_MKL/64/*.so lib
+#bin/R CMD INSTALL ../../RevoBase.tar.gz
+#fi
 
 %install
 if grep -q "release 5" /etc/redhat-release; then
@@ -62,14 +63,14 @@ fi
 # %find_lang %{name}
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
-if [ -e /opt/Intel_MKL/64 ]; then
-if grep -q "release 5" /etc/redhat-release; then
-ls -l  /usr/lib64
-cp /opt/Intel_MKL/64/*.so /usr/lib64/RRO-%{DIR_VERSION}/R-3.1.2/lib64/R/lib
-else
-cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.1.2/lib64/R/lib
-fi
-fi
+#if [ -e /opt/Intel_MKL/64 ]; then
+#if grep -q "release 5" /etc/redhat-release; then
+#ls -l  /usr/lib64
+#cp /opt/Intel_MKL/64/*.so /usr/lib64/RRO-%{DIR_VERSION}/R-3.1.2/lib64/R/lib
+#else
+#cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.1.2/lib64/R/lib
+#fi
+#fi
 if grep -q "release 5" /etc/redhat-release; then
 pwd
 cp ../../../../files/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.1.2/lib64/R/etc

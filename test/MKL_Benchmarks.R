@@ -1,7 +1,7 @@
-library(Revobase)
+#library(Revobase)
 runMKLBenchmarks<-function()
 {
-  cat("MKL Threads being used: ", getMKLthreads(), "\n")
+#  cat("MKL Threads being used: ", getMKLthreads(), "\n")
   cat("Matrix Multiply\n")
   set.seed (1)
   m <- 10000
@@ -32,9 +32,9 @@ runMKLBenchmarks<-function()
   print(system.time (L <- lda(fac ~., data=A, prior=rep(1,g)/g, subset=train)))
 }
 
-getMKLthreads()
+#getMKLthreads()
 runMKLBenchmarks()
 
-setMKLthreads(1)
-runMKLBenchmarks()
+#setMKLthreads(1)
+#runMKLBenchmarks()
 

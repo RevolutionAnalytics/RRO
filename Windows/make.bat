@@ -1,7 +1,7 @@
 mkdir c:\tmp
 set tmpdir=c:/tmp
 rem tar -xzf ../R-3.1.2.tar.gz
-cp ../R-src R-3.1.2
+cp -a ../R-src R-3.1.2
 cp -rp c:/R/Tcl R-3.1.2
 sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
 cd R-3.1.2/src/gnuwin32/installer
@@ -19,7 +19,7 @@ cd ../../../
 mkdir R64
 cd R64
 rem tar -xzf ../../R-3.1.2.tar.gz
-cp ../../R-src R-3.1.2
+cp -a ../../R-src R-3.1.2
 cp -rp c:/R64/Tcl R-3.1.2
 cp ../checkpoint.R R-3.1.2/etc
 cp ../../README-legal.txt  R-3.1.2/etc

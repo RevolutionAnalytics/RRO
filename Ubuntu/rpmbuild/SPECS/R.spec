@@ -33,30 +33,16 @@ and called at run time.
 %setup -q
 
 %build
-if [ -e /opt/Intel_MKL/64 ]; then
-MKL_LIB_PATH=/opt/Intel_MKL/64
-export LD_LIBRARY_PATH=$MKL_LIB_PATH
-MKL="-L${MKL_LIB_PATH} -lmkl_gf_lp64  -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread"
-#MKL="-L${MKL_LIB_PATH} -lmkl_core -lmkl_gf_lp64 -lmkl_gnu_thread -liomp5 -lpthread"
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-blas="$MKL" --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-else
+
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
-fi
 make -j2
-if [ -e /opt/Intel_MKL/64 ]; then
-cp /opt/Intel_MKL/64/*.so lib
-bin/R CMD INSTALL ../../RevoBase.tar.gz
-fi
 
 %install
 %make_install
 # make install
 # %find_lang %{name}
 rm -f %{buildroot}/%{_infodir}/dir
-if [ -e /opt/Intel_MKL/64 ]; then
-#cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/lib
-cp /opt/Intel_MKL/64/*.so  %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/lib
-fi
+
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
 cp ../../../README-legal.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp ../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}

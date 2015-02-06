@@ -9,7 +9,7 @@ cp -a ../R-src R-3.1.2
 cp -rp c:/R/Tcl R-3.1.2
 sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
 cd R-3.1.2/src/gnuwin32/installer
-cp %WORKDIR%/clarkSmall.bmp .
+cp %WORKDIR%/Windows/clarkSmall.bmp .
 cp %WORKDIR%/Windows/Makefile .
 cp %WORKDIR%/Windows/header1.iss .
 cp %WORKDIR%/packages/Revobase_7.3.0.zip .

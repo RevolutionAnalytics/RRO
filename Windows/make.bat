@@ -1,5 +1,7 @@
 mkdir c:\tmp
 set tmpdir=c:/tmp
+set OLDDIR=%CD%
+echo %OLDDIR%
 rem tar -xzf ../R-3.1.2.tar.gz
 cp -a ../R-src R-3.1.2
 cp -rp c:/R/Tcl R-3.1.2

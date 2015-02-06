@@ -21,15 +21,16 @@ if [ $BUILD_RRO_FRAMEWORK -eq 1 ] ; then
 cd OSX
 ### build RRO.framework
 #rm -rf R-3.1.2
+cp -a ../R-src R-3.1.2
 rm -rf rd64-RRO
 #tar xzf ../R-3.1.2.tar.gz
-cp Makefile-RRO.fw R-src/Makefile.fw
-cp Makeconf-RRO.in R-src/Makeconf.in
+cp Makefile-RRO.fw R-3.1.2/Makefile.fw
+cp Makeconf-RRO.in R-3.1.2/Makeconf.in
 #mkdir rd64-RRO
 cd rd64
 #export MKLROOT="/opt/intel/mkl"
 #export MKL=" -L${MKLROOT}/lib ${MKLROOT}/lib/libmkl_blas95_ilp64.a ${MKLROOT}/lib/libmkl_lapack95_ilp64.a -lmkl_rt "
-../../R-src/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang'  'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2'  --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include' '--with-libtiff=yes' --disable-openmp
+../../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang'  'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' 'FCFLAGS=-Wall -g -O2'  --with-blas="${MKL}" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include' '--with-libtiff=yes' --disable-openmp
 mkdir lib
 cp $MKLROOT/lib/libiomp5.dylib lib
 cp $MKLROOT/lib/libmkl_avx.dylib lib
@@ -63,12 +64,13 @@ cd $BUILD_DIR/OSX
 #rm -rf R-3.1.2
 rm -rf rd64
 #tar xzf ../R-3.1.2.tar.gz
-cp Makefile.fw R-src
+cp -a ../R-src R-3.1.2
+cp Makefile.fw R-3.1.2
 # brew install cairo
 # brew install jpeg
 mkdir rd64
 cd rd64
-../R-src/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
+../R-3.1.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
 mkdir lib
 make
 cp /usr/local/lib/libquadmath.0.dylib lib

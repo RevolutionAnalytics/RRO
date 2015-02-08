@@ -7,7 +7,7 @@ sudo rm -rf /Library/Frameworks/RRO.framework
 sudo rm -rf /Applications/Revo*.app
 cd ../
 
-BUILD_MATH_LIBRARIES=0
+BUILD_MATH_LIBRARIES=1
 pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD

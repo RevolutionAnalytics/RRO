@@ -47,7 +47,7 @@ cd rd64
 mkdir lib
 make
 cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRblas.dylib lib
-cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRblas.dylib lib
+cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRlapack.dylib lib
 cp /usr/local/lib/libquadmath.0.dylib lib
 cp /usr/local/lib/libgfortran.3.dylib lib
 cp /usr/local/lib/libgcc_s_x86_64.1.dylib lib

@@ -121,7 +121,6 @@ indicated licenses:
 - R 3.1.2 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution
   Analytics) GPLv2
-- Revobase package (Revolution Analytics) GPLv2
 
 The terms of the GPLv2 license can be found in the
 accompanying file COPYING and at

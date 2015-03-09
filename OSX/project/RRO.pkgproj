@@ -1177,7 +1177,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>../../README-legal.txt</string>
+							<string>../README-legal.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -1404,7 +1404,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>RevolutionBasic</string>
+			<string>RRO</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>

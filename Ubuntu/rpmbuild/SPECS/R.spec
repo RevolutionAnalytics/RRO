@@ -5,13 +5,11 @@ Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
-<<<<<<< HEAD
-Requires: gcc, make, gfortran-4.8, liblzma-dev, g++, libtk8.5, libcairo2, libjpeg8, libreadline6
+Requires: gcc, make, gfortran, liblzma-dev, g++, libtk8.5, libcairo2, libjpeg8, libreadline6
 Requires: libtiff5
 
 =======
 Requires: gcc, make, gfortran, g++, liblzma-dev, tk, tk-dev, tcl, tcl-dev, libcairo2, libjpeg8, libreadline6
->>>>>>> 7888817... update R.spec
 Requires(post): info
 Requires(preun): info
 

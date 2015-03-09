@@ -8,7 +8,6 @@ Group: Development/Tools
 Requires: gcc, make, gfortran, liblzma-dev, g++, libtk8.5, libcairo2, libjpeg8, libreadline6
 Requires: libtiff5
 
-=======
 Requires: gcc, make, gfortran, g++, liblzma-dev, tk, tk-dev, tcl, tcl-dev, libcairo2, libjpeg8, libreadline6
 Requires(post): info
 Requires(preun): info

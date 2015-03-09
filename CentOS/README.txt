@@ -1,5 +1,5 @@
 ----------------------------------------
-Revolution R Open, version 8.0.2 beta
+Revolution R Open, version 8.0.3 beta
 ----------------------------------------
 Revolution R Open is the enhanced distribution of R, from
 Revolution Analytics.
@@ -84,7 +84,7 @@ Known Issues
 -----------------------
 To see a list of known issues in this release, visit the
 Release Notes on Github at:
-github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.2-beta
+github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.3-beta
 
 
 -----------------------

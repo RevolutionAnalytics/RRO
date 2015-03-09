@@ -16,7 +16,6 @@ AppUpdatesURL=http://www.r-project.org
 
 [Run]
 Filename: "{app}\bin\x64\R"; Parameters: "CMD BATCH C:\PROGRA~1\RRO\R-3.1.2\etc\checkpoint.R"; Flags: runhidden
-Filename: "{app}\bin\x64\R"; Parameters: "CMD INSTALL C:\PROGRA~1\RRO\R-3.1.2\etc\Revobase_7.3.0.zip"; Flags: runhidden
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"

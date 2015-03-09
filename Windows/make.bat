@@ -12,7 +12,6 @@ cd R-3.1.2/src/gnuwin32/installer
 cp %WORKDIR%/Windows/clarkSmall.bmp .
 cp %WORKDIR%/Windows/Makefile .
 cp %WORKDIR%/Windows/header1.iss .
-cp %WORKDIR%/packages/Revobase_7.3.0.zip .
 cd ../
 cp %WORKDIR%/files/Rprofile.site fixed/etc
 cp -rp C:/opt/bitmaps/* bitmap
@@ -31,7 +30,6 @@ cp %WORKDIR%/Windows/README.txt  R-3.1.2/etc
 cp %WORKDIR%/COPYING R-3.1.2/etc 
 rem cp ../../RRO-NEWS.txt R-3.1.2/etc 
 cp %WORKDIR%/Windows/REV_14419_Clark_2C.ico R-3.1.2/etc
-cp %WORKDIR%/packages/Revobase_7.3.0.zip R-3.1.2/etc
 cd R-3.1.2/src/gnuwin32/installer
 cp %WORKDIR%/Windows/clarkSmall.bmp .
 cp %WORKDIR%/Windows/Makefile .

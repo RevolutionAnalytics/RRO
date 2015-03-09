@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-8.0.2
-Version: 3.1.2
+Name: RRO-8.0.3
+Version: 3.1.3
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -18,8 +18,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 8.0.2
-%define version 3.1.2
+%define DIR_VERSION 8.0.3
+%define version 3.1.3
 
 %description
 'GNU S' - A language and environment for statistical computing and

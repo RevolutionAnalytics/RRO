@@ -4,9 +4,9 @@ cp ../packages/RevoBase.tar.gz rpmbuild
 HOME=`pwd`
 export HOME
 cd ../
-mv R-src RRO-8.0.1-3.1.2
-tar czf RRO-8.0.1-3.1.2.tar.gz RRO-8.0.1-3.1.2
-cp RRO-8.0.1-3.1.2.tar.gz Ubuntu/rpmbuild/SOURCES
+mv R-src RRO-8.0.2-3.1.2
+tar czf RRO-8.0.2-3.1.2.tar.gz RRO-8.0.2-3.1.2
+cp RRO-8.0.2-3.1.2.tar.gz Ubuntu/rpmbuild/SOURCES
 cd Ubuntu/rpmbuild
 rpmbuild -ba SPECS/R.spec
 cd RPMS/x86_64

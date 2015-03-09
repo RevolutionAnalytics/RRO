@@ -1,6 +1,6 @@
 # Revolution R Open
 
-This is the build system for Revolution R Open. It starts with the unmodified R-3.1.2 distribution, and incorporates the Revolution R Open modifications, and then builds executables on various platforms.
+This is the build system for Revolution R Open. It starts with the unmodified R-3.1.3 distribution, and incorporates the Revolution R Open modifications, and then builds executables on various platforms.
 
 ## To build Revolution R Open
 
@@ -63,7 +63,7 @@ To test the build, perform the following
   ./build.sh
   ```
 2. Install RRO on the appropriate platform
-3. Copy the test bundle `test.tar.gz`, to `lib` directory of R (i.e. `/usr/lib64/RRO-8.0/R-3.1.2/lib`)
+3. Copy the test bundle `test.tar.gz`, to `lib` directory of R (i.e. `/usr/lib64/RRO-8.0/R-3.1.3/lib`)
 4. Untar the test bundle in the `lib` directory of R
 5. Run the tests from this github repository: `test/standardRTests.R` and `test/MKL_Benchmarks.R`
 

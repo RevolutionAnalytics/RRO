@@ -44,8 +44,7 @@ make -j2
 rm -f %{buildroot}/%{_infodir}/dir
 
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
-cp ../../../README-legal.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp ../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
@@ -75,7 +74,6 @@ rm -f /usr/bin/Rscript
 %defattr(-, root, root)
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
 %{_libdir}/RRO-%{DIR_VERSION}/COPYING
-%{_libdir}/RRO-%{DIR_VERSION}/README-legal.txt
 %{_libdir}/RRO-%{DIR_VERSION}/README.txt
 #  %{_libdir}/RRO-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64

@@ -57,7 +57,6 @@ sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
 sudo cp $BUILD_DIR/files/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
 sudo cp $BUILD_DIR/COPYING /Library/Frameworks/R.framework
-sudo cp $BUILD_DIR/README-legal.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/README.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/R.framework
 cd $BUILD_DIR/OSX

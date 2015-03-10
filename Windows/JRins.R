@@ -55,7 +55,6 @@
         paste("VersionInfoVersion=", Rver0, sep = ""),
         paste("DefaultDirName={code:UserPF}\\RRO\\", RW, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
-        paste("LicenseFile=README-legal.txt", sep=""),
         paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"
         else paste("AppPublisher=", Producer, sep = ""),
@@ -95,13 +94,6 @@
     writeLines(c("", "", "[Files]"), con)
     cat('Source: "R-3.1.2\\etc\\checkpoint.R', '"; ',
             'DestDir: "{app}\\etc', '"; ',
-            'Flags: ignoreversion; ',
-            'Components: main', 
-            file = con, sep = "")
-    cat("\n", file = con)
-
-    cat('Source: "R-3.1.2\\etc\\README-legal.txt', '"; ',
-            'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 
             file = con, sep = "")

@@ -118,7 +118,7 @@ This Revolution R Open distribution includes the following
 open source components, distributed under the terms of the
 indicated licenses:
 
-- R 3.1.2 (R Foundation for Statistical Computing) GPLv2
+- R 3.1.3 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution
   Analytics) GPLv2
 

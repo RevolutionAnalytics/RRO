@@ -50,8 +50,7 @@ make -j2
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
-cp ../../../README-legal.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp ../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 ##cp ../../../../RRO-NEWS.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
@@ -87,7 +86,6 @@ fi
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
 %{_libdir}/RRO-%{DIR_VERSION}/COPYING
 #%{_libdir}/RRO-%{DIR_VERSION}/RRO-NEWS.txt
-%{_libdir}/RRO-%{DIR_VERSION}/README-legal.txt
 %{_libdir}/RRO-%{DIR_VERSION}/README.txt
 #  %{_libdir}/RRO-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64

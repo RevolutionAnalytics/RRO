@@ -25,8 +25,7 @@ rem tar -xzf ../../R-3.1.2.tar.gz
 cp -a %WORKDIR%/R-src R-3.1.2
 cp -rp c:/R64/Tcl R-3.1.2
 cp %WORKDIR%/Windows/checkpoint.R R-3.1.2/etc
-cp %WORKDIR%/Windows/README-legal.txt  R-3.1.2/etc
-cp %WORKDIR%/Windows/README.txt  R-3.1.2/etc
+cp %WORKDIR%/README.txt  R-3.1.2/etc
 cp %WORKDIR%/COPYING R-3.1.2/etc 
 rem cp ../../RRO-NEWS.txt R-3.1.2/etc 
 cp %WORKDIR%/Windows/REV_14419_Clark_2C.ico R-3.1.2/etc
@@ -37,7 +36,6 @@ cp %WORKDIR%/Windows/header1.iss .
 cp %WORKDIR%/Windows/reg3264.iss .
 cp %WORKDIR%/Windows/JRins.R .
 cp %WORKDIR%/Windows/intro.txt .
-cp %WORKDIR%/Windows/README-legal.txt .
 cd ../
 cp %WORKDIR%/files/Rprofile.site fixed/etc
 cp %WORKDIR%/Windows/MkRules_64.local MkRules.local

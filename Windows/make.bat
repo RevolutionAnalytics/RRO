@@ -21,7 +21,6 @@ rem make 32-bit
 cd %WORKDIR%/Windows
 mkdir R64
 cd R64
-<<<<<<< HEAD
 rem tar -xzf ../../R-3.1.3.tar.gz
 cp -a %WORKDIR%/R-src R-3.1.3
 cp -rp c:/R64/Tcl R-3.1.3

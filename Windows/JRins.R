@@ -99,7 +99,7 @@
             file = con, sep = "")
     cat("\n", file = con)
 
-    cat('Source: "R-3.1.2\\etc\\README.txt', '"; ',
+    cat('Source: "R-3.1.3\\etc\\README.txt', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

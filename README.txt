@@ -1,6 +1,7 @@
 ----------------------------------------
 Revolution R Open, version 8.0.3 beta
 ----------------------------------------
+
 Revolution R Open is the enhanced distribution of R, from
 Revolution Analytics.
 
@@ -12,20 +13,17 @@ http://www.r-project.org/contributors.html.
 
 Components of Revolution R Open are copyright (C)
 Revolution Analytics. Revolution R Open also includes
-components created by others. See the file README-legal.txt
-for information about the components included in
-Revolution R Open.
+components created by others. See "List of Open
+Source Components" below for details.
 
 Revolution R Open is free software and comes with
 ABSOLUTELY NO WARRANTY. You are welcome to redistribute it
 under certain conditions. For information about
 Revolution R Open, visit mran.revolutionanalytics.com/open.
 
-Technical support and a limited warranty for
-Revolution R Open are available from Revolution Analytics,
-with a paid subscription for "Revolution R Plus".
-
-For more information, visit
+Technical support for Revolution R Open is available from
+Revolution Analytics, with a paid subscription for
+"Revolution R Plus". For more information, visit
 www.revolutionanalytics.com/plus.
 
 
@@ -55,11 +53,6 @@ About Revolution R Open
 Revolution R Open builds on R 3.1.2 by making the following
 additions and changes:
 
-Revolution R Open is linked with the Intel Math Kernel
-Libraries on Linux and Windows for improved performance.
-For more information about Intel MKL, visit
-https://software.intel.com/en-us/intel-mkl
-
 The default CRAN repository for this version of
 Revolution R Open is
 http://mran.revolutionanalytics.com/snapshot/2014-12-01/.
@@ -86,6 +79,28 @@ To see a list of known issues in this release, visit the
 Release Notes on Github at:
 github.com/RevolutionAnalytics/RRO/releases/tag/v8.0.3-beta
 
+----------
+Trademarks
+----------
+"Revolution Analytics", "Revolution R Open" and the monkey
+logo are trademarks of Revolution Analytics, Inc. in the
+U.S. and/or other countries.
+
+R is a trademark of the R Foundation for Statistical
+Computing.
+
+------------------------------
+List of Open Source Components
+------------------------------
+This Revolution R Open distribution includes the following
+open source components, distributed under the terms of the
+indicated licenses:
+- R 3.1.2 (R Foundation for Statistical Computing) GPLv2
+- Revolution R Open build and test system (Revolution
+Analytics) GPLv2
+The terms of the GPLv2 license can be found in the
+accompanying file COPYING and at
+http://www.r-project.org/COPYING
 
 -----------------------
 Questions and Contacts

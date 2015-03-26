@@ -65,19 +65,4 @@ To test the build, perform the following
 2. Install RRO on the appropriate platform
 3. Copy the test bundle `test.tar.gz`, to `lib` directory of R (i.e. `/usr/lib64/RRO-8.0/R-3.1.2/lib`)
 4. Untar the test bundle in the `lib` directory of R
-5. Run the tests from this github repository: `test/standardRTests.R` and `test/MKL_Benchmarks.R`
-
-
-## About the Intel MKL
-
-
-To build Revolution R Open with the Intel Math Kernel Libraries, you will
-need the [Intel MKL developer kit.](https://software.intel.com/en-us/intel-mkl)
-If you have the MKL developer kit, refer to `build.sh` file for
-the appropriate platform to configure the build to use the MKL libraries.
-If you do not have the Intel MKL developer kit, Revolution R Open will
-build with the standard R BLAS/LAPACK libraries.
-
-We have successfully tested RRO with Intel MKL on Windows and Linux platforms.
-We do not recommend building with MKL on Mac, where the default build uses
-the [Mac Accelerate Performance Framework](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man7/Accelerate.7.html) and has comparable performance to MKL builds.
+5. Run the tests from this github repository: `test/standardRTests.R` 

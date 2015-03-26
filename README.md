@@ -71,12 +71,17 @@ To test the build, perform the following
 ## About the Intel MKL
 
 
-To build Revolution R Open with the Intel Math Kernel Libraries, you will
-need the [Intel MKL developer kit.](https://software.intel.com/en-us/intel-mkl)
+The Revolution R Open source tree is configured to allow building with the Intel 
+Math Kernel Libraries, for which you will need the [Intel MKL developer kit.](https://software.intel.com/en-us/intel-mkl)
 If you have the MKL developer kit, refer to `build.sh` file for
 the appropriate platform to configure the build to use the MKL libraries.
-If you do not have the Intel MKL developer kit, Revolution R Open will
-build with the standard R BLAS/LAPACK libraries.
+
+By default, Revolution R Open will build with the standard R BLAS/LAPACK libraries.
+If you do not have the Intel MKL Developer Kit, you can still add the MKL to this 
+build by downloading and installing the MKL Math Library from 
+http://devstaging.mran.io/download/#download . Note that the MKL is not
+open source software, and use of the MKL is subject to the End User License 
+Agreement accompanying the download.
 
 We have successfully tested RRO with Intel MKL on Windows and Linux platforms.
 We do not recommend building with MKL on Mac, where the default build uses

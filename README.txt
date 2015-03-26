@@ -21,11 +21,6 @@ ABSOLUTELY NO WARRANTY. You are welcome to redistribute it
 under certain conditions. For information about
 Revolution R Open, visit mran.revolutionanalytics.com/open.
 
-Technical support for Revolution R Open is available from
-Revolution Analytics, with a paid subscription for
-"Revolution R Plus". For more information, visit
-www.revolutionanalytics.com/plus.
-
 
 --------------------------------------------------
 Revolution R Open is Free and Open Source Software

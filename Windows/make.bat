@@ -45,6 +45,6 @@ pwd
 ..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
-cp R-3.1.3-win.exe RRO-8.0.3-Beta-win.exe
-cp RRO-8.0.3-Beta-win.exe %WORKDIR%
+cp R-3.1.3-win.exe RRO-8.0.3-win.exe
+cp RRO-8.0.3-win.exe %WORKDIR%
 cd %WORKDIR%

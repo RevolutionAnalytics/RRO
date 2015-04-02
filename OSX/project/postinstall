@@ -8,7 +8,7 @@ cd /usr/bin
 rm -f R Rscript
 ln -s /Library/Frameworks/R.framework/Resources/bin/R .
 ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-03-19")' | /Library/Frameworks/R.framework/Resources/bin/R -q --vanilla
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-01")' | /Library/Frameworks/R.framework/Resources/bin/R -q --vanilla
 
 # update font cache (if this R includes fontconfig)
 if [ -e /Library/Frameworks/R.framework/Resources/bin/fc-cache ]; then

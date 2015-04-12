@@ -81,7 +81,7 @@ echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/s
 sed -i -e "/done/a\
 flag=`echo $args|awk '{print match($0,\"--save\")}'`;\n\
 if [ $flag -eq 0 ];then\n\
-  args="${args} --no-save"\n\
+  args=\"${args} --no-save\"\n\
 fi" $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/R 
 %postun
 if test "${revo_prefix}" = ""; then

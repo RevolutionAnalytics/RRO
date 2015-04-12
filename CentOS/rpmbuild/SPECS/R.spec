@@ -77,12 +77,6 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
 echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-01")' | R -q --vanilla
-## set --no-save as default
-sed -i -e "/done/a\
-flag=`echo $args|awk '{print match($0,\"--save\")}'`;\n\
-if [ $flag -eq 0 ];then\n\
-args=\"${args} --no-save\"\n\
-fi" $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R
 %postun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/

@@ -6,6 +6,14 @@ echo %WORKDIR%
 rem tar -xzf ../R-3.1.3.tar.gz
 cd Windows
 cp -a ../R-src R-3.1.3
+
+## set --no-save as default
+sed -i -e "/done/a\
+flag=\`echo $args|awk '{print match(\$0,\"--save\")}'\`;\n\
+if [ \$flag -eq 0 ];then\n\
+args=\"\${args} --no-save\"\n\
+fi" R-3.1.3\src\scripts\R.sh.in
+
 cp -rp c:/R/Tcl R-3.1.3
 sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
 cd R-3.1.3/src/gnuwin32/installer

@@ -8,7 +8,7 @@ cd Windows
 cp -a ../R-src R-3.1.3
 
 ## set --no-save as default
-sed -i -e "/done/a\
+sed -e "/done/a\
 flag=\`echo $args|awk '{print match(\$0,\"--save\")}'\`;\n\
 if [ \$flag -eq 0 ];then\n\
 args=\"\${args} --no-save\"\n\

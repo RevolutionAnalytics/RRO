@@ -102,7 +102,7 @@ rm -f /usr/bin/Rscript
 #%{_bindir}/Revo64
 #%{_bindir}/Revoscript
 
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/etc/repositories
+# %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/etc/repositories
 # %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRblas.so
 # %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRlapack.so
 %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R

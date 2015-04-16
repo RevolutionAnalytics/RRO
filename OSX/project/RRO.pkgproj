@@ -1454,7 +1454,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/libtcl8.6.dylib</string>
+													<string>/usr/local/lib/libtcl8.6.dylib</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1470,7 +1470,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/libtclstub8.6.a</string>
+													<string>/usr/local/lib/libtclstub8.6.a</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1486,7 +1486,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/libtk8.6.dylib</string>
+													<string>/usr/local/lib/libtk8.6.dylib</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1502,7 +1502,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/libtkstub8.6.a</string>
+													<string>/usr/local/lib/libtkstub8.6.a</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1518,7 +1518,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tcl8</string>
+													<string>/usr/local/lib/tcl8</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1534,7 +1534,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tcl8.6</string>
+													<string>/usr/local/lib/tcl8.6</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1550,7 +1550,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tclConfig.sh</string>
+													<string>/usr/local/lib/tclConfig.sh</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1566,7 +1566,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tclooConfig.sh</string>
+													<string>/usr/local/lib/tclooConfig.sh</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1582,7 +1582,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tk8.6</string>
+													<string>/usr/local/lib/tk8.6</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>
@@ -1598,7 +1598,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>/opt/local/lib/tk/tkConfig.sh</string>
+													<string>/usr/local/lib/tkConfig.sh</string>
 													<key>PATH_TYPE</key>
 													<integer>0</integer>
 													<key>PERMISSIONS</key>

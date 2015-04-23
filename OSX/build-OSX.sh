@@ -39,12 +39,6 @@ fi
 cd $BUILD_DIR/OSX
 rm -rf rd64
 cp -a ../R-src R-3.1.3
-## set --no-save as default
-awk '/done/{print $0 RS "flag=\`echo $args|awk \047{print match(\$0,\"--save\")}\047\`;" RS \
-"if [ \$flag -eq 0 ];then" RS \
-"args=\"\${args} --no-save\"" RS \
-"fi" ;next}1' R-3.1.3/src/scripts/R.sh.in > tmp && mv tmp R-3.1.3/src/scripts/R.sh.in
-
 cp Makefile.fw R-3.1.3
 mkdir rd64
 cd rd64

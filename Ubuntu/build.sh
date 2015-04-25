@@ -1,6 +1,5 @@
 #!/bin/bash
 mkdir rpmbuild/SOURCES
-cp ../packages/RevoBase.tar.gz rpmbuild
 HOME=`pwd`
 export HOME
 cd ../

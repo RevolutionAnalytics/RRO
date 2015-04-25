@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Installing RRO-8.0.3-Beta"
+echo "Installing RRO-8.0.3"
 rm /usr/bin/R 2>/dev/null 1>/dev/null
 rm /usr/bin/Rscript 2>/dev/null 1>/dev/null
 apt-get -y install gcc g++ gfortran make liblzma-dev 2>/dev/null 1>/dev/null

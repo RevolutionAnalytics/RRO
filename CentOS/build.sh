@@ -6,8 +6,9 @@ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}
 cp -pr ../R-src rpmbuild/SOURCES
 cp ../packages/RevoBase.tar.gz rpmbuild
 cd rpmbuild/SOURCES
-mv R-src RRO-8.0.2-3.1.2
-tar czf RRO-8.0.2-3.1.2.tar.gz RRO-8.0.2-3.1.2
-rm -rf R-src RRO-8.0.2-3.1.2
+mv R-src RRO-8.0.3-3.1.3
+tar czf RRO-8.0.3-3.1.3.tar.gz RRO-8.0.3-3.1.3
+rm -rf R-src RRO-8.0.3-3.1.3
 cd ../
 rpmbuild -ba SPECS/R.spec
+

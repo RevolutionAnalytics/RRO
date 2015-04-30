@@ -94,6 +94,7 @@ R_common_command_line(int *pac, char **argv, Rstart Rp)
     Rboolean processing = TRUE;
 
     R_RestoreHistory = 1;
+
     while(--ac) {
 	if(processing && **++av == '-') {
 	    if (!strcmp(*av, "--version")) {

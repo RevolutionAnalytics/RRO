@@ -41,7 +41,7 @@ install-R-framework:
 	@(cd "$(DESTDIR)$(R_FRAMEWORK_DIR)/Resources/lib" && \
 	  install_name_tool -id "$(R_FRAMEWORK_DIR)/Versions/$(FW_VERSION)/Resources/lib/libR.dylib" $(Rexeclibdir)/libR.dylib)
 	@( otool=otool ; if otool -D "$(DESTDIR)$(Rexeclibdir)/libR.dylib"|grep 'not an object'>/dev/null; then otool=otool64; fi; \
-	    for lib in quadmath.0 gfortran.3 R gcc_s.1 gcc_s_x86_64.1 ; do \
+	    for lib in Rblas Rlapack quadmath.0 gfortran.3 R gcc_s.1 gcc_s_x86_64.1 ; do \
 	   if test -e "$(DESTDIR)$(Rexeclibdir)/lib$${lib}.dylib"; then $(ECHO) "  lib$${lib}"; \
 	    find "$(DESTDIR)$(R_FRAMEWORK_DIR)/Versions/$(FW_VERSION)/Resources/" -name '*.so' -or -name '*.dylib' | \
 	    xargs -n 1 install_name_tool -change \

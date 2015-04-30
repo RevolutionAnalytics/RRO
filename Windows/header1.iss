@@ -15,7 +15,7 @@ AppSupportURL=http://www.r-project.org
 AppUpdatesURL=http://www.r-project.org
 
 [Run]
-Filename: "{app}\bin\x64\R"; Parameters: "CMD BATCH C:\PROGRA~1\RRO\R-3.1.2\etc\checkpoint.R"; Flags: runhidden
+Filename: "{app}\bin\x64\Rscript"; Parameters: """{app}\etc\checkpoint.R"""; Flags: runhidden
 
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"

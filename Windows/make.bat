@@ -41,7 +41,7 @@ cd ../
 cp %WORKDIR%/files/Rprofile.site fixed/etc
 cp %WORKDIR%/Windows/MkRules_64.local MkRules.local
 cp -rp C:/opt/bitmaps/* bitmap
-make distribution
+make DEBUG=T distribution
 pwd
 ..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
 make rinstaller

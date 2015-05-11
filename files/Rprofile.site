@@ -1,11 +1,11 @@
-Revo.version <- structure(list(major = "8", minor = "0.3", "build id" = BUILD_ID), class = "simple.list")
+Revo.version <- structure(list(major = "3", minor = "2.0", "build id" = BUILD_ID), class = "simple.list")
 options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2015-04-01"))
 if (.Platform$OS.type == "windows" ) {
  options(help_type="html")
 }
 quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
-                cat("Revolution R Open 8.0.3\n",sep="")
+                cat("Revolution R Open 3.2.0\n",sep="")
                 cat("Using CRAN snapshot taken on 2015-04-01\n",sep="")
                 cat("The enhanced R distribution from Revolution Analytics\n",sep="")
                 cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")

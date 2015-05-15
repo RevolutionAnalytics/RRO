@@ -111,7 +111,7 @@ WIN = 64
 CAIRO_HOME = C:/applications/src
 
 # set this to YES to build static HTML help
-BUILD_HTML = YES
+BUILD_HTML = NO
 
 # unset this if you are *not* using MiKTeX
 MIKTEX = TRUE

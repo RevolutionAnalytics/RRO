@@ -46,7 +46,7 @@ ETC_FILES = Rprofile.site Rconsole Rdevga rgb.txt repositories Rcmd_environ chec
 
 
 # we don't want share/{Makefile.in,java,sh} installed
-SHARE_DIRS = R dictionaries encodings licenses make texmf zoneinfo
+SHARE_DIRS = R dictionaries encodings licenses make Rd texmf zoneinfo
 
 all: $(RPREFIX)-win.exe
 msi: $(RPREFIX)-$(SUFF).msi
@@ -62,6 +62,9 @@ imagedir:
 	$(RM) $(RPREFIX)/*/Makefile.in
 	$(MKDIR) -p $(RPREFIX)/etc$(R_ARCH)
 	$(CP) -p $(foreach i,$(ETC_FILES),$(R_HOME)/etc/$i) $(RPREFIX)/etc
+	if test -f "$(R_HOME)/etc/curl-ca-bundle.crt"; then \
+	  $(CP) -p "$(R_HOME)/etc/curl-ca-bundle.crt" $(RPREFIX)/etc; \
+	fi
 	$(CP) -p $(R_HOME)/etc$(R_ARCH)/Makeconf $(RPREFIX)/etc$(R_ARCH)
 # copy info and documentation files
 	$(MKDIR) -p $(RPREFIX)/doc
@@ -120,7 +123,7 @@ PDF_FILES = $(wildcard $(RPREFIX)/library/*/doc/*.pdf)
 
 fixups:
 	echo "make.packages.html(.Library,temp=FALSE,verbose=FALSE)" | $(RPREFIX)/$(BINDIR)/Rterm.exe --vanilla --slave LC_COLLATE=C
-	$(CP) -R $(R_HOME)/Tcl $(RPREFIX)
+	$(CP) -pRf $(R_HOME)/Tcl $(RPREFIX)
 	$(RM) $(RPREFIX)/Tcl*/lib/*.lib
 ifneq ($(strip $(QPDF)),)
 	@for f in $(PDF_FILES); do \
@@ -137,7 +140,7 @@ ifneq ($(strip $(HOME32)),)
 	unzip -qo "$(HOME32)/32bit" -d $(RPREFIX)
 	rm "$(HOME32)/32bit.zip"
 	mkdir -p $(RPREFIX)/Tcl
-	$(CP) -R "$(HOME32)/Tcl/bin" "$(HOME32)/Tcl/lib" $(RPREFIX)/Tcl
+	$(CP) -pRf "$(HOME32)/Tcl/bin" "$(HOME32)/Tcl/lib" $(RPREFIX)/Tcl
 	for f in $(R_PKGS_RECOMMENDED); do \
 	   sed -e 's/Archs: x64/Archs: i386, x64/' \
              ../../../library/$${f}/DESCRIPTION \

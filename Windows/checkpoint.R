@@ -1,1 +1,1 @@
-install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")
+install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-05-01")

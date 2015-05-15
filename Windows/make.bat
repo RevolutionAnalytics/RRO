@@ -42,8 +42,7 @@ cp %WORKDIR%/files/Rprofile.site fixed/etc
 cp %WORKDIR%/Windows/MkRules_64.local MkRules.local
 cp -rp C:/opt/bitmaps/* bitmap
 make distribution
-pwd
-..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
+rem ..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
 cp R-3.2.0-win.exe RRO-3.2.0-win.exe

@@ -111,7 +111,7 @@ WIN = 64
 CAIRO_HOME = C:/applications/src
 
 # set this to YES to build static HTML help
-BUILD_HTML = NO
+BUILD_HTML = YES
 
 # unset this if you are *not* using MiKTeX
 MIKTEX = TRUE
@@ -120,6 +120,7 @@ MIKTEX = TRUE
 # TEXI2ANY = /path/to/perl -I/packages/texinfo /packages/texinfo/texi2any
 # if you do not have texinfo (default),
 # TEXI2ANY = missing
+TEXI2ANY = perl -Ic:/applications/texinfo-5.2/tp c:/applications/texinfo-5.2/tp/texi2any.pl
 
 # additional optimization flags (use -mtune=native for a private build)
 # EOPTS = -mtune=core2

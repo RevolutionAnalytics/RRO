@@ -13238,8 +13238,7 @@ embarks on an extended computation (@code{@var{which}=1}) and when such
 a state terminates (@code{@var{which}=0}).
 @end deftypefun
 
-@deftypefun int R_ReadConsole (const char *@var{prompt}, unsigned char *@var{buf}, @
-  int @var{buflen}, int @var{hist})
+@deftypefun int R_ReadConsole (const char *@var{prompt}, unsigned char *@var{buf}, int @var{buflen}, int @var{hist})
 @deftypefunx void R_WriteConsole (const char *@var{buf}, int @var{buflen})
 @deftypefunx void R_WriteConsoleEx (const char *@var{buf}, int @var{buflen}, int @var{otype})
 @deftypefunx void R_ResetConsole ()
@@ -13275,15 +13274,12 @@ system console.  @code{R_ClearerrConsole} clears any errors associated
 with reading from the console.
 @end deftypefun
 
-@deftypefun int R_ShowFiles (int @var{nfile}, const char **@var{file}, @
-  const char **@var{headers}, const char *@var{wtitle}, Rboolean @var{del}, @
-  const char *@var{pager})
+@deftypefun int R_ShowFiles (int @var{nfile}, const char **@var{file}, const char **@var{headers}, const char *@var{wtitle}, Rboolean @var{del}, const char *@var{pager})
 
 This function is used to display the contents of files.
 @end deftypefun
 
-@deftypefun int R_ChooseFile (int @var{new}, char *@var{buf}, @
-  int @var{len})
+@deftypefun int R_ChooseFile (int @var{new}, char *@var{buf}, int @var{len})
 
 Choose a file and return its name in @var{buf} of length @var{len}.
 Return value is 0 for success, > 0 otherwise.
@@ -13345,8 +13341,7 @@ void R_Suicide (const char *message)
 @end example
 @end deftypefun
 
-@deftypefun void R_CleanUp (SA_TYPE @var{saveact}, int @var{status}, @
-  int @var{RunLast})
+@deftypefun void R_CleanUp (SA_TYPE @var{saveact}, int @var{status}, int @var{RunLast})
 
 This function invokes any actions which occur at system termination.
 It needs to be quite complex:

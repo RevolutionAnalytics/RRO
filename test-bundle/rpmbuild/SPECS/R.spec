@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
 Name: R
-Version: 3.1.2
+Version: 3.2.0
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -12,7 +12,7 @@ Requires(preun): info
 
 %define libnn lib64
 %define DIR_VERSION 3.2
-%define version 3.1.2
+%define version 3.2.0
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -43,7 +43,7 @@ make install-tests
 else 
 %make_install
 make install-tests
-cp -a tests %{buildroot}%{_libdir}/Revo-3.2/R-3.1.2/lib64/R
+cp -a tests %{buildroot}%{_libdir}/Revo-3.2/R-3.2.0/lib64/R
 tar czf test.tar.gz tests
 cp test.tar.gz /opt/hudson/workspace
 fi

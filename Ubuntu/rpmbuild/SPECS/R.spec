@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-8.0.3
-Version: 3.1.3
+Name: RRO-3.2.0
+Version: 3.2.0
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
@@ -12,8 +12,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib
-%define DIR_VERSION 8.0.3
-%define version 3.1.3
+%define DIR_VERSION 3.2.0
+%define version 3.2.0
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -57,7 +57,7 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | R -q --vanilla
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-05-01")' | R -q --vanilla
 %postun
 #if test "${revo_prefix}" = ""; then
 #    revo_prefix=/usr

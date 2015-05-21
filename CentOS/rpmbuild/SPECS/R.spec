@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-8.0.3
-Version: 3.1.3
+Name: RRO-3.2.0
+Version: 3.2.0
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -18,8 +18,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 8.0.3
-%define version 3.1.3
+%define DIR_VERSION 3.2.0
+%define version 3.2.0
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -40,7 +40,7 @@ and called at run time.
 
 %build
 
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
 
 make -j2
 
@@ -56,11 +56,11 @@ rm -rf %{buildroot}/lib
 
 if grep -q "release 5" /etc/redhat-release; then
 pwd
-cp ../../../../files/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.1.3/lib64/R/etc
+cp ../../../../files/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.0/lib64/R/etc
 cp ../../../../README.txt /usr/lib64/RRO-%{DIR_VERSION}
 cp ../../../../COPYING /usr/lib64/RRO-%{DIR_VERSION}
 else
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.1.3/lib64/R/etc
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.0/lib64/R/etc
 cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 pwd
@@ -76,7 +76,7 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | R -q --vanilla
+echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-05-01")' | R -q --vanilla
 %postun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/

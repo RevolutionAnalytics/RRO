@@ -73,17 +73,11 @@ echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/s
 
 
 %postun
-if test "${revo_prefix}" = ""; then
-    revo_prefix=/usr/lib64
-fi
-revo_prefix=`echo "$revo_prefix" | sed "s/\/*$//"`
-if test -h ${revo_prefix}/bin/R
-    then
-    rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-    rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-    rm -f /usr/bin/R
-    rm -f /usr/bin/Rscript
-fi
+rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
+rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+rm -f /usr/bin/R
+rm -f /usr/bin/Rscript
+
 
 %files
 %defattr(-, root, root)

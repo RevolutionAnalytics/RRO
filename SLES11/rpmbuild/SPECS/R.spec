@@ -17,6 +17,7 @@ BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, cairo-devel, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
+Requires: gcc, make, gcc-fortran, gcc-c++
 AutoReqProv: Yes
 
 %define libnn lib64

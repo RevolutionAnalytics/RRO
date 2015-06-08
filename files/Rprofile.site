@@ -12,3 +12,20 @@ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na
                 cat("about additional features and technical support options.\n\n",sep="")
 
 	}
+
+if(Sys.info()["sysname"] == "Darwin"){
+  local({
+    hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
+    ncores <- sub("hw.ncpu: ", "", hw.ncpu)
+    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
+    message(sprintf(msg, ncores))
+    invisible(NULL)
+  })
+} else if(require("RevoUtilsMath")){
+  local({
+    ncores <- RevoUtilsMath::getMKLthreads()
+    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
+    message(sprintf(msg, ncores))
+    invisible(NULL)
+  })
+}

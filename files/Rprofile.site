@@ -13,6 +13,15 @@ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na
 
 	}
 
+load_if_installed <- function(package) {
+  if(package %in% rownames(utils::installed.packages())) {
+    do.call('library', list(package))
+    return(TRUE)
+  }
+  else
+    return(FALSE)
+}
+
 if(Sys.info()["sysname"] == "Darwin"){
   local({
     hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
@@ -21,7 +30,7 @@ if(Sys.info()["sysname"] == "Darwin"){
     message(sprintf(msg, ncores))
     invisible(NULL)
   })
-} else if(require("RevoUtilsMath")){
+} else if(load_if_installed("RevoUtilsMath")){
   local({
     ncores <- RevoUtilsMath::getMKLthreads()
     msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
@@ -29,3 +38,4 @@ if(Sys.info()["sysname"] == "Darwin"){
     invisible(NULL)
   })
 }
+

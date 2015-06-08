@@ -3,13 +3,13 @@ set tmpdir=c:/tmp
 cd ../
 set WORKDIR=%CD%
 echo %WORKDIR%
-rem tar -xzf ../R-3.2.0.tar.gz
+rem tar -xzf ../R-3.2.1.tar.gz
 cd Windows
-cp -a ../R-src R-3.2.0
+cp -a ../R-src R-3.2.1
 
-cp -rp c:/R/Tcl R-3.2.0
+cp -rp c:/R/Tcl R-3.2.1
 sed -e "s/Continue/Next/" ..\files\intro.txt > intro.txt
-cd R-3.2.0/src/gnuwin32/installer
+cd R-3.2.1/src/gnuwin32/installer
 cp %WORKDIR%/Windows/clarkSmall.bmp .
 cp %WORKDIR%/Windows/Makefile .
 cp %WORKDIR%/Windows/header1.iss .
@@ -22,15 +22,15 @@ rem make 32-bit
 cd %WORKDIR%/Windows
 mkdir R64
 cd R64
-rem tar -xzf ../../R-3.2.0.tar.gz
-cp -a %WORKDIR%/R-src R-3.2.0
-cp -rp c:/R64/Tcl R-3.2.0
-cp %WORKDIR%/Windows/checkpoint.R R-3.2.0/etc
-cp %WORKDIR%/README.txt  R-3.2.0/etc
-cp %WORKDIR%/COPYING R-3.2.0/etc 
-rem cp ../../RRO-NEWS.txt R-3.2.0/etc 
-cp %WORKDIR%/Windows/REV_14419_Clark_2C.ico R-3.2.0/etc
-cd R-3.2.0/src/gnuwin32/installer
+rem tar -xzf ../../R-3.2.1.tar.gz
+cp -a %WORKDIR%/R-src R-3.2.1
+cp -rp c:/R64/Tcl R-3.2.1
+cp %WORKDIR%/Windows/checkpoint.R R-3.2.1/etc
+cp %WORKDIR%/README.txt  R-3.2.1/etc
+cp %WORKDIR%/COPYING R-3.2.1/etc 
+rem cp ../../RRO-NEWS.txt R-3.2.1/etc 
+cp %WORKDIR%/Windows/REV_14419_Clark_2C.ico R-3.2.1/etc
+cd R-3.2.1/src/gnuwin32/installer
 cp %WORKDIR%/Windows/clarkSmall.bmp .
 cp %WORKDIR%/Windows/Makefile .
 cp %WORKDIR%/Windows/header1.iss .
@@ -45,6 +45,6 @@ make distribution
 rem ..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
-cp R-3.2.0-win.exe RRO-3.2.0-win.exe
-cp RRO-3.2.0-win.exe %WORKDIR%
+cp R-3.2.1-win.exe RRO-3.2.1-win.exe
+cp RRO-3.2.1-win.exe %WORKDIR%
 cd %WORKDIR%

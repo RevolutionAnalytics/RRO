@@ -6,10 +6,10 @@ if (.Platform$OS.type == "windows" ) {
 quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
                 cat("Revolution R Open 3.2.1\n",sep="")
-                cat("Using CRAN snapshot taken on 2015-05-01\n",sep="")
+                cat("Default CRAN mirror snapshot taken on 2015-05-01\n",sep="")
                 cat("The enhanced R distribution from Revolution Analytics\n",sep="")
                 cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
-                cat("about additional features and technical support options.\n\n",sep="")
+                cat("about additional features.\n\n",sep="")
 
 	}
 

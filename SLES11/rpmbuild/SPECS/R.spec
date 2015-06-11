@@ -60,6 +60,11 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
+rm -f %{buildroot}/%{_infodir}/dir
+rm -rf %{buildroot}/lib
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

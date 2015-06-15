@@ -60,7 +60,7 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
-cd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/
+cd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/lib
 cp /usr/local/lib64/libstdc++.so.6.0.10 .
 ln -s libstdc++.so.6.0.10 libstdc++.so.6 
 ln -s libstdc++.so.6.0.10 libstdc++.so

@@ -16,7 +16,9 @@ BuildRequires: xorg-x11-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline
 Requires: libtiff, ghostscript-fonts-std
-AutoReqProv: Yes
+Requires: gcc, make, gcc-fortran, gcc-c++
+Requires: glibc, glibc-devel 
+AutoReqProv: No
 
 %define libnn lib64
 %define DIR_VERSION 8.0.3
@@ -58,6 +60,18 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
+cd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/
+cp /usr/local/lib64/libstdc++.so.6.0.10 .
+ln -s libstdc++.so.6.0.10 libstdc++.so.6 
+ln -s libstdc++.so.6.0.10 libstdc++.so
+cp /usr/local/lib64/libgomp.so.1.0.0 .
+ln -s libgomp.so.1.0.0 libgomp.so.1
+ln -s libgomp.so.1.0.0 libgomp.so
+cp /usr/local/lib64/libgfortran.so.3.0.0 .
+ln -s libgfortran.so.3.0.0 libgfortran.so.3
+ln -s libgfortran.so.3.0.0 libgfortran.so
+
+
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

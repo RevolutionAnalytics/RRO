@@ -70,7 +70,7 @@ ln -s libgomp.so.1.0.0 libgomp.so
 cp /usr/local/lib64/libgfortran.so.3.0.0 .
 ln -s libgfortran.so.3.0.0 libgfortran.so.3
 ln -s libgfortran.so.3.0.0 libgfortran.so
-
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
 
 
 %post

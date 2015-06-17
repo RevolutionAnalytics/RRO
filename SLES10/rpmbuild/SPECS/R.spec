@@ -60,7 +60,7 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
-cd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/lib
+pushd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/lib
 cp /usr/local/lib64/libstdc++.so.6.0.10 .
 ln -s libstdc++.so.6.0.10 libstdc++.so.6 
 ln -s libstdc++.so.6.0.10 libstdc++.so
@@ -70,6 +70,7 @@ ln -s libgomp.so.1.0.0 libgomp.so
 cp /usr/local/lib64/libgfortran.so.3.0.0 .
 ln -s libgfortran.so.3.0.0 libgfortran.so.3
 ln -s libgfortran.so.3.0.0 libgfortran.so
+popd
 cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
 
 

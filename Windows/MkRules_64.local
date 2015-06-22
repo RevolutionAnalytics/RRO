@@ -111,7 +111,7 @@ CURL_LIBS = -lcurl -lrtmp -lssl -lssh2 -lcrypto -lgdi32 -lcrypt32 -lz -lws2_32 -
 CAIRO_HOME = C:/applications/src
 
 # set this to YES to build static HTML help
-BUILD_HTML = YES
+BUILD_HTML = NO
 
 # unset this if you are *not* using MiKTeX
 MIKTEX = TRUE

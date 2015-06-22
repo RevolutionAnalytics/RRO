@@ -13,8 +13,9 @@ export("Adobe_glyphs", "HTMLheader", "Rd2HTML", "Rd2ex", "Rd2latex",
        "dependsOnPkgs", "encoded_text_to_latex", "file_ext",
        "file_path_as_absolute", "file_path_sans_ext", "findHTMLlinks",
        "find_gs_cmd", "getBibstyle", "getDepList", "getVignetteInfo",
-       "installFoundDepends", "latexToUtf8", "list_files_with_exts",
+       "installFoundDepends", langElts, "latexToUtf8", "list_files_with_exts",
        "list_files_with_type", "loadRdMacros", "loadPkgRdMacros",
+       nonS3methods,
        "make_translations_pkg", "md5sum", "package.dependencies",
        "package_dependencies", "parseLatex", "parse_Rd", "pkgDepends",
        "pkgVignettes", "pskill", "psnice", "read.00Index", "readNEWS",
@@ -74,8 +75,10 @@ S3method("format", "codocClasses")
 S3method("format", "codocData")
 S3method("format", "compactPDF")
 S3method("format", "subdir_tests")
-S3method("format", "summarize_CRAN_check_status")
 S3method("format", "undoc")
+
+S3method("format", "CRAN_reverse_depends_and_views")
+S3method("format", "summarize_CRAN_check_status")
 
 S3method("format", "pdf_fonts")
 S3method("format", "pdf_info")
@@ -151,6 +154,8 @@ S3method("print", "check_so_symbols", .print.via.format)
 S3method("print", "check_nonAPI_calls", .print.via.format)
 S3method("print", "check_url_db")
 S3method("print", "check_vignette_index")
+
+S3method("print", "CRAN_reverse_depends_and_views")
 S3method("print", "summarize_CRAN_check_status")
 
 S3method("summary", "PDF_Dictionary")

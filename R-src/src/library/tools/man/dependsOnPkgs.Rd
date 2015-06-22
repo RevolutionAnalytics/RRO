@@ -15,14 +15,15 @@ dependsOnPkgs(pkgs,
               dependencies = c("Depends", "Imports", "LinkingTo"),
               recursive = TRUE, lib.loc = NULL,
               installed =
-              installed.packages(lib.loc, fields = "Enhances"))
+              utils::installed.packages(lib.loc, fields = "Enhances"))
 }
 \arguments{
   \item{pkgs}{a character vector of package names.}
   \item{dependencies}{a character vector listing the types of
     dependencies, a subset of
     \code{c("Depends", "Imports", "LinkingTo", "Suggests", "Enhances")}.
-    Character string \code{"all"} is shorthand for that vector.}
+    Character string \code{"all"} is shorthand for that vector, and
+    \code{"most"} currently shorthand for these apart from \code{"Enhances"}.}
   \item{recursive}{logical: should reverse dependencies of reverse
     dependencies (and so on) be included?}
   \item{lib.loc}{a character vector of \R library trees, or \code{NULL}

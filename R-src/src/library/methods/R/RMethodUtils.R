@@ -351,8 +351,7 @@ conformMethod <- function(signature, mnames, fnames,
         n <- n - 1L
     length(signature) <- n
     length(fsig) <- n
-    names(signature) <- fsig
-    signature
+    setNames(signature, fsig)
 }
 
 rematchDefinition <- function(definition, generic, mnames, fnames, signature)
@@ -481,10 +480,8 @@ getGeneric <-
                         package = "")
 {
     ## do not search the cache if getGeneric() was called with explicit where=
-    if(missing(where))
-        value <- .getGenericFromCache(f, where,  package)
-    else
-        value <- NULL
+    value <- if(missing(where))
+        .getGenericFromCache(f, where,  package) ## else NULL
     if(is.null(value)) {
         if(is.character(f) && f %in% "as.double") f <- "as.numeric"
         if(is.character(f) && !nzchar(f)) {
@@ -1714,8 +1711,7 @@ if(FALSE) {
         classi <- classes[[i]]
         pkgi <- pkgs[[i]]
         classDefi <- getClass(classi, where = where)
-        if(checkDups &&
-           classi %in% mulipleClasses()) { # hardly ever, we hope
+        if(checkDups && classi %in% multipleClasses()) { # hardly ever, we hope
             clDefsi <- get(classi, envir = .classTable)
             if(nzchar(pkgi) && pkgi %in% names(clDefsi))
                 ## use the chosen class, no message

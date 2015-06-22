@@ -1377,8 +1377,8 @@ SEXP attribute_hidden do_colsum(SEXP call, SEXP op, SEXP args, SEXP rho)
     default:
 	error(_("'x' must be numeric"));
     }
-    if (n * (double)p > XLENGTH(x)) // can only happen for "dotted" versions: .colSums() ...
-    	error(_("'X' is too short")); /* PR#16367 */
+    if (n * (double)p > XLENGTH(x))
+    	error(_("'x' is too short")); /* PR#16367 */
 
     int OP = PRIMVAL(op);
     if (OP == 0 || OP == 1) { /* columns */

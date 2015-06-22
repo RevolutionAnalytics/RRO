@@ -80,9 +80,9 @@ static void R_ReplFile(FILE *fp, SEXP rho)
     ParseStatus status;
     int count=0;
     int savestack;
-    
+
     R_InitSrcRefState();
-    savestack = R_PPStackTop;    
+    savestack = R_PPStackTop;
     for(;;) {
 	R_PPStackTop = savestack;
 	R_CurrentExpr = R_Parse1File(fp, 1, &status);
@@ -222,7 +222,7 @@ Rf_ReplIteration(SEXP rho, int savestack, int browselevel, R_ReplState *state)
 
     R_PPStackTop = savestack;
     R_CurrentExpr = R_Parse1Buffer(&R_ConsoleIob, 0, &state->status);
-    
+
     switch(state->status) {
 
     case PARSE_NULL:
@@ -246,9 +246,9 @@ Rf_ReplIteration(SEXP rho, int savestack, int browselevel, R_ReplState *state)
 		R_IoBufferWriteReset(&R_ConsoleIob);
 		return 0;
 	    }
-	    /* PR#15770 We don't want to step into expressions entered at the debug prompt. 
+	    /* PR#15770 We don't want to step into expressions entered at the debug prompt.
 	       The 'S' will be changed back to 's' after the next eval. */
-	    if (R_BrowserLastCommand == 's') R_BrowserLastCommand = 'S';  
+	    if (R_BrowserLastCommand == 's') R_BrowserLastCommand = 'S';
 	}
 	R_Visible = FALSE;
 	R_EvalDepth = 0;
@@ -265,7 +265,7 @@ Rf_ReplIteration(SEXP rho, int savestack, int browselevel, R_ReplState *state)
 	Rf_callToplevelHandlers(thisExpr, value, TRUE, wasDisplayed);
 	R_CurrentExpr = value; /* Necessary? Doubt it. */
 	UNPROTECT(2); /* thisExpr, value */
-	if (R_BrowserLastCommand == 'S') R_BrowserLastCommand = 's';  
+	if (R_BrowserLastCommand == 'S') R_BrowserLastCommand = 's';
 	R_IoBufferWriteReset(&R_ConsoleIob);
 	state->prompt_type = 1;
 	return(1);
@@ -702,7 +702,7 @@ void setup_Rmainloop(void)
     /* In case this is a silly limit: 2^32 -3 has been seen and
      * casting to intptr_r relies on this being smaller than 2^31 on a
      * 32-bit platform. */
-    if(R_CStackLimit > 100000000U) 
+    if(R_CStackLimit > 100000000U)
 	R_CStackLimit = (uintptr_t)-1;
     /* make sure we have enough head room to handle errors */
     if(R_CStackLimit != -1)
@@ -799,7 +799,7 @@ void setup_Rmainloop(void)
     InitGraphics();
     InitTypeTables(); /* must be before InitS3DefaultTypes */
     InitS3DefaultTypes();
-    
+
     R_Is_Running = 1;
     R_check_locale();
 
@@ -908,7 +908,7 @@ void setup_Rmainloop(void)
      * the copyleft.
      */
     if(!R_Quiet) PrintGreeting();
- 
+
     R_LoadProfile(R_OpenSiteFile(), baseEnv);
     R_LockBinding(install(".Library.site"), R_BaseEnv);
     R_LoadProfile(R_OpenInitFile(), R_GlobalEnv);
@@ -931,7 +931,7 @@ void setup_Rmainloop(void)
 	    warning(_("unable to restore saved data in %s\n"), get_workspace_name());
 	}
     }
-    
+
     /* Initial Loading is done.
        At this point we try to invoke the .First Function.
        If there is an error we continue. */
@@ -978,6 +978,9 @@ void setup_Rmainloop(void)
 	REprintf(_("During startup - "));
 	PrintWarnings();
     }
+    if(R_Verbose)
+	REprintf(" ending setup_Rmainloop(): R_Interactive = %d {main.c}\n",
+		 R_Interactive);
 
     /* trying to do this earlier seems to run into bootstrapping issues. */
     R_init_jit_enabled();
@@ -1054,11 +1057,11 @@ static int ParseBrowser(SEXP CExpr, SEXP rho)
 	} else if (!strcmp(expr, "f")) {
 	    rval = 1;
 	    RCNTXT *cntxt = R_GlobalContext;
-	    while (cntxt != R_ToplevelContext 
+	    while (cntxt != R_ToplevelContext
 		      && !(cntxt->callflag & (CTXT_RETURN | CTXT_LOOP))) {
 		cntxt = cntxt->nextcontext;
 	    }
-	    cntxt->browserfinish = 1;	    
+	    cntxt->browserfinish = 1;
 	    SET_RDEBUG(rho, 1);
 	    R_BrowserLastCommand = 'f';
 	} else if (!strcmp(expr, "help")) {
@@ -1085,7 +1088,7 @@ static int ParseBrowser(SEXP CExpr, SEXP rho)
 	} else if (!strcmp(expr, "s")) {
 	    rval = 1;
 	    SET_RDEBUG(rho, 1);
-	    R_BrowserLastCommand = 's';	    
+	    R_BrowserLastCommand = 's';
 	} else if (!strcmp(expr, "where")) {
 	    rval = 2;
 	    printwhere();
@@ -1120,9 +1123,9 @@ SEXP attribute_hidden do_browser(SEXP call, SEXP op, SEXP args, SEXP rho)
 	SETCAR(argList, mkString(""));
     if(CADR(argList) == R_MissingArg)
 	SETCAR(CDR(argList), R_NilValue);
-    if(CADDR(argList) == R_MissingArg) 
+    if(CADDR(argList) == R_MissingArg)
 	SETCAR(CDDR(argList), ScalarLogical(1));
-    if(CADDDR(argList) == R_MissingArg) 
+    if(CADDDR(argList) == R_MissingArg)
 	SETCAR(CDDDR(argList), ScalarInteger(0));
 
     /* return if 'expr' is not TRUE */
@@ -1143,7 +1146,7 @@ SEXP attribute_hidden do_browser(SEXP call, SEXP op, SEXP args, SEXP rho)
     if (!RDEBUG(rho)) {
         int skipCalls = asInteger(CADDDR(argList));
 	cptr = R_GlobalContext;
-	while ( ( !(cptr->callflag & CTXT_FUNCTION) || skipCalls--) 
+	while ( ( !(cptr->callflag & CTXT_FUNCTION) || skipCalls--)
 		&& cptr->callflag )
 	    cptr = cptr->nextcontext;
 	Rprintf("Called from: ");
@@ -1588,7 +1591,7 @@ void attribute_hidden dummy12345(void)
 
 /* Used in unix/system.c, avoid inlining by using an extern there.
 
-   This is intended to return a local address.  
+   This is intended to return a local address.
    Use -Wno-return-local-addr when compiling.
  */
 uintptr_t dummy_ii(void)

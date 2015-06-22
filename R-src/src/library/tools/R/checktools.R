@@ -1,7 +1,7 @@
 #  File src/library/tools/R/checktools.R
 #  Part of the R package, http://www.R-project.org
 #
-#  Copyright (C) 2013-2014 The R Core Team
+#  Copyright (C) 2013-2015 The R Core Team
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -341,7 +341,7 @@ function(dir,
 
     timings <- do.call(rbind, lapply(timings, summary))
     rownames(timings) <- pnames
-    write.table(timings, "timings.tab")
+    utils::write.table(timings, "timings.tab")
 
     file.rename(sprintf("%s.Rcheck", rnames),
                 sprintf("rdepends_%s.Rcheck", rnames))
@@ -582,7 +582,7 @@ function(dir, all = FALSE, full = FALSE)
         tfiles <- Sys.glob(file.path(R_check_outdirs(dir, all = all),
                                      "*-Ex.timings"))
         if(length(tfiles)) message("")
-        timings <- lapply(tfiles, read.table, header = TRUE)
+        timings <- lapply(tfiles, utils::read.table, header = TRUE)
         ## Order by CPU time.
         timings <- lapply(timings,
                           function(x)
@@ -708,6 +708,8 @@ function(log, drop_ok = TRUE)
         lines <- iconv(lines, enc, "UTF-8", sub = "byte")
         ## If the check log uses ASCII, there should be no non-ASCII
         ## characters in the message lines: could check for this.
+        if(any(bad <- !validEnc(lines)))
+            lines[bad] <- iconv(lines[bad], to = "ASCII", sub = "byte")
     } else return()
 
     ## Get header.

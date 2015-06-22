@@ -165,7 +165,7 @@ is.unsorted <- function(x, na.rm = FALSE, strictly = FALSE)
     .Internal(is.unsorted(x, strictly))
 }
 
-nchar <- function(x, type = "chars", allowNA = FALSE, keepNA = FALSE)
+nchar <- function(x, type = "chars", allowNA = FALSE, keepNA = NA)
     .Internal(nchar(x, type, allowNA, keepNA))
 
 polyroot <- function(z) .Internal(polyroot(z))

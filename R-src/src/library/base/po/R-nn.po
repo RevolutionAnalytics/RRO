@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.15.1\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:58\n"
+"POT-Creation-Date: 2015-06-06 13:51\n"
 "PO-Revision-Date: 2012-09-28 22:18+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -1784,12 +1784,6 @@ msgstr[0] "S3-metoden «%s» er deklarert i NAMESPACE, men vart ikkje funnen"
 msgstr[1] "S3-metodane «%s» er deklarerte i NAMESPACE, men vart ikkje funnen"
 
 #, fuzzy
-msgid "extra argument %s will be disregarded"
-msgid_plural "extra arguments %s will be disregarded"
-msgstr[0] "ekstraargument(a) «%s» vert ikkje brukt(e)"
-msgstr[1] "ekstraargument(a) «%s» vert ikkje brukt(e)"
-
-#, fuzzy
 msgid "%s is not TRUE"
 msgid_plural "%s are not all TRUE"
 msgstr[0] "T brukt i staden for TRUE"
@@ -1801,12 +1795,22 @@ msgstr[0] "Åtvaring:\n"
 msgstr[1] "Åtvaringar:\n"
 
 #, fuzzy
-#~ msgid "cannot be unloaded."
-#~ msgstr "namnerom kan ikkje lastast ut:"
+msgid ""
+"In %s :\n"
+" extra argument %s will be disregarded"
+msgid_plural ""
+"In %s :\n"
+" extra arguments %s will be disregarded"
+msgstr[0] "ekstraargument(a) «%s» vert ikkje brukt(e)"
+msgstr[1] "ekstraargument(a) «%s» vert ikkje brukt(e)"
 
 #, fuzzy
 #~ msgid "re-exports %s not exported by %s"
 #~ msgstr "objektet «%s» er ikkje eksportert av «namespace:%s»"
+
+#, fuzzy
+#~ msgid "cannot be unloaded."
+#~ msgstr "namnerom kan ikkje lastast ut:"
 
 #~ msgid "package %s %s was found, but %s %s is required by %s"
 #~ msgstr "fann pakken «%s %s», men «%s %s» trengst av «%s»"

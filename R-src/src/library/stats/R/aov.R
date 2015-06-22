@@ -31,6 +31,7 @@ aov <- function(formula, data = NULL, projections = FALSE, qr = TRUE,
                               "there are %d Error terms: only 1 is allowed"),
                      length(indError)), domain = NA)
     lmcall <- Call <- match.call()
+    ## need stats:: for non-standard evaluation
     lmcall[[1L]] <- quote(stats::lm)
     lmcall$singular.ok <- TRUE
     if(projections) qr <- lmcall$qr <- TRUE
@@ -406,6 +407,12 @@ coef.aov <- function(object, ...)
     z <- object$coefficients
     z[!is.na(z)]
 }
+
+# For maov objects, the coefficients are a matrix and
+# NAs can't sensibly be removed (PR#16380)
+
+coef.maov <- function(object, ...)
+    object$coefficients
 
 alias <- function(object, ...) UseMethod("alias")
 

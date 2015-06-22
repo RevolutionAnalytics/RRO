@@ -1,5 +1,5 @@
 
-R version 3.2.0 Patched (2015-06-06 r68483) -- "Full of Ingredients"
+R Under development (unstable) (2015-06-14 r68512) -- "Unsuffered Consequences"
 Copyright (C) 2015 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -45,4 +45,4 @@ Calculations on Transformed Scale;  Intervals on Original Scale
 > 
 > proc.time()
    user  system elapsed 
-  0.175   0.015   0.275 
+  0.168   0.022   0.248 

@@ -7,7 +7,191 @@
 
 <h2>R News</h2>
 
-<h3><img src="../help/figures/../../html/logo.jpg" alt="../../html/logo.jpg" /> CHANGES IN R 3.2.0 patched</h3>
+<h3><img src="../help/figures/../../html/logo.jpg" alt="../../html/logo.jpg" /> CHANGES IN R-devel</h3>
+
+
+
+<h4>SIGNIFICANT USER-VISIBLE CHANGES</h4>
+
+
+<ul>
+<li> <p><code>nchar(x, *)</code> gains a new argument <code>keepNA</code> which
+governs how the result for <code>NA</code>s in <code>x</code> is determined.
+The new default <code>keepNA = NA</code> returns <code>NA</code> where
+<code>x</code> is <code>NA</code>, unless for <code>type = "width"</code> which still
+returns <code>2</code>, the formatting / printing width of <code>NA</code>.
+</p>
+<p><code>nzchar(x)</code> gets the same new argument, with default
+<code>keepNA = FALSE</code> however.  Consequently <code>nzchar(x)</code> keeps
+returning a non-<code>NA</code> logical vector, back compatibly.
+</p>
+</li></ul>
+
+
+
+
+<h4>NEW FEATURES</h4>
+
+
+<ul>
+<li><p> The <code>print</code> method for <code>methods()</code> gains a
+<code>byclass</code> argument.
+</p>
+</li>
+<li><p> New functions <code>validEnc()</code> and <code>validUTF8()</code> to
+give access to the validity checks for inputs used by
+<code>grep()</code> and friends.
+</p>
+</li>
+<li><p> Experimental new functionality for S3 method checking, notably
+<code>isS3method()</code>.  Also, the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &lsquo;language element&rsquo; names
+are exported as <code>tools::langElts</code>.
+</p>
+</li>
+<li> <p><code>str(x)</code> now displays <code>"Time-Series"</code> also for
+matrix (multivariate) time-series, i.e. when <code>is.ts(x)</code> is true.
+</p>
+</li>
+<li><p> (Windows only)  The GUI menu item to install local packages
+now accepts &lsquo;<span class="file">*.tar.gz</span>&rsquo; files as well as &lsquo;<span class="file">*.zip</span>&rsquo; files
+(but defaults to the latter).
+</p>
+</li>
+<li><p> New programmeR's utility function <code>chkDots()</code>.
+</p>
+</li>
+<li> <p><code>D()</code> now signals an error when given invalid input,
+rather than silently returning <code>NA</code>.  (Request of John Nash.)
+</p>
+</li>
+<li> <p><code>formula</code> objects are slightly more &ldquo;first class&rdquo;:
+e.g., <code>formula()</code> or <code>new("formula", y ~ x)</code> are now
+valid.  Similarly, for <code>"table"</code>, <code>"ordered"</code> and
+<code>"summary.table"</code>.  Packages defining S4 classes with the above
+S3/S4 classes as slots should be reinstalled.
+
+
+</p>
+</li>
+<li><p> New function <code>strrep()</code> for repeating the elements of a
+character vector.
+</p>
+</li>
+<li> <p><code>rapply</code> preserves attributes on the list when
+<code>how="replace"</code>.
+</p>
+</li>
+<li><p> New S3 generic function <code>sigma()</code> with methods for
+extracting the estimated standard deviation aka &ldquo;residual
+standard deviation&rdquo; from a fitted model.
+</p>
+</li>
+<li> <p><code>news()</code> now displays <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> and package news files within
+the HTML help system if it is available.  If no news file is found,
+a visible <code>NULL</code> is returned to the console.
+</p>
+</li>
+<li> <p><code>as.raster(x)</code> now also accepts <code>raw</code>
+arrays <code>x</code> assuming values in <code>0:255</code>.
+</p>
+</li></ul>
+
+
+
+
+<h4>UTILITIES</h4>
+
+
+<ul>
+<li> <p><code>R CMD check</code> has a new option
+<span class="option">--ignore-vignettes</span> for use with non-Sweave vignettes
+whose <span class="samp">VignetteBuilder</span> package is not available.
+</p>
+</li></ul>
+
+
+
+
+<h4>DEPRECATED AND DEFUNCT</h4>
+
+
+<ul>
+<li><p> The included versions of <code>zlib</code>, <code>bzip2</code>,
+<code>xz</code> and PCRE have been removed, so system versions are
+required (see the &lsquo;R Installation and Administration&rsquo; manual).
+</p>
+</li></ul>
+
+
+
+
+<h4>BUG FIXES</h4>
+
+
+<ul>
+<li><p> C-level <code>asChar(x)</code> is fixed for when <code>x</code> is not a
+vector, and it returns &ldquo;TRUE&rdquo;/&ldquo;FALSE&rdquo; instead of
+&ldquo;T&rdquo;/&ldquo;F&rdquo; for logical vectors.
+</p>
+</li>
+<li> <p><code>.colSums()</code> etc (with an initial dot) first argument
+name <code>x</code> matches <code>colSums()</code> such that error messages
+are correct.
+</p>
+</li>
+<li><p> A <code>coef.maov()</code> method has been added to allow
+<code>vcov()</code> to work with multivariate results. (<a href="https://bugs.R-project.org/bugzilla3/show_bug.cgi?id=16380">PR#16380</a>)
+</p>
+</li>
+<li> <p><code>options(OutDec = s)</code> now signals a warning (which will
+become an error in the future) when <code>s</code> is not a string with
+exactly one character, as that has been a documented requirement.
+
+</p>
+</li>
+<li> <p><code>prettyNum()</code> gains a new option <code>input.d.mark</code>
+which together with other changes, e.g., the default for
+<code>decimal.mark</code>, fixes some <code>format()</code>ting variants with
+non-default <code>getOption("OutDec")</code> such as in <a href="https://bugs.R-project.org/bugzilla3/show_bug.cgi?id=16411">PR#16411</a>.
+</p>
+</li></ul>
+
+
+
+
+<h3><img src="../help/figures/../../html/logo.jpg" alt="../../html/logo.jpg" /> CHANGES IN R 3.2.1 patched</h3>
+
+
+
+<h4>NEW FEATURES</h4>
+
+
+<ul>
+<li> <p><code>cmdscale()</code> gets new option <code>list.</code> for increased
+flexibility when a list should be returned.
+</p>
+</li></ul>
+
+
+
+
+<h4>BUG FIXES</h4>
+
+
+<ul>
+<li><p> The HTML help page links to demo code failed due to a change
+in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.2.0.  (<a href="https://bugs.R-project.org/bugzilla3/show_bug.cgi?id=16432">PR#16432</a>)
+</p>
+</li>
+<li><p> If <code>na.action</code> was used in <code>model.frame</code>, the 
+original data could be modified. (<a href="https://bugs.R-project.org/bugzilla3/show_bug.cgi?id=16436">PR#16436</a>)
+</p>
+</li></ul>
+
+
+
+
+<h3><img src="../help/figures/../../html/logo.jpg" alt="../../html/logo.jpg" /> CHANGES IN R 3.2.1</h3>
 
 
 
@@ -126,7 +310,7 @@ correctly propagated from <code>.getRequiredPackages2()</code>.
 </p>
 </li>
 <li><p> Under some circumstances using the internal PCRE when
-building <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> fron source would cause external libs such as
+building <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> from source would cause external libs such as
 <code>-llzma</code> to be omitted from the main link.
 </p>
 </li>
@@ -157,6 +341,10 @@ observations as in <span style="font-family: Courier New, Courier; color: #66666
 </li>
 <li> <p><code>slotNames(.)</code> is now correct for <code>"signature"</code>
 objects (mostly used internally in <span class="pkg">methods</span>).
+</p>
+</li>
+<li><p> On some systems, the first string comparison after
+a locale change would result in <code>NA</code>.
 </p>
 </li></ul>
 

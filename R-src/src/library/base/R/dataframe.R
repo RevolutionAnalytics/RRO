@@ -265,6 +265,7 @@ as.data.frame.matrix <- function(x, row.names = NULL, optional = FALSE, ...,
     ## changed in 1.8.0
     if(is.null(row.names)) row.names <- dn[[1L]]
     collabs <- dn[[2L]]
+    ## These might be NA
     if(any(empty <- !nzchar(collabs)))
 	collabs[empty] <- paste0("V", ic)[empty]
     value <- vector("list", ncols)
@@ -1312,7 +1313,8 @@ rbind.data.frame <- function(..., deparse.level = 1, make.row.names = TRUE)
 	}
 	else if(length(xi)) {
 	    rows[[i]] <- nrow <- nrow + 1L
-            if(make.row.names) rlabs[[i]] <- if(nzchar(nmi)) nmi else as.integer(nrow)
+            if(make.row.names)
+		rlabs[[i]] <- if(nzchar(nmi)) nmi else as.integer(nrow)
 	}
     }
     nvar <- length(clabs)

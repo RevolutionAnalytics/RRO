@@ -216,7 +216,7 @@ static void doprof(int sig)  /* sig is ignored in Windows */
 	    get_current_mem(&smallv, &bigv, &nodes);
 	    if((len = strlen(buf)) < PROFLINEMAX)
 		snprintf(buf+len, PROFBUFSIZ - len,
-			 ":%lu:%lu:%lu:%lu:",
+			 ":%lu:%lu:%lu:%lu:", 
 			 (unsigned long) smallv, (unsigned long) bigv,
 			 (unsigned long) nodes, get_duplicate_counter());
 	    reset_duplicate_counter();
@@ -1218,7 +1218,7 @@ SEXP R_forceAndCall(SEXP e, int n, SEXP rho)
     UNPROTECT(1);
     return tmp;
 }
-
+    
 SEXP attribute_hidden do_forceAndCall(SEXP call, SEXP op, SEXP args, SEXP rho)
 {
     int n = asInteger(eval(CADR(call), rho));
@@ -1255,7 +1255,7 @@ SEXP R_execMethod(SEXP op, SEXP rho)
 	R_varloc_t loc;
 	int missing;
 	loc = R_findVarLocInFrame(rho,symbol);
-	if(R_VARLOC_IS_NULL(loc))
+	if(loc == NULL)
 	    error(_("could not find symbol \"%s\" in environment of the generic function"),
 		  CHAR(PRINTNAME(symbol)));
 	missing = R_GetVarLocMISSING(loc);
@@ -1463,8 +1463,8 @@ static R_INLINE SEXP GET_BINDING_CELL(SEXP symbol, SEXP rho)
     if (rho == R_BaseEnv || rho == R_BaseNamespace)
 	return R_NilValue;
     else {
-	R_varloc_t loc = R_findVarLocInFrame(rho, symbol);
-	return (! R_VARLOC_IS_NULL(loc)) ? loc.cell : R_NilValue;
+	SEXP loc = (SEXP) R_findVarLocInFrame(rho, symbol);
+	return (loc != NULL) ? loc : R_NilValue;
     }
 }
 
@@ -1991,10 +1991,9 @@ static SEXP applydefine(SEXP call, SEXP op, SEXP args, SEXP rho)
     if (rho == R_BaseEnv)
 	errorcall(call, _("cannot do complex assignments in base environment"));
     defineVar(R_TmpvalSymbol, R_NilValue, rho);
-    tmploc = R_findVarLocInFrame(rho, R_TmpvalSymbol);
-    PROTECT(tmploc.cell);
-    DISABLE_REFCNT(tmploc.cell);
-    DECREMENT_REFCNT(CDR(tmploc.cell));
+    PROTECT((SEXP) (tmploc = R_findVarLocInFrame(rho, R_TmpvalSymbol)));
+    DISABLE_REFCNT((SEXP) tmploc);
+    DECREMENT_REFCNT(CDR((SEXP) tmploc));
 
     /* Now set up a context to remove it when we are done, even in the
      * case of an error.  This all helps error() provide a better call.
@@ -2694,7 +2693,7 @@ int DispatchOrEval(SEXP call, SEXP op, const char *generic, SEXP args,
 						call, 0));
 		else {
 		    PROTECT(argValue = CONS_NR(x, evalArgs(CDR(argValue), rho,
-							   dropmissing, call, 1)));
+							dropmissing, call, 1)));
 		    SET_TAG(argValue, CreateTag(TAG(args)));
 		}
 		nprotect++;
@@ -3179,31 +3178,16 @@ static SEXP seq_int(int n1, int n2)
 # ifdef COMPACT_INTSEQ
 #  define INTSEQSXP 9999
 # endif
-#define CACHE_SCALARS
 static R_INLINE SEXP GETSTACK_PTR_TAG(R_bcstack_t *s)
 {
     /* no error checking since only called with tag != 0 */
     SEXP value;
     switch (s->tag) {
-    case REALSXP:
-#ifdef CACHE_SCALARS
-	if (R_CachedScalarReal != NULL) {
-	    value = R_CachedScalarReal;
-	    R_CachedScalarReal = NULL;
-	}
-	else
-#endif
+    case REALSXP: 
 	value = allocVector(REALSXP, 1);
 	REAL(value)[0] = s->u.dval;
 	break;
     case INTSXP:
-#ifdef CACHE_SCALARS
-	if (R_CachedScalarInteger != NULL) {
-	    value = R_CachedScalarInteger;
-	    R_CachedScalarInteger = NULL;
-	}
-	else
-#endif
 	value = allocVector(INTSXP, 1);
 	INTEGER(value)[0] = s->u.ival;
 	break;
@@ -3299,24 +3283,8 @@ static R_INLINE SEXP GETSTACK_PTR_TAG(R_bcstack_t *s)
 
 #define SETSTACK_LOGICAL(i, v) SETSTACK_LOGICAL_PTR(R_BCNodeStackTop + (i), v)
 
-/* The next two macros will allow reuse a scalar box, if provided. The
-   box is assumed to be of the correct type and size and to have no
-   attributes. */
-#ifdef CACHE_SCALARS
-#define SETSTACK_REAL_EX(idx, dval, ans) do {		\
-	SEXP __ans__ = (ans);				\
-	if (__ans__ && R_CachedScalarReal == NULL)	\
-	    R_CachedScalarReal = __ans__;		\
-	SETSTACK_REAL(idx, dval);			\
-    } while (0)
-
-#define SETSTACK_INTEGER_EX(idx, ival, ans) do {	\
-	SEXP __ans__ = (ans);				\
-	if (__ans__ && R_CachedScalarInteger == NULL)	\
-	    R_CachedScalarInteger = __ans__;		\
-	SETSTACK_INTEGER(idx, ival);			\
-    } while (0)
-#else
+/* The next two macros will reuse a provided scalar box, if
+   provided. The box is assumed to be of the correct typa and size. */
 #define SETSTACK_REAL_EX(idx, dval, ans) do { \
 	if (ans) {			      \
 	    REAL(ans)[0] = dval;	      \
@@ -3332,7 +3300,6 @@ static R_INLINE SEXP GETSTACK_PTR_TAG(R_bcstack_t *s)
 	}					 \
 	else SETSTACK_INTEGER(idx, ival);	 \
     } while (0)
-#endif
 
 typedef union { double dval; int ival; } scalar_value_t;
 
@@ -3349,7 +3316,7 @@ static R_INLINE int bcStackScalarEx(R_bcstack_t *s, scalar_value_t *v,
 #ifdef TYPED_STACK
     int tag = s->tag;
 
-    if (tag)
+    if (tag) 
 	switch(tag) {
 	case REALSXP: v->dval = s->u.dval; return tag;
 	case INTSXP: v->ival = s->u.ival; return tag;
@@ -3709,26 +3676,26 @@ static struct { const char *name; SEXP sym; double (*fun)(double); }
 
 	{"expm1", NULL, expm1},
 	{"log1p", NULL, log1p},
-
+	
 	{"cos", NULL, cos},
 	{"sin", NULL, sin},
 	{"tan", NULL, tan},
 	{"acos", NULL, acos},
 	{"asin", NULL, asin},
 	{"atan", NULL, atan},
-
+	
 	{"cosh", NULL, cosh},
 	{"sinh", NULL, sinh},
 	{"tanh", NULL, tanh},
 	{"acosh", NULL, acosh},
 	{"asinh", NULL, asinh},
 	{"atanh", NULL, atanh},
-
+	
 	{"lgamma", NULL, lgammafn},
 	{"gamma", NULL, gammafn},
 	{"digamma", NULL, digamma},
 	{"trigamma", NULL, trigamma},
-
+	
 	{"cospi", NULL, cospi},
 	{"sinpi", NULL, sinpi},
 #ifndef HAVE_TANPI
@@ -3737,7 +3704,7 @@ static struct { const char *name; SEXP sym; double (*fun)(double); }
 	{"tanpi", NULL, Rtanpi}
 #endif
     };
-
+    
 static R_INLINE double (*getMath1Fun(int i, SEXP call))(double) {
     if (math1funs[i].sym == NULL)
 	math1funs[i].sym = install(math1funs[i].name);
@@ -3745,7 +3712,7 @@ static R_INLINE double (*getMath1Fun(int i, SEXP call))(double) {
 	error("math1 compiler/interpreter mismatch");
     return math1funs[i].fun;
 }
-
+    
 #define DO_MATH1() do {							\
 	SEXP call = VECTOR_ELT(constants, GETOP());			\
 	double (*fun)(double) = getMath1Fun(GETOP(), call);		\
@@ -4012,7 +3979,7 @@ static R_INLINE SEXP BINDING_VALUE(SEXP loc)
    table is used as the cache index.  Two options can be used to chose
    among implementation strategies:
 
-       If CACHE_ON_STACK is defined the cache is allocated on the
+       If CACHE_ON_STACK is defined the the cache is allocated on the
        byte code stack. Otherwise it is allocated on the heap as a
        VECSXP.  The stack-based approach is more efficient, but runs
        the risk of running out of stack space.
@@ -4853,7 +4820,7 @@ static R_INLINE void VECSUBASSIGN_PTR(R_bcstack_t *sx, R_bcstack_t *srhs,
 
 static R_INLINE void MATSUBASSIGN_PTR(R_bcstack_t *sx, R_bcstack_t *srhs,
 				      R_bcstack_t *si, R_bcstack_t *sj,
-				      R_bcstack_t *sv,
+				      R_bcstack_t *sv, 
 				      SEXP rho, SEXP consts, int callidx,
 				      Rboolean subassign2)
 {
@@ -4910,7 +4877,7 @@ static R_INLINE void MATSUBASSIGN_PTR(R_bcstack_t *sx, R_bcstack_t *srhs,
 
 static R_INLINE void SUBASSIGN_N_PTR(R_bcstack_t *sx, int rank,
 				     R_bcstack_t *srhs,
-				     R_bcstack_t *si, R_bcstack_t *sv,
+				     R_bcstack_t *si, R_bcstack_t *sv, 
 				     SEXP rho, SEXP consts, int callidx,
 				     Rboolean subassign2)
 {
@@ -5025,13 +4992,13 @@ static R_INLINE void checkForMissings(SEXP args, SEXP call)
 #define IS_TRUE_BUILTIN(x) ((R_FunTab[PRIMOFFSET(x)].eval % 100 )/10 == 0)
 
 static R_INLINE Rboolean GETSTACK_LOGICAL_NO_NA_PTR(R_bcstack_t *s, int callidx,
-						    SEXP constants)
+						    SEXP constants) 
 {
 #ifdef TYPED_STACK
     if (s->tag == LGLSXP && s->u.ival != NA_LOGICAL)
 	return s->u.ival;
 #endif
-    SEXP value = GETSTACK_PTR(s);
+    SEXP value = GETSTACK_PTR(s); 
     if (IS_SCALAR(value, LGLSXP) && LOGICAL(value)[0] != NA_LOGICAL)
 	return LOGICAL(value)[0];
     else {
@@ -5196,7 +5163,6 @@ static SEXP bcEval(SEXP body, SEXP rho, Rboolean useCache)
 	case STRSXP:
 	case RAWSXP:
 	    value = allocVector(TYPEOF(seq), 1);
-	    SET_NAMED(value, 1);
 	    BCNPUSH(value);
 	    break;
 	default: BCNPUSH(R_NilValue);

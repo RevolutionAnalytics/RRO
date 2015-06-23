@@ -112,7 +112,7 @@ msgid "must specify only one of 'font' and 'fontface'"
 msgstr "es darf nur entweder 'font' oder 'fontface' angegeben werden"
 
 msgid "invalid fontface"
-msgstr "ungültiger 'fontface' Wert"
+msgstr "ungültige Zeichensatzerscheinung"
 
 msgid "argument must be a 'gpar' object"
 msgstr "Argument muss ein 'gpar' Objekt sein"
@@ -145,16 +145,14 @@ msgid "must specify at least one viewport"
 msgstr "es muss zumindest ein Viewport angegeben werden"
 
 msgid "Down viewport failed to record on display list"
-msgstr ""
-"Abgeschalteter Viewport konnte nicht in die Display-Liste "
-"aufgenommen werde"
+msgstr "Abgeschalteter Viewport konnte nicht in die Displayliste aufnehmen"
 
 msgid "Down viewport incorrectly recorded on display list"
 msgstr ""
-"Abgeschalteter Viewport fälschlicherweise in die Displayliste aufgenommen"
+"Abgeschalteter Viewport fälschlicherweise  in die Displayliste aufgenommen"
 
 msgid "must pop at least one viewport"
-msgstr "es muss zumindest ein Viewport vom Stack geholt werden"
+msgstr "es muss zumindest ein Viewport von Stack geholt werden"
 
 msgid "must navigate up at least one viewport"
 msgstr "es muss mindestens ein Viewport nach oben navigiert werden"
@@ -193,7 +191,7 @@ msgid "only 'grobs' allowed in \"gList\""
 msgstr "nur 'grobs' in \"gList\" erlaubt"
 
 msgid "invalid element to add to \"gList\""
-msgstr "unzulässiges Element zum Hinzufügen zu \"gList\""
+msgstr "unzulässiges Element für Hinzufügen in \"gList\""
 
 msgid "can only set 'children' for a \"gTree\""
 msgstr "kann nur 'children' für einen \"gTree\" setzen"
@@ -294,10 +292,10 @@ msgid "'vgap' must be single unit"
 msgstr "'vgap' muss eine einzelne Stelle sein"
 
 msgid "'nrow' must be >= 1"
-msgstr "'nrow' muss >= 1 sein"
+msgstr "'nrow' must >= 1 sein"
 
 msgid "'ncol' must be >= 1"
-msgstr "'ncol' muss >= 1 sein"
+msgstr "'ncol' must >= 1 sein"
 
 msgid "nrow * ncol < #{legend labels}"
 msgstr "nrow * ncol < #{legend labels}"
@@ -366,13 +364,13 @@ msgid "'x' and 'y' must be units or NULL"
 msgstr "'x' und 'y' müssen Einheiten oder NULL sein"
 
 msgid "corrupt 'arrows' object"
-msgstr "beschädigtes 'arrows' Objekt"
+msgstr "korruptes 'arrows' Objekt"
 
 msgid "x and y must be units"
 msgstr "x und y müssen Einheiten sein"
 
 msgid "must have exactly 4 control points"
-msgstr "muss exakt 4 Kontrollpunkte haben"
+msgstr "nuss exakt 4 Kontrollpunkte haben"
 
 msgid "must have exactly 4 control points per Bezier curve"
 msgstr "muss je Bezier-Kurve exakt 4 Kontrollpunkte haben"
@@ -435,22 +433,22 @@ msgid "only one operand may be a unit"
 msgstr "nur ein Operand darf eine Einheit sein"
 
 msgid "non-unit operand must be numeric"
-msgstr "nicht-Einheiten Operand muss numerisch sein"
+msgstr "Nicht-unit Operand muss numerisch sein"
 
 msgid "both operands must be units"
-msgstr "beide Operanden müssen Einheiten sein"
+msgstr "Beide Operanden müssen Einheiten sein"
 
 msgid "'Summary' function '%s' not meaningful for units"
 msgstr "'Summary'-Funktion '%s' hat für Einheiten keine Bedeutung"
 
 msgid "no arguments where at least one expected"
-msgstr "kein Argument, wo zumindest eines erwartet"
+msgstr "Kein Argument, wo zumindest eines erwartet"
 
 msgid "Zero arguments where at least one expected"
 msgstr "Kein Argument, wo zumindest eines erwartet"
 
 msgid "cannot mix signs of indices"
-msgstr "Vorzeichen von Indizes können nicht gemischt werden"
+msgstr "Vorzeichen von Indices können nicht gemischt werden"
 
 msgid "index out of bounds ('unit' subsetting)"
 msgstr "Index außerhalb des Bereichs ('unit' Teilauswahl)"
@@ -463,7 +461,7 @@ msgstr "Index außerhalb des Bereichs (Einheitenlistenteilauswahl)"
 
 msgid "it is invalid to combine 'unit' objects with other types"
 msgstr ""
-"unzulässig 'unit' Objekte mit anderen Typen zu kombinieren"
+"unzulässig 'unit' Objekte können nicht mit anderen Typen zu kombinieren"
 
 msgid "invalid 'unit' object"
 msgstr "Unzulässiges 'unit' Objekt"
@@ -472,7 +470,7 @@ msgid "invalid 'theta'"
 msgstr "unzulässiges 'theta'"
 
 msgid "'range' must be numeric"
-msgstr "'range' muss numerisch sein"
+msgstr "'range' muss nummerisch sein"
 
 msgid "invalid 'gp' value"
 msgstr "ungültiger 'gp' Wert"
@@ -519,7 +517,7 @@ msgid "must specify at least one of 'y' or 'yscale'"
 msgstr "mindestens 'y' oder 'yscale' muss angegeben werden"
 
 msgid "shutting down all devices when unloading 'grid' namespace"
-msgstr "schließe alle Devices, wenn der 'grid' Namensraum entfernt wird "
+msgstr "schließe alle Geräte, wenn der 'grid' Namensraum entfernt wird "
 
 msgid "invalid grob name"
 msgid_plural "invalid grob names"

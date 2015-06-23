@@ -46,10 +46,10 @@ package.skeleton <-
     if(!is.character(list))
 	stop("'list' must be a character vector naming R objects")
     if(use_code_files || !envIsMissing) {
-        classesList <- methods::getClasses(environment)
+        classesList <- getClasses(environment)
         classes0 <- .fixPackageFileNames(classesList)
         names(classes0) <- classesList
-        methodsList <- methods::getGenerics(environment)
+        methodsList <- getGenerics(environment)
         methods0 <- .fixPackageFileNames(methodsList)
         names(methods0) <- methodsList
     }
@@ -215,14 +215,14 @@ package.skeleton <-
 					  filename =
 					  file.path(docs_dir,
 						    sprintf("%s-methods.Rd", methods0[item])),
-					  methods::findMethods(item, where = environment))
+					  findMethods(item, where = environment))
 	       })
     }))
     ## don't document generic functions from other packages
     for(item in methodsList) {
         if(exists(item, envir = environment, inherits = FALSE)) {
             ff <- get(item, envir = environment)
-            if(methods::is(ff, "genericFunction") && !identical(ff@package, name)) # don't document
+            if(is(ff, "genericFunction") && !identical(ff@package, name)) # don't document
                 file.remove(file.path(docs_dir, sprintf("%s.Rd", list0[item])))
         }
     }

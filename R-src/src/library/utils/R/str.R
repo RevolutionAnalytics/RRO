@@ -206,16 +206,10 @@ str.default <-
     deParse <- function(.) deparse(., width.cutoff = min(500,max(20, width-10)))
     n.of. <- function(n, singl, plural) paste(n, ngettext(n, singl, plural))
     n.of <- function(n, noun) n.of.(n, noun, paste0(noun,"s"))
-    if(is.ts <- stats::is.ts(object))
-        str1.ts <- function(o, lestr) {
-            tsp.a <- stats::tsp(o)
-            paste0(" Time-Series ", lestr, " from ", format(tsp.a[1L]),
-                   " to ", format(tsp.a[2L]), ":")
-        }
     if (is.null(object))
 	cat(" NULL\n")
     else if(S4) {
-	if(methods::is(object,"envRefClass")) {
+	if(is(object,"envRefClass")) {
 	    cld <- tryCatch(object$getClass(), error=function(e)e)
 	    if(inherits(cld, "error")) {
 		cat("Prototypical reference class", " '", paste(cl, collapse = "', '"),
@@ -317,10 +311,10 @@ str.default <-
     } else { #- not function, not list
 	if(is.vector(object)
 	   || (is.array(object) && is.atomic(object))
-	   ##f fails for formula:
-	   ##f typeof(object) in {"symbol", "language"} =: is.symbolic(.):
-	   ##f || (is.language(object) && !is.expression(object))
-	   || (is.language(object) && !is.expression(object) && !any(cl == "formula"))
+           ## FIXME: is.vector is not documented to allow those modes.
+           ## Should this not be is.language?
+	   || is.vector(object, mode= "language")
+	   || is.vector(object, mode= "symbol")## R bug(<=0.50-a4) should be part
 	   ) { ##-- Splus: FALSE for 'named vectors'
 	    if(is.atomic(object)) {
 		##-- atomic:   numeric	complex	 character  logical
@@ -337,7 +331,7 @@ str.default <-
 		    pDi <- function(...) paste(c("[", ..., "]"), collapse = "")
 		    le.str <- (if(rnk == 1) pDi(di[1L], "(1d)") else
 			       pDi(paste0(di[-rnk], ", "), di[rnk]))
-                    std.attr <- c("dim", if(is.ts) c("tsp", "class"))
+		    std.attr <- "dim" #- "names"
 		} else if(!is.null(names(object))) {
 		    mod <- paste("Named", mod)
 		    std.attr <- std.attr[std.attr != "names"]
@@ -349,8 +343,7 @@ str.default <-
 		    std.attr <- c(std.attr, "class")
 		}
 		str1 <-
-		    if(is.ts) str1.ts(object, le.str)
-		    else if(le == 1 && !is.array(object)) paste(NULL, mod)
+		    if(le == 1 && !is.array(object)) paste(NULL, mod)
 		    else paste0(" ", mod, if(le>0)" ", le.str)
 	    } else { ##-- not atomic, but vector: #
 		mod <- typeof(object)#-- typeof(.) is more precise than mode!
@@ -384,8 +377,10 @@ str.default <-
 #	    v.len <- switch(t.cl,rts=.8, cts=.6, its=.9) * v.len
 #	    class(object) <- if(any(!b.ts)) cl[!b.ts]
 #	    std.attr <- c(std.attr, "tspar")
-	} else if(is.ts) {
-	    str1 <- str1.ts(object, le.str)
+	} else if(stats::is.ts(object)) {
+	    tsp.a <- stats::tsp(object)
+	    str1 <- paste0(" Time-Series ", le.str, " from ", format(tsp.a[1L]),
+			   " to ", format(tsp.a[2L]), ":")
 	    std.attr <- c("tsp","class") #- "names"
 	} else if (is.factor(object)) {
 	    nl <- length(lev.att <- levels(object))

@@ -1,7 +1,6 @@
 useDynLib("grid", .registration = TRUE)
 
 import(grDevices)
-importFrom(utils, str)
 
 export(
        "arcCurvature", "arrow",

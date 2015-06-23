@@ -91,7 +91,7 @@ contrasts <- function (x, contrasts = TRUE, sparse = FALSE)
 	    stop(gettextf("%s needs package 'Matrix' correctly installed",
                           "contr*(.., sparse=TRUE)"),
                  domain = NA)
-	methods::new("ddiMatrix", diag = "U", Dim = d, Dimnames = dn)
+	new("ddiMatrix", diag = "U", Dim = d, Dimnames = dn)
     } else
 	array(c(rep.int(c(1, numeric(n)), n-1L), 1), d, dn)
 }
@@ -102,7 +102,7 @@ contrasts <- function (x, contrasts = TRUE, sparse = FALSE)
 	stop(gettextf("%s needs package 'Matrix' correctly installed",
                       "contr*(.., sparse=TRUE)"),
              domain = NA)
-    methods::as(m, "sparseMatrix")
+    as(m, "sparseMatrix")
 }
 
 ## contr.poly() is in ./contr.poly.R

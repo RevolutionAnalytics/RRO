@@ -396,6 +396,9 @@ Rd2txt <-
         linestart <<- trail
     }
 
+    blanks <- function(n)
+	if (n) paste(rep_len(" ", n), collapse="") else ""
+
     flushBuffer <- function() {
     	if (!length(buffer)) return()
 
@@ -431,10 +434,10 @@ Rd2txt <-
 	} else {  # Not wrapping
 	    if (keepFirstIndent) {
 		if (length(buffer) > 1L)
-		    buffer[-1L] <<- paste0(strrep(" ", indent), buffer[-1L])
+		    buffer[-1L] <<- paste0(blanks(indent), buffer[-1L])
 		keepFirstIndent <- FALSE
 	    } else
-		buffer <<- paste0(strrep(" ", indent), buffer)
+		buffer <<- paste0(blanks(indent), buffer)
 	}
 
     	if (length(buffer)) WriteLines(buffer, con, outputEncoding)
@@ -771,7 +774,7 @@ Rd2txt <-
         }
         result <- matrix("", sum(lines), cols)
         for (i in seq_len(cols))
-            result[, i] <- strrep(" ", widths[i])
+            result[, i] <- blanks(widths[i])
         firstline <- c(1L, 1L+cumsum(lines))
         for (i in seq_along(entries)) {
             e <- entries[[i]]
@@ -856,7 +859,7 @@ Rd2txt <-
                                   indent <<- max(opts$minIndent,
                                                  indent + opts$extraIndent)
                                   keepFirstIndent <<- TRUE
-                                  putw(strrep(" ", indent0),
+                                  putw(paste(rep_len(" ", indent0), collapse=""),
                                        frmt(paste0(DLlab),
                                             justify="left", width=indent),
                                        " ")
@@ -915,7 +918,7 @@ Rd2txt <-
             return()
     	save <- c(indent, sectionLevel, keepFirstIndent, dropBlank, wrapping)
     	blankLine(min(sectionLevel, 1L))
-    	titlePrefix <- strrep("  ", sectionLevel)
+    	titlePrefix <- paste(rep("  ", sectionLevel), collapse="")
     	opts <- Rd2txt_options()
         indent <<- opts$sectionIndent + opts$sectionExtra*sectionLevel
         sectionLevel <<- sectionLevel + 1
@@ -988,8 +991,8 @@ Rd2txt <-
 		right <- paste0(right, "(", encoding, ")")
 	    pad <- max(HDR_WIDTH - nchar(left, "w") - nchar(mid, "w") - nchar(right, "w"), 0)
 	    pad0 <- pad %/% 2L
-	    pad1 <- strrep(" ", pad0)
-	    pad2 <- strrep(" ", pad - pad0)
+	    pad1 <- paste(rep.int(" ", pad0), collapse = "")
+	    pad2 <- paste(rep.int(" ", pad - pad0), collapse = "")
 	    putf(paste0(left, pad1, mid, pad2, right, "\n\n"))
 	}
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.9.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51+0100\n"
+"POT-Creation-Date: 2015-06-06 13:58+0100\n"
 "PO-Revision-Date: 2015-03-26 19:21-0600\n"
 "Last-Translator: Alexey Shipunov <dactylorhiza@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -109,28 +109,24 @@ msgstr "неправильная форма при проверке унарного минуса"
 msgid "Function '%s' is not in the derivatives table"
 msgstr "Функция '%s' отсутствует в таблице производных"
 
-#: deriv.c:641
-msgid "'expr' must be an expression or call"
-msgstr ""
-
-#: deriv.c:644
+#: deriv.c:642
 msgid "variable must be a character string"
 msgstr "переменная должна быть текстовой строкой"
 
-#: deriv.c:646
+#: deriv.c:644
 msgid "only the first element is used as variable name"
 msgstr "только первый элемент использован как имя переменной"
 
-#: deriv.c:659
+#: deriv.c:657
 #, c-format
 msgid "invalid expression in '%s'"
 msgstr "неправильное выражение в '%s'"
 
-#: deriv.c:937 model.c:99
+#: deriv.c:935 model.c:99
 msgid "invalid variable names"
 msgstr "неправильные имена переменных"
 
-#: deriv.c:946
+#: deriv.c:944
 msgid "invalid tag"
 msgstr "неправильный тег"
 

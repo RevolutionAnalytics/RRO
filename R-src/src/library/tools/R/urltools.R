@@ -21,12 +21,12 @@ function()
 {
     ## See <http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml>.
     baseurl <- "http://www.iana.org/assignments/uri-schemes/"
-    permanent <- utils::read.csv(url(paste0(baseurl, "uri-schemes-1.csv")),
-                                 stringsAsFactors = FALSE)
-    provisional <- utils::read.csv(url(paste0(baseurl, "uri-schemes-2.csv")),
-                                   stringsAsFactors = FALSE)
-    historical <- utils::read.csv(url(paste0(baseurl, "uri-schemes-3.csv")),
-                                  stringsAsFactors = FALSE)
+    permanent <- read.csv(url(paste0(baseurl, "uri-schemes-1.csv")),
+                          stringsAsFactors = FALSE)
+    provisional <- read.csv(url(paste0(baseurl, "uri-schemes-2.csv")),
+                            stringsAsFactors = FALSE)
+    historical <- read.csv(url(paste0(baseurl, "uri-schemes-3.csv")),
+                           stringsAsFactors = FALSE)
     db <- rbind(permanent, provisional, historical)
     db$Category <-
         rep.int(c("permanent", "provisional", "historical"),
@@ -200,41 +200,20 @@ function(dir, installed = FALSE)
 }
 
 url_db_from_package_README_md <-
-function(dir, installed = FALSE)
+function(dir)
 {
-    urls <- path <- character()
-    rfile <- Filter(file.exists,
-                    c(if(!installed) file.path("inst", "README.md"),
-                      "README.md"))[1L]
-    if(!is.na(rfile) && nzchar(Sys.which("pandoc"))) {
-        path <- .file_path_relative_to_dir(rfile, dir)
-        tfile <- tempfile("README", fileext = ".html")
+    urls <- character()
+    if(file.exists(rfile <- file.path(dir, "README.md")) &&
+       nzchar(Sys.which("pandoc"))) {
+        tfile <- tempfile("README", fileext=".html")
         on.exit(unlink(tfile))
-        out <- .pandoc_md_for_CRAN(rfile, tfile)
+        out <- .pandoc_README_md_for_CRAN(rfile, tfile)
         if(!out$status) {
             urls <- .get_urls_from_HTML_file(tfile)
         }
     }
-    url_db(urls, rep.int(path, length(urls)))
-}
+    url_db(urls, rep.int("README.md", length(urls)))
 
-url_db_from_package_NEWS_md <-
-function(dir, installed = FALSE)
-{
-    urls <- path <- character()
-    nfile <- Filter(file.exists,
-                    c(if(!installed) file.path("inst", "NEWS.md"),
-                      "NEWS.md"))[1L]
-    if(!is.na(nfile) && nzchar(Sys.which("pandoc"))) {
-        path <- .file_path_relative_to_dir(nfile, dir)
-        tfile <- tempfile("NEWS", fileext = ".html")
-        on.exit(unlink(tfile))
-        out <- .pandoc_md_for_CRAN(nfile, tfile)
-        if(!out$status) {
-            urls <- .get_urls_from_HTML_file(tfile)
-        }
-    }
-    url_db(urls, rep.int(path, length(urls)))
 }
 
 url_db_from_package_sources <-
@@ -247,9 +226,7 @@ function(dir, add = FALSE) {
     if(requireNamespace("XML", quietly = TRUE)) {
         db <- rbind(db,
                     url_db_from_package_HTML_files(dir),
-                    url_db_from_package_README_md(dir),
-                    url_db_from_package_NEWS_md(dir)
-                    )
+                    url_db_from_package_README_md(dir))
     }
     if(add)
         db$Parent <- file.path(basename(dir), db$Parent)
@@ -275,12 +252,7 @@ function(packages, lib.loc = NULL, verbose = FALSE)
         if(requireNamespace("XML", quietly = TRUE)) {
             db <- rbind(db,
                         url_db_from_package_HTML_files(dir,
-                                                       installed = TRUE),
-                        url_db_from_package_README_md(dir,
-                                                      installed = TRUE),
-                        url_db_from_package_NEWS_md(dir,
-                                                    installed = TRUE)
-                        )
+                                                       installed = TRUE))
         }
         db$Parent <- file.path(p, db$Parent)
         db
@@ -296,8 +268,8 @@ function()
     ## See
     ## <http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
     baseurl <- "http://www.iana.org/assignments/http-status-codes/"
-    db <- utils::read.csv(url(paste0(baseurl, "http-status-codes-1.csv")),
-                          stringsAsFactors = FALSE)
+    db <- read.csv(url(paste0(baseurl, "http-status-codes-1.csv")),
+                   stringsAsFactors = FALSE)
     ## Drop "Unassigned".
     db[db$Description != "Unassigned", ]
 }

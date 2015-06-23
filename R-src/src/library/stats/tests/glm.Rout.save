@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2015-06-14 r68512) -- "Unsuffered Consequences"
+R version 3.2.0 Patched (2015-06-06 r68483) -- "Full of Ingredients"
 Copyright (C) 2015 The R Foundation for Statistical Computing
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -29,4 +29,4 @@ Warning messages:
 > 
 > proc.time()
    user  system elapsed 
-  0.124   0.013   0.128 
+  0.151   0.015   0.155 

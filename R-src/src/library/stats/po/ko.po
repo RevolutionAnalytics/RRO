@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.2.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51+0100\n"
+"POT-Creation-Date: 2015-06-06 13:58+0100\n"
 "PO-Revision-Date: 2015-03-30 14:01-0600\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
@@ -111,28 +111,24 @@ msgstr ""
 msgid "Function '%s' is not in the derivatives table"
 msgstr "함수 '%s'는 미분함수 목록에 없습니다"
 
-#: deriv.c:641
-msgid "'expr' must be an expression or call"
-msgstr ""
-
-#: deriv.c:644
+#: deriv.c:642
 msgid "variable must be a character string"
 msgstr "변수는 반드시 문자열이어야 합니다"
 
-#: deriv.c:646
+#: deriv.c:644
 msgid "only the first element is used as variable name"
 msgstr "오로지 첫번째 요소만이 변수명으로서 사용되었습니다"
 
-#: deriv.c:659
+#: deriv.c:657
 #, c-format
 msgid "invalid expression in '%s'"
 msgstr "'%s'에 유효하지 않은 표현식이 있습니다"
 
-#: deriv.c:937 model.c:99
+#: deriv.c:935 model.c:99
 msgid "invalid variable names"
 msgstr "유효하지 않은 변수명입니다"
 
-#: deriv.c:946
+#: deriv.c:944
 msgid "invalid tag"
 msgstr "유효하지 않은 태그입니다"
 

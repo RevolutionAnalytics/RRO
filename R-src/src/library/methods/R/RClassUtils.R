@@ -752,7 +752,8 @@ reconcilePropertiesAndPrototype <-
       }
       ## check for conflicts in the slots
       allProps <- properties
-      for(cl in superClasses) {
+      for(i in seq_along(superClasses)) {
+          cl <- superClasses[[i]]
           clDef <- getClassDef(cl, where)
           if(is(clDef, "classRepresentation")) {
               theseProperties <- getSlots(clDef)
@@ -991,7 +992,8 @@ possibleExtends <- function(class1, class2, ClassDef1, ClassDef2)
             if(!.identC(class(ClassDef2), "classRepresentation") &&
                isClassUnion(ClassDef2))
                 ## a simple TRUE iff class1 or one of its superclasses belongs to the union
-		            i <- any(c(class1, nm1) %in% names(ext))
+		i <- as.logical(anyDuplicated(c(class1, unique(nm1),
+						names(ext))))
             else {
                 ## class1 could be multiple classes here.
                 ## I think we want to know if any extend
@@ -1934,7 +1936,8 @@ assign("#HAS_DUPLICATE_CLASS_NAMES", FALSE, envir = .classTable)
             pkg <- prev@package # start a per-package list
             if(identical(pkg, newpkg)) { # redefinition
                 ## cache for S3, to override possible previous cache
-                .cache_class(name, .extendsForS3(def))
+                base:::.cache_class(name, .extendsForS3(def))
+##                base:::.cache_class(name, extends(def))
                 return(assign(name, def, envir = .classTable))
             }
             else if(.simpleDuplicateClass(def, prev))
@@ -1964,12 +1967,12 @@ assign("#HAS_DUPLICATE_CLASS_NAMES", FALSE, envir = .classTable)
     if(length(supers) != length(prevSupers) ||
        any(is.na(match(supers, prevSupers))))
         return(FALSE)
-    verbose <- getOption("verbose")
+    warnLevel <- getOption("warn")
     S3 <- "oldClass" %in% supers
     if(S3) {
         ## it is possible one  of these is inconsistent, but unlikely
         ## and we will get here often from multiple setOldClass(...)'s
-        if(verbose)
+        if(warnLevel)
             message(gettextf("Note: the specification for S3 class %s in package %s seems equivalent to one from package %s: not turning on duplicate class definitions for this class.",
                              dQuote(def@className),
                              sQuote(def@package),
@@ -1983,7 +1986,7 @@ assign("#HAS_DUPLICATE_CLASS_NAMES", FALSE, envir = .classTable)
     if(dupsExist) {
         dups <- match(supers, multipleClasses(), 0) > 0
         if(any(dups)) {
-            if(verbose)
+            if(warnLevel)
                 message(gettextf("Note: some superclasses of class %s in package %s have duplicate definitions.  This definition is not being treated as equivalent to that from package %s",
                                  dQuote(def@className),
                                  sQuote(def@package),
@@ -2008,7 +2011,7 @@ assign("#HAS_DUPLICATE_CLASS_NAMES", FALSE, envir = .classTable)
               as.character(packageSlot(prevWhat)))))
             return(FALSE)
     }
-    if(verbose)
+    if(warnLevel)
         message(gettextf("Note: the specification for class %s in package %s seems equivalent to one from package %s: not turning on duplicate class definitions for this class.",
                          dQuote(def@className),
                          sQuote(def@package),
@@ -2269,9 +2272,9 @@ classesToAM <- function(classes, includeSubclasses = FALSE,
   if(length(abbr) != 1 || is.na(abbr))
     stop("argument 'abbreviate' must be 0, 1, 2, or 3")
   if(abbr %% 2)
-    dimnames(value)[[1]] <- abbreviate(dimnames(value)[[1]])
+    dimnames(value)[[1]] <- base::abbreviate(dimnames(value)[[1]])
   if(abbr %/% 2)
-    dimnames(value)[[2]] <- abbreviate(dimnames(value)[[2]])
+    dimnames(value)[[2]] <- base::abbreviate(dimnames(value)[[2]])
   value
 }
 

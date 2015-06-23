@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.1.1 \n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51+0100\n"
+"POT-Creation-Date: 2015-06-06 13:58+0100\n"
 "PO-Revision-Date: 2015-03-27 15:09+0900 \n"
 "Last-Translator: Masafumi  \n"
 "Language-Team: RjpWiki Message Translation Team <mokada@md.tsukuba.ac.jp> \n"
@@ -106,28 +106,24 @@ msgstr " 単項のマイナスの検査に不正な形式があります "
 msgid "Function '%s' is not in the derivatives table"
 msgstr " 関数 '%s' は導関数の表中にありません "
 
-#: deriv.c:641
-msgid "'expr' must be an expression or call"
-msgstr ""
-
-#: deriv.c:644
+#: deriv.c:642
 msgid "variable must be a character string"
 msgstr " 変数は文字列でなければいけません "
 
-#: deriv.c:646
+#: deriv.c:644
 msgid "only the first element is used as variable name"
 msgstr " 最初の要素だけが変数名として使われました "
 
-#: deriv.c:659
+#: deriv.c:657
 #, c-format
 msgid "invalid expression in '%s'"
 msgstr " '%s' 中の式が不正です "
 
-#: deriv.c:937 model.c:99
+#: deriv.c:935 model.c:99
 msgid "invalid variable names"
 msgstr " 変数名が不正です "
 
-#: deriv.c:946
+#: deriv.c:944
 msgid "invalid tag"
 msgstr " タグが不正です "
 

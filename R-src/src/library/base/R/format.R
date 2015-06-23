@@ -23,8 +23,7 @@ format.default <-
 	     justify = c("left", "right", "centre", "none"),
 	     width = NULL, na.encode = TRUE, scientific = NA,
 	     big.mark = "", big.interval = 3L,
-	     small.mark = "", small.interval = 5L,
-	     decimal.mark = getOption("OutDec"),
+	     small.mark = "", small.interval = 5L, decimal.mark = ".",
 	     zero.print = NULL, drop0trailing = FALSE, ...)
 {
     justify <- match.arg(justify)
@@ -46,18 +45,18 @@ format.default <-
     } else {
 	switch(mode(x),
 	       NULL = "NULL",
-	       character = .Internal(format(x, trim, digits, nsmall, width, adj,
-					    na.encode, scientific, NA_character_)),
+	       character = .Internal(format(x, trim, digits, nsmall, width,
+					    adj, na.encode, scientific)),
 	       call =, expression =, "function" =, "("  = deparse(x),
 	       raw = as.character(x),
            {
 	       ## else: logical, numeric, complex, .. :
-	       prettyNum(.Internal(format(x, trim, digits, nsmall, width, 3L,
-					  na.encode, scientific, decimal.mark)),
+	       prettyNum(.Internal(format(x, trim, digits, nsmall, width,
+					  3L, na.encode, scientific)),
 			 big.mark = big.mark, big.interval = big.interval,
 			 small.mark = small.mark,
 			 small.interval = small.interval,
-			 decimal.mark = decimal.mark, input.d.mark = decimal.mark,
+			 decimal.mark = decimal.mark,
 			 zero.print = zero.print, drop0trailing = drop0trailing,
 			 is.cmplx = is.complex(x),
 			 preserve.width = if (trim) "individual" else "common")
@@ -128,7 +127,7 @@ formatC <- function (x, digits = NULL, width = NULL,
     if (is.null(mode))	  mode <- storage.mode(x)
     else if (any(mode == c("double", "real", "integer")))  {
       ## for .C call later on
-	if(mode == "real") mode <- "double"
+	if(mode=="real") mode <- "double"
 	storage.mode(x) <- mode
     }
     else if (mode != "character")
@@ -164,10 +163,10 @@ formatC <- function (x, digits = NULL, width = NULL,
     else if(digits < 0L)
 	digits <- 6L
     else {
-	maxDigits <- if(format != "f") 50L else
-	    ceiling(-(.Machine$double.neg.ulp.digits + .Machine$double.min.exp) / log2(10))
+	maxDigits <- if(format != "f") 50L else ceiling(-(.Machine$double.neg.ulp.digits + .Machine$double.min.exp) / log2(10))
 	if (digits > maxDigits) {
-            warning(gettextf("'digits' reduced to %d", maxDigits), domain = NA)
+            warning(gettextf("'digits' reduced to %d", maxDigits),
+                    domain = NA)
 	    digits <- maxDigits
 	}
     }
@@ -201,13 +200,13 @@ formatC <- function (x, digits = NULL, width = NULL,
                            i.strlen))
     if (some.special) r[!Ok] <- format.char(rQ, width = width, flag = flag)
 
-    if(nzchar(big.mark) || nzchar(small.mark) || decimal.mark != "." ||
+    if(nzchar(big.mark) || nzchar(small.mark) || nzchar(decimal.mark) ||
        !is.null(zero.print) || drop0trailing)
 	r <- prettyNum(r, big.mark = big.mark, big.interval = big.interval,
 		       small.mark = small.mark, small.interval = small.interval,
-		       decimal.mark = decimal.mark, input.d.mark = ".",
-		       preserve.width = preserve.width, zero.print = zero.print,
-		       drop0trailing = drop0trailing, is.cmplx = FALSE)
+		       decimal.mark = decimal.mark, preserve.width = preserve.width,
+		       zero.print = zero.print, drop0trailing = drop0trailing,
+		       is.cmplx = FALSE)
 
     if (!is.null(x.atr <- attributes(x)))
 	attributes(r) <- x.atr
@@ -251,7 +250,7 @@ format.data.frame <- function(x, ..., justify = "none")
     if(any(m)) cn[m] <- paste0("..dfd.", cn[m])
     ## This requires valid symbols for the columns, so we need to
     ## truncate any of more than 256 bytes.
-    long <- nchar(cn, "bytes", keepNA = FALSE) > 256L
+    long <- nchar(cn, "bytes") > 256L
     cn[long] <- paste(substr(cn[long], 1L, 250L), "...")
     names(rval) <- cn
     rval$check.names <- FALSE
@@ -281,41 +280,20 @@ format.AsIs <- function(x, width = 12, ...)
     format.default(rvec, justify = "right")
 }
 
-.format.zeros <- function(x, zero.print, nx = suppressWarnings(as.numeric(x))) {
-    if (!is.null(zero.print) && any(i0 <- nx == 0 & !is.na(nx))) {
-	## print zeros according to 'zero.print' (logical or string):
-	if(length(zero.print) > 1L) stop("'zero.print' has length > 1")
-	if(is.logical(zero.print))
-	    zero.print <- if(zero.print) "0" else " "
-	if(!is.character(zero.print))
-	    stop("'zero.print' must be character, logical or NULL")
-	nz <- nchar(zero.print, "c")
-	nc <- nchar(x[i0], "c")
-	ind0 <- regexpr("0", x[i0], fixed = TRUE)# first '0' in string
-	substr(x[i0], ind0, (i1 <- ind0+nz-1L)) <- zero.print
-	substr(x[i0], ind0+nz, nc) <- strrep(" ", nc - i1)
-    }
-    x
-}
-
 prettyNum <-
     function(x,
 	     big.mark = "", big.interval = 3L,
 	     small.mark = "", small.interval = 5L,
-             decimal.mark = getOption("OutDec"), input.d.mark = ".",
+	     decimal.mark = ".",
 	     preserve.width = c("common", "individual", "none"),
 	     zero.print = NULL, drop0trailing = FALSE, is.cmplx = NA, ...)
 {
-    if(notChar <- !is.character(x)) {
-	is.cmplx <- is.complex(x)
-	x <- vapply(x, format, "",
-		    big.mark=big.mark, big.interval=big.interval,
-		    small.mark=small.mark, small.interval=small.interval,
-		    decimal.mark=decimal.mark, zero.print=zero.print,
-		    drop0trailing=drop0trailing, ...)
+    if(!is.character(x)) {
+        is.cmplx <- is.complex(x)
+	x <- vapply(x, format, "", ...)
     }
-    ## be fast in trivial case, when all options have their default, or "match"
-    nMark <- big.mark == "" && small.mark == "" && (notChar || decimal.mark == input.d.mark)
+    ## be fast in trivial case (when all options have their default):
+    nMark <- big.mark== "" && small.mark== "" && decimal.mark== "."
 
     if (identical(big.mark, decimal.mark))
         warning(gettextf("'big.mark' and 'decimal.mark' are both '%s', which could be confusing",
@@ -326,8 +304,24 @@ prettyNum <-
 	return(x)
 
     ## else
+    if (!is.null(zero.print) && any(i0 <- {nx <- suppressWarnings(as.numeric(x))
+					   nx == 0 & !is.na(nx)})) {
+	## print zeros according to 'zero.print' (logical or string):
+	if(length(zero.print) > 1L) stop("'zero.print' has length > 1")
+	if(is.logical(zero.print))
+	    zero.print <- if(zero.print) "0" else " "
+	if(!is.character(zero.print))
+	    stop("'zero.print' must be character, logical or NULL")
+	blank.chars <- function(no) # as in formatC()
+	    vapply(no+1L, function(n) paste(character(n), collapse=" "), "")
+	nz <- nchar(zero.print, "c")
+	nc <- nchar(x[i0], "c")
+	ind0 <- regexpr("0", x[i0], fixed = TRUE)# first '0' in string
+	substr(x[i0],ind0, (i1 <- ind0+nz-1L)) <- zero.print
+	substr(x[i0],ind0+nz, nc) <- blank.chars(nc - i1)
+    }
     if(nMark && !drop0trailing)# zero.print was only non-default
-	return(.format.zeros(x, zero.print))
+	return(x)
 
     ## else
     if(is.na(is.cmplx)) { ## find if 'x' is format from a *complex*
@@ -336,14 +330,12 @@ prettyNum <-
 	    if(all(ina)) FALSE
 	    else length(grep("[0-9].*[-+][0-9].*i$", x)) > 0
     }
-    preserve.width <- match.arg(preserve.width)
     if(is.cmplx) {
 	## should be rare .. taking an easy route
-        x <- .format.zeros(x, zero.print) # FIXME - or only at return(.) time ??
 	z.sp <- strsplit(sub("([0-9] *)([-+])( *[0-9])",
 			     "\\1::\\2::\\3", x), "::", fixed=TRUE)
 	## be careful, if x had an  "	NA":
-	i3 <- lengths(z.sp) == 3L # those are re + im *i
+	i3 <- vapply(z.sp, length, 0L) == 3L # those are re + im *i
 	if(any(i3)) {
 	    z.sp <- z.sp[i3]
 	    z.im <- vapply(z.sp, `[[`, "", 3L)
@@ -355,8 +347,7 @@ prettyNum <-
 			prettyNum(.,
 				  big.mark=big.mark, big.interval=big.interval,
 				  small.mark=small.mark, small.interval=small.interval,
-				  decimal.mark=decimal.mark, input.d.mark=input.d.mark,
-				  preserve.width=preserve.width,
+				  decimal.mark=decimal.mark, preserve.width=preserve.width,
 				  zero.print=zero.print, drop0trailing=drop0trailing,
 				  is.cmplx=FALSE, ...))
 	    r[[2]][has.i] <- paste0(r[[2]][has.i], "i")
@@ -364,18 +355,17 @@ prettyNum <-
 	}
 	return(x)
     }
-    if(nchar(input.d.mark) == 0)
-        stop("'input.d.mark' has no characters")
-    x.sp <- strsplit(x, input.d.mark, fixed=TRUE)
-    B. <- vapply(x.sp, `[`, "", 1L)	# Before input.d.mark (".")
+    preserve.width <- match.arg(preserve.width)
+    x.sp <- strsplit(x, ".", fixed=TRUE)
+    revStr <- function(cc)
+	vapply(lapply(strsplit(cc,NULL), rev), paste, "", collapse="")
+    B. <- vapply(x.sp, `[`, "", 1L)	# Before "."
     A. <- vapply(x.sp, `[`, "", 2L)	# After  "." ; empty == NA
     if(any(iN <- is.na(A.))) A.[iN] <- ""
 
     if(nzchar(big.mark) &&
        length(i.big <- grep(paste0("[0-9]{", big.interval + 1L,",}"), B.))
        ) { ## add 'big.mark' in decimals before "." :
-        revStr <- function(cc)
-            vapply(lapply(strsplit(cc,NULL), rev), paste, "", collapse="")
 	B.[i.big] <-
 	    revStr(gsub(paste0("([0-9]{",big.interval,"})\\B"),
 			paste0("\\1",revStr(big.mark)), revStr(B.[i.big])))
@@ -397,8 +387,7 @@ prettyNum <-
 	iN <- !nzchar(A.)
     }
     ## extraneous trailing dec.marks: paste(B., A., sep = decimal.mark)
-    A. <- .format.zeros(paste0(B., c(decimal.mark, "")[iN+ 1L], A.),
-			zero.print)
+    A. <- paste0(B., c(decimal.mark, "")[iN+ 1L], A.)
     if(preserve.width != "none") {
 	nnc <- nchar(A., "c")
 	d.len <- nnc - nchar(x, "c") # extra space added by 'marks' above

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 2.3.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51\n"
+"POT-Creation-Date: 2015-06-06 13:58\n"
 "PO-Revision-Date: 2011-03-26 08:54-0300\n"
 "Last-Translator: Fernando Henrique <pessoal@fernandohrosa.com.br>\n"
 "Language-Team: http://www.feferraz.net/br/P/Projeto_Traducao_R_Portugues\n"
@@ -1849,6 +1849,12 @@ msgstr[0] "método S3 %s foi declarado no NAMESPACE mas não encontrado"
 msgstr[1] "métodos S3 %s foram declarados no NAMESPACE mas não encontrados"
 
 #, fuzzy
+msgid "extra argument %s will be disregarded"
+msgid_plural "extra arguments %s will be disregarded"
+msgstr[0] "argumento 'drop' será ignorado"
+msgstr[1] "argumento 'drop' será ignorado"
+
+#, fuzzy
 msgid "%s is not TRUE"
 msgid_plural "%s are not all TRUE"
 msgstr[0] "T usado ao invés de TRUE"
@@ -1860,22 +1866,12 @@ msgstr[0] "Mensagem de aviso:\n"
 msgstr[1] "Mensagens de aviso:\n"
 
 #, fuzzy
-msgid ""
-"In %s :\n"
-" extra argument %s will be disregarded"
-msgid_plural ""
-"In %s :\n"
-" extra arguments %s will be disregarded"
-msgstr[0] "argumento 'drop' será ignorado"
-msgstr[1] "argumento 'drop' será ignorado"
+#~ msgid "cannot be unloaded."
+#~ msgstr "espaço de nomes não pode ser descarregado"
 
 #, fuzzy
 #~ msgid "re-exports %s not exported by %s"
 #~ msgstr "objeto %s não foi exportado por 'namespace:%s'"
-
-#, fuzzy
-#~ msgid "cannot be unloaded."
-#~ msgstr "espaço de nomes não pode ser descarregado"
 
 #, fuzzy
 #~ msgid "package %s %s was found, but %s %s is required by %s"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.0.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51+0100\n"
+"POT-Creation-Date: 2015-06-06 13:58+0100\n"
 "PO-Revision-Date: 2011-12-01 20:24+0200\n"
 "Last-Translator: Joe <joedalton2@yahoo.dk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,29 +104,25 @@ msgstr ""
 msgid "Function '%s' is not in the derivatives table"
 msgstr ""
 
-#: deriv.c:641
-msgid "'expr' must be an expression or call"
-msgstr ""
-
-#: deriv.c:644
+#: deriv.c:642
 msgid "variable must be a character string"
 msgstr ""
 
-#: deriv.c:646
+#: deriv.c:644
 msgid "only the first element is used as variable name"
 msgstr ""
 
-#: deriv.c:659
+#: deriv.c:657
 #, c-format
 msgid "invalid expression in '%s'"
 msgstr ""
 
-#: deriv.c:937 model.c:99
+#: deriv.c:935 model.c:99
 #, fuzzy
 msgid "invalid variable names"
 msgstr "ugyldig værdi for lag.max"
 
-#: deriv.c:946
+#: deriv.c:944
 #, fuzzy
 msgid "invalid tag"
 msgstr "ugyldig argumenttype"

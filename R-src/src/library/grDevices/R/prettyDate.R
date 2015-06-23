@@ -159,7 +159,6 @@ trunc_POSIXt <-
              start.on.monday = TRUE)
 {
     x <- as.POSIXlt(x)
-    ## Why is base:: here?  The namespace implicitly imports base
     if (units %in% c("secs", "mins", "hours", "days"))
         return(base::trunc.POSIXt(x, units))
     x <- base::trunc.POSIXt(x, "days")

@@ -1320,16 +1320,21 @@ static SEXP ascommon(SEXP call, SEXP u, SEXPTYPE type)
     else if (isVector(u) || isList(u) || isLanguage(u)
 	     || (isSymbol(u) && type == EXPRSXP)) {
 	v = u;
+	/* this duplication may appear not to be needed in all cases,
+	   but beware that other code relies on it.
+	   (E.g  we clear attributes in do_asvector and do_asatomic.)
+
+	   Generally coerceVector will copy over attributes.
+	*/
 	if (type != ANYSXP && TYPEOF(u) != type) v = coerceVector(u, type);
-	else v = u;
-  
+	else if (MAYBE_REFERENCED(u)) v = duplicate(u);
+
 	/* drop attributes() and class() in some cases for as.pairlist:
 	   But why?  (And who actually coerces to pairlists?)
 	 */
 	if ((type == LISTSXP) &&
 	    !(TYPEOF(u) == LANGSXP || TYPEOF(u) == LISTSXP ||
 	      TYPEOF(u) == EXPRSXP || TYPEOF(u) == VECSXP)) {
-      if (MAYBE_REFERENCED(v)) v = shallow_duplicate(v);
 	    CLEAR_ATTRIB(v);
 	}
 	return v;
@@ -1909,7 +1914,6 @@ SEXP attribute_hidden do_is(SEXP call, SEXP op, SEXP args, SEXP rho)
  * It seems to make more sense to check for a dim attribute.
  */
 
-// is.vector(x, mode) :
 SEXP attribute_hidden do_isvector(SEXP call, SEXP op, SEXP args, SEXP rho)
 {
     SEXP ans, a, x;
@@ -2134,8 +2138,8 @@ static Rboolean anyNA(SEXP call, SEXP op, SEXP args, SEXP env)
     case LISTSXP:
     {
 	SEXP call2, args2, ans;
-	args2 = PROTECT(shallow_duplicate(args));
-	call2 = PROTECT(shallow_duplicate(call));
+	args2 = PROTECT(duplicate(args));
+	call2 = PROTECT(duplicate(call));
 	for (i = 0; i < n; i++, x = CDR(x)) {
 	    SETCAR(args2, CAR(x)); SETCADR(call2, CAR(x));
 	    if ((DispatchOrEval(call2, op, "anyNA", args2, env, &ans, 0, 1)
@@ -2150,8 +2154,8 @@ static Rboolean anyNA(SEXP call, SEXP op, SEXP args, SEXP env)
     case VECSXP:
     {
 	SEXP call2, args2, ans;
-	args2 = PROTECT(shallow_duplicate(args));
-	call2 = PROTECT(shallow_duplicate(call));
+	args2 = PROTECT(duplicate(args));
+	call2 = PROTECT(duplicate(call));
 	for (i = 0; i < n; i++) {
 	    SETCAR(args2, VECTOR_ELT(x, i)); SETCADR(call2, VECTOR_ELT(x, i));
 	    if ((DispatchOrEval(call2, op, "anyNA", args2, env, &ans, 0, 1)

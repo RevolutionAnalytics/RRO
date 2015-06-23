@@ -709,7 +709,14 @@ pathListing <- function(x, gvpSep=" | ", gAlign=TRUE) {
     }
 
     padPrefix <- function(path, maxLen) {
-        paste0(path, strrep(" ", maxLen - nchar(path)))
+        numSpaces <- maxLen - nchar(path)
+        if (length(path) == 1L) {
+            paste0(path, paste(rep.int(" ", numSpaces), collapse=""))
+        } else {
+            padding <- rep(" ", length(path))
+            padding <- mapply(rep.int, padding, numSpaces)
+            paste0(path, sapply(padding, paste, collapse=""))
+        }
     }
 
     if (!inherits(x, "flatGridListing"))

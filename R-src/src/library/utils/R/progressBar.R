@@ -41,11 +41,11 @@ txtProgressBar <-
         .val <<- value
         nb <- round(width*(value - min)/(max - min))
         if(.nb < nb) {
-            cat(strrep(char, nb-.nb), file = file)
+            cat(paste(rep.int(char, nb-.nb), collapse=""), file = file)
             flush.console()
         } else if (.nb > nb) {
-            cat("\r", strrep(" ", .nb * nw),
-                "\r", strrep(char, nb),
+            cat("\r", paste(rep.int(" ", .nb*nw), collapse=""),
+                "\r", paste(rep.int(char, nb), collapse=""),
                 sep = "", file = file)
             flush.console()
         }
@@ -57,12 +57,12 @@ txtProgressBar <-
         .val <<- value
         nb <- round(width*(value - min)/(max - min))
         if(.nb <= nb) {
-            cat("\r", strrep(char, nb),
+            cat("\r", paste(rep.int(char, nb), collapse=""),
                 sep = "", file = file)
             flush.console()
         } else {
-            cat("\r", strrep(" ", .nb * nw),
-                "\r", strrep(char, nb),
+            cat("\r", paste(rep.int(" ", .nb*nw), collapse=""),
+                "\r", paste(rep.int(char, nb), collapse=""),
                 sep = "", file = file)
             flush.console()
         }
@@ -75,7 +75,7 @@ txtProgressBar <-
         nb <- round(width*(value - min)/(max - min))
         pc <- round(100*(value - min)/(max - min))
         if(nb == .nb && pc == .pc) return()
-        cat(paste0("\r  |", strrep(" ", nw*width+6)),
+        cat(paste(c("\r  |", rep.int(" ", nw*width+6)), collapse=""),
             file = file)
         cat(paste(c("\r  |",
                     rep.int(char, nb),

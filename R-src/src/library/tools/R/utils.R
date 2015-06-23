@@ -1344,7 +1344,7 @@ function(parent = parent.frame(), fixup = FALSE)
     env <- list2env(as.list(base::.GenericArgsEnv, all.names=TRUE),
                     hash=TRUE, parent=parent)
     if(fixup) {
-        ## now fixup the operators from (e1,e2) to (x,y)
+        ## now fixup the operators
         for(f in c('+', '-', '*', '/', '^', '%%', '%/%', '&', '|',
                    '==', '!=', '<', '<=', '>=', '>')) {
             fx <- get(f, envir = env)
@@ -1357,7 +1357,6 @@ function(parent = parent.frame(), fixup = FALSE)
 
 ### ** .make_S3_primitive_nongeneric_env
 
-## why not just use  base::.ArgsEnv -- is the parent really important if(is_base)?
 .make_S3_primitive_nongeneric_env <-
 function(parent = parent.frame())
 {
@@ -1367,16 +1366,17 @@ function(parent = parent.frame())
              hash=TRUE, parent=parent)
 }
 
-### ** nonS3methods [was .make_S3_methods_stop_list ]
+### ** .make_S3_methods_stop_list
 
-nonS3methods <- function(package)
+.make_S3_methods_stop_list <-
+function(package)
 {
     ## Return a character vector with the names of the functions in
     ## @code{package} which 'look' like S3 methods, but are not.
     ## Using package = NULL returns all known examples
 
     stopList <-
-        list(base = c("all.equal", "all.names", "all.vars", "expand.grid",
+        list(base = c("all.equal", "all.names", "all.vars",
              "format.char", "format.info", "format.pval",
              "max.col",
              ## the next two only exist in *-defunct.Rd.
@@ -1398,7 +1398,6 @@ nonS3methods <- function(package)
              HyperbolicDist = "log.hist",
              MASS = c("frequency.polygon", "gamma.dispersion", "gamma.shape",
                       "hist.FD", "hist.scott"),
-             LinearizedSVR = "sigma.est",
              ## FIXME: since these are already listed with 'base',
              ##        they should not need to be repeated here:
              Matrix = c("qr.Q", "qr.R", "qr.coef", "qr.fitted",
@@ -1407,11 +1406,9 @@ nonS3methods <- function(package)
              RNetCDF = c("close.nc", "dim.def.nc", "dim.inq.nc",
                          "dim.rename.nc", "open.nc", "print.nc"),
              SMPracticals = "exp.gibbs",
-             TANOVA = "sigma.hat",
-             TeachingDemos = "sigma.test",
              XML = "text.SAX",
              ape = "sort.index",
-             arm = "sigma.hat",
+             arm = "sigma.hat", # lme4 has sigma()
              assist = "chol.new",
              boot = "exp.tilt",
              car = "scatterplot.matrix",
@@ -1421,8 +1418,6 @@ nonS3methods <- function(package)
              crossdes = "all.combn",
              ctv = "update.views",
              deSolve = "plot.1D",
-             effects = "all.effects", # already deprecated
-             elliptic = "sigma.laurent",
              equivalence = "sign.boot",
              fields = c("qr.q2ty", "qr.yq2"),
              gbm = c("pretty.gbm.tree", "quantile.rug"),
@@ -1449,10 +1444,9 @@ nonS3methods <- function(package)
              sm = "print.graph",
              splusTimeDate = "sort.list",
              splusTimeSeries = "sort.list",
-	     stats = c("anova.lmlist", "expand.model.frame", "fitted.values",
-		       "influence.measures", "lag.plot", "t.test",
+             stats = c("anova.lmlist", "fitted.values", "lag.plot",
+                       "influence.measures", "t.test",
                        "plot.spec.phase", "plot.spec.coherency"),
-             stremo = "sigma.hat",
              supclust = c("sign.change", "sign.flip"),
              tensorA = "chol.tensor",
              utils = c("close.socket", "flush.console", "update.packages")
@@ -1483,9 +1477,9 @@ function(packages = NULL, FUN, ...)
     out
 }
 
-### ** .pandoc_md_for_CRAN
+### ** .pandoc_README_md_for_CRAN
 
-.pandoc_md_for_CRAN <-
+.pandoc_README_md_for_CRAN <-
 function(ifile, ofile)
 {
     .system_with_capture("pandoc",

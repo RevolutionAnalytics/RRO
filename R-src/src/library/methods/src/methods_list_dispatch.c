@@ -539,7 +539,7 @@ static Rboolean is_missing_arg(SEXP symbol, SEXP ev)
     /* Sanity check, so don't translate */
     if (!isSymbol(symbol)) error("'symbol' must be a SYMSXP");
     loc = R_findVarLocInFrame(ev, symbol);
-    if (R_VARLOC_IS_NULL(loc))
+    if (loc == NULL)
 	error(_("could not find symbol '%s' in frame of call"),
 	      CHAR(PRINTNAME(symbol)));
     return R_GetVarLocMISSING(loc);

@@ -94,7 +94,6 @@
 #include <R_ext/Rdynload.h>
 #include <R_ext/Rallocators.h> /* for R_allocator_t structure */
 #include <Rmath.h> // R_pow_di
-#include <Print.h> // R_print
 
 #if defined(Win32)
 extern void *Rm_malloc(size_t n);
@@ -1601,9 +1600,6 @@ static void RunGenCollect(R_size_t size_needed)
     FORWARD_NODE(R_FalseValue);
     FORWARD_NODE(R_LogicalNAValue);
 
-    FORWARD_NODE(R_print.na_string);
-    FORWARD_NODE(R_print.na_string_noquote);
-
     if (R_SymbolTable != NULL)             /* in case of GC during startup */
 	for (i = 0; i < HSIZE; i++)        /* Symbol table */
 	    FORWARD_NODE(R_SymbolTable[i]);
@@ -1647,9 +1643,6 @@ static void RunGenCollect(R_size_t size_needed)
 #else
 	FORWARD_NODE(*sp);
 #endif
-
-    FORWARD_NODE(R_CachedScalarReal);
-    FORWARD_NODE(R_CachedScalarInteger);
 
     /* main processing loop */
     PROCESS_NODES();

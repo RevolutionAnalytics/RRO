@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-3.2.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-06-06 13:51+0100\n"
+"POT-Creation-Date: 2015-06-06 13:58+0100\n"
 "PO-Revision-Date: 2015-03-20 16:09+0100\n"
 "Last-Translator: Detlef Steuer <steuer@hsu-hh.de>\n"
 "Language-Team:  <R-core@r-project.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: grid.c:977
 msgid "attempt to plot on null device"
-msgstr "Versuch in das Null-Device zu zeichnen"
+msgstr "Versuch in das NUll-Gerät zu zeichnen"
 
 #: grid.c:1309
 msgid "there is no layout defined"

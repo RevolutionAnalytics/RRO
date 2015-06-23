@@ -30,7 +30,6 @@ lm <- function (formula, data, subset, weights, na.action,
                names(mf), 0L)
     mf <- mf[c(1L, m)]
     mf$drop.unused.levels <- TRUE
-    ## need stats:: for non-standard evaluation
     mf[[1L]] <- quote(stats::model.frame)
     mf <- eval(mf, parent.frame())
     if (method == "model.frame")
@@ -110,7 +109,13 @@ lm.fit <- function (x, y, offset = NULL, method = "qr", tol = 1e-07,
     if(method != "qr")
 	warning(gettextf("method = '%s' is not supported. Using 'qr'", method),
                 domain = NA)
-    chkDots(...)
+    dots <- list(...)
+    if(length(dots) > 1L)
+	warning("extra arguments ", paste(sQuote(names(dots)), sep=", "),
+                " are disregarded.", domain = NA)
+    else if(length(dots) == 1L)
+	warning("extra argument ", sQuote(names(dots)),
+                " is disregarded.", domain = NA)
     z <- .Call(C_Cdqrls, x, y, tol, FALSE)
     if(!singular.ok && z$rank < p) stop("singular fit encountered")
     coef <- z$coefficients
@@ -163,7 +168,13 @@ lm.wfit <- function (x, y, w, offset = NULL, method = "qr", tol = 1e-7,
     if(method != "qr")
 	warning(gettextf("method = '%s' is not supported. Using 'qr'", method),
                 domain = NA)
-    chkDots(...)
+    dots <- list(...)
+    if(length(dots) > 1L)
+	warning("extra arguments ", paste(sQuote(names(dots)), sep=", "),
+                " are disregarded.", domain = NA)
+    else if(length(dots) == 1L)
+	warning("extra argument ", sQuote(names(dots)),
+                " is disregarded.", domain = NA)
     x.asgn <- attr(x, "assign")# save
     zero.weights <- any(w == 0)
     if (zero.weights) {
@@ -523,7 +534,6 @@ model.frame.lm <- function(formula, ...)
                      "offset"), names(fcall), 0L)
         fcall <- fcall[c(1L, m)]
         fcall$drop.unused.levels <- TRUE
-        ## need stats:: for non-standard evaluation
         fcall[[1L]] <- quote(stats::model.frame)
         fcall$xlev <- formula$xlevels
         ## We want to copy over attributes here, especially predvars.
@@ -752,6 +762,10 @@ predict.lm <-
 	asgn <- split(order(aa), aaa)
 	if (hasintercept) {
 	    asgn$"(Intercept)" <- NULL
+	    if(!mmDone) {
+                mm <- model.matrix(object)
+                mmDone <- TRUE
+            }
 	    avx <- colMeans(mm)
 	    termsconst <- sum(avx[piv] * beta[piv])
 	}

@@ -1,33 +1,27 @@
 % File src/library/tools/man/QC.Rd
 % Part of the R package, http://www.R-project.org
-% Copyright 1995-2015 R Core Team
+% Copyright 1995-2007 R Core Team
 % Distributed under GPL 2 or later
 
 \name{QC}
-\title{QC Checks for R Code and/or Documentation}
 \alias{QC}
 \alias{checkDocFiles}
 \alias{checkDocStyle}
 \alias{checkReplaceFuns}
 \alias{checkS3methods}
-\alias{nonS3methods}
-\alias{langElts}
 \alias{print.checkDocFiles}
 \alias{print.checkDocStyle}
 \alias{print.checkReplaceFuns}
 \alias{print.checkS3methods}
+\title{QC Checks for R Code and/or Documentation}
 \description{
-  Functions for performing various quality control (QC) checks on R code
-  and documentation, notably on R packages.
+  Functions for performing various quality checks.
 }
 \usage{
 checkDocFiles(package, dir, lib.loc = NULL)
 checkDocStyle(package, dir, lib.loc = NULL)
 checkReplaceFuns(package, dir, lib.loc = NULL)
 checkS3methods(package, dir, lib.loc = NULL)
-
-langElts
-nonS3methods(package)
 }
 \arguments{
   \item{package}{a character string naming an installed package.}
@@ -81,17 +75,7 @@ nonS3methods(package)
   installed package is tested, also in the loaded namespaces/packages
   listed in the package's \file{DESCRIPTION} Depends field.
 
-  \code{nonS3methods(package)} returns a \code{\link{character}} vector with
-  the names of the functions in \code{package} which \sQuote{look} like
-  S3 methods, but are not.  Using \code{package = NULL} returns all
-  known examples.
-
-  \code{langElts} is a character vector of names of \dQuote{language
-    elements} of \R.  These are implemented as \dQuote{very primitive}
-  functions (no argument list; \code{\link{print}()}ing as
-  \code{.Primitive("<name>")}).
-
-  If using an installed package, the checks needing access to all \R
+  If using an installed package, the checks needing access to all R
   objects of the package will load the package (unless it is the
   \pkg{base} package), after possibly detaching an already loaded
   version of the package.

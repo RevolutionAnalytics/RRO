@@ -45,7 +45,6 @@ make distribution
 rem ..\..\bin\R CMD INSTALL %WORKDIR%/packages/RevoBase_7.3.0.zip
 make rinstaller
 cd installer
-mv R-devel-win.exe R-3.2.1-win.exe
 cp R-3.2.1-win.exe RRO-3.2.1-win.exe
 cp RRO-3.2.1-win.exe %WORKDIR%
 cd %WORKDIR%

@@ -17,6 +17,7 @@ BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, cairo-devel, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
+Requires: gcc, make, gcc-fortran, gcc-c++
 AutoReqProv: Yes
 
 %define libnn lib64
@@ -59,6 +60,11 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
+rm -f %{buildroot}/%{_infodir}/dir
+rm -rf %{buildroot}/lib
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
+cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
@@ -89,6 +95,8 @@ fi
 %files
 %defattr(-, root, root)
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
+%{_libdir}/RRO-%{DIR_VERSION}/COPYING
+%{_libdir}/RRO-%{DIR_VERSION}/README.txt
 
 %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript

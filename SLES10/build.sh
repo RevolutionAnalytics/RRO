@@ -9,10 +9,10 @@ popd
 
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}
-cp -a ../R-src rpmbuild/SOURCES/RRO-8.0.3-3.1.3
+cp -a ../R-src rpmbuild/SOURCES/RRO-3.2.1-3.2.1
 cp ../packages/RevoBase.tar.gz rpmbuild
 cd rpmbuild/SOURCES
-tar czf RRO-8.0.3-3.1.3.tar.gz RRO-8.0.3-3.1.3
-rm -rf RRO-8.0.3-3.1.3
+tar czf RRO-3.2.1-3.2.1.tar.gz RRO-3.2.1-3.2.1
+rm -rf RRO-3.2.1-3.2.1
 cd ../
 rpmbuild -ba -vv SPECS/R.spec

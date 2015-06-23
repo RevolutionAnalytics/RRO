@@ -1,6 +1,6 @@
 Summary: A language for data analysis and graphics
-Name: RRO-8.0.3
-Version: 3.1.3
+Name: RRO-3.2.1
+Version: 3.2.1
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -21,8 +21,8 @@ Requires: glibc, glibc-devel
 AutoReqProv: No
 
 %define libnn lib64
-%define DIR_VERSION 8.0.3
-%define version 3.1.3
+%define DIR_VERSION 3.2.1
+%define version 3.2.1
 
 
 

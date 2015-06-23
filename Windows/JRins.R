@@ -92,21 +92,21 @@
     writeLines(lines, con)
 
     writeLines(c("", "", "[Files]"), con)
-    cat('Source: "R-devel\\etc\\checkpoint.R', '"; ',
+    cat('Source: "R-3.2.1\\etc\\checkpoint.R', '"; ',
             'DestDir: "{app}\\etc', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 
             file = con, sep = "")
     cat("\n", file = con)
 
-    cat('Source: "R-devel\\etc\\README.txt', '"; ',
+    cat('Source: "R-3.2.1\\etc\\README.txt', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 
             file = con, sep = "")
     cat("\n", file = con)
 
-    cat('Source: "R-devel\\etc\\COPYING', '"; ',
+    cat('Source: "R-3.2.1\\etc\\COPYING', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

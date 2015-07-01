@@ -1,5 +1,5 @@
 Revo.version <- structure(list(major = "3", minor = "2.1", "build id" = BUILD_ID), class = "simple.list")
-options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2015-06-15"))
+options(repos = c(CRAN = "http://mran.revolutionanalytics.com/snapshot/2015-07-01"))
 if (.Platform$OS.type == "windows" ) {
  options(help_type="html")
 }

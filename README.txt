@@ -1,5 +1,5 @@
 ----------------------------------------
-Revolution R Open, version 3.2.0
+Revolution R Open, version 3.2.1
 ----------------------------------------
 
 Revolution R Open is the enhanced distribution of R, from
@@ -38,28 +38,28 @@ be displayed by RShowDoc("LGPL-2.1"), or obtained
 http://www.R-project.org/Licenses/.
 
 A copy of the Revolution R Open source code is available
-for download at
+for download from
 http://mran.revolutionanalytics.com/download/#download.
 
 
 -----------------------
 About Revolution R Open
 -----------------------
-Revolution R Open builds on R 3.2.0 by making the following
+Revolution R Open builds on R 3.2.1 by making the following
 additions and changes:
 
 The default CRAN repository for this version of
 Revolution R Open is
-http://mran.revolutionanalytics.com/snapshot/2015-05-01/.
+http://mran.revolutionanalytics.com/snapshot/2015-07-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on May 1, 2015. Newer versions of packages will
+created on 2015-07-01. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.
 
-Revolution R Open installs the checkpoint package (part of
-the Reproducible R Toolkit). You can use the checkpoint
+Revolution R Open installs the `checkpoint` package (part 
+of the Reproducible R Toolkit). You can use the checkpoint
 package to access recent package versions and to share
 reproducible R code with others. Visit
 http://projects.revolutionanalytics.com/rrt/
@@ -72,7 +72,7 @@ Known Issues
 -----------------------
 To see a list of known issues in this release, visit the
 Release Notes on Github at:
-github.com/RevolutionAnalytics/RRO/releases/tag/v3.2.0
+https://github.com/RevolutionAnalytics/RRO/releases
 
 ----------
 Trademarks
@@ -90,7 +90,7 @@ List of Open Source Components
 This Revolution R Open distribution includes the following
 open source components, distributed under the terms of the
 indicated licenses:
-- R 3.2.0 (R Foundation for Statistical Computing) GPLv2
+- R 3.2.1 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution
 Analytics) GPLv2
 The terms of the GPLv2 license can be found in the

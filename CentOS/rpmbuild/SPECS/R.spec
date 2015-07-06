@@ -42,7 +42,7 @@ and called at run time.
 
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
 
-make -j2
+make -j8
 
 %install
 if grep -q "release 5" /etc/redhat-release; then

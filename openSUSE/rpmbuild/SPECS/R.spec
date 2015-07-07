@@ -41,7 +41,7 @@ and called at run time.
 %build
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 
-make -j2
+make -j8
 
 %install
 %make_install

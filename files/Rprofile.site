@@ -7,11 +7,7 @@ if  (identical(.Platform$OS.type, "windows")) {
     if (capabilities()["libcurl"]) {
        options(download.file.method = "libcurl")
     } else {
-       if (identical(Sys.info()["sysname"], "Darwin")) {
-	       options(download.file.method = "curl")
-	   } else {
-	       options(download.file.method = "wget")
-	   }
+       options(download.file.method = "curl")
     }
 }
 options(repos = c(CRAN = paste("https://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))

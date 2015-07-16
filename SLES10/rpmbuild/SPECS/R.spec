@@ -17,7 +17,7 @@ BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline
 Requires: libtiff, ghostscript-fonts-std
 Requires: gcc, make, gcc-fortran, gcc-c++
-Requires: glibc, glibc-devel 
+Requires: glibc, glibc-devel, curl 
 AutoReqProv: No
 
 %define libnn lib64

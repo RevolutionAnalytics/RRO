@@ -15,8 +15,8 @@ BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: xorg-x11-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline
-Requires: libtiff, ghostscript-fonts-std
-Requires: gcc, make, gcc-fortran, gcc-c++
+Requires: libtiff
+Requires: gcc, make, gcc-c++
 Requires: glibc, glibc-devel 
 AutoReqProv: No
 

@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-3.2.0
-Version: 3.2.0
+Name: RRO-3.2.1
+Version: 3.2.1
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -12,14 +12,14 @@ BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
-Requires: ghostscript-fonts, libgfortran, cairo-devel 
+Requires: ghostscript-fonts, libgfortran, cairo-devel, curl 
 
 Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 3.2.0
-%define version 3.2.0
+%define DIR_VERSION 3.2.1
+%define version 3.2.1
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -42,7 +42,7 @@ and called at run time.
 
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
 
-make -j2
+make -j8
 
 %install
 if grep -q "release 5" /etc/redhat-release; then
@@ -56,11 +56,11 @@ rm -rf %{buildroot}/lib
 
 if grep -q "release 5" /etc/redhat-release; then
 pwd
-cp ../../../../files/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.0/lib64/R/etc
+cp ../../../../files/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
 cp ../../../../README.txt /usr/lib64/RRO-%{DIR_VERSION}
 cp ../../../../COPYING /usr/lib64/RRO-%{DIR_VERSION}
 else
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.0/lib64/R/etc
+cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
 cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 pwd

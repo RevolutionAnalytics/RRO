@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-3.2.0
-Version: 3.2.0
+Name: RRO-3.2.1
+Version: 3.2.1
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
@@ -13,13 +13,13 @@ BuildRequires: libSM-devel, libX11-devel, libICE-devel,
 BuildRequires: libXt-devel, libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: make, gcc, gcc-fortran,  libpng, readline, cairo-devel
-Requires: libtiff, libjpeg8, ghostscript-fonts-std
+Requires: libtiff, libjpeg8, ghostscript-fonts-std, curl
 Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 3.2.0
-%define version 3.2.0
+%define DIR_VERSION 3.2.1
+%define version 3.2.1
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -41,7 +41,7 @@ and called at run time.
 %build
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 
-make -j2
+make -j8
 
 %install
 %make_install

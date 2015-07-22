@@ -21,7 +21,7 @@ Requires: glibc, glibc-devel
 AutoReqProv: No
 
 %define libnn lib64
-%define DIR_VERSION 3.1.3
+%define DIR_VERSION 8.0.3
 %define version 3.1.3
 
 

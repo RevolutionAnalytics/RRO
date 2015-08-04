@@ -6,6 +6,7 @@ Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
+Prefix: /usr/lib64
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
@@ -68,7 +69,7 @@ fi
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
-    RPM_INSTALL_PREFIX0=/usr
+    RPM_INSTALL_PREFIX0=/usr/lib64
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript

@@ -1,6 +1,12 @@
 #!/bin/bash
 HOME=`pwd`
 export HOME
+
+echo 'Patching R source to be relocatable'
+pushd ../R-src
+patch -p1 < ../patches/relocatable_r.patch
+popd
+
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}
 cp -pr ../R-src rpmbuild/SOURCES

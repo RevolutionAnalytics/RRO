@@ -9,7 +9,7 @@ namespace RevoUtils
     public static class Platform
     {
         
-        public enum PlatformFlavor { Windows, CentOS, SLES, OpenSUSE, Ubuntu, OSX, UnknownUnix }
+        public enum PlatformFlavor { Windows, CentOS, SLES, OpenSUSE, Ubuntu, OSX, UnknownUnix, Unknown }
 
         public static System.PlatformID GetPlatform()
         {  
@@ -46,15 +46,14 @@ namespace RevoUtils
             }
             else if (platform == PlatformID.MacOSX)
             {
-
+                return PlatformFlavor.OSX;
             }
             else
             {
-
+                return PlatformFlavor.Unknown;
             }
-            throw new NotImplementedException();
         }
-        public static System.Version GetMajorReleaseVersion()
+        public static System.Version GetReleaseVersion()
         {
             System.PlatformID platform = GetPlatform();
 

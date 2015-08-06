@@ -39,8 +39,7 @@ Target "Build_Linux" (fun _ ->
     
     ignore(Shell.Exec("echo", "'%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros", WORKSPACE))
     ignore(Shell.Exec("mkdir", "-p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}", WORKSPACE))
-    FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE)
-    FileUtils.mv (WORKSPACE +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
+    FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
 
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp ("RRO-" + RRO_VERSION + ".tar.gz") ("~/rpmbuild/SOURCES/")

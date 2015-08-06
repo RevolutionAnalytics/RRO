@@ -37,13 +37,12 @@ Target "Build_Linux" (fun _ ->
     trace "Entered Linux Logic"
     
     let mutable homeDir = environVar "HOME"
-    if homeDir = "" then
+    if (homeDir = "") || (homeDir = "/root")  then
         homeDir <- "/tmp"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     
     FileUtils.mkdir(WORKSPACE)
-    ignore(Shell.Exec("echo", "'%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros", WORKSPACE))
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)

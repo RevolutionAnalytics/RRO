@@ -16,28 +16,37 @@ let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
 let version = RevoUtils.Platform.GetReleaseVersion()
 
-Target "Build" (fun _ ->
-    trace "The build starts here."
+Target "Info" (fun _ ->
     trace("The platform is " + platform.ToString())
+    trace("The platform flavor is " + flavor.ToString())
     trace("The platform version is " + version.ToString())
     trace("This script is executing in " + SCRIPT_DIR)
 
-    FileUtils.mkdir(WORKSPACE)
+    
+)
+
+Target "Clean" (fun _ ->
+    FileUtils.rm_rf(WORKSPACE)
 )
 
 Target "Build_Linux" (fun _ ->
     trace "Entered Linux Logic"
+
+    FileUtils.mkdir(WORKSPACE)
 )
 
 Target "Build_Windows" (fun _ ->
     trace "Entered Windows Logic"
+
+    FileUtils.mkdir(WORKSPACE)
 )
 
 Target "Default" (fun _ ->
     trace "Default task"
 )
 
-"Build"
+"Info"
+  ==> "Clean"
   =?> ("Build_Windows", (platform = System.PlatformID.Win32NT))
   =?> ("Build_Linux", (platform = System.PlatformID.Unix) && (flavor <> Platform.PlatformFlavor.UnknownUnix))
   ==> "Default"

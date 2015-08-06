@@ -50,7 +50,7 @@ Target "Build_Linux" (fun _ ->
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
 
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
-    FileUtils.cp ("RRO-" + RRO_VERSION + ".tar.gz") ("~/rpmbuild/SOURCES/")
+    FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") ("~/rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") ("~/rpmbuild/SOURCES")
     ()
 )

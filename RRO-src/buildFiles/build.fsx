@@ -60,7 +60,7 @@ Target "Build_Linux" (fun _ ->
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SPECS/R.spec")
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
-    FileUtils.cp (homeDir +/ "rpmbuild/SOURCES/RPMS/x86_64" +/ rpmName) (homeDir)
+    FileUtils.cp (homeDir +/ "rpmbuild/RPMS/x86_64" +/ rpmName) (homeDir)
     trace ("Copied " + rpmName + " to " + homeDir)
 )
 

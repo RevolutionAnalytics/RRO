@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace RevoUtils
 {
@@ -56,6 +57,7 @@ namespace RevoUtils
         public static System.Version GetReleaseVersion()
         {
             System.PlatformID platform = GetPlatform();
+            PlatformFlavor flavor = GetPlatformFlavor();
 
             if(platform == PlatformID.Win32NT)
             {
@@ -63,13 +65,23 @@ namespace RevoUtils
             }
             else if(platform == PlatformID.Unix)
             {
-                if(System.IO.File.Exists("/etc/issue"))
+                if(flavor == PlatformFlavor.CentOS)
                 {
-                    using(var issueFile = System.IO.File.OpenRead("/etc/issue"))
+                    if (System.IO.File.Exists("/etc/issue"))
                     {
+
+                        string issueText = System.IO.File.ReadAllText("/etc/issue");
+                        var versionString = Regex.Match(issueText, "[0-9].[0-9]{1,2}");
+                        if (versionString.Success)
+                            return new System.Version(versionString.Value);
+                        else
+                            return new System.Version(0, 0);
+
                         
-                    };
+
                 }
+                }
+
             }
             else if (platform == PlatformID.MacOSX)
             {

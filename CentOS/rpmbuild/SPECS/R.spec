@@ -6,6 +6,7 @@ Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
+Prefix: /usr/lib64
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
@@ -42,7 +43,7 @@ and called at run time.
 
 ./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 
-make -j2
+make -j6
 
 %install
 if grep -q "release 5" /etc/redhat-release; then
@@ -68,21 +69,21 @@ fi
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
-    RPM_INSTALL_PREFIX0=/usr
+    RPM_INSTALL_PREFIX0=/usr/lib64
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | R -q --vanilla
+ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
+ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
 %postun
-if test "${revo_prefix}" = ""; then
-    revo_prefix=/usr/
+
+if test "${RPM_INSTALL_PREFIX0}" = ""; then
+    RPM_INSTALL_PREFIX0=/usr/lib64
 fi
-rm -f ${revo_prefix}/%{libnn}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-rm -f ${revo_prefix}/%{libnn}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+rm -f ${RPM_INSTALL_PREFIX0}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
+rm -f ${RPM_INSTALL_PREFIX0}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 

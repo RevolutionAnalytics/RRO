@@ -48,8 +48,8 @@ Target "Build_Linux" (fun _ ->
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
     for fileLoc in customFiles do
-        ignore(FileUtils.cp fileLoc, (homeDir +/ "rpmbuild/"))
-
+        ignore(FileUtils.cp fileLoc (homeDir +/ "rpmbuild/"))
+    System.IO.File.WriteAllText(homeDir +/ ".rpmmacros", "%_topdir " + homeDir + "/rpmbuild")
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")

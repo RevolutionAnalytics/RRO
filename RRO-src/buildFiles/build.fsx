@@ -11,6 +11,9 @@ let RRO_DIR = System.IO.Directory.GetParent(SCRIPT_DIR).ToString()
 let BASE_DIR = System.IO.Directory.GetParent(RRO_DIR).ToString()
 let WORKSPACE = BASE_DIR +/ "workspace"
 
+let R_VERSION = "3.2.1"
+let RRO_VERSION = R_VERSION + "-" + R_VERSION
+
 
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
@@ -31,8 +34,18 @@ Target "Clean" (fun _ ->
 
 Target "Build_Linux" (fun _ ->
     trace "Entered Linux Logic"
-
+    
     FileUtils.mkdir(WORKSPACE)
+    ignore(Shell.Exec "echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros")
+    ignore(Shell.Exec "mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}")
+    FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE)
+    FileUtils.mv (WORKSPACE +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
+    FileUtils.pushd WORKSPACE
+    ignore(Shell.Exec ("tar czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION))
+    FileUtils.popd ()
+    FileUtils.cp ("RRO-" + RRO_VERSION + ".tar.gz") ("~/rpmbuild/SOURCES/")
+    FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") ("~/rpmbuild/SOURCES")
+    ()
 )
 
 Target "Build_Windows" (fun _ ->

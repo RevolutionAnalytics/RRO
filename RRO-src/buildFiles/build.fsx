@@ -36,13 +36,13 @@ Target "Build_Linux" (fun _ ->
     trace "Entered Linux Logic"
     
     FileUtils.mkdir(WORKSPACE)
-    ignore(Shell.Exec "echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros")
-    ignore(Shell.Exec "mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}")
+    
+    ignore(Shell.Exec("echo", "'%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros", WORKSPACE))
+    ignore(Shell.Exec("mkdir", "-p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}", WORKSPACE))
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE)
     FileUtils.mv (WORKSPACE +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
-    FileUtils.pushd WORKSPACE
-    ignore(Shell.Exec ("tar czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION))
-    FileUtils.popd ()
+
+    ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp ("RRO-" + RRO_VERSION + ".tar.gz") ("~/rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") ("~/rpmbuild/SOURCES")
     ()

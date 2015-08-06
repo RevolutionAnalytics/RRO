@@ -41,6 +41,10 @@ Target "Build_Linux" (fun _ ->
     if (homeDir = "") || (homeDir = "/root")  then
         homeDir <- "/tmp"
 
+    let mutable rpmName = ""
+    if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS) then
+        rpmName <- "RRO-" + RRO_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
+
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]
     
@@ -56,7 +60,8 @@ Target "Build_Linux" (fun _ ->
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SPECS/R.spec")
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
-    ()
+    FileUtils.cp (homeDir +/ "rpmbuild/SOURCES/RPMS/x86_64" +/ rpmName) (homeDir)
+    trace ("Copied " + rpmName + " to " + homeDir)
 )
 
 Target "Build_Windows" (fun _ ->

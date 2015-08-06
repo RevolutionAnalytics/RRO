@@ -13,6 +13,7 @@ let WORKSPACE = BASE_DIR +/ "workspace"
 
 
 let platform = RevoUtils.Platform.GetPlatform()
+let flavor = RevoUtils.Platform.GetPlatformFlavor()
 let version = RevoUtils.Platform.GetReleaseVersion()
 
 Target "Build" (fun _ ->
@@ -24,4 +25,21 @@ Target "Build" (fun _ ->
     FileUtils.mkdir(WORKSPACE)
 )
 
-Run "Build"
+Target "Build_Linux" (fun _ ->
+    trace "Entered Linux Logic"
+)
+
+Target "Build_Windows" (fun _ ->
+    trace "Entered Windows Logic"
+)
+
+Target "Default" (fun _ ->
+    trace "Default task"
+)
+
+"Build"
+  =?> ("Build_Windows", (platform = System.PlatformID.Win32NT))
+  =?> ("Build_Linux", (platform = System.PlatformID.Unix) && (flavor <> Platform.PlatformFlavor.UnknownUnix))
+  ==> "Default"
+
+Run "Default"

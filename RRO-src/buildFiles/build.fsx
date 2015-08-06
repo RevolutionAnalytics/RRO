@@ -35,10 +35,18 @@ Target "Clean" (fun _ ->
 Target "Build_Linux" (fun _ ->
     trace "Entered Linux Logic"
     
-    FileUtils.mkdir(WORKSPACE)
+    let mutable homeDir = environVar "HOME"
+    if homeDir = "" then
+        homeDir <- "/tmp"
+
+    let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"]
     
+    FileUtils.mkdir(WORKSPACE)
     ignore(Shell.Exec("echo", "'%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros", WORKSPACE))
-    ignore(Shell.Exec("mkdir", "-p ~/rpmbuild/{BUILD,RPMS,SOURCES,BUILDROOT,SRPMS}", WORKSPACE))
+
+    for dir in specDirs do
+        FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
+
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
 
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))

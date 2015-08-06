@@ -40,7 +40,7 @@ Target "Build_Linux" (fun _ ->
     if homeDir = "" then
         homeDir <- "/tmp"
 
-    let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"]
+    let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     
     FileUtils.mkdir(WORKSPACE)
     ignore(Shell.Exec("echo", "'%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros", WORKSPACE))
@@ -52,7 +52,7 @@ Target "Build_Linux" (fun _ ->
 
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
-    FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SOURCES")
+    FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SPECS")
     ()
 )
 

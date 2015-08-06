@@ -74,9 +74,9 @@ fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
+if [[ $(id -u) -eq 0 ]] ; then ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin ; fi
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
+if [[ $(id -u) -eq 0 ]] ; then ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin ; fi
 %postun
 
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
@@ -84,8 +84,8 @@ if test "${RPM_INSTALL_PREFIX0}" = ""; then
 fi
 rm -f ${RPM_INSTALL_PREFIX0}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 rm -f ${RPM_INSTALL_PREFIX0}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-rm -f /usr/bin/R
-rm -f /usr/bin/Rscript
+if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/R ; fi
+if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/Rscript ; fi
 
 # %files -f %{name}.lang
 %files

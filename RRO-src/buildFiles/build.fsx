@@ -42,7 +42,9 @@ Target "Build_Linux" (fun _ ->
         homeDir <- "/tmp"
 
     let mutable rpmName = ""
-    if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS) then
+    if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then
+        rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major > 5) then
         rpmName <- "RRO-" + RRO_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]

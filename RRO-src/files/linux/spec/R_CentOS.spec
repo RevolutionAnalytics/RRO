@@ -56,13 +56,13 @@ rm -rf %{buildroot}/lib
 
 if grep -q "release 5" /etc/redhat-release; then
 pwd
-cp ../../common/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
-cp ../../../../README.txt /usr/lib64/RRO-%{DIR_VERSION}
-cp ../../../../COPYING /usr/lib64/RRO-%{DIR_VERSION}
+cp %{buildroot}/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
+cp %{buildroot}/README.txt /usr/lib64/RRO-%{DIR_VERSION}
+cp %{buildroot}/COPYING /usr/lib64/RRO-%{DIR_VERSION}
 else
-cp ../../common/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
-cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{buildroot}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
+cp %{buildroot}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{buildroot}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 pwd
 fi
 

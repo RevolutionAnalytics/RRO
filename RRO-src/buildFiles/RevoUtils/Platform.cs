@@ -61,7 +61,7 @@ namespace RevoUtils
 
             if(platform == PlatformID.Win32NT)
             {
-
+                return System.Environment.OSVersion.Version;
             }
             else if(platform == PlatformID.Unix)
             {
@@ -76,10 +76,7 @@ namespace RevoUtils
                             return new System.Version(versionString.Value);
                         else
                             return new System.Version(0, 0);
-
-                        
-
-                }
+                    }
                 }
 
             }

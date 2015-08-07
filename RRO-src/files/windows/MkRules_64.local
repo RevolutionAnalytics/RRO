@@ -108,7 +108,7 @@ CURL_LIBS = -lcurl -lrtmp -lssl -lssh2 -lcrypto -lgdi32 -lcrypt32 -lz -lws2_32 -
 # and set CAIRO_HOME to the parent of the win32/win64 directories
 #
 # If CAIRO_HOME is not set the devices are not built.
-CAIRO_HOME = C:/applications/src
+CAIRO_HOME = C:/applications/cairo
 
 # set this to YES to build static HTML help
 BUILD_HTML = NO

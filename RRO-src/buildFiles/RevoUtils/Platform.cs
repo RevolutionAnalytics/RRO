@@ -16,7 +16,6 @@ namespace RevoUtils
         {  
             return Environment.OSVersion.Platform;
         }
-
         public static PlatformFlavor GetPlatformFlavor()
         {
             System.PlatformID platform = GetPlatform();
@@ -90,6 +89,5 @@ namespace RevoUtils
             }
             throw new NotImplementedException();
         }
-
     }
 }

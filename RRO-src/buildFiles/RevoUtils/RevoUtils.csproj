@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

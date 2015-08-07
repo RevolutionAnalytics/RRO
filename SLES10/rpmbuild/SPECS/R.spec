@@ -82,16 +82,16 @@ rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | /usr/bin/R -q --vanilla
+if [[ $(id -u) -eq 0 ]] ; ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin ; fi
+if [[ $(id -u) -eq 0 ]] ; ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin ; fi
+
 
 
 %postun
 rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-rm -f /usr/bin/R
-rm -f /usr/bin/Rscript
+if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/R ; fi
+if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/Rscript ; fi
 
 
 %files

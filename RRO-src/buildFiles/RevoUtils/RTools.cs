@@ -122,7 +122,6 @@ namespace RevoUtils
 
             return rToolsPath;
         }
-
         public static Version GetProgramVersionByName(string name)
         {
             if (Platform.GetPlatform() != System.PlatformID.Win32NT)

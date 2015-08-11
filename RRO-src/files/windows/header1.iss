@@ -14,9 +14,6 @@ AppPublisherURL=http://www.r-project.org
 AppSupportURL=http://www.r-project.org
 AppUpdatesURL=http://www.r-project.org
 
-[Run]
-Filename: "{app}\bin\x64\Rscript"; Parameters: """{app}\etc\checkpoint.R"""; Flags: runhidden
-
 [Languages]
 Name: en; MessagesFile: "compiler:Default.isl"
 [CustomMessages]

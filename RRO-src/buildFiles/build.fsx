@@ -1,8 +1,11 @@
 ﻿#r "./packages/FAKE.4.0.3/tools/FakeLib.dll"
+#r "./packages/FAKE.4.0.3/tools/Newtonsoft.Json.dll"
 #r "./RevoUtils/bin/Release/RevoUtils.dll"
 
 open Fake
 open RevoUtils
+open Newtonsoft
+
 
 let (+/) path1 path2 = System.IO.Path.Combine(path1, path2)
 
@@ -12,6 +15,7 @@ let BASE_DIR = System.IO.Directory.GetParent(RRO_DIR).ToString()
 let WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
 let COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
+let PKG_DIR = WORKSPACE +/ "packages"
 
 let R_VERSION = "3.2.1"
 let RRO_VERSION = R_VERSION + "-" + R_VERSION
@@ -152,25 +156,48 @@ Target "Build_Windows" (fun _ ->
     setProcessEnvironVar "PATH" (tools.["Rtools"] +/ "bin;" + tools.["Rtools"] +/ "gcc-4.6.3\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
     trace ("PATH IS " + (environVar "PATH"))
 
+    FileUtils.mkdir(WORKSPACE)
+    FileUtils.mkdir(PKG_DIR)
 
+    //Stage packages listed in packages.json
+    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ "packages-default.json")
+    let jsonObject = Newtonsoft.Json.Linq.JObject.Parse(fileContents)
+    let packages = jsonObject.GetValue("packages")
+    let mutable extraPackageList = ""
 
+    for package in packages do
+        
+        //Download the package
+        use webClient = new System.Net.WebClient()
+        let url = package.Value("location")
+        webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
+        System.IO.File.WriteAllText((PKG_DIR +/ package.Value("name") + ".tgz"), package.Value("destFileName"))
+
+        //Add it to package list string
+        
+        extraPackageList <- extraPackageList + " " + package.Value("name")
+          
     //Now build it
     let rDir = WORKSPACE +/ "R-" + R_VERSION
     let gnuWin32Dir = rDir +/ "src" +/ "gnuwin32"
     let installerDir = gnuWin32Dir +/ "installer"
+    let packageDir = rDir +/ "src" +/ "library" +/ "Recommended"
+
     let etcFiles = [ WINDOWS_FILES_DIR +/ "checkpoint.R"; WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING" ]
     let installerFiles = [ WINDOWS_FILES_DIR +/ "clarkSmall.bmp"; WINDOWS_FILES_DIR +/ "Makefile"; WINDOWS_FILES_DIR +/ "header1.iss";
                            WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; ]
 
     
 
-    FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(WORKSPACE +/ "tmp")
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)
     FileUtils.cp_r ("c:\\R64\\Tcl") (WORKSPACE +/ "R-" + R_VERSION +/ "Tcl")
     FileUtils.cp (COMMON_FILES_DIR +/ "Rprofile.site") (gnuWin32Dir +/ "fixed" +/ "etc")
+    FileUtils.cp (COMMON_FILES_DIR +/ "vars.mk") (rDir +/ "share" +/ "make")
     FileUtils.cp (WINDOWS_FILES_DIR +/ "MkRules_64.local") (gnuWin32Dir +/ "MkRules.local")
+    FileUtils.cp_r (PKG_DIR +/ ".") (packageDir)
     ReplaceInFiles [ (":::BUILDID:::", "\"1\"") ] [ (gnuWin32Dir +/ "fixed" +/ "etc" +/ "Rprofile.site") ]
+    ReplaceInFiles [ (":::EXTRA_PACKAGES:::", extraPackageList) ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ] 
 
     
     for file in etcFiles do
@@ -184,6 +211,18 @@ Target "Build_Windows" (fun _ ->
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
     ignore(Shell.Exec("make", "-j8 distribution", gnuWin32Dir))
     ()
+)
+
+Target "TestParse" (fun _ ->
+    let fileContents = System.IO.File.ReadAllText("packages-default.json")
+    let jsonParser = Newtonsoft.Json.Linq.JObject.Parse(fileContents)
+
+    let packages = jsonParser.GetValue("packages")
+    for package in packages do
+        trace(package.Value("name").ToString())
+
+    ()
+
 )
 
 Target "Default" (fun _ ->

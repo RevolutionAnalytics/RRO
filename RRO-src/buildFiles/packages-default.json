@@ -7,6 +7,14 @@
         { "name": "RUnit", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RUnit_0.4.26.tar.gz", "destFileName": "RUnit_0.4.26.tar.gz" },
         { "name": "RevoMods", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoMods_7.4.1.tar.gz", "destFileName": "RevoMods_7.4.1.tar.gz" },
         { "name": "RevoUtils", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoUtils_7.4.1.tar.gz", "destFileName": "RevoUtils_7.4.1.tar.gz" },
-        { "name": "RevoIOQ", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoIOQ_7.4.1.tar.gz", "destFileName": "RevoIOQ_7.4.1.tar.gz" }
+        { "name": "RevoIOQ", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoIOQ_7.4.1.tar.gz", "destFileName": "RevoIOQ_7.4.1.tar.gz" },
+        { "name": "RevoRsrConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRsrConnector_7.4.1.tar.gz", "destFileName": "RevoRsrConnector_7.4.1.tar.gz" },
+        { "name": "RevoRpeConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRpeConnector_7.4.1.tar.gz", "destFileName": "RevoRpeConnector_7.4.1.tar.gz" }
+    ],
+
+    "binary_packages": [
+        { "name": "XML", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/XML_3.98-1.1.zip", "destFileName": "XML_3.98-1.1.zip" },
+        { "name": "pkgXMLBuilder", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/pkgXMLBuilder_1.0.zip", "destFileName": "pkgXMLBuilder_1.0.zip" },
+        { "name": "revoIpe", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/revoIpe_1.1.zip", "destFileName": "revoIpe_1.1.zip" }
     ]
 }

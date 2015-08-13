@@ -180,7 +180,7 @@ Target "Build_Windows" (fun _ ->
 
     let etcFiles = [ WINDOWS_FILES_DIR +/ "checkpoint.R"; WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING" ]
     let installerFiles = [ WINDOWS_FILES_DIR +/ "clarkSmall.bmp"; WINDOWS_FILES_DIR +/ "Makefile"; WINDOWS_FILES_DIR +/ "header1.iss";
-                           WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; ]
+                           WINDOWS_FILES_DIR +/ "reg3264.iss"; COMMON_FILES_DIR +/ "intro.txt"; ]
    
     FileUtils.mkdir(WORKSPACE +/ "tmp")
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)

@@ -88,7 +88,6 @@
     lines <- readLines("code.iss")
     lines <- gsub("@MDISDI@", MDISDI, lines)
     lines <- gsub("@HelpStyle@", HelpStyle, lines)
-    lines <- gsub("@Internet@", Internet, lines)
     writeLines(lines, con)
 
     writeLines(c("", "", "[Files]"), con)

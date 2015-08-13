@@ -17,7 +17,7 @@ let COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 let PKG_DIR = WORKSPACE +/ "packages"
 
-let R_VERSION = "3.2.1"
+let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION + "-" + R_VERSION
 
 

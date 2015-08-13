@@ -72,8 +72,8 @@ rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-if [[ $(id -u) -eq 0 ]] ; ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin ; fi
-if [[ $(id -u) -eq 0 ]] ; ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin ; fi
+if [[ $(id -u) -eq 0 ]] ; then ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin ; fi
+if [[ $(id -u) -eq 0 ]] ; then ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin ; fi
 
 %postun
 if test "${revo_prefix}" = ""; then
@@ -84,8 +84,8 @@ if test -h ${revo_prefix}/bin/R
     then
     rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
     rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-    if [[ $(id -u) -eq 0 ]] ; rm -f /usr/bin/R ; fi
-    if [[ $(id -u) -eq 0 ]] ; rm -f /usr/bin/Rscript ; fi
+    if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/R ; fi
+    if [[ $(id -u) -eq 0 ]] ; then rm -f /usr/bin/Rscript ; fi
 fi
 
 %files

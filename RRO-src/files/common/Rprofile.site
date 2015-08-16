@@ -67,5 +67,3 @@ if(Sys.info()["sysname"] == "Darwin"){
     invisible(NULL)
   })
 }
-
-

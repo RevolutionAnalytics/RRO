@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-3.2.1
-Version: 3.2.1
+Name: RRO-3.2.2
+Version: 3.2.2
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -18,8 +18,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 3.2.1
-%define version 3.2.1
+%define DIR_VERSION 3.2.2
+%define version 3.2.2
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -56,15 +56,25 @@ rm -rf %{buildroot}/lib
 
 if grep -q "release 5" /etc/redhat-release; then
 pwd
-cp %{_topdir}/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
+cp %{_topdir}/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
 cp %{_topdir}/README.txt /usr/lib64/RRO-%{DIR_VERSION}
 cp %{_topdir}/COPYING /usr/lib64/RRO-%{DIR_VERSION}
 else
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.1/lib64/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 pwd
 fi
+
+if [ -d "/tmp/rro_extra_pkgs" ]
+then
+    pushd /tmp/rro_extra_pkgs
+    for filename in :::EXTRA_PKGS:::; do
+        %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+    done
+    popd
+fi
+
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
@@ -76,7 +86,6 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-05-01")' | R -q --vanilla
 %postun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/

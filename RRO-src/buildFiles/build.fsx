@@ -15,7 +15,6 @@ let BASE_DIR = System.IO.Directory.GetParent(RRO_DIR).ToString()
 let WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
 let COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
-let PKG_DIR = WORKSPACE +/ "packages"
 
 let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION + "-" + R_VERSION
@@ -24,7 +23,12 @@ let RRO_VERSION = R_VERSION + "-" + R_VERSION
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
 let version = RevoUtils.Platform.GetReleaseVersion()
+let mutable PKG_DIR = ""
 
+if platform = System.PlatformID.Win32NT then
+    PKG_DIR <- WORKSPACE +/ "packages"
+else
+    PKG_DIR <- "/tmp/rro_extra_pkgs"
 
 // HELPER FUNCTIONS
 //
@@ -32,7 +36,7 @@ let version = RevoUtils.Platform.GetReleaseVersion()
 //VerifyWindowsTools returns a Map with information about needed windows paths
 //Can throw exceptions if needed tools aren't present
 
-let VerifyWindowsTools =
+let VerifyWindowsTools() : Map<string, string> =
 
     
     let RTOOLS_VERSION = RevoUtils.RTools.GetRToolsVersion()
@@ -94,6 +98,16 @@ let VerifyWindowsTools =
         Add("Inno Setup", INNO_PATH).
         Add("Perl", PERL_PATH)
 
+let executeProcess (exe, cmdline, wd) =
+    let psi = new System.Diagnostics.ProcessStartInfo(exe,cmdline) 
+    psi.UseShellExecute <- false
+    psi.RedirectStandardOutput <- false
+    psi.RedirectStandardError <- false
+    psi.CreateNoWindow <- true
+    if wd <> null then psi.WorkingDirectory <- wd    
+    let p = System.Diagnostics.Process.Start(psi) 
+    p.WaitForExit()
+
 Target "Info" (fun _ ->
     trace("The platform is " + platform.ToString())
     trace("The platform flavor is " + flavor.ToString())
@@ -126,16 +140,36 @@ Target "Build_Linux" (fun _ ->
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]
     
     FileUtils.mkdir(WORKSPACE)
+    FileUtils.mkdir(PKG_DIR)
+
+    setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
+
+    //Stage packages listed in packages.json
+    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ "packages-linux.json")
+    let jsonObject = Newtonsoft.Json.Linq.JObject.Parse(fileContents)
+    let packages = jsonObject.GetValue("packages")
+    let mutable extraPackageList = ""
+
+    for package in packages do
+        
+        //Download the package
+        use webClient = new System.Net.WebClient()
+        let url = package.Value("location")
+        webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
+        extraPackageList <- extraPackageList + " " + package.Value("destFileName")
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
     for fileLoc in customFiles do
         ignore(FileUtils.cp fileLoc (homeDir +/ "rpmbuild/"))
+    RegexReplaceInFileWithEncoding ":::BUILDID:::" "\"1\"" (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild" +/ "Rprofile.site")
     System.IO.File.WriteAllText((realHomeDir +/ ".rpmmacros"), ("%_topdir " + homeDir + "/rpmbuild"))
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "RRO-" + RRO_VERSION)
+    ignore(executeProcess("patch", "-p1 -i ../../RRO-src/patches/relocatable_r.patch", WORKSPACE +/ "RRO-" + RRO_VERSION))
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SPECS/R.spec")
+    RegexReplaceInFileWithEncoding ":::EXTRA_PKGS:::" extraPackageList (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild/SPECS/R.spec")
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
     FileUtils.cp (homeDir +/ "rpmbuild/RPMS/x86_64" +/ rpmName) (homeDir)
     trace ("Copied " + rpmName + " to " + homeDir)
@@ -146,7 +180,7 @@ Target "Build_Windows" (fun _ ->
     trace "Entered Windows Logic"
 
     //Verify that our build environment is sane. This section still needs work and tools to be added.
-    let tools = VerifyWindowsTools
+    let tools = VerifyWindowsTools()
     trace ("Rtools found at " + tools.["Rtools"])
     trace ( "MiKTeX found at " + tools.["MiKTeX"])
     trace ( "Inno Setup found at " + tools.["Inno Setup"])

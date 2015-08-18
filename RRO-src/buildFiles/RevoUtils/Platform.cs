@@ -78,7 +78,7 @@ namespace RevoUtils
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new Exception("No /etc/issue file for Flavor CentOS");
                     }
                 }
 
@@ -95,12 +95,12 @@ namespace RevoUtils
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new Exception("No /etc/issue file for Flavor SLES");
                     }
                 }
                 else 
                 {
-                    throw new NotImplementedException();
+                    throw new Exception("Linux flavor not implemented yet");
                 }
             }
             else if (platform == PlatformID.MacOSX)

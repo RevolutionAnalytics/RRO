@@ -32,7 +32,7 @@ namespace RevoUtils
 
                     if (issueText.Contains("CentOS"))
                         return PlatformFlavor.CentOS;
-                    else if (issueText.Contains("SLES"))
+                    else if (issueText.Contains("SUSE Linux Enterprise"))
                         return PlatformFlavor.SLES;
                     else if (issueText.Contains("Ubuntu"))
                         return PlatformFlavor.Ubuntu;

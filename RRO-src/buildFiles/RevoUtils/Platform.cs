@@ -93,7 +93,7 @@ namespace RevoUtils
             }
             else if (platform == PlatformID.MacOSX)
             {
-
+                throw new NotImplementedException();
             }
             else
             {

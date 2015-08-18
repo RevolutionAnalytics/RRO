@@ -97,9 +97,8 @@ namespace RevoUtils
             }
             else
             {
-                
+                throw new NotImplementedException();   
             }
-            throw new NotImplementedException();
         }
     }
 }

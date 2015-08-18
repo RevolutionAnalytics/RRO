@@ -76,6 +76,10 @@ namespace RevoUtils
                         else
                             return new System.Version(0, 0);
                     }
+                    else
+                    {
+                        throw new NotImplementedException();
+                    }
                 }
 
                 else if (flavor == PlatformFlavor.SLES)
@@ -89,6 +93,14 @@ namespace RevoUtils
                         else
                             return new System.Version(0, 0);
                     }
+                    else
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
+                else 
+                {
+                    throw new NotImplementedException();
                 }
             }
             else if (platform == PlatformID.MacOSX)

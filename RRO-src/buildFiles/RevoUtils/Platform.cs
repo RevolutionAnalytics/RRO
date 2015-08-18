@@ -77,7 +77,8 @@ namespace RevoUtils
                             return new System.Version(0, 0);
                     }
                 }
-                else if(flavor == PlatformFlavor.SLES)
+
+                else if (flavor == PlatformFlavor.SLES)
                 {
                     if (System.IO.File.Exists("/etc/issue"))
                     {
@@ -89,7 +90,6 @@ namespace RevoUtils
                             return new System.Version(0, 0);
                     }
                 }
-
             }
             else if (platform == PlatformID.MacOSX)
             {

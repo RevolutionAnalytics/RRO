@@ -130,6 +130,12 @@ Target "Build_Linux" (fun _ ->
     if (homeDir = "") || (homeDir = "/root")  then
         homeDir <- "/tmp"
 
+    let mutable specName = ""
+    if(flavor = RevoUtils.Platform.PlatformFlavor.CentOS) then
+        specName <- "R_" + flavor.ToString() + ".spec"
+    elif(flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
+        specName <- "R_" + flavor.ToString() + version.Major.ToString() + ".spec"
+
     let mutable rpmName = ""
     if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then
         rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
@@ -168,7 +174,7 @@ Target "Build_Linux" (fun _ ->
     ignore(executeProcess("patch", "-p1 -i ../../RRO-src/patches/relocatable_r.patch", WORKSPACE +/ "RRO-" + RRO_VERSION))
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
-    FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ "R_" + flavor.ToString() + ".spec") (homeDir +/ "rpmbuild/SPECS/R.spec")
+    FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ specName) (homeDir +/ "rpmbuild/SPECS/R.spec")
     RegexReplaceInFileWithEncoding ":::EXTRA_PKGS:::" extraPackageList (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild/SPECS/R.spec")
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
     FileUtils.cp (homeDir +/ "rpmbuild/RPMS/x86_64" +/ rpmName) (WORKSPACE)

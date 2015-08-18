@@ -88,8 +88,9 @@ namespace RevoUtils
                     {
                         string issueText = System.IO.File.ReadAllText("/etc/issue");
                         var versionString = Regex.Match(issueText, "1[0-3]");
+
                         if (versionString.Success)
-                            return new System.Version(versionString.Value);
+                            return new System.Version(Int32.Parse(versionString.ToString()), 0);
                         else
                             return new System.Version(0, 0);
                     }

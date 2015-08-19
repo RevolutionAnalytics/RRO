@@ -62,9 +62,19 @@ cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
-cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
+if [ -d "/tmp/rro_extra_pkgs" ]
+then
+    pushd /tmp/rro_extra_pkgs
+    for filename in :::EXTRA_PKGS:::; do
+        if grep -q "release 5" /etc/redhat-release; then
+            /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+        else
+            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+        fi
+    done
+    popd
+fi
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

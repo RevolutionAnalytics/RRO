@@ -231,7 +231,7 @@ Target "Build_Windows" (fun _ ->
     let installerDir = gnuWin32Dir +/ "installer"
     let packageDir = rDir +/ "src" +/ "library" +/ "Recommended"
 
-    let etcFiles = [ WINDOWS_FILES_DIR +/ "checkpoint.R"; WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING" ]
+    let etcFiles = [ WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING" ]
     let installerFiles = [ WINDOWS_FILES_DIR +/ "clarkSmall.bmp"; WINDOWS_FILES_DIR +/ "header1.iss";
                            WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; ]
    

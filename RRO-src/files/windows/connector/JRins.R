@@ -50,7 +50,7 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", RW, "-", suffix, sep = ""),
+    cat(paste("OutputBaseFilename=", "Revolution-R-Connector-", Rver, "-", suffix, sep = ""),
         paste("AppName=Revolution R Connector ", Rver, sep = ""),
         paste("AppVerName=Revolution R Connector ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),

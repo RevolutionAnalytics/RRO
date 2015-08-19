@@ -26,13 +26,14 @@
     ## need DOS-style paths
     srcdir = gsub("/", "\\", srcdir, fixed = TRUE)
 
-    Rver <- readLines("../../../VERSION")[1L]
-    Rver <- sub("Under .*$", "Pre-release", Rver)
+    #Rver <- readLines("../../../VERSION")[1L]
+    #Rver <- sub("Under .*$", "Pre-release", Rver)
     ## This is now over 2^16, so truncate
+	Rver <- "7.5.0"
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
-    Rver <- "3.2.1"
+
 
 
     con <- file("R.iss", "w")

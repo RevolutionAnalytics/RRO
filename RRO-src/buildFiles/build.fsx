@@ -13,7 +13,7 @@ let SCRIPT_DIR = __SOURCE_DIRECTORY__
 let RRO_DIR = System.IO.Directory.GetParent(SCRIPT_DIR).ToString()
 let BASE_DIR = System.IO.Directory.GetParent(RRO_DIR).ToString()
 let mutable WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
-let COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
+let mutable COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
 let R_VERSION = "3.2.2"
@@ -28,6 +28,7 @@ match CONNECTOR with
 | _ -> ( 
             BUILD_CONNECTOR <- true
             WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "connector"
+            COMMON_FILES_DIR <- RRO_DIR +/ "files" +/ "common" +/ "connector"
        )
 
 let platform = RevoUtils.Platform.GetPlatform()

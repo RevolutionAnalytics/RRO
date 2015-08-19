@@ -1,0 +1,11 @@
+Welcome to the Revolution R Connector Installer
+
+Revolution R Connector is an enhanced distribution of R from Revolution Analytics. 
+For information about Revolution R Connector, visit http://revolutionanalytics.com.
+
+Revolution R Connector is based on R, Copyright (C) The R Foundation for Statistical Computing. 
+Visit www.r-project.org for information about the R Project. 
+R is the creation of many contributors, for details visit http://www.r-project.org/contributors.html.
+
+Click Continue to begin installing Revolution R Connector 7.5.1.
+

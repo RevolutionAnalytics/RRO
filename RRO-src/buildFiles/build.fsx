@@ -211,8 +211,12 @@ Target "Build_Windows" (fun _ ->
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
 
+    let mutable packageFile = "packages-windows.json"
+    if BUILD_CONNECTOR then
+        packageFile <- "packages-windows-connector.json"
+        
     //Stage packages listed in packages.json
-    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ "packages-default.json")
+    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ packageFile)
     let jsonObject = Newtonsoft.Json.Linq.JObject.Parse(fileContents)
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""

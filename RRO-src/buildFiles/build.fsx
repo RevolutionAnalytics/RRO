@@ -12,7 +12,7 @@ let (+/) path1 path2 = System.IO.Path.Combine(path1, path2)
 let SCRIPT_DIR = __SOURCE_DIRECTORY__
 let RRO_DIR = System.IO.Directory.GetParent(SCRIPT_DIR).ToString()
 let BASE_DIR = System.IO.Directory.GetParent(RRO_DIR).ToString()
-let WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
+let mutable WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
 let COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
@@ -24,8 +24,11 @@ let CONNECTOR = environVarOrNone "CONNECTOR"
 let mutable BUILD_CONNECTOR = false
 
 match CONNECTOR with
-| None -> BUILD_CONNECTOR <- false
-| _ -> BUILD_CONNECTOR <- true
+| None -> ( BUILD_CONNECTOR <- false )
+| _ -> ( 
+            BUILD_CONNECTOR <- true
+            WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "conector"
+       )
 
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()

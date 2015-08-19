@@ -18,7 +18,14 @@ let WORKSPACE = BASE_DIR +/ "workspace"
 
 let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION + "-" + R_VERSION
+let RRC_VERSION = "7.5.0"
 
+let CONNECTOR = environVarOrNone "CONNECTOR"
+let mutable BUILD_CONNECTOR = false
+
+match CONNECTOR with
+| None -> BUILD_CONNECTOR <- false
+| _ -> BUILD_CONNECTOR <- true
 
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
@@ -196,6 +203,7 @@ Target "Build_Windows" (fun _ ->
     let path = environVar "PATH"
     setProcessEnvironVar "PATH" (tools.["Rtools"] +/ "bin;" + tools.["Rtools"] +/ "gcc-4.6.3\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
     trace ("PATH IS " + (environVar "PATH"))
+    trace ( "Build Connector set to " + BUILD_CONNECTOR.ToString())
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
 

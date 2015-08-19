@@ -105,8 +105,6 @@ fi
 %files
 %defattr(-, root, root)
 %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
-%{_libdir}/RRO-%{DIR_VERSION}/COPYING
-%{_libdir}/RRO-%{DIR_VERSION}/README.txt
 
 %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
 %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript

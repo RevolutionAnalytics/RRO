@@ -151,7 +151,7 @@ Target "Build_Linux" (fun _ ->
         rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major > 5) then
         rpmName <- "RRO-" + RRO_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
-    elif (flavor = RevoUtils.Platform.PlatformFlavor.SLES && version.Major = 10) then
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
         rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]

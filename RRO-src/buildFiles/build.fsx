@@ -27,7 +27,7 @@ match CONNECTOR with
 | None -> ( BUILD_CONNECTOR <- false )
 | _ -> ( 
             BUILD_CONNECTOR <- true
-            WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "conector"
+            WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "connector"
        )
 
 let platform = RevoUtils.Platform.GetPlatform()

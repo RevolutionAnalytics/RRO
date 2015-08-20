@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-3.2.1
-Version: 3.2.1
+Name: :::RPM_NAME:::
+Version: :::RPM_VERSION:::
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
@@ -12,8 +12,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib
-%define DIR_VERSION 3.2.1
-%define version 3.2.1
+%define DIR_VERSION :::RPM_VERSION:::
+%define version :::R_VERSION:::
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -43,9 +43,9 @@ make -j8
 # %find_lang %{name}
 rm -f %{buildroot}/%{_infodir}/dir
 
-cp ../../../../files/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
-cp ../../../../README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp ../../../../COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
+cp %{_topdir}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

@@ -153,11 +153,11 @@ Target "Build_Linux" (fun _ ->
 
     let mutable rpmName = ""
     if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then
-        rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
+        rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major > 5) then
-        rpmName <- "RRO-" + RRO_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
+        rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
-        rpmName <- "RRO-" + RRO_VERSION + "-1.x86_64.rpm"
+        rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]

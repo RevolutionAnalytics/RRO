@@ -206,6 +206,9 @@ Target "Build_Linux" (fun _ ->
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
     FileUtils.cp (homeDir +/ "rpmbuild/RPMS/x86_64" +/ rpmName) (WORKSPACE)
     trace ("Copied " + rpmName + " to " + WORKSPACE)
+
+    if(flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
+        ignore(Shell.Exec("fakeroot", "alien --scripts --to-deb " + WORKSPACE +/ rpmName, BASE_DIR))
 )
 
 

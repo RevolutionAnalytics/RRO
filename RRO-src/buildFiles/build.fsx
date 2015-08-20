@@ -190,7 +190,7 @@ Target "Build_Linux" (fun _ ->
     RegexReplaceInFileWithEncoding ":::BUILDID:::" "\"1\"" (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild" +/ "Rprofile.site")
     System.IO.File.WriteAllText((realHomeDir +/ ".rpmmacros"), ("%_topdir " + homeDir + "/rpmbuild"))
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ FLAVOR + "-" + FLAVOR_VERSION)
-    ignore(executeProcess("patch", "-p1 -i ../../RRO-src/patches/relocatable_r.patch", WORKSPACE +/ "RRO-" + RRO_VERSION))
+    ignore(executeProcess("patch", "-p1 -i ../../RRO-src/patches/relocatable_r.patch", WORKSPACE +/ FLAVOR + "-" + FLAVOR_VERSION))
     ignore(Shell.Exec("tar", "czf " + FLAVOR + "-" + FLAVOR_VERSION + ".tar.gz " + FLAVOR + "-" + FLAVOR_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ FLAVOR + "-" + FLAVOR_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ specName) (homeDir +/ "rpmbuild/SPECS/R.spec")

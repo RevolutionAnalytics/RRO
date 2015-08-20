@@ -99,6 +99,23 @@ namespace RevoUtils
                         throw new Exception("No /etc/issue file for Flavor SLES");
                     }
                 }
+                else if (flavor == PlatformFlavor.Ubuntu)
+                {
+                    if (System.IO.File.Exists("/etc/issue"))
+                    {
+                        string issueText = System.IO.File.ReadAllText("/etc/issue");
+                        var versionString = Regex.Match(issueText, "[0-9]{2}.[0-9]{2}");
+
+                        if (versionString.Success)
+                            return new System.Version(Int32.Parse(versionString.ToString()), 0);
+                        else
+                            return new System.Version(0, 0);
+                    }
+                    else
+                    {
+                        throw new Exception("No /etc/issue file for Flavor Ubuntu");
+                    }
+                }
                 else 
                 {
                     throw new Exception("Linux flavor not implemented yet");

@@ -47,6 +47,19 @@ cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{versio
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 
+if [ -d "/tmp/rro_extra_pkgs" ]
+then
+    pushd /tmp/rro_extra_pkgs
+    for filename in :::EXTRA_PKGS:::; do
+        if grep -q "release 5" /etc/redhat-release; then
+            /usr/lib64/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+        else
+            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+        fi
+    done
+    popd
+fi
+
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
     RPM_INSTALL_PREFIX0=/usr/

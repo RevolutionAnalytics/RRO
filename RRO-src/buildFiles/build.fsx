@@ -147,7 +147,7 @@ Target "Build_Linux" (fun _ ->
 
     let mutable specName = ""
     if(flavor = RevoUtils.Platform.PlatformFlavor.CentOS || flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
-        specName <- "R_" + flavor.ToString() + ".spec"
+        specName <- "R_" + flavor.ToString().ToUpper() + ".spec"
     elif(flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
         specName <- "R_" + flavor.ToString() + version.Major.ToString() + ".spec"
 

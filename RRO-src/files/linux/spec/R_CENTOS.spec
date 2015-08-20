@@ -66,9 +66,9 @@ cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 pwd
 fi
 
-if [ -d "/tmp/%{name}_extra_pkgs" ]
+if [ -d "/tmp/rro_extra_pkgs" ]
 then
-    pushd /tmp/%{name}_extra_pkgs
+    pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
         if grep -q "release 5" /etc/redhat-release; then
             /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}

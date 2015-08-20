@@ -1,6 +1,6 @@
 Summary: The "Cran R" program from GNU
-Name: RRO-3.2.2
-Version: 3.2.2
+Name: :::RPM_NAME:::
+Version: :::RPM_VERSION:::
 %define debug_package %{nil}
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
@@ -18,8 +18,8 @@ Requires(post): info
 Requires(preun): info
 
 %define libnn lib64
-%define DIR_VERSION 3.2.2
-%define version 3.2.2
+%define DIR_VERSION :::RPM_VERSION:::
+%define version :::R_VERSION:::
 
 %description
 'GNU S' - A language and environment for statistical computing and
@@ -56,11 +56,11 @@ rm -rf %{buildroot}/lib
 
 if grep -q "release 5" /etc/redhat-release; then
 pwd
-cp %{_topdir}/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
+cp %{_topdir}/Rprofile.site /usr/lib64/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
 cp %{_topdir}/README.txt /usr/lib64/RRO-%{DIR_VERSION}
 cp %{_topdir}/COPYING /usr/lib64/RRO-%{DIR_VERSION}
 else
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 pwd
@@ -71,9 +71,9 @@ then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
         if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            /usr/lib64/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         else
-            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         fi
     done
     popd

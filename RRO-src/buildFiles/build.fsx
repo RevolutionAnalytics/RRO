@@ -16,9 +16,11 @@ let mutable WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
 let mutable COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
+let mutable FLAVOR = "RRO"
 let R_VERSION = "3.2.2"
-let RRO_VERSION = R_VERSION + "-" + R_VERSION
+let RRO_VERSION = R_VERSION
 let RRC_VERSION = "7.5.0"
+let mutable FLAVOR_VERSION = R_VERSION
 
 let CONNECTOR = environVarOrNone "CONNECTOR"
 let mutable BUILD_CONNECTOR = false
@@ -29,6 +31,8 @@ match CONNECTOR with
             BUILD_CONNECTOR <- true
             WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "connector"
             COMMON_FILES_DIR <- RRO_DIR +/ "files" +/ "common" +/ "connector"
+            FLAVOR <- "Revolution-R-Connector"
+            FLAVOR_VERSION <- RRC_VERSION
        )
 
 let platform = RevoUtils.Platform.GetPlatform()
@@ -188,7 +192,15 @@ Target "Build_Linux" (fun _ ->
     ignore(Shell.Exec("tar", "czf RRO-" + RRO_VERSION + ".tar.gz RRO-" + RRO_VERSION, WORKSPACE))
     FileUtils.cp (WORKSPACE +/ "RRO-" + RRO_VERSION + ".tar.gz") (homeDir +/ "rpmbuild/SOURCES/")
     FileUtils.cp (RRO_DIR +/ "files/linux/spec" +/ specName) (homeDir +/ "rpmbuild/SPECS/R.spec")
-    RegexReplaceInFileWithEncoding ":::EXTRA_PKGS:::" extraPackageList (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild/SPECS/R.spec")
+
+    let replacements = [ (":::EXTRA_PKGS:::", extraPackageList);
+                         (":::RPM_NAME:::", FLAVOR); 
+                         (":::RPM_VERSION:::", FLAVOR_VERSION);
+                         (":::R_VERSION:::", R_VERSION) ]
+
+    for replacement in replacements do
+        RegexReplaceInFileWithEncoding (fst replacement) (snd replacement) (System.Text.ASCIIEncoding()) (homeDir +/ "rpmbuild/SPECS/R.spec")
+    
     ignore(Shell.Exec("rpmbuild", "-ba SPECS/R.spec", homeDir +/ "rpmbuild"))
     FileUtils.cp (homeDir +/ "rpmbuild/RPMS/x86_64" +/ rpmName) (WORKSPACE)
     trace ("Copied " + rpmName + " to " + WORKSPACE)

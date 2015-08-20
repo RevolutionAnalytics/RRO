@@ -1,6 +1,6 @@
 Summary: A language for data analysis and graphics
-Name: RRO-3.2.2
-Version: 3.2.2
+Name: :::RPM_NAME:::
+Version: :::RPM_VERSION:::
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -21,8 +21,8 @@ Requires: glibc, glibc-devel, curl
 AutoReqProv: No
 
 %define libnn lib64
-%define DIR_VERSION 3.2.2
-%define version 3.2.2
+%define DIR_VERSION :::RPM_VERSION:::
+%define r_version :::R_VERSION:::
 
 
 
@@ -49,7 +49,7 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
 if test "${CHECK_ALL}" = "YES"
     then
@@ -60,7 +60,7 @@ make info
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
-pushd ${RPM_BUILD_ROOT}/%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib64/R/lib
+pushd ${RPM_BUILD_ROOT}/%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/lib
 cp /usr/local/lib64/libstdc++.so.6.0.10 .
 ln -s libstdc++.so.6.0.10 libstdc++.so.6 
 ln -s libstdc++.so.6.0.10 libstdc++.so
@@ -71,15 +71,15 @@ cp /usr/local/lib64/libgfortran.so.3.0.0 .
 ln -s libgfortran.so.3.0.0 libgfortran.so.3
 ln -s libgfortran.so.3.0.0 libgfortran.so
 popd
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
         if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         else
-            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         fi
     done
     popd
@@ -91,25 +91,25 @@ if test "${RPM_INSTALL_PREFIX0}" = ""; then
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript /usr/bin
 echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | /usr/bin/R -q --vanilla
 
 
 %postun
-rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-rm -f $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+rm -f $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+rm -f $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 
 
 %files
 %defattr(-, root, root)
-%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
+%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 
 %changelog

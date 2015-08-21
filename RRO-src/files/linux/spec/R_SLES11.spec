@@ -1,6 +1,6 @@
 Summary: A language for data analysis and graphics
-Name: RRO-3.2.2
-Version: 3.2.2
+Name: :::RPM_NAME:::
+Version: :::RPM_VERSION:::
 Release: 1%{?dist}
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -21,8 +21,8 @@ Requires: gcc, make, gcc-fortran, gcc-c++, curl
 AutoReqProv: Yes
 
 %define libnn lib64
-%define DIR_VERSION 3.2.2
-%define version 3.2.2
+%define DIR_VERSION :::RPM_VERSION:::
+%define r_version :::R_VERSION:::
 
 
 
@@ -49,7 +49,7 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
 if test "${CHECK_ALL}" = "YES"
     then
@@ -62,15 +62,15 @@ cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/etc
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
         if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         else
-            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-3.2.2/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         fi
     done
     popd
@@ -82,11 +82,10 @@ if test "${RPM_INSTALL_PREFIX0}" = ""; then
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-04-29")' | /usr/bin/R -q --vanilla
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/R /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/Rscript /usr/bin
 
 
 %postun
@@ -96,17 +95,17 @@ fi
 revo_prefix=`echo "$revo_prefix" | sed "s/\/*$//"`
 if test -h ${revo_prefix}/bin/R
     then
-    rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-    rm -f ${revo_prefix}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
+    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
     rm -f /usr/bin/R
     rm -f /usr/bin/Rscript
 fi
 
 %files
 %defattr(-, root, root)
-%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
+%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/
 
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
 
 %changelog

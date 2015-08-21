@@ -20,6 +20,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{534847
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevoUtils", "RevoUtils\RevoUtils.csproj", "{DF501778-1824-4C25-B50F-29A5243108B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpecFiles", "SpecFiles", "{C40522CB-3768-444B-B752-695BBD259332}"
+	ProjectSection(SolutionItems) = preProject
+		..\files\linux\spec\R_CENTOS.spec = ..\files\linux\spec\R_CENTOS.spec
+		..\files\linux\spec\R_SLES10.spec = ..\files\linux\spec\R_SLES10.spec
+		..\files\linux\spec\R_SLES11.spec = ..\files\linux\spec\R_SLES11.spec
+		..\files\linux\spec\R_SUSE.spec = ..\files\linux\spec\R_SUSE.spec
+		..\files\linux\spec\R_UBUNTU.spec = ..\files\linux\spec\R_UBUNTU.spec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

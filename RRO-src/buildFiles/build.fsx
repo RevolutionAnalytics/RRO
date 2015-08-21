@@ -164,6 +164,8 @@ Target "Build_Linux" (fun _ ->
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.OpenSUSE) then
+        rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]

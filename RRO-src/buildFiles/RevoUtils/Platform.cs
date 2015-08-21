@@ -36,7 +36,7 @@ namespace RevoUtils
                         return PlatformFlavor.SLES;
                     else if (issueText.Contains("Ubuntu"))
                         return PlatformFlavor.Ubuntu;
-                    else if (issueText.Contains("OpenSUSE"))
+                    else if (issueText.Contains("openSUSE"))
                         return PlatformFlavor.OpenSUSE;
                     else
                         return PlatformFlavor.UnknownUnix;
@@ -88,6 +88,23 @@ namespace RevoUtils
                     {
                         string issueText = System.IO.File.ReadAllText("/etc/issue");
                         var versionString = Regex.Match(issueText, "1[0-3]");
+
+                        if (versionString.Success)
+                            return new System.Version(Int32.Parse(versionString.ToString()), 0);
+                        else
+                            return new System.Version(0, 0);
+                    }
+                    else
+                    {
+                        throw new Exception("No /etc/issue file for Flavor SLES");
+                    }
+                }
+                else if (flavor == PlatformFlavor.OpenSUSE)
+                {
+                    if (System.IO.File.Exists("/etc/issue"))
+                    {
+                        string issueText = System.IO.File.ReadAllText("/etc/issue");
+                        var versionString = Regex.Match(issueText, "[0-9][0-9]{2}.[0-9]{1}");
 
                         if (versionString.Success)
                             return new System.Version(Int32.Parse(versionString.ToString()), 0);

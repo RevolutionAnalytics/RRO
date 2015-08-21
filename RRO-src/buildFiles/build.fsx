@@ -150,6 +150,8 @@ Target "Build_Linux" (fun _ ->
         specName <- "R_" + flavor.ToString().ToUpper() + ".spec"
     elif(flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
         specName <- "R_" + flavor.ToString() + version.Major.ToString() + ".spec"
+    elif(flavor = RevoUtils.Platform.PlatformFlavor.OpenSUSE) then
+        specName <- "R_SUSE.spec"
 
     let mutable rpmName = ""
     if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then

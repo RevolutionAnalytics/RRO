@@ -49,7 +49,7 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
 if test "${CHECK_ALL}" = "YES"
     then
@@ -62,15 +62,15 @@ cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make DESTDIR=${RPM_BUILD_ROOT} install
 rm -f %{buildroot}/%{_infodir}/dir
 rm -rf %{buildroot}/lib
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
         if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         else
-            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         fi
     done
     popd
@@ -82,10 +82,10 @@ if test "${RPM_INSTALL_PREFIX0}" = ""; then
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r-version}/%libnn/R/bin/Rscript /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript /usr/bin
 
 
 %postun
@@ -95,17 +95,17 @@ fi
 revo_prefix=`echo "$revo_prefix" | sed "s/\/*$//"`
 if test -h ${revo_prefix}/bin/R
     then
-    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
-    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
+    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+    rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
     rm -f /usr/bin/R
     rm -f /usr/bin/Rscript
 fi
 
 %files
 %defattr(-, root, root)
-%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/
+%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 
-%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/R
-%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r-version}/bin/Rscript
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
+%exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 
 %changelog

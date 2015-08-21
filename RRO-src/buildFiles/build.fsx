@@ -154,8 +154,10 @@ Target "Build_Linux" (fun _ ->
     let mutable rpmName = ""
     if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
-    elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major > 5) then
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 6) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.el" + version.Major.ToString() + ".x86_64.rpm"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 7) then
+        rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.el" + version.Major.ToString() + ".centos.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then

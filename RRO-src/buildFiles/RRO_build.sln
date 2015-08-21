@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		build.fsx = build.fsx
 		packages-default.json = packages-default.json
+		packages-linux-connector.json = packages-linux-connector.json
+		packages-linux.json = packages-linux.json
 		packages-windows-connector.json = packages-windows-connector.json
 		packages-windows.json = packages-windows.json
 	EndProjectSection

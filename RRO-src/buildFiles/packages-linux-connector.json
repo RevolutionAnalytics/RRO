@@ -1,0 +1,16 @@
+{
+    "packages": [
+        { "name": "checkpoint", "source": "url", "location": "http://packages.revolutionanalytics.com/cran/3.1/stable/src/contrib/checkpoint_0.3.9.tar.gz", "destFileName": "checkpoint_0.3.9.tar.gz" },
+        { "name": "iterators", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/iterators_1.0.7.tar.gz", "destFileName": "iterators_1.0.7.tar.gz" },
+        { "name": "foreach", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/foreach_1.4.2.tar.gz", "destFileName": "foreach_1.4.2.tar.gz" },
+        { "name": "doParallel", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/doParallel_1.0.8.tar.gz", "destFileName": "doParallel_1.0.8.tar.gz" },
+        { "name": "RUnit", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RUnit_0.4.26.tar.gz", "destFileName": "RUnit_0.4.26.tar.gz" },
+        { "name": "RevoMods", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoMods_7.4.1.tar.gz", "destFileName": "RevoMods_7.4.1.tar.gz" },
+        { "name": "RevoUtils", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoUtils_7.4.1.tar.gz", "destFileName": "RevoUtils_7.4.1.tar.gz" },
+        { "name": "RevoIOQ", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoIOQ_7.4.1.tar.gz", "destFileName": "RevoIOQ_7.4.1.tar.gz" },
+        { "name": "RevoRsrConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRsrConnector_7.4.1.tar.gz", "destFileName": "RevoRsrConnector_7.4.1.tar.gz" },
+    ],
+
+    "binary_packages": [
+    ]
+}

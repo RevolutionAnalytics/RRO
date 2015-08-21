@@ -169,8 +169,12 @@ Target "Build_Linux" (fun _ ->
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
 
+
+    let mutable packageFile = "packages-linux.json"
+    if BUILD_CONNECTOR then
+        packageFile <- "packages-linux-connector.json"
     //Stage packages listed in packages.json
-    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ "packages-linux.json")
+    let fileContents = System.IO.File.ReadAllText(SCRIPT_DIR +/ packageFile)
     let jsonObject = Newtonsoft.Json.Linq.JObject.Parse(fileContents)
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""

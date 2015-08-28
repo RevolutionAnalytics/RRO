@@ -7,5 +7,5 @@ Revolution R Open is based on R, Copyright (C) The R Foundation for Statistical 
 Visit www.r-project.org for information about the R Project. 
 R is the creation of many contributors, for details visit http://www.r-project.org/contributors.html.
 
-Click Continue to begin installing Revolution R Open 3.2.1.
+Click Continue to begin installing Revolution R Open 3.2.2.
 

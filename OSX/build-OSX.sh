@@ -61,12 +61,12 @@ sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/R.framework
 cd $BUILD_DIR/OSX
 
 ## OS X GUI
-rm -rf Mac-GUI-1.65
-tar xzf Mac-GUI-1.65.tar.gz
-cd Mac-GUI-1.65
+rm -rf Mac-GUI-1.66
+tar xzf Mac-GUI-1.66.tar.gz
+cd Mac-GUI-1.66
 xcodebuild -target "Revolution R Open" 
 cd ../
-sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
+sudo cp -a Mac-GUI-1.66/build/Release/Revo*.app /Applications
 ## make package
 cd $BUILD_DIR/OSX/project
 /usr/local/bin/packagesbuild RRO.pkgproj

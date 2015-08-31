@@ -48,7 +48,7 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", RW, "-", suffix, sep = ""),
+    cat(paste("OutputBaseFilename=", RRO, "-", suffix, sep = ""),
         paste("AppName=RRO for Windows ", Rver, sep = ""),
         paste("AppVerName=RRO for Windows ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),

@@ -32,7 +32,7 @@
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
-    Rver <- "3.2.1"
+    Rver <- "3.2.2"
 
 
     con <- file("R.iss", "w")
@@ -91,6 +91,14 @@
     writeLines(lines, con)
 
     writeLines(c("", "", "[Files]"), con)
+	
+	cat('Source: "R-3.2.2\\etc\\README.txt', '"; ',
+            'DestDir: "{app}', '"; ',
+            'Flags: ignoreversion; ',
+            'Components: main', 
+            file = con, sep = "")
+    cat("\n", file = con)
+
 
     setwd(srcdir)
     files <- sub("^./", "",

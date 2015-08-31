@@ -13,7 +13,7 @@ BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
 Requires: ghostscript-fonts, libgfortran, cairo-devel, curl, libicu
-AutoRecProv: No
+AutoReqProv: No
 
 Requires(post): info
 Requires(preun): info

@@ -63,6 +63,9 @@ sudo cp /Users/builder/R_X11.so /Library/Frameworks/R.framework/Resources/module
 cd $BUILD_DIR/OSX
 ## add checkpoint package
 git clone https://github.com/RevolutionAnalytics/checkpoint.git
+cd checkpoint
+git checkout 0.3.13
+cd ../
 tar czf checkpoint.tar.tgz checkpoint
 sudo cp checkpoint.tar.tgz /Library/Frameworks/R.framework/Resources/etc
 

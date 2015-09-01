@@ -219,6 +219,9 @@ Target "Build_Linux" (fun _ ->
 
     if(flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         ignore(Shell.Exec("fakeroot", "alien --scripts --to-deb " + WORKSPACE +/ rpmName, BASE_DIR))
+        ignore(Shell.Exec("sha1sum", "rro_" + R_VERSION + "-2_amd64.deb", BASE_DIR))
+    else
+        ignore(Shell.Exec("sha1sum", rpmName, WORKSPACE))
 )
 
 

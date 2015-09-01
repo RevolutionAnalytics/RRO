@@ -50,10 +50,10 @@ additions and changes:
 
 The default CRAN repository for this version of
 Revolution R Open is
-http://mran.revolutionanalytics.com/snapshot/2015-09-01/.
+http://mran.revolutionanalytics.com/snapshot/2015-08-27/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on 2015-09-01. Newer versions of packages will
+created on 2015-08-27. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.

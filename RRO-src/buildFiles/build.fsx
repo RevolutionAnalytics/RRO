@@ -167,6 +167,17 @@ Target "Build_Linux" (fun _ ->
     elif (flavor = RevoUtils.Platform.PlatformFlavor.OpenSUSE) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
 
+    let mutable finalRpmName = ""
+    let mutable finalDebName = ""
+    if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS) then
+        finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + ".el" + version.Major.ToString() + ".x86_64.rpm"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.SLES) then
+        finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-SLES" + version.Major.ToString() + ".x86_64.rpm"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
+        finalDebName <- FLAVOR + "-" + FLAVOR_VERSION + "-Ubuntu-" + version.Major.ToString() + "." + version.Minor.ToString() + ".x86_64.deb"
+    elif (flavor = RevoUtils.Platform.PlatformFlavor.OpenSUSE) then
+        finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-openSUSE-" + version.Major.ToString() + "." + version.Minor.ToString() + ".x86_64.rpm"
+
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]
     
@@ -219,9 +230,9 @@ Target "Build_Linux" (fun _ ->
 
     if(flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         ignore(Shell.Exec("fakeroot", "alien --scripts --to-deb " + WORKSPACE +/ rpmName, BASE_DIR))
-        ignore(Shell.Exec("sha1sum", "rro_" + R_VERSION + "-2_amd64.deb", BASE_DIR))
+        FileUtils.mv ("rro_" + FLAVOR_VERSION + "-2_amd64.deb") (finalDebName)
     else
-        ignore(Shell.Exec("sha1sum", rpmName, WORKSPACE))
+        FileUtils.mv (WORKSPACE +/ rpmName) (WORKSPACE +/ finalRpmName)
 )
 
 

@@ -230,8 +230,7 @@ Target "Build_Linux" (fun _ ->
 
     if(flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         ignore(Shell.Exec("fakeroot", "alien --scripts --to-deb " + WORKSPACE +/ rpmName, BASE_DIR))
-        trace ("rro_" + R_VERSION + "-2_amd64.deb")
-        ignore(Shell.Exec("mv", "rro_" + R_VERSION + "-2_amd64.deb" + " " + finalDebName))
+        ignore(Shell.Exec("mv", BASE_DIR +/ "rro_" + R_VERSION + "-2_amd64.deb" + " " + BASE_DIR +/ finalDebName))
     else
         ignore(Shell.Exec("mv", WORKSPACE +/ rpmName + " " + WORKSPACE +/ finalRpmName))
 )

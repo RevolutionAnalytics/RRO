@@ -50,7 +50,7 @@ cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     for filename in :::EXTRA_PKGS:::; do
-            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla CMD INSTALL /tmp/rro_extra_pkgs/${filename}
+            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
     done
 fi
 

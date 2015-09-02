@@ -57,7 +57,7 @@ if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
-        %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+        %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
     done
     popd
 fi

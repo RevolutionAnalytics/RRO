@@ -74,7 +74,7 @@ then
         if grep -q "release 5" /etc/redhat-release; then
             /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
         else
-            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
+            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
         fi
     done
     popd

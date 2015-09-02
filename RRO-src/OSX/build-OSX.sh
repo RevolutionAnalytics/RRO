@@ -12,9 +12,9 @@ pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
-cp COPYING RRO-src/OSX/project
-cp README.txt RRO-src/OSX/project
-cp RRO-src/files/common/intro.txt RRO-src/OSX/project
+cp ../COPYING OSX/project
+cp ../README.txt OSX/project
+cp files/common/intro.txt RRO-src/OSX/project
 
 if [ $BUILD_MATH_LIBRARIES -eq 1 ] ; then
 cd $BUILD_DIR/RRO-src/OSX

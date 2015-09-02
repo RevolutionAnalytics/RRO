@@ -12,18 +12,18 @@ pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
-cp COPYING OSX/project
-cp README.txt OSX/project
-cp files/intro.txt OSX/project
+cp COPYING RRO-src/OSX/project
+cp README.txt RRO-src/OSX/project
+cp RRO-src/files/common/intro.txt RRO-src/OSX/project
 
 if [ $BUILD_MATH_LIBRARIES -eq 1 ] ; then
-cd $BUILD_DIR/OSX
+cd $BUILD_DIR/RRO-src/OSX
 rm -rf rd64_LIBS
-cp -a ../R-src R-3.2.1
-cp Makefile.fw R-3.2.1
+cp -a ../../R-src R-3.2.2
+cp Makefile.fw R-3.2.2
 mkdir rd64_LIBS
 cd rd64_LIBS
-../R-3.2.1/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
+../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
 mkdir lib
 make
 ls -l lib
@@ -36,13 +36,14 @@ fi
 ### End of BUILD_MATH_LIBRARIES
 
 
-cd $BUILD_DIR/OSX
+cd $BUILD_DIR/RRO-src/OSX
 rm -rf rd64
-cp -a ../R-src R-3.2.1
-cp Makefile.fw R-3.2.1
+cp -a ../../R-src R-3.2.2
+cp Makefile.fw R-3.2.2
 mkdir rd64
 cd rd64
-../R-3.2.1/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
+../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' 
+##../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
 mkdir lib
 make
 cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRblas.dylib lib
@@ -58,7 +59,15 @@ sudo cp $BUILD_DIR/files/Rprofile.site /Library/Frameworks/R.framework/Resources
 sudo cp $BUILD_DIR/COPYING /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/README.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/R.framework
+sudo cp /Users/builder/R_X11.so /Library/Frameworks/R.framework/Resources/modules
 cd $BUILD_DIR/OSX
+## add checkpoint package
+git clone https://github.com/RevolutionAnalytics/checkpoint.git
+cd checkpoint
+git checkout 0.3.13
+cd ../
+tar czf checkpoint.tar.tgz checkpoint
+sudo cp checkpoint.tar.tgz /Library/Frameworks/R.framework/Resources/etc
 
 ## OS X GUI
 rm -rf Mac-GUI-1.65

@@ -8,7 +8,8 @@ cd /usr/bin
 rm -f R Rscript
 ln -s /Library/Frameworks/RRO.framework/Resources/bin/R .
 ln -s /Library/Frameworks/RRO.framework/Resources/bin/Rscript .
-echo 'install.packages("checkpoint",repos="http://mran.revolutionanalytics.com/snapshot/2015-05-01")' | R -q --vanilla
+cd /Library/Frameworks/R.framework/Resources/etc
+/Library/Frameworks/R.framework/Resources/bin/R CMD INSTALL checkpoint.tar.tgz
 
 # update font cache (if this R includes fontconfig)
 if [ -e /Library/Frameworks/RRO.framework/Resources/bin/fc-cache ]; then

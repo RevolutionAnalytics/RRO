@@ -55,7 +55,7 @@ cp /usr/local/lib/libgcc_s.1.dylib lib
 cp /usr/local/opt/readline/lib/libreadline.6.3.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
-sudo cp $BUILD_DIR/RRO-src/files/common/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
+sudo cp $BUILD_DIR/RRO-src/files/OSX/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
 sudo cp $BUILD_DIR/COPYING /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/README.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/R.framework

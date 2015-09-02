@@ -5,16 +5,16 @@ uname -a
 sudo rm -rf /Library/Frameworks/R.framework
 sudo rm -rf /Library/Frameworks/RRO.framework
 sudo rm -rf /Applications/Revo*.app
-cd ../
+cd ../../
 
 BUILD_MATH_LIBRARIES=1
 pwd
 PWDD=`pwd`
 BUILD_DIR=$PWDD
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
-cp ../COPYING OSX/project
-cp ../README.txt OSX/project
-cp files/common/intro.txt RRO-src/OSX/project
+cp COPYING RRO-src/OSX/project
+cp README.txt RRO-src/OSX/project
+cp RRO-src/files/common/intro.txt RRO-src/OSX/project
 
 if [ $BUILD_MATH_LIBRARIES -eq 1 ] ; then
 cd $BUILD_DIR/RRO-src/OSX
@@ -46,8 +46,8 @@ cd rd64
 ##../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
 mkdir lib
 make
-cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRblas.dylib lib
-cp $BUILD_DIR/OSX/rd64_LIBS/lib/libRlapack.dylib lib
+cp $BUILD_DIR/RRO-src/OSX/rd64_LIBS/lib/libRblas.dylib lib
+cp $BUILD_DIR/RRO-src/OSX/rd64_LIBS/lib/libRlapack.dylib lib
 cp /usr/local/lib/libquadmath.0.dylib lib
 cp /usr/local/lib/libgfortran.3.dylib lib
 cp /usr/local/lib/libgcc_s_x86_64.1.dylib lib
@@ -55,12 +55,12 @@ cp /usr/local/lib/libgcc_s.1.dylib lib
 cp /usr/local/opt/readline/lib/libreadline.6.3.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
-sudo cp $BUILD_DIR/files/common/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
+sudo cp $BUILD_DIR/RRO-src/files/common/Rprofile.site /Library/Frameworks/R.framework/Resources/etc
 sudo cp $BUILD_DIR/COPYING /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/README.txt /Library/Frameworks/R.framework
 sudo cp $BUILD_DIR/RRO-NEWS.txt /Library/Frameworks/R.framework
 sudo cp /Users/builder/R_X11.so /Library/Frameworks/R.framework/Resources/modules
-cd $BUILD_DIR/OSX
+cd $BUILD_DIR/RRO-src/OSX
 ## add checkpoint package
 git clone https://github.com/RevolutionAnalytics/checkpoint.git
 cd checkpoint

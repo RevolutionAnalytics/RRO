@@ -77,5 +77,5 @@ xcodebuild -target "Revolution R Open"
 cd ../
 sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
 ## make package
-cd $BUILD_DIR/OSX/project
+cd $BUILD_DIR/RRO-src/OSX/project
 /usr/local/bin/packagesbuild RRO.pkgproj

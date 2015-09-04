@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E51F3ED5-C73E-45A1-BF7C-4A504037C2AF}"
+	ProjectSection(SolutionItems) = preProject
+		build.fsx = build.fsx
+		packages-default.json = packages-default.json
+		packages-linux-connector.json = packages-linux-connector.json
+		packages-linux.json = packages-linux.json
+		packages-windows-connector.json = packages-windows-connector.json
+		packages-windows.json = packages-windows.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{53484781-2F1F-4D48-883F-145D1C1ACCBF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevoUtils", "RevoUtils\RevoUtils.csproj", "{DF501778-1824-4C25-B50F-29A5243108B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpecFiles", "SpecFiles", "{C40522CB-3768-444B-B752-695BBD259332}"
+	ProjectSection(SolutionItems) = preProject
+		..\files\linux\spec\R_CENTOS.spec = ..\files\linux\spec\R_CENTOS.spec
+		..\files\linux\spec\R_SLES10.spec = ..\files\linux\spec\R_SLES10.spec
+		..\files\linux\spec\R_SLES11.spec = ..\files\linux\spec\R_SLES11.spec
+		..\files\linux\spec\R_SUSE.spec = ..\files\linux\spec\R_SUSE.spec
+		..\files\linux\spec\R_UBUNTU.spec = ..\files\linux\spec\R_UBUNTU.spec
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF501778-1824-4C25-B50F-29A5243108B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF501778-1824-4C25-B50F-29A5243108B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF501778-1824-4C25-B50F-29A5243108B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF501778-1824-4C25-B50F-29A5243108B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

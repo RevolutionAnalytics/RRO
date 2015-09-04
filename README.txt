@@ -1,5 +1,5 @@
 ----------------------------------------
-Revolution R Open, version 3.2.1
+Revolution R Open, version 3.2.2
 ----------------------------------------
 
 Revolution R Open is the enhanced distribution of R, from
@@ -45,15 +45,15 @@ http://mran.revolutionanalytics.com/download/#download.
 -----------------------
 About Revolution R Open
 -----------------------
-Revolution R Open builds on R 3.2.1 by making the following
+Revolution R Open builds on R 3.2.2 by making the following
 additions and changes:
 
 The default CRAN repository for this version of
 Revolution R Open is
-http://mran.revolutionanalytics.com/snapshot/2015-07-01/.
+http://mran.revolutionanalytics.com/snapshot/2015-08-27/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on 2015-07-01. Newer versions of packages will
+created on 2015-08-27. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.
@@ -90,7 +90,7 @@ List of Open Source Components
 This Revolution R Open distribution includes the following
 open source components, distributed under the terms of the
 indicated licenses:
-- R 3.2.1 (R Foundation for Statistical Computing) GPLv2
+- R 3.2.2 (R Foundation for Statistical Computing) GPLv2
 - Revolution R Open build and test system (Revolution
 Analytics) GPLv2
 The terms of the GPLv2 license can be found in the

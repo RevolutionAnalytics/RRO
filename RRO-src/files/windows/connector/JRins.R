@@ -29,8 +29,9 @@
     #Rver <- readLines("../../../VERSION")[1L]
     #Rver <- sub("Under .*$", "Pre-release", Rver)
     ## This is now over 2^16, so truncate
-	Rver <- "7.5.0"
-	Rver_base <- "7.5"
+    Rver <- "7.5.0"
+    Rver_base <- "7.5"
+    RROver <- "3.2.2"
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
@@ -51,12 +52,12 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", "Revolution-R-Connector-", Rver, "-", suffix, sep = ""),
+    cat(paste("OutputBaseFilename=", "RRO-Connector-", Rver, "-", "Windows", sep = ""),
         paste("AppName=Revolution R Connector ", Rver, sep = ""),
         paste("AppVerName=Revolution R Connector ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\Revolution\\Connector-", Rver_base, "\\", sep = ""),
+        paste("DefaultDirName={code:UserPF}\\RRO\\RRO-Connector-", Rver_base, "\\", "R-", RROver, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"

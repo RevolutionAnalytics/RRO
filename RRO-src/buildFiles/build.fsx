@@ -38,8 +38,8 @@ match CONNECTOR with
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
 let version = RevoUtils.Platform.GetReleaseVersion()
-let mutable PKG_DIR = ""
 
+let mutable PKG_DIR = ""
 if platform = System.PlatformID.Win32NT then
     PKG_DIR <- WORKSPACE +/ "packages"
 else
@@ -323,7 +323,7 @@ Target "Build_Windows" (fun _ ->
     //Remove foreach and iterators
     FileUtils.rm_rf ( rDir +/ "library" +/ "foreach" )
     FileUtils.rm_rf ( rDir +/ "library" +/ "iterators" )
-
+    ReplaceInFiles [ ("iterators foreach ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
     ()

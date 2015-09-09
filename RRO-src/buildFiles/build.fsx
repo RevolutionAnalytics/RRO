@@ -253,8 +253,10 @@ Target "Build_Windows" (fun _ ->
     setProcessEnvironVar "PATH" (tools.["Rtools"] +/ "bin;" + tools.["Rtools"] +/ "gcc-4.6.3\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
     trace ("PATH IS " + (environVar "PATH"))
     trace ( "Build Connector set to " + BUILD_CONNECTOR.ToString())
+    let tmpDir = WORKSPACE +/ "tmp"
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
+    FileUtils.mkdir(tmpDir)
 
     let mutable packageFile = "packages-windows.json"
     if BUILD_CONNECTOR then
@@ -274,7 +276,10 @@ Target "Build_Windows" (fun _ ->
         webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
         System.IO.File.WriteAllText((PKG_DIR +/ package.Value("name") + ".tgz"), package.Value("destFileName"))
         extraPackageList <- extraPackageList + " " + package.Value("name")
-          
+    
+    if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
+        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
+
     //Prep directories, copying over custom files
     let rDir = WORKSPACE +/ "R-" + R_VERSION
     let gnuWin32Dir = rDir +/ "src" +/ "gnuwin32"
@@ -286,7 +291,7 @@ Target "Build_Windows" (fun _ ->
                            WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; 
                            WINDOWS_FILES_DIR +/ "Makefile"; ]
    
-    FileUtils.mkdir(WORKSPACE +/ "tmp")
+    
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)
     FileUtils.cp_r ("c:\\R64\\Tcl") (WORKSPACE +/ "R-" + R_VERSION +/ "Tcl")
     FileUtils.cp (COMMON_FILES_DIR +/ "Rprofile.site") (gnuWin32Dir +/ "fixed" +/ "etc")

@@ -196,8 +196,7 @@ Target "Build_Linux" (fun _ ->
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""
 
-    for package in packages do
-        
+    for package in packages do     
         //Download the package
         use webClient = new System.Net.WebClient()
         let url = package.Value("location")
@@ -297,7 +296,7 @@ Target "Build_Windows" (fun _ ->
     for file in installerFiles do
         FileUtils.cp file installerDir
 
-    
+    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirs --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
 
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")

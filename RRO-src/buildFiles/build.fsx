@@ -278,7 +278,7 @@ Target "Build_Windows" (fun _ ->
         extraPackageList <- extraPackageList + " " + package.Value("name")
     
     if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
-        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
+        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz")))
 
     //Prep directories, copying over custom files
     let rDir = WORKSPACE +/ "R-" + R_VERSION

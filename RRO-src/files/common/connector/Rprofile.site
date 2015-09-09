@@ -1,3 +1,4 @@
+if (!identical(system.file(package="RevoUtils"), "")) {
 Revo.version <- RevoUtils:::makeRevoVersion()
 ".Revo.tb"<-function(t) FALSE 	# set up stub debug instrumentation function
 if (!identical(system.file(package="RevoScaleR"), "")) {
@@ -77,3 +78,4 @@ local(
 	}
 }
 )
+}

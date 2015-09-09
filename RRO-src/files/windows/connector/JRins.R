@@ -57,7 +57,7 @@
         paste("AppVerName=Revolution R Connector ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\RRO\\RRO-Connector-", Rver_base, "\\", "R-", RROver, sep = ""),
+        paste("DefaultDirName={code:UserPF}\\RRO\\Revolution-R-Connector-", Rver_base, "\\", "R-", RROver, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"

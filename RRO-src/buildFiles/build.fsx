@@ -338,7 +338,8 @@ Target "Build_Windows" (fun _ ->
         RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (rDir +/ "library" +/ "RevoUtils" +/ "DESCRIPTION")
 
     if directoryExists ( rDir +/ "library" +/ "RevoIOQ" ) then
-        ignore(System.IO.File.Create( rDir +/ "library" +/ "RevoIOQ" +/ "unitTests" +/ "R" +/ "windows" +/ "win"))
+        let file = System.IO.File.Create( rDir +/ "library" +/ "RevoIOQ" +/ "unitTests" +/ "R" +/ "windows" +/ "win")
+        file.Dispose();
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))

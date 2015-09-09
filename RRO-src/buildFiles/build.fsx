@@ -279,8 +279,6 @@ Target "Build_Windows" (fun _ ->
     
     if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
         ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz")))
-        FileUtils.rm (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz")
-
         RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
         ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir +/ "RevoUtils")) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
         

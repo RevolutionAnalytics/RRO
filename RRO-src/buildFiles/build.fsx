@@ -296,7 +296,7 @@ Target "Build_Windows" (fun _ ->
     for file in installerFiles do
         FileUtils.cp file installerDir
 
-    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirs --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
+    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirsg --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
 
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
@@ -319,6 +319,10 @@ Target "Build_Windows" (fun _ ->
         Fake.ArchiveHelper.Zip.Extract target source
         FileUtils.rm_rf ( rDir +/ "library" +/ package.Value("name") +/ "libs" +/ "i386" )
         extraBinaryPackageList <- extraBinaryPackageList + " " + package.Value("name")
+
+    //Remove foreach and iterators
+    FileUtils.rm_rf ( rDir +/ "library" +/ "foreach" )
+    FileUtils.rm_rf ( rDir +/ "library" +/ "iterators" )
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))

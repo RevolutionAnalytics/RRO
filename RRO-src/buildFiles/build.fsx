@@ -278,11 +278,10 @@ Target "Build_Windows" (fun _ ->
         extraPackageList <- extraPackageList + " " + package.Value("name")
     
     if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
-        FileUtils.mv (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") WORKSPACE
+        FileUtils.cp (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") WORKSPACE
         let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
         ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
         RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
-        System.Threading.Thread.Sleep(5000)
         ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir +/ "RevoUtils")) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
         
 

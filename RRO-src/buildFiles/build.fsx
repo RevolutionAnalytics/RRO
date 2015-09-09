@@ -22,6 +22,11 @@ let RRO_VERSION = R_VERSION
 let RRC_VERSION = "7.5.0"
 let mutable FLAVOR_VERSION = R_VERSION
 
+let mutable BUILD_ID = "dev"
+if fileExists (BASE_DIR +/ "BuildID.txt") then
+    BUILD_ID <- System.IO.File.ReadAllText(BASE_DIR +/ "BuildID.txt")
+
+
 let CONNECTOR = environVarOrNone "CONNECTOR"
 let mutable BUILD_CONNECTOR = false
 
@@ -321,9 +326,17 @@ Target "Build_Windows" (fun _ ->
         extraBinaryPackageList <- extraBinaryPackageList + " " + package.Value("name")
 
     //Remove foreach and iterators
-    FileUtils.rm_rf ( rDir +/ "library" +/ "foreach" )
-    FileUtils.rm_rf ( rDir +/ "library" +/ "iterators" )
-    ReplaceInFiles [ ("iterators foreach ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
+    if directoryExists ( rDir +/ "library" +/ "foreach" ) then
+        FileUtils.rm_rf ( rDir +/ "library" +/ "foreach" )
+        ReplaceInFiles [ ("foreach ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
+    if directoryExists ( rDir +/ "library" +/ "iterators" ) then
+        FileUtils.rm_rf ( rDir +/ "library" +/ "iterators" )
+        ReplaceInFiles [ ("iterators ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
+    
+
+    if fileExists ( rDir +/ "library" +/ "RevoUtils" +/ "DESCRIPTION" ) then
+        RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (rDir +/ "library" +/ "RevoUtils" +/ "DESCRIPTION")
+
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
     ()

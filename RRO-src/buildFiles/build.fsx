@@ -296,7 +296,7 @@ Target "Build_Windows" (fun _ ->
     for file in installerFiles do
         FileUtils.cp file installerDir
 
-    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirsg --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
+    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirs --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
 
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")

@@ -184,7 +184,7 @@ Target "Build_Linux" (fun _ ->
         finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-openSUSE-13.1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
-    let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]
+    let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; COMMON_FILES_DIR +/ "Rprofile.site" ]
     
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)

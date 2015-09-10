@@ -216,7 +216,7 @@ Target "Build_Linux" (fun _ ->
         let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
         ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
         RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
-        ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
+        ignore(Shell.Exec("tar", "czf " + "RevoUtils_" + RRC_VERSION + ".tar.gz " + "RevoUtils/", WORKSPACE))
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
@@ -247,6 +247,8 @@ Target "Build_Linux" (fun _ ->
         ignore(Shell.Exec("mv", BASE_DIR +/ "rro_" + R_VERSION + "-2_amd64.deb" + " " + BASE_DIR +/ finalDebName))
     else
         ignore(Shell.Exec("mv", WORKSPACE +/ rpmName + " " + WORKSPACE +/ finalRpmName))
+
+    FileUtils.rm_rf(PKG_DIR)
 )
 
 

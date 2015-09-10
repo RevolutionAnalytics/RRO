@@ -185,9 +185,12 @@ Target "Build_Linux" (fun _ ->
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
     let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; COMMON_FILES_DIR +/ "Rprofile.site" ]
+
+    let tmpDir = WORKSPACE +/ "tmp"
     
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
+    FileUtils.mkdir(tmpDir)
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
 
@@ -207,6 +210,13 @@ Target "Build_Linux" (fun _ ->
         let url = package.Value("location")
         webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
         extraPackageList <- extraPackageList + " " + package.Value("destFileName")
+
+    if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
+        FileUtils.cp (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") WORKSPACE
+        let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
+        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
+        RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
+        ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)

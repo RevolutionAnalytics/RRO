@@ -282,7 +282,7 @@ Target "Build_Windows" (fun _ ->
         let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
         ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
         RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
-        ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir +/ "RevoUtils")) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
+        ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
         
 
     //Prep directories, copying over custom files

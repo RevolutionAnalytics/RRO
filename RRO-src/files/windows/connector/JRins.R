@@ -53,8 +53,8 @@
     suffix <- "win"
 
     cat(paste("OutputBaseFilename=", "Revolution-R-Connector-", Rver, "-", "Windows", sep = ""),
-        paste("AppName=Revolution R Connector ", Rver, sep = ""),
-        paste("AppVerName=Revolution R Connector ", Rver, sep = ""),
+        paste("AppName=Revolution R Open Connector ", Rver, sep = ""),
+        paste("AppVerName=Revolution R Open Connector ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
         paste("DefaultDirName={code:UserPF}\\RRO\\RRO-Connector-", Rver_base, "\\", "R-", RROver, sep = ""),

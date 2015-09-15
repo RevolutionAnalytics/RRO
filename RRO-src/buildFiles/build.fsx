@@ -50,6 +50,8 @@ if platform = System.PlatformID.Win32NT then
 else
     PKG_DIR <- "/tmp/rro_extra_pkgs"
 
+let BuildIdPackages = ["RevoUtils"; "RevoMods"]
+
 // HELPER FUNCTIONS
 //
 
@@ -211,12 +213,13 @@ Target "Build_Linux" (fun _ ->
         webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
         extraPackageList <- extraPackageList + " " + package.Value("destFileName")
 
-    if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
-        FileUtils.cp (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") WORKSPACE
-        let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
-        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
-        RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
-        ignore(Shell.Exec("tar", "czf " + PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz " + "RevoUtils/", tmpDir))
+    for package in BuildIdPackages do
+        if fileExists (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") then
+            FileUtils.cp (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") WORKSPACE
+            let packageFile = System.IO.FileInfo((WORKSPACE +/ package + "_" + RRC_VERSION + ".tar.gz"))
+            ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) packageFile
+            RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ package +/ "DESCRIPTION")
+            ignore(Shell.Exec("tar", "czf " + PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz " + package + "/", tmpDir))
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
@@ -280,8 +283,7 @@ Target "Build_Windows" (fun _ ->
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""
 
-    for package in packages do
-        
+    for package in packages do     
         //Download the package
         use webClient = new System.Net.WebClient()
         let url = package.Value("location")
@@ -289,12 +291,13 @@ Target "Build_Windows" (fun _ ->
         System.IO.File.WriteAllText((PKG_DIR +/ package.Value("name") + ".tgz"), package.Value("destFileName"))
         extraPackageList <- extraPackageList + " " + package.Value("name")
     
-    if fileExists (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") then
-        FileUtils.cp (PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz") WORKSPACE
-        let revoUtilsFile = System.IO.FileInfo((WORKSPACE +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))
-        ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) revoUtilsFile
-        RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ "RevoUtils" +/ "DESCRIPTION")
-        ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ "RevoUtils_" + RRC_VERSION + ".tar.gz"))))
+    for package in BuildIdPackages do
+        if fileExists (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") then
+            FileUtils.cp (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") WORKSPACE
+            let packageFile = System.IO.FileInfo((WORKSPACE +/ package + "_" + RRC_VERSION + ".tar.gz"))
+            ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) packageFile
+            RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ package +/ "DESCRIPTION")
+            ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz"))))
         
 
     //Prep directories, copying over custom files

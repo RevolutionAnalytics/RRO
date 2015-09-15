@@ -60,6 +60,14 @@ then
         %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
     done
     popd
+	pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+	if [ -d "foreach" ]; then
+	    rm -rf foreach
+	fi
+	if [ -d "iterators" ]; then
+	    rm -rf iterators
+	fi
+	popd
 fi
 
 %post

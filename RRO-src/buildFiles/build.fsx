@@ -298,6 +298,8 @@ Target "Build_Windows" (fun _ ->
             ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) packageFile
             RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ package +/ "DESCRIPTION")
             ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz"))))
+            FileUtils.rm_rf tmpDir
+            FileUtils.mkdir tmpDir
         
 
     //Prep directories, copying over custom files

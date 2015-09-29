@@ -1,18 +1,9 @@
-Welcome to the Revolution R Open Connector Installer
+Welcome to the Revolution R Open for RRE Installer
 
-Revolution R Open 3.2.2 is an enhanced distribution of R from Revolution Analytics. 
-For information about Revolution R Open, visit https://mran.revolutionanalytics.com.
+Revolution R Open 3.2.2 for Revolution R Enterprise 7.5.0 is an enhanced distribution of R from Revolution Analytics that includes components to connect to Revolution R Enterprise. For information about Revolution R, visit www.revolutionanalytics.com.
 
-Revolution R Open 3.2.2 is based on R 3.2.2, Copyright (C) The R Foundation for Statistical Computing. 
-Visit https://www.r-project.org for information about the R Project. 
-R is the creation of many contributors, for details visit https://www.r-project.org/contributors.html.
+RRO 3.2.2 for RRE 7.5 is based on R 3.2.2, Copyright © The R Foundation for Statistical Computing.
+Visit https://www.r-project.org for information about the R project.
+R is the creation of many contributors; for details visit https://www.r-project.org/contributors.html.
 
-<<<<<<< HEAD
-Revolution R Open Connector provides Revolution R Open 3.2.2 and additional functionality to connect 
-Revolution R Open to Revolution R Enterprise 7.5.0.
-
-Click Continue to begin installing Revolution R Open Connector 7.5.0.
-=======
-Click Continue to begin installing Revolution R Connector 7.5.0.
->>>>>>> 9c1d5517d93cc7d3a42358a032853cd9c8fb2a98
-
+Click Install to begin installing RRO 3.2.2 for RRE 7.5.0

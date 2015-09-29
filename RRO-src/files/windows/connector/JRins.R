@@ -53,11 +53,11 @@
     suffix <- "win"
 
     cat(paste("OutputBaseFilename=", "Revolution-R-Connector-", Rver, "-", "Windows", sep = ""),
-        paste("AppName=Revolution R Open Connector ", Rver, sep = ""),
-        paste("AppVerName=Revolution R Open Connector ", Rver, sep = ""),
+        paste("AppName=RRO for RRE ", Rver, sep = ""),
+        paste("AppVerName=RRO for RRE ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\RRO\\RRO-Connector-", Rver_base, "\\", "R-", RROver, sep = ""),
+        paste("DefaultDirName={code:UserPF}\\RRO\\RRO-", RROver, "_for_RRE-", Rver, "\\", "R-", RROver, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
         if(Producer == "R-core") "AppPublisher=Revolution Analytics"

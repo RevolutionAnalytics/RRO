@@ -1,6 +1,6 @@
 PrivilegesRequired=none
 MinVersion=0,5.0
-DefaultGroupName=RevolutionRConnector
+DefaultGroupName=RRO-for-RRE
 AllowNoIcons=yes
 DisableReadyPage=yes
 DisableStartupPrompt=yes

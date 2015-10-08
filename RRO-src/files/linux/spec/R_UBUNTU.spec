@@ -52,7 +52,16 @@ then
     for filename in :::EXTRA_PKGS:::; do
             %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
     done
+	pushd %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/library
+	if [ -d "foreach" ]; then
+	    rm -rf foreach
+	fi
+	if [ -d "iterators" ]; then
+	    rm -rf iterators
+	fi
+	popd
 fi
+
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then

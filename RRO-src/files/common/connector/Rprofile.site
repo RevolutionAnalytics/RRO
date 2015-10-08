@@ -1,69 +1,81 @@
-Revo.version <- structure(list(major = "7", minor = "5.0", "BuildID" = :::BUILDID:::), class = "simple.list")
-repos.date <- "2015-07-01"
-
-if  (identical(.Platform$OS.type, "windows")) {
-	options(download.file.method = "wininet")
-} else {
-    if (capabilities("libcurl")) {
-       options(download.file.method = "libcurl")
+if (!identical(system.file(package="RevoUtils"), "")) {
+Revo.version <- RevoUtils:::makeRevoVersion()
+".Revo.tb"<-function(t) FALSE 	# set up stub debug instrumentation function
+if (!identical(system.file(package="RevoScaleR"), "")) {
+    if (.Platform$OS.type == "windows"){
+        defaultRevoNodePath <- paste("C:\\Revolution\\R-Enterprise-Node-", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
+        defaultRNodePath <- utils::shortPathName(R.home())
     } else {
-       options(download.file.method = "curl")
+        defaultRevoNodePath <- paste("/usr/lib64/Revo-", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
+        defaultRNodePath <- paste(defaultRevoNodePath, "/R-", paste(R.version$major, R.version$minor, sep="."), "/lib64/R", sep="")
     }
 }
-
-if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("CentOS release 5", readLines("/etc/issue")[1]))) {
-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
-    options(download.file.method = "wget")
-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep=""))) 
-} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[1]))) {
-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
-    options(download.file.method = "wget")
-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
-} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[2]))) {
-    warning("Warning: “Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
-    options(download.file.method = "wget")
-    options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
-} else {
-    options(repos = c(CRAN = paste("https://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
-}
-
-if (.Platform$OS.type == "windows" ) {
- options(help_type="html")
-}
-quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
-	if (!quiet){
-                cat( paste("Revolution R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
-                cat( paste("Default CRAN mirror snapshot taken on ",repos.date,"\n",sep=""))
-                cat("The enhanced R distribution from Revolution Analytics\n",sep="")
-                cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
-                cat("about additional features.\n\n",sep="")
-
+local(
+{
+	# set a CRAN mirror
+	r <- getOption("repos")
+    if (!identical(system.file(package="RevoScaleR"),"")) {
+    	if (.Platform$OS.type == "windows"){
+            r["CRAN"] <- RevoUtils::getRevoRepos(CRANmirror=TRUE)
+        } else {
+            r <- c(REVO=RevoUtils::getRevoRepos())
+        }
+    } else {
+            r["CRAN"] <- RevoUtils::getRevoRepos(MRANmirror=TRUE)
+    }
+	options(repos=r)
+	# set default packages
+	if (!identical(system.file(package="RevoScaleR") , "")){
+	    if(file.exists(file.path(RevoUtils::Revo.home(), "RevoScaleR.enhanced"))) {
+		    options(defaultPackages=c(getOption("defaultPackages"), "rpart", "lattice", "RevoScaleR", "RevoMods", "RevoUtils", "RevoUtilsMath"))
+		} else {
+			options(defaultPackages=c(getOption("defaultPackages"), "RevoScaleR", "RevoMods", "RevoUtils", "RevoUtilsMath"))
+		}
+		if (nchar(hostName <- Sys.getenv("REVOHADOOPHOST")) && nchar(portNumber <- Sys.getenv("REVOHADOOPPORT")))
+		{
+			 RevoScaleR::rxHdfsConnect(hostName=hostName, portNumber=as.numeric(portNumber))
+		}
+	} else if (!identical(system.file(package="RevoUtilsMath"), "")) {
+        options(defaultPackages=c(getOption("defaultPackages"), "RevoUtils", "RevoUtilsMath"))
+    } else {
+        if (.Platform$OS.type == "windows") {
+            options(help_type="html")
+        }
+		options(defaultPackages=c(getOption("defaultPackages"), "RevoUtils"))
 	}
-	
-
-
-load_if_installed <- function(package) {
-  if (!identical(system.file(package="RevoUtilsMath"), "")) {
-    do.call('library', list(package))
-    return(TRUE)
-  } else
-    return(FALSE)
+	# branding information
+	.RevoVersionShort <- Revo.version$version.string
+	.RevoVersionShortLen <- regexpr("^.* \\d+\\.\\d+", .RevoVersionShort,  perl=TRUE)
+	.RevoVersionShort <- substring(.RevoVersionShort, 1, attributes(.RevoVersionShortLen)$match)
+	if ("setWindowTitle" %in% getNamespaceExports("utils")) {
+		if (Revo.version$arch=="x86_64") {
+	        .RevoVersionShort <- paste(.RevoVersionShort, "(64-bit)")
+		}
+		try(utils::setWindowTitle(paste(" - ", .RevoVersionShort)), silent=TRUE)
+	}
+	if (.Platform$OS.type == "unix" && capabilities("X11")) {
+		browseAvail <- Sys.which(c("firefox", "mozilla", "galeon", "opera", "xdg-open", "kfmclient", "gnome-moze-remote"))
+		if (any(browseAvail != "")) {
+			options(browser = browseAvail[which(browseAvail != "")[1]])
+		}
+	}
+	quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
+	if (!quiet){
+        if (!identical(system.file(package="RevoMods"), ""))
+        {
+            cat(.RevoVersionShort, ifelse(nchar(.RevoVersionShort) > 45, ":\n", ": "), "an enhanced distribution of R\n", sep="")
+            cat("Revolution Analytics packages Copyright (C)", Revo.version$year, "Revolution Analytics, Inc.\n\n")
+            cat("Type 'revo()' to visit www.revolutionanalytics.com for the latest\n") 
+            cat("Revolution R news, 'forum()' for the community forum, or 'readme()'\n")
+            cat("for release notes.\n\n")
+        } else {
+            rroVersion <- paste(unlist(unclass(utils::packageVersion("RevoUtils"))), collapse=".")
+            cat("Revolution R Open ", rroVersion, " beta\n",sep="")
+            cat("The enhanced R distribution from Revolution Analytics\n",sep="")
+            cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
+            cat("about additional features and technical support options.\n\n",sep="")
+        }
+	}
 }
-
-if(Sys.info()["sysname"] == "Darwin"){
-  local({
-    options(download.file.method = "libcurl")
-    hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
-    ncores <- sub("hw.ncpu: ", "", hw.ncpu)
-    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
-    message(sprintf(msg, ncores))
-    invisible(NULL)
-  })
-} else if(load_if_installed("RevoUtilsMath")){
-  local({
-    ncores <- RevoUtilsMath::getMKLthreads()
-    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
-    message(sprintf(msg, ncores))
-    invisible(NULL)
-  })
+)
 }

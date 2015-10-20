@@ -9,7 +9,6 @@ ifdef DEBUG
   DEBUGFLAG=$(G_FLAG)
 else
   DEBUGFLAG=
-  LINKFLAGS+=-s
 endif
 
 CFLAGS=-Wall -O2 -pedantic

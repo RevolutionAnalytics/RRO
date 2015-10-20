@@ -62,7 +62,7 @@ ifdef DEBUG
  FFLAGS += $(G_FLAG)
  DLLFLAGS =
 else
- DLLFLAGS = -s
+ DLLFLAGS =
 endif
 
 

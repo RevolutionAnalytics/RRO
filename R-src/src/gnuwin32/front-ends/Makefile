@@ -7,8 +7,8 @@ ifdef DEBUG
  LINKFLAGS =
  DLLFLAGS =
 else
- LINKFLAGS = -s
- DLLFLAGS = -s
+ LINKFLAGS =
+ DLLFLAGS =
 endif
 CPPFLAGS = -I../../include $(arch_DEFS)
 

@@ -1,7 +1,7 @@
 include ../MkRules
 
 CPPFLAGS=-DWin32 -I. -I../../include
-LINKFLAGS=-s
+LINKFLAGS=
 
 gl.a: getline.o wc_history.o
 

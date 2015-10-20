@@ -4,7 +4,7 @@ include ../gnuwin32/MkRules
 MODULES = internet lapack
 
 ifndef DEBUG
-  DLLFLAGS = -s
+  DLLFLAGS =
 endif
 
 all clean:

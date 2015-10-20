@@ -6,7 +6,7 @@ ifdef DEBUG
  CFLAGS += $(G_FLAG)
  DLLFLAGS =
 else
- DLLFLAGS = -s
+ DLLFLAGS =
 endif
 
 .PHONY: cpy test

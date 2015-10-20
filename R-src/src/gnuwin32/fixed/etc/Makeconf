@@ -7,7 +7,7 @@ ifdef DEBUG
   DLLFLAGS=
   DEBUGFLAG=-gdwarf-2
 else
-  DLLFLAGS=-s
+  DLLFLAGS=
   DEBUGFLAG=
 endif
 

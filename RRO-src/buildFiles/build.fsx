@@ -22,6 +22,9 @@ let RRO_VERSION = R_VERSION
 let RRC_VERSION = "7.5.0"
 let mutable FLAVOR_VERSION = R_VERSION
 
+let CURL_VERSION = "7.45.0"
+let CURL_NAME = "curl-" + CURL_VERSION
+
 let mutable BUILD_ID = "dev"
 if fileExists (BASE_DIR +/ "BuildID.txt") then
     BUILD_ID <- System.IO.File.ReadAllText(BASE_DIR +/ "BuildID.txt")
@@ -196,6 +199,17 @@ Target "Build_Linux" (fun _ ->
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
 
+    let curlURL = "http://curl.askapache.com/download/" + CURL_NAME + ".tar.gz"
+    use curlWebClient = new System.Net.WebClient()
+    curlWebClient.DownloadFile(curlURL.ToString(), (WORKSPACE +/ "curl.tar.gz"))
+    let curlFile = System.IO.FileInfo((WORKSPACE +/ "curl.tar.gz"))
+    ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(WORKSPACE)) curlFile
+    ignore(Shell.Exec("/bin/bash", "configure", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("make", "", WORKSPACE +/ CURL_NAME))
+
+    let path = environVar "PATH"
+    setProcessEnvironVar "LDFLAGS" ("-L" + WORKSPACE +/ CURL_NAME +/ "lib/.libs/libcurl.a")
+    setProcessEnvironVar "CPPFLAGS" ("-I" + WORKSPACE +/ CURL_NAME +/ "include")
 
     let mutable packageFile = "packages-linux.json"
     if BUILD_CONNECTOR then

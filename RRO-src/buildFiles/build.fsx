@@ -204,12 +204,12 @@ Target "Build_Linux" (fun _ ->
     curlWebClient.DownloadFile(curlURL.ToString(), (WORKSPACE +/ "curl.tar.gz"))
     let curlFile = System.IO.FileInfo((WORKSPACE +/ "curl.tar.gz"))
     ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(WORKSPACE)) curlFile
-    ignore(Shell.Exec("/bin/bash", "configure", WORKSPACE +/ CURL_NAME))
-    ignore(Shell.Exec("make", "", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("/bin/bash", "configure --prefix=/tmp/curl-4-RRO --disable-shared", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("make", "-j8", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("make", "install", WORKSPACE +/ CURL_NAME))
 
-    let path = environVar "PATH"
-    setProcessEnvironVar "LDFLAGS" ("-L" + WORKSPACE +/ CURL_NAME +/ "lib/.libs/libcurl.a")
-    setProcessEnvironVar "CPPFLAGS" ("-I" + WORKSPACE +/ CURL_NAME +/ "include")
+    setProcessEnvironVar "CURL_CONFIG" ("/tmp/curl-4-RRO/bin/curl-config")
+    setProcessEnvironVar "CURL_CPPFLAGS" ("-I/tmp/curl-4-RRO/include")
 
     let mutable packageFile = "packages-linux.json"
     if BUILD_CONNECTOR then

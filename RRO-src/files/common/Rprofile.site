@@ -32,9 +32,9 @@ if (.Platform$OS.type == "windows" ) {
 }
 quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
-                cat( paste("Revolution R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
+                cat( paste("Microsoft R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
                 cat( paste("Default CRAN mirror snapshot taken on ",repos.date,"\n",sep=""))
-                cat("The enhanced R distribution from Revolution Analytics\n",sep="")
+                cat("The enhanced R distribution from Microsoft\n",sep="")
                 cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
                 cat("about additional features.\n\n",sep="")
 

@@ -70,8 +70,8 @@ local(
             cat("for release notes.\n\n")
         } else {
             rroVersion <- paste(unlist(unclass(utils::packageVersion("RevoUtils"))), collapse=".")
-            cat("Revolution R Open ", rroVersion, " beta\n",sep="")
-            cat("The enhanced R distribution from Revolution Analytics\n",sep="")
+            cat("Microsoft R Open ", rroVersion, " beta\n",sep="")
+            cat("The enhanced R distribution from Microsoft\n",sep="")
             cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
             cat("about additional features and technical support options.\n\n",sep="")
         }

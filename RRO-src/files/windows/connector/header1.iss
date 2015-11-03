@@ -1,6 +1,6 @@
 PrivilegesRequired=none
 MinVersion=0,5.0
-DefaultGroupName=RRO-for-RRE
+DefaultGroupName=MRO-for-RRE
 AllowNoIcons=yes
 DisableReadyPage=yes
 DisableStartupPrompt=yes

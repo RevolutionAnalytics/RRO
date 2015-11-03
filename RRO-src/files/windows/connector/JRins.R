@@ -29,8 +29,8 @@
     #Rver <- readLines("../../../VERSION")[1L]
     #Rver <- sub("Under .*$", "Pre-release", Rver)
     ## This is now over 2^16, so truncate
-    Rver <- "7.5.0"
-    Rver_base <- "7.5"
+    Rver <- "8.0.0"
+    Rver_base <- "8.0"
     RROver <- "3.2.2"
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
@@ -52,15 +52,15 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", "RRO-", RROver, "-for-RRE-", Rver, "-", "Windows", sep = ""),
-        paste("AppName=RRO for RRE ", Rver, sep = ""),
-        paste("AppVerName=RRO for RRE ", Rver, sep = ""),
+    cat(paste("OutputBaseFilename=", "MRO-", RROver, "-for-RRE-", Rver, "-", "Windows", sep = ""),
+        paste("AppName=MRO for RRE ", Rver, sep = ""),
+        paste("AppVerName=MRO for RRE ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\RRO\\RRO-", RROver, "-for-RRE-", Rver, "\\", "R-", RROver, sep = ""),
+        paste("DefaultDirName={code:UserPF}\\Microsoft\\MRO-for-RRE\\", Rver_base, "\\", "R-", RROver, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
-        if(Producer == "R-core") "AppPublisher=Revolution Analytics"
+        if(Producer == "R-core") "AppPublisher=Microsoft"
         else paste("AppPublisher=", Producer, sep = ""),
         file = con, sep = "\n")
 

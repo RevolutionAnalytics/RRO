@@ -77,7 +77,8 @@
     writeLines(lines, con)
 
     lines <- readLines(regfile)
-    lines <- gsub("@RVER@", Rver, lines)
+    lines <- gsub("@RVER@", Rver_base, lines)
+    lines <- gsub("@RROVER@", RROver, lines)
     lines <- gsub("@Producer@", Producer, lines)
     writeLines(lines, con)
 

@@ -39,7 +39,7 @@ match CONNECTOR with
             BUILD_CONNECTOR <- true
             WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "connector"
             COMMON_FILES_DIR <- RRO_DIR +/ "files" +/ "common" +/ "connector"
-            FLAVOR <- "Revolution-R-Connector"
+            FLAVOR <- "MRO-for-MRS"
             FLAVOR_VERSION <- RRC_VERSION
        )
 

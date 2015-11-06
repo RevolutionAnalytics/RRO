@@ -3,10 +3,10 @@ Revo.version <- RevoUtils:::makeRevoVersion()
 ".Revo.tb"<-function(t) FALSE 	# set up stub debug instrumentation function
 if (!identical(system.file(package="RevoScaleR"), "")) {
     if (.Platform$OS.type == "windows"){
-        defaultRevoNodePath <- paste("C:\\Revolution\\R-Enterprise-Node-", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
+        defaultRevoNodePath <- paste("C:\\Program Files\\Microsoft\\MRO-for-RRE\\", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
         defaultRNodePath <- utils::shortPathName(R.home())
     } else {
-        defaultRevoNodePath <- paste("/usr/lib64/Revo-", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
+        defaultRevoNodePath <- paste("/usr/lib64/MRS-", paste(Revo.version$major, substr(Revo.version$minor,1,1), sep="."), sep="")
         defaultRNodePath <- paste(defaultRevoNodePath, "/R-", paste(R.version$major, R.version$minor, sep="."), "/lib64/R", sep="")
     }
 }
@@ -18,7 +18,7 @@ local(
     	if (.Platform$OS.type == "windows"){
             r["CRAN"] <- RevoUtils::getRevoRepos(CRANmirror=TRUE)
         } else {
-            r <- c(REVO=RevoUtils::getRevoRepos())
+            r["CRAN"] <- RevoUtils::getRevoRepos(MRANmirror=TRUE)
         }
     } else {
             r["CRAN"] <- RevoUtils::getRevoRepos(MRANmirror=TRUE)
@@ -37,12 +37,7 @@ local(
 		}
 	} else if (!identical(system.file(package="RevoUtilsMath"), "")) {
         options(defaultPackages=c(getOption("defaultPackages"), "RevoUtils", "RevoUtilsMath"))
-    } else {
-        if (.Platform$OS.type == "windows") {
-            options(help_type="html")
-        }
-		options(defaultPackages=c(getOption("defaultPackages"), "RevoUtils"))
-	}
+    }
 	# branding information
 	.RevoVersionShort <- Revo.version$version.string
 	.RevoVersionShortLen <- regexpr("^.* \\d+\\.\\d+", .RevoVersionShort,  perl=TRUE)
@@ -61,21 +56,10 @@ local(
 	}
 	quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
-        if (!identical(system.file(package="RevoMods"), ""))
-        {
-            cat(.RevoVersionShort, ifelse(nchar(.RevoVersionShort) > 45, ":\n", ": "), "an enhanced distribution of R\n", sep="")
-            cat("Revolution Analytics packages Copyright (C)", Revo.version$year, "Revolution Analytics, Inc.\n\n")
-            cat("Type 'revo()' to visit www.revolutionanalytics.com for the latest\n") 
-            cat("Revolution R news, 'forum()' for the community forum, or 'readme()'\n")
-            cat("for release notes.\n\n")
-        } else {
-            rroVersion <- paste(unlist(unclass(utils::packageVersion("RevoUtils"))), collapse=".")
-            cat("Microsoft R Open ", rroVersion, " beta\n",sep="")
-            cat("The enhanced R distribution from Microsoft\n",sep="")
-            cat("Visit mran.revolutionanalytics.com/open for information\n",sep="")
-            cat("about additional features and technical support options.\n\n",sep="")
-        }
-	}
+        cat(.RevoVersionShort, ifelse(nchar(.RevoVersionShort) > 45, ":\n", ": "), "an enhanced distribution of R\n", sep="")
+        cat("Microsoft packages Copyright (C)", Revo.version$year, "Microsoft Corporation\n\n")
+        cat("Type 'readme()' for release notes.\n\n")
+    } 
 }
 )
 }

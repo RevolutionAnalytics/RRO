@@ -34,7 +34,7 @@ and called at run time.
 
 %build
 
-./configure --prefix=%{_libdir}/RRO-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j8
 
 %install
@@ -43,16 +43,16 @@ make -j8
 # %find_lang %{name}
 rm -f %{buildroot}/%{_infodir}/dir
 
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/lib/R/etc
-cp %{_topdir}/README.txt %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
-cp %{_topdir}/COPYING %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib/R/etc
+cp %{_topdir}/README.txt %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
+cp %{_topdir}/COPYING %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     for filename in :::EXTRA_PKGS:::; do
-            %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
+            %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
     done
-	pushd %{buildroot}%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/library
+	pushd %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/library
 	if [ -d "foreach" ]; then
 	    rm -rf foreach
 	fi
@@ -69,10 +69,10 @@ if test "${RPM_INSTALL_PREFIX0}" = ""; then
 fi
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
-ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/R
+ln -s $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/Rscript
+ln -s $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R /usr/bin
+ln -s $RPM_INSTALL_PREFIX0/%{_lib}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/Rscript /usr/bin
 
 %postun
 #if test "${revo_prefix}" = ""; then
@@ -80,26 +80,26 @@ ln -s $RPM_INSTALL_PREFIX0/%{_lib}/RRO-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/
 #fi
 #revo_prefix=`echo "$revo_prefix" | sed "s/\/*$//"`
 revo_prefix=/usr
-rm -f ${revo_prefix}/lib64/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-rm -f ${revo_prefix}/lib64/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+rm -f ${revo_prefix}/lib64/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/R
+rm -f ${revo_prefix}/lib64/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/Rscript
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
 
 # %files -f %{name}.lang
 %files
 %defattr(-, root, root)
-%{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/
-%{_libdir}/RRO-%{DIR_VERSION}/COPYING
-%{_libdir}/RRO-%{DIR_VERSION}/README.txt
-#  %{_libdir}/RRO-%{DIR_VERSION}/sources/
+%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/
+%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/COPYING
+%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/README.txt
+#  %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64
 #%{_bindir}/Revoscript
 
-# %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/etc/repositories
-# %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRblas.so
-# %exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRlapack.so
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/R
-%exclude %{_libdir}/RRO-%{DIR_VERSION}/R-%{version}/bin/Rscript
+# %exclude %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%{libnn}/R/etc/repositories
+# %exclude %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRblas.so
+# %exclude %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%{libnn}/R/lib/libRlapack.so
+%exclude %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/R
+%exclude %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/bin/Rscript
 
 %changelog
 * Tue Sep 06 2011 The Coon of Ty <Ty@coon.org> 2.8-1

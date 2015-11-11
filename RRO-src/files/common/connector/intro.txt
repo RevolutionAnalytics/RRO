@@ -1,9 +1,9 @@
 Welcome to the Microsoft R Open for RRE Installer
 
-Microsoft R Open 3.2.2 for Revolution R Enterprise 7.5.0 is an enhanced distribution of R from Microsoft that includes components to connect to Revolution R Enterprise. For information about Revolution R, visit www.revolutionanalytics.com.
+Microsoft R Open 3.2.2 for Revolution R Enterprise 8.0 is an enhanced distribution of R from Microsoft that includes components to connect to Revolution R Enterprise. For information about Revolution R, visit www.revolutionanalytics.com.
 
-MRO 3.2.2 for RRE 7.5 is based on R 3.2.2, Copyright © The R Foundation for Statistical Computing.
+MRO 3.2.2 for RRE 8.0 is based on R 3.2.2, Copyright © The R Foundation for Statistical Computing.
 Visit https://www.r-project.org for information about the R project.
 R is the creation of many contributors; for details visit https://www.r-project.org/contributors.html.
 
-Click Install to begin installing MRO 3.2.2 for RRE 7.5.0
+Click Install to begin installing MRO 3.2.2 for RRE 8.0

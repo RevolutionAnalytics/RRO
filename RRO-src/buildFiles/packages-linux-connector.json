@@ -1,8 +1,8 @@
 {
     "packages": [
-        { "name": "iterators", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/iterators_1.0.7.tar.gz", "destFileName": "iterators_1.0.7.tar.gz" },
-        { "name": "foreach", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/foreach_1.4.2.tar.gz", "destFileName": "foreach_1.4.2.tar.gz" },
-        { "name": "doParallel", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/doParallel_1.0.8.tar.gz", "destFileName": "doParallel_1.0.8.tar.gz" },
+        { "name": "iterators", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/iterators_1.0.8.tar.gz", "destFileName": "iterators_1.0.8.tar.gz" },
+        { "name": "foreach", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/foreach_1.4.3.tar.gz", "destFileName": "foreach_1.4.3.tar.gz" },
+        { "name": "doParallel", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/doParallel_1.0.10.tar.gz", "destFileName": "doParallel_1.0.10.tar.gz" },
         { "name": "RUnit", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RUnit_0.4.26.tar.gz", "destFileName": "RUnit_0.4.26.tar.gz" },
         { "name": "RevoMods", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoMods_8.0.0.tar.gz", "destFileName": "RevoMods_8.0.0.tar.gz" },
         { "name": "RevoUtils", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoUtils_8.0.0.tar.gz", "destFileName": "RevoUtils_8.0.0.tar.gz" },

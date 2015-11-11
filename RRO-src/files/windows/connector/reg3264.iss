@@ -1,5 +1,5 @@
 [Icons]
-Name: "{group}\RRO for RRE @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Check: isComponentSelected('x64') and Is64BitInstallMode
+Name: "{group}\MRO for RRE @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; WorkingDir: "{userdocs}"; Check: isComponentSelected('x64') and Is64BitInstallMode
 
 Name: "{commondesktop}\MRO-for-RRE Rgui @RVER@ 64-bit"; Filename: "{app}\bin\x64\Rgui.exe"; MinVersion: 0,5.0; IconFilename: "{app}\etc\REV_14419_Clark_2C.ico"; Tasks: desktopicon; WorkingDir: "{userdocs}"; Check: isComponentSelected('x64') and Is64BitInstallMode
 

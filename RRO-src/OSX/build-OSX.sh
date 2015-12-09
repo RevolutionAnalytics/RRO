@@ -27,10 +27,10 @@ cd rd64_LIBS
 mkdir lib
 make -j8
 ls -l lib
-cp /usr/local/gfortran/lib/libquadmath.0.dylib lib
-cp /usr/local/gfortran/lib/libgfortran.3.dylib lib
-cp /usr/local/gfortran/lib/libgcc_s_x86_64.1.dylib lib
-cp /usr/local/gfortran/lib/libgcc_s.1.dylib lib
+cp /usr/local/lib/libquadmath.0.dylib lib
+cp /usr/local/lib/libgfortran.3.dylib lib
+cp /usr/local/lib/libgcc_s_x86_64.1.dylib lib
+cp /usr/local/lib/libgcc_s.1.dylib lib
 fi
 ### End of BUILD_MATH_LIBRARIES
 
@@ -47,10 +47,10 @@ mkdir lib
 make -j8
 cp $BUILD_DIR/RRO-src/OSX/rd64_LIBS/lib/libRblas.dylib lib
 cp $BUILD_DIR/RRO-src/OSX/rd64_LIBS/lib/libRlapack.dylib lib
-cp /usr/local/gfortran/lib/libquadmath.0.dylib lib
-cp /usr/local/gfortran/lib/libgfortran.3.dylib lib
-cp /usr/local/gfortran/lib/libgcc_s_x86_64.1.dylib lib
-cp /usr/local/gfortran/lib/libgcc_s.1.dylib lib
+cp /usr/local/lib/libquadmath.0.dylib lib
+cp /usr/local/lib/libgfortran.3.dylib lib
+cp /usr/local/lib/libgcc_s_x86_64.1.dylib lib
+cp /usr/local/lib/libgcc_s.1.dylib lib
 sudo make install
 sudo ln -s /Library/Frameworks/R.framework/Libraries/libreadline.6.3.dylib /Library/Frameworks/R.framework/Libraries/libreadline.dylib
 sudo cp $BUILD_DIR/RRO-src/files/OSX/Rprofile.site /Library/Frameworks/R.framework/Resources/etc

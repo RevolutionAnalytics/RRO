@@ -1,0 +1,78 @@
+/* Entry = "150.title"; Class = "NSTextFieldCell" */
+"0.2" = "0.2";
+
+/* Entry = "49.title"; Class = "NSButtonCell" */
+"Application" = "Programm";
+
+/* Entry = "229.title"; Class = "NSButtonCell" */
+"Auto-save documents" = "Dokumente automatisch speichern";
+
+/* Entry = "181.title"; Class = "NSBox" */
+"Box" = "Box";
+
+/* Entry = "96.title"; Class = "NSButtonCell" */
+"Built-in editor" = "Standard Editor";
+
+/* Entry = "35.title"; Class = "NSBox" */
+"Built-in editor preferences" = "Einstellungen für Standard Editor";
+
+/* Entry = "47.title"; Class = "NSButtonCell" */
+"Command" = "Kommandozeilenbefehl";
+
+/* Entry = "97.title"; Class = "NSButtonCell" */
+"External Editor" = "Externer Editor";
+
+/* Entry = "37.title"; Class = "NSBox" */
+"External editor settings" = "Einstellungen für externen Editor";
+
+/* Entry = "177.title"; Class = "NSTextFieldCell" */
+"Font:" = "Schriftart:";
+
+/* Entry = "147.title"; Class = "NSButtonCell" */
+"Highlight bracket pairs" = "Klammerpaare hervorheben";
+
+/* Entry = "171.title"; Class = "NSButtonCell" */
+"Highlight current line" = "Aktuelle Zeile hervorheben";
+
+/* Entry = "149.title"; Class = "NSTextFieldCell" */
+"Highlight interval:" = "Dauer:";
+
+/* Entry = "173.title"; Class = "NSButtonCell" */
+"Indent new lines" = "Neue Zeile automatisch einrücken";
+
+/* Entry = "159.title"; Class = "NSButtonCell" */
+"Match brackets/quotes" = "Klammer automatisch schließen";
+
+/* Entry = "161.title"; Class = "NSTextFieldCell" */
+"Note:\nCommand is executed in a shell" = "Hinweis:\nDer Befehl wird in der “Shell” ausgeführt.";
+
+/* Entry = "165.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "164.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "179.title"; Class = "NSButtonCell" */
+"Select…" = "Auswählen…";
+
+/* Entry = "162.title"; Class = "NSButtonCell" */
+"Set Editor" = "Editor auswählen";
+
+/* Entry = "158.title"; Class = "NSButtonCell" */
+"Show function hints" = "Funktionsparameter anzeigen";
+
+/* Entry = "148.title"; Class = "NSButtonCell" */
+"Show line numbers" = "Zeilennummern anzeigen";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Show syntax coloring" = "Syntaxhervorhebung";
+
+/* Entry = "163.title"; Class = "NSTextFieldCell" */
+"SubEthaEdit" = "SubEthaEdit";
+
+/* Entry = "153.title"; Class = "NSButtonCell" */
+"Wrap lines" = "Zeilen umbrechen";
+
+/* Entry = "226.title"; Class = "NSTextFieldCell" */
+"s" = "s";
+

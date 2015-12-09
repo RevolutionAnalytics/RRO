@@ -1,0 +1,21 @@
+/* Entry = "94.headerCell.title"; Class = "NSTableColumn" */
+"Description" = "Description";
+
+/* Entry = "63.title"; Class = "NSButtonCell" */
+"Open PDF" = "Ouvrir PDF";
+
+/* Entry = "64.title"; Class = "NSButtonCell" */
+"Open Source" = "Ouvrir Source";
+
+/* Entry = "95.headerCell.title"; Class = "NSTableColumn" */
+"Package" = "Package";
+
+/* Entry = "62.placeholderString"; Class = "NSSearchFieldCell" */
+"Search" = "Recherche";
+
+/* Entry = "96.headerCell.title"; Class = "NSTableColumn" */
+"Vignette" = "Vignette";
+
+/* Entry = "5.title"; Class = "NSWindow" */
+"Vignettes" = "Vignettes";
+

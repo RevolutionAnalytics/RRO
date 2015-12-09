@@ -1,0 +1,557 @@
+/* From: Quartz/QuartzDevice.m (setDefaultSyntaxColors) */
+"%@ - Active" = "%@ - Aktiv";
+
+/* From: Quartz/QuartzDevice.m (setDefaultSyntaxColors) */
+"%@ - Inactive" = "%@ - Inaktiv";
+
+/* From: RController.m (hintForFunction)
+   From: RDocumentWinCtrl.m (hintForFunction) */
+"(arguments lookup is disabled while R is busy)" = "(Hilfe zu Funktionsargumenten ist ausgeschaltet, solange R beschäftigt ist)";
+
+/* From: RController.m (showWorkingDir) */
+"<deleted>" = "<gelöscht>";
+
+/* From: RDocumentWinCtrl.m (functionReset) */
+"<functions>" = "<Funktionen>";
+
+/* From: RDocumentWinCtrl.m (functionReset) */
+"<sections>" = "<sections>";
+
+/* From: SearchTable.m (show) */
+"<unknown>" = "<unbekannt>";
+
+/* From: RController.m (applicationDidFinishLaunching) */
+"[History restored from " = "[Verlauf wiederhergestellt aus ";
+
+/* From: RController.m (application)
+   From: RController.m (applicationDidFinishLaunching) */
+"[Workspace restored from " = "[Arbeitsbereich wiederhergestellt aus ";
+
+/* Add column - label for a toolbar, keep short! */
+"Add Col" = "+ Spalte";
+
+/* From: REditor.m (toolbar) */
+"Add Column" = "Spalte hinzufügen";
+
+/* From: REditor.m (toolbar) */
+"Add New Row" = "Zeile hinzufügen";
+
+/* Add row - label for a toolbar, keep short! */
+"Add Row" = "+ Zeile";
+
+/* From: REditor.m (toolbar) */
+"Adds a new column to the right of a group of selected columns or just at the end of the data. The new column type complies with that column left of it.\n\n(%@)\tAdd column of type ‘CHARACTER’\n(%@)\tAdd column of type ‘NUMERIC’" = "Fügt eine neue Spalte links der Auswahl oder am Ende hinzu. Der Datentyp richtet sich nach der Spalte links der eingefügten.\n\n(%@)\tFüge ‘CHARACTER’ Spalte hinzu\n(%@)\tFüge ‘NUMERIC’ Spalte hinzu";
+
+/* From: REditor.m (toolbar) */
+"Adds a row below a group of selected rows or at the bottom of the data" = "Fügt eine neue Zeile unter die Auswahl oder an das Ende der Daten";
+
+/* From: RController.m (clearWorkSpace) */
+"All objects in the workspace will be removed. Are you sure you want to proceed?" = "Alle Objekte werden aus dem Arbeitsbereich entfernt. Sind Sie sicher, dass Sie das wollen?";
+
+/* From: WSBrowser.m (remObject) */
+"Are you sure you want to remove object '%@' from the workspace? You cannot undo this action!" = "Sind Sie sicher, dass Sie das Objekt '%@' aus dem Arbeitsbereich entfernen wollen? Dies kann nicht mehr rückgängig gemacht werden!";
+
+/* From: RController.m (toolbar) */
+"Authentication" = "Autorisierung";
+
+/* From: RController.m (toolbar) */
+"Authorize R to run system commands as root" = "Autorisiert R, Befehle als 'root' Administrator auszuführen";
+
+/* From: HelpManager.m (showHelpFor) */
+"Can't find help for topic, would you like to expand the search?" = "Das Hilfethema konnte nicht gefunden werden. Wollen Sie die Suche ausweiten?";
+
+/* From: RController.m (doLoadHistory) */
+"Can't open history file %@" = "Die Verlaufsdatei %@ konnte nicht gefunden werden";
+
+/* From: RController.m (didCloseAll) */
+"Cancel" = "Abbrechen";
+
+/* Cancel Editing - label for a toolbar, keep short!
+   From: REditor.m (toolbar) */
+"Cancel Editing" = "Abbrechen";
+
+/* From: REditor.m (toolbar) */
+"Cancels object editing without passing data back to R and closes the editor window" = "Bricht Objekteditierung ohne Speicherung ab und schließt das Fenster";
+
+/* From: RDocumentWinCtrl.m (goHelpSearch) */
+"Cannot determine package for the topic." = "Des Paket konnte aus dem Thema nicht abgeleitet werden.";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Cannot start HTML help server." = "Der HTML Server für das dynamische Hilfesystem konnte nicht gestartet werden.";
+
+/* From: main.m (sheetDidEnd) */
+"Cannot start R" = "R kann nicht gestratet werden";
+
+/* From: RController.m (toolbar) */
+"Change the size of R console font" = "Ändert die Schriftgröße in der R Konsole";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Check Rd document…" = "Check Rd document…";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Check was successful." = "Check was successful.";
+
+/* From: RController.m (handleChooseFile)
+   From: RController.m (openDocument) */
+"Choose File" = "Wählen Sie eine Datei";
+
+/* From: RController.m (doLoadHistory) */
+"Choose history File" = "Wählen Sie eine Verlaufsdatei";
+
+/* From: PrefPanes/MiscPrefPane.m (chooseWorkingDir) */
+"Choose Initial Working Directory" = "Wählen Sie die Voreinstellung für das Arbeitsverzeichnis";
+
+/* From: RController.m (handleChooseFile) */
+"Choose New File Name" = "Wählen Sie einen Dateinamen";
+
+/* From: RController.m (setWorkingDir) */
+"Choose New Working Directory" = "Wählen Sie ein neues Arbeitsverzeichnis";
+
+/* From: RController.m (clearWorkSpace) */
+"Clear Workspace" = "Arbeitsbereich löschen";
+
+/* From: RController.m (didCloseAll) */
+"Closing R session" = "R wird beendet";
+
+/* From: RDocument.m (reinterpretInEncoding) */
+"Convertion Error" = "Kodierungsfehler";
+
+/* From: RDocument.m (reinterpretInEncoding) */
+"Couldn't reinterpret the text by using the encoding" = "Der Text konnte in der angegebenen Kodierung nicht geladen werden";
+
+/* From: RDocument.m (revertToContentsOfURL) */
+"Couldn't revert to saved document" = "Wiederhersetellung des Dokuments ist gescheitert";
+
+/* From: RController.m (toolbar) */
+"Create a new, empty document in the editor" = "Öffnet ein neues, leeres Dokument im Editor";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Currently it is not possible to install binary packages from a remote repository as root.\nPlease use the CRAN binary of R to allow admin users to install system-wide packages without becoming root. Alternatively you can either use command-line version of R as root or install the packages from local files." = "Es ist zur Zeit leider nicht möglich binäre Pakete vom Internet als 'root' zu installieren.\nFalls Sie die binäre CRAN Version von R verwenden, dann können Sie als Administrator Pakete installieren, ohne 'root' zu werden. Alternativ können Sie binäre Pakete selbst herunterladen und als Dateien installieren.";
+
+/* From: RChooseEncodingPopupAccessory.m (setupPopUpCell)
+   From: RController.m (updateReInterpretEncodingMenu) */
+"Customize List…" = "Liste bearbeiten…";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"DATA_NAME" = "DATA_NAME";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Do you want me to remember the mirror you selected for future sessions?" = "Wollen Sie Ihre CRAN-Wahl für die Zukunft speichern?";
+
+/* From: RController.m (didCloseAll) */
+"Don't Save" = "Nicht speichern";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit" = "Bearbeiten";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit Object" = "Objekt bearbeiten";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit the selected object" = "Das ausgewählte Objekt bearbeiten";
+
+/* From: REditor.m (startDataEntry) */
+"editing cancelled" = "editing cancelled";
+
+/* From: RDocumentController.m (encodingAccessory) */
+"Encoding" = "Kodierung";
+
+/* From: RController.m (applicationDidFinishLaunching)
+   From: RController.m (windowDidExitFullScreen) */
+"Enter Full Screen" = "Enter Full Screen";
+
+/* From: RController.m (sheetDidEnd)
+   From: RDocument.m (convertRd2PDF) */
+"Error" = "Fehler";
+
+/* From: REngine/REngine.m (RKL_METHOD_PREPEND) */
+"executing" = "wird ausgeführt";
+
+/* From: RController.m (applicationDidFinishLaunching)
+   From: RController.m (windowDidEnterFullScreen) */
+"Exit Full Screen" = "Exit Full Screen";
+
+/* From: PackageInstaller.m (reloadURL) */
+"Fetching Package List Failed" = "Paketliste konnte nicht geladen werden";
+
+/* From: RController.m (toolbar) */
+"Font Size" = "Schriftgröße";
+
+/* From: RDocumentWinCtrl.m (tidyRCode) */
+"Formatting…" = "Formatting…";
+
+/* From: RDocument.m (insertRdFunctionTemplate) */
+"FUNCTION_NAME" = "FUNCTION_NAME";
+
+/* From: REditorToolbar.m (updatePreferences) */
+"Functions" = "Funktionen";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Help" = "Hilfe";
+
+/* From: RController.m (handleCustomPrint) */
+"Help for the topic \"%@\" was not found." = "Das Hilfethema zu \"%@\" wurde nicht gefunden.";
+
+/* From: RController.m (handleCustomPrint) */
+"Help topic not found" = "Hilfethema nicht gefunden";
+
+/* From: RController.m (toolbar) */
+"History" = "Verlauf";
+
+/* From: PackageInstaller.m (setURL) */
+"Install Selected" = "Installieren";
+
+/* From: PackageInstaller.m (setURL) */
+"Install…" = "Installieren…";
+
+/* From: RController.m (toolbar) */
+"Interrupt current R computation" = "Bricht die aktuelle Berechnung ab";
+
+/* From: PackageInstaller.m (reloadURL)
+   From: PackageInstaller.m (updateAll) */
+"Invalid Repository URL" = "Ungültige Repository-URL";
+
+/* From: RDocumentWinCtrl.m (functionReset)
+   From: REditorToolbar.m (updatePreferences) */
+"List of Functions" = "Liste der Funktionen";
+
+/* From: RdEditorToolbar.m (textView)
+   From: RDocumentWinCtrl.m (functionReset) */
+"List of Sections" = "List of Sections";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Never" = "Nie";
+
+/* From: RController.m (toolbar) */
+"New Document" = "Neues Dokument";
+
+/* From: Quartz/RQuartz.m (changeDocumentTitle) */
+"New Quartz Device" = "Neues Quartz-Fenster";
+
+/* Global string @ */
+"No" = "Nein";
+
+/* From: PackageInstaller.m (checkOptions) */
+"No CRAN Mirror Found" = "CRAN-Server nicht gefunden";
+
+/* From: PackageInstaller.m (installSelected) */
+"No packages selected, nothing to do." = "Es wurden keine Pakete ausgewählt.";
+
+/* From: PackageInstaller.m (checkOptions) */
+"No valid CRAN mirror was selected.\nYou won't be able to install any CRAN packages unless you set the CRAN option to a valid mirror URL." = "Es wurde kein gültiger CRAN Server ausgewählt.\nEs können keine Pakete installiert werden, bis ein gültiger Server ausgewählt wird.";
+
+/* From: RDocument.m (displayName) */
+"Object Editor" = "Objekt Editor";
+
+/* Global string @ */
+"OK" = "OK";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Ok" = "Ok";
+
+/* From: RController.m (toolbar) */
+"Open a new Quartz device window" = "Öffnet ein neues Quartz-Fenster";
+
+/* From: RController.m (toolbar) */
+"Open document in editor" = "Dokument im Editor öffnen";
+
+/* From: RController.m (toolbar) */
+"Open In Editor" = "Im Editor öffnen";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package installation failed" = "Installation ist fehlgeschlagen";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package installation was not successful. Please see the R Console for details." = "Installation von Paketen ist fehlgeschlagen. Siehe R Konsole für Details.";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Package installer" = "Paketinstallation";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package Installer" = "Paketinstallation";
+
+/* From: PackageInstaller.m (updateAll) */
+"Package update failed" = "Aktualisierung fehlgeschlagen";
+
+/* From: PackageInstaller.m (updateAll) */
+"Package update was not successful. Please see the R Console for details." = "Aktualisierung war nicht erfolgreich. Siehe R Konsole für Details.";
+
+/* From: RDocumentWinCtrl.m (tidyRCode) */
+"Parsing Error" = "Parsing Error";
+
+/* From: PackageInstaller.m (reloadURL) */
+"Please consult  R Console output for details." = "Bitte schauen Sie in die R Konsole, um mehr hierzu zu erfahren.";
+
+/* From: PackageInstaller.m (reloadURL)
+   From: PackageInstaller.m (updateAll) */
+"Please specify a valid URL first." = "Bitte wählen Sie zuerst eine gültige URL.";
+
+/* From: AMPrefs/AMPreferenceWindowController.m (initWithAutosaveName) */
+"Preferences" = "Preferences";
+
+/* Editor preference group */
+"PrefG-Editor" = "Editor";
+
+/* General preference group */
+"PrefG-General" = "Allgemeines";
+
+/* Views preference group */
+"PrefG-Views" = "Ansichten";
+
+/* Colors preference pane */
+"PrefP-Colors" = "Konsole-Farben";
+
+/* Editor preference pane */
+"PrefP-Editor" = "Editor";
+
+/* Quartz preference pane */
+"PrefP-Quartz" = "Quartz";
+
+/* Startup preference pane */
+"PrefP-Startup" = "Starteinstellungen";
+
+/* Syntax colors preference pane */
+"PrefP-Syntax" = "Syntax-Farben";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath)
+   From: RDocument.m (convertRd2HTML)
+   From: RDocument.m (convertRd2PDF)
+   From: RDocument.m (insertRdDataTemplate)
+   From: RDocument.m (insertRdFunctionTemplate)
+   From: RDocumentWinCtrl.m (tidyRCode)
+   From: RTextView.m (performDragOperation) */
+"press ⌘. to cancel" = "press ⌘. to cancel";
+
+/* From: RController.m (toolbarWillAddItem) */
+"Print this document" = "Dokument drucken";
+
+/* From: RController.m (toolbar) */
+"Quartz" = "Quartz";
+
+/* From: RController.m (toolbar) */
+"Quit" = "Beenden";
+
+/* From: RController.m (toolbar) */
+"Quit R" = "R beenden";
+
+/* From: RConsoleController.m (windowTitleForDocumentDisplayName) */
+"R Console" = "R Konsole";
+
+/* From: REditor.m (initData) */
+"R Data Editor - error while reading object data" = "R Data Editor - error while reading object data";
+
+/* From: REditor.m (windowShouldClose) */
+"R Data Editor couldn't write object data" = "R Data Editor couldn't write object data";
+
+/* From: RController.m (sourceFile) */
+"R File to Source" = "Datei zum Ausführen";
+
+/* From: RController.m (sourceOrLoadFile) */
+"R File to Source/Load" = "Datei zum Laden/Ausführen";
+
+/* From: RController.m (handleShowMessage) */
+"R Message" = "R Nachricht";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Rd Check" = "Rd Check";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath)
+   From: RDocument.m (convertRd2PDF) */
+"Rd file" = "Rd file";
+
+/* From: RdEditorToolbar.m (textView) */
+"Rd Toolbox" = "Rd Toolbox";
+
+/* From: RDocument.m (convertRd2HTML) */
+"Rd → HTML…" = "Rd → HTML…";
+
+/* From: RDocument.m (convertRd2PDF) */
+"Rd → PDF…" = "Rd → PDF…";
+
+/* From: WSBrowser.m (toolbar) */
+"Refresh" = "Aktualisieren";
+
+/* From: WSBrowser.m (toolbar) */
+"Refresh Objects List" = "Objektliste aktualisieren";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove" = "Entfernen";
+
+/* From: REditor.m (toolbar) */
+"Remove Columns" = "Spalten entfernen";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove Object" = "Objekt entfernen";
+
+/* From: WSBrowser.m (remObject) */
+"Remove Object from Workspace" = "Objekt aus dem Arbeitsbereich entfernen";
+
+/* Remove row - label for a toolbar, keep short! */
+"Remove Row" = "- Zeile";
+
+/* From: REditor.m (toolbar) */
+"Remove Rows" = "Zeilen entfernen";
+
+/* From: REditor.m (toolbar) */
+"Remove selected columns" = "Ausgewählte Spalten entfernen";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove Selected Object" = "Ausgewähltes Objekt entfernen";
+
+/* From: REditor.m (toolbar) */
+"Removes selected rows" = "Ausgewählte Zeilen entfernen";
+
+/* From: Quartz/RDeviceView.m (drawRect) */
+"Resizing to %g x %g" = "Größe wird zu %1$g x %2$g geändert";
+
+/* From: RDocument.m (revertToContentsOfURL) */
+"Reverting Document" = "Dokument wird wiederhergestellt";
+
+/* Global string @ */
+"Save" = "Speichern";
+
+/* From: RController.m (toolbar) */
+"Save Console Window" = "Konsoleninhalt speichern";
+
+/* From: Quartz/RQuartz.m (saveDocument) */
+"Save Content of Quartz Device to PDF file" = "Inhalt des Quartz-Fensters in eine PDF Datei speichern";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Save current document" = "Aktuelles Dokument speichern";
+
+/* From: RController.m (doSaveHistory) */
+"Save history File" = "Verlaufsdatei speichern";
+
+/* From: RController.m (saveDocumentAs) */
+"Save R Console To File" = "R-Konsole speichern";
+
+/* From: RController.m (toolbar) */
+"Save R console window" = "Inhalt der R Konsole speichern";
+
+/* From: RController.m (didCloseAll) */
+"Save workspace image?" = "Soll der Arbeitsbereich gespeichert werden?";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search" = "Suche";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search Help" = "Hilfesuche";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search Panel" = "Suche";
+
+/* From: RdEditorToolbar.m (textView) */
+"Sections" = "Sections";
+
+/* From: PrefPanes/EditorPrefPane.m (changeEditor) */
+"Select editor application" = "Wählen Sie einen externen Editor aus";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Select Installation Directory" = "Wählen Sie das Installationsverzeichnis";
+
+/* From: REngine/Rcallbacks.m (RKL_METHOD_PREPEND) */
+"Select one" = "Wählen Sie einen Eintrag";
+
+/* From: REngine/Rcallbacks.m (RKL_METHOD_PREPEND) */
+"Select one or more" = "Wählen Sie einen oder mehrere Einträge";
+
+/* From: PackageInstaller.m (installSelected)
+   From: RController.m (installFromDir) */
+"Select Package Directory" = "Wählen Sie das Paketverzeichnis";
+
+/* From: PackageInstaller.m (awakeFromNib) */
+"Select packages from R %@" = "Pakete der R Version %@ auswählen";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Set as default?" = "Als Voreinstellung verwenden?";
+
+/* From: RController.m (toolbar) */
+"Set Colors" = "Farben";
+
+/* From: RController.m (toolbar) */
+"Set R Colors" = "Farben setzen";
+
+/* From: RController.m (toolbar) */
+"Set R console colors" = "Ändert Farben in der R Konsole";
+
+/* From: AMPrefs/AMPreferenceWindowController.m (toolbar)
+   From: PackageInstaller.m (toggleShowInstalled) */
+"Show All" = "Alle anzeigen";
+
+/* From: RController.m (textView)
+   From: RDocumentWinCtrl.m (textView) */
+"Show Help for current Function" = "Hilfe für die aktuelle Funktion anzeigen";
+
+/* From: PackageInstaller.m (toggleShowInstalled) */
+"Show Installed Only" = "Nur installierte anzeigen";
+
+/* From: RController.m (toolbar) */
+"Show/Hide R command history" = "Verlaufsfenster anzeigen/verbergen";
+
+/* From: RTextView.m (performDragOperation) */
+"Snippet Error" = "Snippet Error";
+
+/* From: RController.m (toolbar) */
+"Source or Load in R" = "In R laden oder ausführen";
+
+/* From: RController.m (toolbar) */
+"Source script or load data in R" = "Lädt oder führt ein R Skript aus";
+
+/* From: RController.m (toolbar) */
+"Source/Load" = "Ausführen/Laden";
+
+/* From: RController.m (toolbar) */
+"Start the X11 window server to allow R using X11 device and Tcl/Tk" = "Startet X11 windows Server, damit X11 und Tcl/Tk verwendet werden können";
+
+/* From: RController.m (toolbar) */
+"Start X11" = "Starte X11";
+
+/* From: RController.m (toolbar) */
+"Start X11 Server" = "Starte X11 Server";
+
+/* From: RController.m (toolbar) */
+"Stop" = "Stop";
+
+/* From: PackageInstaller.m (installSelected) */
+"The installation location doesn't exist." = "Das Zielverzeichnis existiert nicht.";
+
+/* From: PackageInstaller.m (installSelected) */
+"The package has not been installed." = "Dieses Paket ist nicht installiert.";
+
+/* From: main.m (sheetDidEnd) */
+"Unable to start R: %@" = "R kann nicht gestartet werden: %@";
+
+/* From: NSString_RAdditions.m (evaluateAsBashCommandWithEnvironment) */
+"User Termination" = "User Termination";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"VAR_NAME_1" = "VAR_NAME_1";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"VAR_NAME_2" = "VAR_NAME_2";
+
+/* From: RController.m (applicationDidFinishLaunching) */
+"WARNING: You're using a non-UTF8 locale, therefore only ASCII characters will work.\nPlease read R for Mac OS X FAQ (see Help) section 9 and adjust your system preferences accordingly.\n" = "WARNUNG: Sie verwenden eine andere Umgebung als UTF-8, daher werden nur einfache Zeichen (ohne Umlaute) funktionieren.\nBitte lesen Sie R for Mac OS X FAQ (siehe Hilfe) Sektion 9 und ändern Sie Ihre Einstellungen entsprechend.\n";
+
+/* Global string @ */
+"Yes" = "Ja";
+
+/* From: RController.m (searchInHistory) */
+"…invalid regular expression" = "…ungültiger regulärer Ausdruck";
+

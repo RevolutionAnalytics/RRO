@@ -1,0 +1,21 @@
+/* Entry = "94.headerCell.title"; Class = "NSTableColumn" */
+"Description" = "説明";
+
+/* Entry = "63.title"; Class = "NSButtonCell" */
+"Open PDF" = "PDFを開く";
+
+/* Entry = "64.title"; Class = "NSButtonCell" */
+"Open Source" = "ソースコードを開く";
+
+/* Entry = "95.headerCell.title"; Class = "NSTableColumn" */
+"Package" = "パッケージ";
+
+/* Entry = "62.placeholderString"; Class = "NSSearchFieldCell" */
+"Search" = "検索";
+
+/* Entry = "96.headerCell.title"; Class = "NSTableColumn" */
+"Vignette" = "ビネット";
+
+/* Entry = "5.title"; Class = "NSWindow" */
+"Vignettes" = "ビネット";
+

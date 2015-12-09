@@ -1,0 +1,18 @@
+/* Entry = "23.title"; Class = "NSButtonCell" */
+"Clear all" = "選択解除";
+
+/* Entry = "5.title"; Class = "NSPanel" */
+"Customize Encodings List" = "エンコーディングリストのカスタマイズ";
+
+/* Entry = "21.title"; Class = "NSTextFieldCell" */
+"Enable the text encodings you would like to be able to use." = "目的のエンコーディングを使用できるようにします。";
+
+/* Entry = "24.title"; Class = "NSButtonCell" */
+"Revert to default" = "デフォルト設定";
+
+/* Entry = "22.title"; Class = "NSButtonCell" */
+"Select all" = "すべてを選択";
+
+/* Entry = "25.title"; Class = "NSButtonCell" */
+"Switch" = "Switch";
+

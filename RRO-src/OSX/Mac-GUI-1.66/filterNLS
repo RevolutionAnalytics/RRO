@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+
+if ($ARGV[0] eq '') {
+	print "\n Usage: filterNLS <file1> [<file2> ...]\n\nGenerates Localizable.strings in UTF-8 encoding from sources that use NLS/NLSC macros.\nUses external utilities genstrings and iconv.\n\n";
+	exit 0;
+}
+
+open OUT, ">temp.conv.m";
+while (($fn=shift) ne '') {
+	print "Reading $fn ...\n";
+	open IN, $fn;
+	while (<IN>) {
+		$curFn="$3" if (/([-+])\s*(\(.*?\))\s*([a-zA-Z0-9_]+)/);
+		$comm="From: $fn ($curFn)";
+		while(/NLS\((\@\".*?\")\)/g) {
+			$c=$comm;
+			$c="Global string $1" if ($1 eq '@"Yes"' || $1 eq '@"No"' || $1 eq '@"OK"' || $1 eq '@"Save"');
+			print OUT "NSLocalizedString($1, \@\"$c\");\n";
+		}
+		while(/NLSC\((\@\".*?\"),\s*(\@\".*?\")\)/g) {
+			print OUT "NSLocalizedString($1, $2);\n";
+		}
+#		s/NLS\((\@\".*?\")\)/"NSLocalizedString($1, \@\"\")"/g;
+#		s/NLSC\((\@\".*?\"),\s*(\@\".*?\")\)/"NSLocalizedString($1, $2)"/g;
+#		print "$_";
+	}
+	close IN;
+}
+close OUT;
+print "Generating all strings ...\n";
+system "rm -f Localizable.strings";
+system "genstrings temp.conv.m";
+print "Converting to UTF-8 ...\n";
+system "mv Localizable.strings loc.str.utf16";
+system "iconv -f UTF-16 -t UTF-8 loc.str.utf16 > Localizable.strings";
+system "rm -f loc.str.utf16 temp.conv.m";
+print "Done.\n";

@@ -1,0 +1,58 @@
+INSTALL
+
+You need R built and installed as a framework: see the 'R Installation
+and Administration Manual'.  A CRAN binary install of R suffices.
+
+ Building R.app
+================
+
+Only Mac OS X 10.6 and higher are supported, and only 64-bit R. The
+project is called "R.xcodeproj" and requires Xcode 3.2 or higher.
+
+The project can be built by selecting "R" target and "Build" inside
+the XCode GUI.
+
+Supported configurations are:
+  SnowLeopard64 (release, current OS X, default)
+  Lion64 (release, OS X 10.7+, Xcode 4.5+)
+  MLion64 (release, OS X 10.8+, Xcode 4.5+)
+  Debug (with debugging output, current OS X)
+
+The configurations differ mainly in the SDK selected (recent versions
+of Xcode only support the current and immediately previous SDKs, so
+for example in Mar 2013 the default would build for 10.8, but
+configuration Lion64 allows building for >= 10.7).
+
+To build the project from the command line in the Mac-GUI directory
+use something like:
+	xcodebuild -target R -configuration SnowLeopard64
+
+To build the R for Mac OS X FAQ use either
+	xcodebuild -target Docs
+or manually in docs folder
+	makeinfo -D UseExternalXrefs --html --force --no-split RMacOSX-FAQ.texi
+	
+The resulting html FAQ file will be found in Mac-GUI/docs directory.
+
+
+Note about binary compatibility:
+
+The general rules for R apply, that is binary compatibility is given
+only if the major and minor version numbers match - only the patch
+level may differ. When using the X.Y.Z version form it means that X.Y
+must match. For example R-GUIs linked to 3.0.x and 3.1.x are NOT
+binary compatible.
+
+The compiled R.app is usually bound to a specific version, such as
+3.0.1. If you upgrade R removing the older version, let's say using
+R.app built for 3.0.0 and updating R to 3.0.1, you may need to fix the
+absolute path to libR.dylib. The nightly builds use a generic path
+/Library/Frameworks/R.framework/Resources/lib/libR.dylib which points
+to the latest version of R, but this is done by an additional call to
+install_name_tool in the building script.  Release versions of the GUI
+use a fixed-version path as they come with a specific R version (in fact
+the default behavior doesn't depends on the GUI, but on libR.dylib -
+changing its own reference entry changes the way R.app is linked).
+
+--
+Last update: 2013-03-08

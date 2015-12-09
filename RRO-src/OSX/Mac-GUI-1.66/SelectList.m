@@ -1,0 +1,212 @@
+/*
+ *  R.app : a Cocoa front end to: "R A Computer Language for Statistical Data Analysis"
+ *  
+ *  R.app Copyright notes:
+ *                     Copyright (C) 2004-5  The R Foundation
+ *                     written by Stefano M. Iacus and Simon Urbanek
+ *
+ *                  
+ *  R Copyright notes:
+ *                     Copyright (C) 1995-1996   Robert Gentleman and Ross Ihaka
+ *                     Copyright (C) 1998-2001   The R Development Core Team
+ *                     Copyright (C) 2002-2004   The R Foundation
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  A copy of the GNU General Public License is available via WWW at
+ *  http://www.gnu.org/copyleft/gpl.html.  You can also obtain it by
+ *  writing to the Free Software Foundation, Inc., 59 Temple Place,
+ *  Suite 330, Boston, MA  02111-1307  USA.
+ */
+
+#import "RGUI.h"
+#import "SelectList.h"
+
+static SelectList *sharedController = nil;
+
+@implementation SelectList
+
+BOOL IsSelectList;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+		sharedController = self;
+		[listDataSource setTarget: self];
+		totalItems = 0;
+		listItem = 0;
+		result = -1;
+		title = nil;
+		running = NO;
+    }
+	
+    return self;
+}
+
++ (SelectList*) sharedController
+{
+	return sharedController;
+}
+
+- (void)dealloc {
+	[super dealloc];
+}
+
+/* These two routines are needed to update the SelectList TableView */
+- (NSInteger)numberOfRowsInTableView: (NSTableView *)tableView
+{
+	return totalItems;
+}
+
+- (id)tableView: (NSTableView *)tableView objectValueForTableColumn: (NSTableColumn *)tableColumn row: (NSInteger)row
+{
+	if (row<totalItems) {
+		if([[tableColumn identifier] isEqualToString:@"item"])
+			return listItem[row];
+	}
+	return nil; 
+}
+
+- (id) window
+{
+	return SelectListWindow;
+}
+
+- (void) reloadData
+{
+	[listDataSource reloadData];
+}
+
+- (void) resetListItems
+{
+	if (!totalItems || !listItem) return;
+	int i=0;
+	while (i<totalItems) {
+		[listItem[i] release];
+		i++;
+	}
+	free(listItem);
+	totalItems=0;
+}
+
+- (int) selectList: (int) count withNames: (char**) item status: (BOOL*) stat multiple: (BOOL) multiple title: (NSString*) ttl
+{
+	NSAutoreleasePool *pool = nil;
+	int i=0, k=0;
+	title = ttl;
+	result = -1;
+	
+	[listDataSource setAllowsMultipleSelection: multiple];
+
+	if (totalItems) [self resetListItems];
+	if (count<1)
+		return 0;	
+	
+	listItem = (NSString**) malloc(sizeof(NSString*) * count);
+	while (i<count) {
+		listItem[i] =[[NSString alloc] initWithUTF8String: item[i]];
+		i++;
+	}
+	totalItems = count;
+	[listDataSource deselectAll:self];
+	[listDataSource reloadData]; // make sure we have all data loaded before proceeding with the selection
+
+	pool = [[NSAutoreleasePool alloc] init];	
+	
+	if (stat)
+		for(i=0; i<totalItems; i++){
+			if(stat[i]){
+				k++;
+				[listDataSource selectRowIndexes:[NSIndexSet indexSetWithIndex:i] 
+							byExtendingSelection:(k!=1)?YES:NO];
+			}
+		};
+	
+	[[self window] setTitle:title];
+	running = YES;
+	{ /* try to be smart - resize the window such that the all items are visible (with an upper limit) */
+		NSRect rw = [[self window] frame];
+		NSRect rf = [listDataSource visibleRect];
+		NSRect rr = [listDataSource frameOfCellAtColumn:0 row:0];
+		NSRect rl = [listDataSource frameOfCellAtColumn:0 row:1];
+
+		float nonTableH = rw.size.height - rf.size.height;
+		float showCount = ((float)((count>20)?20:count));
+		
+		if (count==1) rl.origin.y = rr.origin.y + rr.size.height + 1.0; // rl will be bogus if there is just 1 entry, so we need to fake it
+		
+		rw.size.height = nonTableH + rr.origin.y + (rl.origin.y-rr.origin.y)*showCount - 1.0;
+
+		[[self window] setFrame:rw display:YES];
+	}
+	[self show];
+	[NSApp runModalForWindow:[self window]];
+	
+	if (result == 1) {
+		NSIndexSet *rows =  [listDataSource selectedRowIndexes];			
+		NSUInteger current_index = [rows firstIndex];
+		
+		if(current_index == NSNotFound)
+			return 0;
+		
+		if (stat) {
+			memset(stat, 0, sizeof(BOOL)*count);
+			while (current_index != NSNotFound) {
+				stat[current_index] = YES;
+				current_index = [rows indexGreaterThanIndex: current_index];
+			}
+		}
+	}
+	
+	[pool release];
+	[self resetListItems];
+	
+	return result;
+}
+
+- (int) count
+{
+	return totalItems;
+}
+
+- (void) show
+{
+	[listDataSource reloadData];
+	[[self window] makeKeyAndOrderFront:self];
+}
+
+
+- (IBAction)returnSelected:(id)sender
+{
+	result = 1;
+	
+	[[self window] performClose: sender];
+
+}
+
+- (BOOL)windowShouldClose:(id)sender{
+	
+	if(running){
+		[NSApp stopModal];
+		running = NO;
+	}
+	return YES;	
+}
+
+- (IBAction)cancelSelection:(id)sender
+{
+	result = 0;
+
+	[[self window] performClose: sender];
+}
+
+@end

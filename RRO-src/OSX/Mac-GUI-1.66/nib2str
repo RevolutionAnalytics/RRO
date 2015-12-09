@@ -1,0 +1,67 @@
+#!/usr/bin/perl
+
+$td="/tmp/nib-$$";
+system "rm -rf '$td'";
+mkdir "/tmp/nib-$$" || die "cannot create temporary directory for processing";
+
+$en=shift;
+$tl=shift;
+
+if ( $en eq '' || $tl eq '') {
+    print "\n Usage: $ARGV[0] <english.nib> <lang.nib>\n\n";
+    exit 1;
+}
+
+system "ibtool --generate-strings-file '$td/en.uni' '$en'" || die "converting en file to strings failed";
+system "iconv -f utf-16 -t utf-8 '$td/en.uni' > '$td/en.txt'" || die "converting en strings to unicode failed";
+system "ibtool --generate-strings-file '$td/tl.uni' '$tl'" || die "converting lang file to strings failed";
+system "iconv -f utf-16 -t utf-8 '$td/tl.uni' > '$td/tl.txt'" || die "converting lang strings to unicode failed";
+
+sub parse_text {
+    while (<IN>) {
+	#if (/\/\* Class = \"(.*?)\"; ([^ ]+) = \"(.*?)\"; ObjectId = \"(\d+)\";/) { };
+	chomp;
+	if (/^\"([a-zA-Z0-9.]+)\" = \"(.*)\";$/) {
+	    $h{$1} = $2;
+	    if (defined $cls) { $hc{$1} = $cls; undef $cls; }
+	} elsif (/^\/\* Class = \"(.*?)\"; /) {
+	    $cls = $1;
+	} elsif ($_ eq '') {
+	    undef $cls;
+	} else {
+	    print STDERR "WARNING: unknown line: $_\n";
+	    undef $cls;
+	}
+    }
+}
+
+open IN, "$td/en.txt";
+parse_text;
+close IN;
+%ent = %h;
+undef %h;
+
+open IN, "$td/tl.txt";
+parse_text;
+close IN;
+%tlt = %h;
+undef %h;
+
+foreach (sort { $ent{$a} cmp $ent{$b} } keys %ent) {
+    $tra = $tlt{$_};
+    $tra = $ent{$_} if ($tra eq '');
+    print "/* Entry = \"$_\"; Class = \"$hc{$_}\" */\n\"$ent{$_}\" = \"$tra\";\n\n";
+}
+
+foreach (keys(%tlt)) {
+    if (!defined $ent{$_} && $ent{$_} ne '') { ## orphan non-empty text strings
+	print "/* OrphanEntry = \"$_\"; Class = \"$hc{$_}\"; text = \"$ent{$_}\" */\n";
+    }
+}
+
+if ($ENV{KEEP} ne '') {
+    print STDERR "KEEP set, leaving all files in $td\n";
+    exit0;
+}
+
+system "rm -rf '$td'";

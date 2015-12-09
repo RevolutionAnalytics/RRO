@@ -1,0 +1,53 @@
+#!/usr/bin/perl
+#
+# Created 2005/02/08 by Simon Urbanek
+
+$tar=shift;
+$src=shift;
+
+if ($tar eq '' || $src eq '') {
+	print "\n Usage: mergeLS <master> <localized>\n\nMerges translations from <localized> into <master> and replaces <localized>.\n\n";
+	exit 0;
+}
+
+print "  Loading $src ...\n";
+open IN, $src || die "Cannot open $src file.\n";
+while(<IN>) {
+	s/[\r\n]+//g;
+	if (/^\"(.*?)\"\s*=\s*\"(.*?)\";$/) {
+		$key{$1}=$2;
+	}
+}
+close IN;
+@k=keys %key; $ks=$#k; $ks++;
+print "    $ks strings loaded.\n";
+
+open IN, $tar || die "Cannot open $tar file.\n";
+open OUT, ">tmp.merge.loc.strings" || die "Cannot open temporary file tmp.merge.loc.strings.";
+
+while (<IN>) {
+	s/[\r\n]+//g;
+	if (/^\"(.*?)\"\s*=\s*\"(.*?)\";$/) {
+		$val = $2;
+		if ($key{$1} ne '') {
+			$val = $key{$1};
+			$used{$1}++;
+		}
+		print OUT "\"$1\" = \"$val\";\n";
+	} else {
+		print OUT "$_\n";
+	}
+}
+close IN;
+close OUT;
+
+system "mv tmp.merge.loc.strings \"$src\"";
+
+foreach (sort keys %key) {
+	push @uk, $_ if ($used{$_}==0);
+}
+if ($uk[0] ne '') {
+	print "  ** Unused keys: ", (join ', ', @uk), "\n";
+} else {
+	print "  All keys merged.\n";
+}

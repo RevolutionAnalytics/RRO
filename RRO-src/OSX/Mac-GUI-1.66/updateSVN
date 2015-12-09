@@ -1,0 +1,36 @@
+#!/bin/sh
+
+if [ -z "$1" -o -z "$2" ]; then
+    echo ""
+    echo " Usage: updateSVN <src-root> <target-resources-dir>"
+    echo ""
+    exit 1
+fi
+
+OWD=`pwd`
+cd "$1"
+SVNREV=6956
+echo "Revision: $SVNREV"
+
+if [ -z "$SVNREV" ]; then
+    echo "Cannot determine SVN revision."
+    exit 2
+fi
+
+if [ ! -e "$1/Info.plist" ]; then
+    echo "Cannot find Info.plist"
+    exit 3;
+fi
+
+# we no longer use InfoPlist.strings
+#sed "s/%SVN%/$SVNREV/g" "$1/English.lproj/InfoPlist.strings" > "$2/English.lproj/InfoPlist.strings"
+# Info.plist is actually one level below resources
+#sed "s/%SVN%/$SVNREV/g" "$1/Info.plist" > "$2/../Info.plist"
+# we have to use the target Info.plist because it has been pre-processed by Xcode
+sed "s/%SVN%/$SVNREV/g" "$2/../Info.plist" > "$2/../Info.plist.final"
+if [ -e "$2/../Info.plist.final" ]; then
+    rm -f "$2/../Info.plist"
+    mv "$2/../Info.plist.final" "$2/../Info.plist";
+fi
+
+exit 0

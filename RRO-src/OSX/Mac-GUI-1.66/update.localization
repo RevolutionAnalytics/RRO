@@ -1,0 +1,77 @@
+#!/bin/sh
+#
+# Created 2005/02/01 by Simon Urbanek
+
+# list of localizations we want to generate from English
+if [ -z "$languages" ]; then languages=`cat LANGUAGES`; fi
+
+# Get all (non-backup) NIBs in English.lproj assuming that this is where we do active development
+NIBS=`ls -d English.lproj/*.xib | grep -v \~ | awk -F / '{print substr($2,1,length($2)-4)}'`
+
+if [[ "x$1" == "x-h" || "x$1" == "x" ]]; then
+	echo " "
+	echo " Usage: $0 -g       - generates translation string files"
+	echo "        $0 -t [-c]  - translates XIBs using translation"
+	echo "                      string files"
+	echo " "
+	echo " Either -g or -t has to be specified in any case."
+	echo " Options: -c  cleanup: results in a more aggressive handling"
+	echo "              of XIBs by discarding all information from the"
+	echo "              localized version of each XIB."
+	echo " "
+	echo " The usual process is to use $0 -g, translate"
+	echo " string files and run $0 -t"
+	echo " "
+	exit 0
+fi
+
+mkdir Translated.strings 2> /dev/null
+
+echo "-----------------------------------------------------------------"
+if [[ "x$1" == "x-t" || "x$2" == "x-t" ]]; then
+	echo "*** Using translated string for localization"
+else
+	echo "*** Generating translated strings"
+fi
+if [[ "x$1" == "x-c" || "x$2" == "x-c" ]]; then
+	echo "*** Cleanup requested - discarding layout in localized files."
+fi
+echo "-----------------------------------------------------------------"
+
+# for each languange ...
+for lang in $languages; do
+	echo "Updating $lang ..."
+	# and each NIB ...
+	for NIB in $NIBS; do
+		if [ -e "$lang.lproj/$NIB.xib" ]; then
+			# create a strings file with all translations
+			if [[ "x$1" != "x-t" && "x$2" != "x-t" ]]; then
+				./nib2str "English.lproj/$NIB.xib" "$lang.lproj/$NIB.xib" > "Translated.strings/$NIB.$lang.strings"
+			fi
+			if [ ! -e "Translated.strings/$NIB.$lang.strings" ]; then
+				echo "   $NIB .. ERROR: Can't find translation strings"
+			else
+				rm -rf "$lang.lproj/temp.xib" "$lang.lproj/temp~.xib"
+				if [[ "x$1" != "x-g" && "x$1" != "x-g" ]]; then
+					if [[ "x$1" == "x-c" || "x$2" == "x-c" ]]; then
+						# "clean" merge - i.e. don't use localized NIB for source
+						# nibtool -F 4 -8  -W "$lang.lproj/temp.nib" -d "Translated.strings/$NIB.$lang.strings" "English.lproj/$NIB.nib"
+						./str2nib "English.lproj/$NIB.xib" "Translated.strings/$NIB.$lang.strings" "$lang.lproj/temp.xib"
+					else
+						# merge the changes taking modifications into account
+						# nibtool -F 4 -8 -I "$lang.lproj/$NIB.nib" -W "$lang.lproj/temp.nib" -d "Translated.strings/$NIB.$lang.strings" "English.lproj/$NIB.nib"
+						./str2nib "English.lproj/$NIB.xib" "Translated.strings/$NIB.$lang.strings" "$lang.lproj/temp.xib"
+					fi
+					if [ -e "$lang.lproj/temp.xib" ]; then
+						mv "$lang.lproj/temp.xib" "$lang.lproj/$NIB.xib"
+						echo "   $NIB .. OK"
+					else
+						echo "ERROR for language \"$lang\" and XIB \"$NIB\": Localized xib was not created. Check for ibtool errors."
+					fi
+				fi
+			fi
+		else
+			echo "   $NIB .. not localized yet."
+		fi
+	done
+done

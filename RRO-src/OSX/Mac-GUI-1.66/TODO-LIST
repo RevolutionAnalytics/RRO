@@ -1,0 +1,65 @@
+TO-DO/BUGS LIST
+
+User requests/bug reports:
+*	test BioC! the installation doesn't quite work AFAICT! (check prerequisities?)
+*	edit object menu disabled
+*	multiple packages installation crashes package manager (a couple of users report this)
+*	add import/export functionality to read and write old_style history files
+*	change everywhere buttons with toolbar whenever possible
+*	is possible to crop long output? A-la mathematica using the cocoa browser as in the workspace browser? 
+	What really does ESS ? Simon?
+*	add arrows to the html browsers for navigation, as it is now it's too limited  
+*	for Bioconductor packages installation: allow for an option that uses getBioc script  
+*	we need to set a global option for "verbose" output. Some user want to have feedback on
+	R commands sent via the GUI, do we ? [SI]
+*	the mouse cursor should be spinning on long operations like package manager, help.search etc
+	R_busy is not good for that as we want the gui to be responsive.
+*	Aqua Tcl/Tk - can we do something about the loop?
+	
+Other: (quick ideas - relevant or not ...) [SU]
+*	sync of preferences, installed packages, local packages via .Mac
+*	save/restore list of packages; upgrade (i.e. install according to previous version)
+*	check for dev-tools and fortran compiler before allowing source installation
+*	check for X11 before allowing to launch it
+
+Internal feedback:
+*	growing up the window in quartz device does not refresh the drawing [SI]
+*	we need to assume Latin1Econdig for displaying text in quartz (see example(text))[SI]
+*	in R_EditFiles:  the file name is not correctly set at the moment for newly created documents.
+*	(find someone to) design some nice icons for the toolbar
+*	should cut input longer than R buffer (1024). At the moment long user input is cutted into
+	lines of at most 1024 bytes. We could probably cut them into less longer lines to allow
+	for virtual any input length.
+*	Jan suggested to add coloring to the package installer to distinguish between installed and
+	update packages, and non updated ones.
+*	REngine should wait R to finish. It would be nice to add a flag to evaluateString method 
+	like "wait" set to YES by default. The reason is that calling multiple times REngine
+	can crash R [[SU: this is a more general problem, we need synchronization of R activity...
+	Is this still relevant or fixed?]]
+
+- general issues:
+	- font size handling is a mess - we need a global way to change font type and size for
+	  all documents, including console and editor windows
+	- RController is not NSDocument-based, which messes up lots of automatic menu handling
+	- synchronize stdxx output on rmChild (need a semaphore)
+- workspace browser:
+	- disable "refresh" while data are fetched
+	- use toolbar instead of fixed the button
+	- edit/delete should apply to the *selected* object, not the root of the selected object ...
+	- dbl-click should be edit
+	- doesn't work with large workspaces (check why...)
+- data editor:
+	- adding rows doesn't shift contents of factors
+	- add way to rename a column
+	- editing fully NA objects causes problems (try m<-matrix(,5,5))
+- code editor:
+	- use code completion
+- data manager
+	- rename to Data Browser
+	- add "search" field
+	- allow columns to be sorted by clicking on the header 
+	- don't query stats/base for datasets, because of the warnings
+	- prints "empty env.." to the console .. bad boy
+	
+RController.m:
+	- isImageData: - check whether compressed images are recognized (I doubt it..)

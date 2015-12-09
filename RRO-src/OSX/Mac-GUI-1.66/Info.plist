@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>R</string>
+				<string>r</string>
+				<string>Q</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>Rdoc.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>R Source File</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+			<key>NSDocumentClass</key>
+			<string>RDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>Rd</string>
+				<string>rd</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>Rdoc.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>Rd Documentation File</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>****</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+			<key>NSDocumentClass</key>
+			<string>RDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Quartz Graphics</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>RQuartz</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>Rcommand</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>Rrun.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>R Script</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>RConsole</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>RData</string>
+				<string>rds</string>
+				<string>rda</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>Rdata.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>R Data File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>RDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>S</string>
+				<string>ssc</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>Rdoc.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>S-PLUS Source File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>RDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Plain Text</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>RDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>Revolution R Open</string>
+	<key>CFBundleIconFile</key>
+	<string>Revolution R OpenLogo.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>R</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>R R_RELEASE GUI GUI_VER CFG_NAME</string>
+	<key>CFBundleSignature</key>
+	<string>Rgui</string>
+	<key>CFBundleVersion</key>
+	<string>%SVN%</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>MIN_VERSION</string>
+	<key>NSAppleScriptEnabled</key>
+	<string>YES</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>R.app GUI GUI_VER (%SVN% CFG_NAME), S. Urbanek &amp; H.-J. Bibiko, © R Foundation for Statistical Computing, 2014</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+			</dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>R/R – Run selection in Console</string>
+				<key>English</key>
+				<string>R/R – Run selection in Console</string>
+				<key>de</key>
+				<string>R/R – Führe Auswahl in der Konsole aus</string>
+				<key>nl</key>
+				<string>R/R – Run selection in Console</string>
+				<key>it</key>
+				<string>R/R – Run selection in Console</string>
+				<key>ja</key>
+				<string>R/R – Run selection in Console</string>
+				<key>fr</key>
+				<string>R/R – Run selection in Console</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doPerformServiceRunInConsole</string>
+			<key>NSPortName</key>
+			<string>R</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+				<string>NSURLPboardType</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+			</dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>R/R – Open selection</string>
+				<key>English</key>
+				<string>R/R – Open selection</string>
+				<key>de</key>
+				<string>R/R – Öffne Auswahl</string>
+				<key>nl</key>
+				<string>R/R – Open selection</string>
+				<key>it</key>
+				<string>R/R – Open selection</string>
+				<key>ja</key>
+				<string>R/R – Open selection</string>
+				<key>fr</key>
+				<string>R/R – Open selection</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doPerformServiceOpenRScript</string>
+			<key>NSPortName</key>
+			<string>R</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

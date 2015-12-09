@@ -1,0 +1,63 @@
+/* Entry = "122.title"; Class = "NSTextFieldCell" */
+"12" = "12";
+
+/* Entry = "113.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "112.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "31.title"; Class = "NSMenuItem" */
+"Bottom Left" = "左下";
+
+/* Entry = "32.title"; Class = "NSMenuItem" */
+"Bottom Right" = "右下";
+
+/* Entry = "45.title"; Class = "NSBox" */
+"Box" = "ボックス";
+
+/* Entry = "37.title"; Class = "NSMenuItem" */
+"Centered" = "中央";
+
+/* Entry = "120.title"; Class = "NSButtonCell" */
+"Change" = "変更";
+
+/* Entry = "125.title"; Class = "NSTextFieldCell" */
+"DPI:" = "DPI:";
+
+/* Entry = "117.title"; Class = "NSTextFieldCell" */
+"Location:" = "位置:";
+
+/* Entry = "124.title"; Class = "NSTextFieldCell" */
+"Note: Change and press return" = "注: 変更してリターンを押して下さい";
+
+/* Entry = "35.title"; Class = "NSMenu" */
+"OtherViews" = "他のビュー";
+
+/* Entry = "111.title"; Class = "NSButtonCell" */
+"Override R Quartz width/height parameters" = "R Quartz の幅/高さパラメータよりも優先する";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Restore defaults" = "デフォルトに戻す";
+
+/* Entry = "121.title"; Class = "NSTextFieldCell" */
+"System Font Text" = "システムフォントテキスト";
+
+/* Entry = "36.title"; Class = "NSMenuItem" */
+"Top Left" = "左上";
+
+/* Entry = "34.title"; Class = "NSMenuItem" */
+"Top Right" = "右上";
+
+/* Entry = "118.title"; Class = "NSTextFieldCell" */
+"font family:" = "フォントファミリ:";
+
+/* Entry = "119.title"; Class = "NSTextFieldCell" */
+"font point size:" = "サイズ(ポイント):";
+
+/* Entry = "115.title"; Class = "NSTextFieldCell" */
+"height (inches):" = "高さ (インチ):";
+
+/* Entry = "114.title"; Class = "NSTextFieldCell" */
+"width (inches):" = "幅 (インチ):";
+

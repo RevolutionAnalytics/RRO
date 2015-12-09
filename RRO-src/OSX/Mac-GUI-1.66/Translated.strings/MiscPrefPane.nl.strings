@@ -1,0 +1,102 @@
+/* Entry = "130.title"; Class = "NSTextFieldCell" */
+"(was default in RAqua)" = "(was standaard in RAqua)";
+
+/* Entry = "139.title"; Class = "NSTextFieldCell" */
+".Rhistory" = ".Rhistory";
+
+/* Entry = "144.title"; Class = "NSTextFieldCell" */
+"250" = "250";
+
+/* Entry = "129.title"; Class = "NSButtonCell" */
+"Add ~/Library/R…" = "Voeg ~/Library/R… toe";
+
+/* Entry = "136.title"; Class = "NSButtonCell" */
+"Always apply" = "Altijd toepassen";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Ask" = "Vraag";
+
+/* Entry = "133.title"; Class = "NSButtonCell" */
+"Change" = "Wijzig";
+
+/* Entry = "145.title"; Class = "NSButtonCell" */
+"Cleanup history entries" = "Schoon geschiedenis op (wis lege regels edm.)";
+
+/* Entry = "138.title"; Class = "NSButtonCell" */
+"Default" = "Standaard";
+
+/* Entry = "106.title"; Class = "NSBox" */
+"Default CRAN mirror" = "Standaard CRAN mirror";
+
+/* Entry = "23.title"; Class = "NSBox" */
+"Default Library Paths" = "Standaard bibliotheek pad";
+
+/* Entry = "132.title"; Class = "NSTextFieldCell" */
+"Directory:" = "Map:";
+
+/* Entry = "17.title"; Class = "NSBox" */
+"Drag & drop action during R start-up" = "Drag & drop actie tijdens opstarten van R";
+
+/* Entry = "44.title"; Class = "NSBox" */
+"History" = "Geschiedenis";
+
+/* Entry = "34.title"; Class = "NSBox" */
+"Initial working directory" = "Initiële werkmap";
+
+/* Entry = "143.title"; Class = "NSTextFieldCell" */
+"Max number of entries in history:" = "Maximum aantal lijnen in geschiedenis:";
+
+/* Entry = "124.title"; Class = "NSButtonCell" */
+"No" = "Nee";
+
+/* Entry = "135.title"; Class = "NSTextFieldCell" */
+"Note: Enforce by selecting 'Always apply'. Otherwise used to set the working directory if not specified when R.app is started, e.g. double clicking the R icon. Drag & drop of a file or a directory on the R icon or using 'open -a R.app <dir-or-file>' will override this setting if not enforced." = "Opm.: Selecteer 'Altijd toepassen'. Anders zullen andere methodes om de werkmap in te stellen voorrang krijgen, bvb. door op het R-icoon te dubbelklikken. Door een map op het R-icoon te slepen of door  'open -a R.app <dir-or-file>' te gebruiken.";
+
+/* Entry = "131.title"; Class = "NSTextFieldCell" */
+"Note: This change is effective only after a restart of R.app" = "Opm.: Deze wijziging gaat pas in na het herstarten van R.app";
+
+/* Entry = "141.title"; Class = "NSTextFieldCell" */
+"Note: Use a fixed path to always use the same history file, e.g. ~/.Rhistory" = "Opm.: Gebruik een vast pad naar het geschiedenisbestand, bvb. ~/.Rapp.history om altijd (onafhankelijk van de werkmap) dezelfde geschiedenis te zien";
+
+/* Entry = "18.title"; Class = "NSButtonCell" */
+"Open file in editor" = "Open bestand in editor";
+
+/* Entry = "137.title"; Class = "NSTextFieldCell" */
+"R history file:" = "R geschiedenisbestand:";
+
+/* Entry = "150.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "151.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "140.title"; Class = "NSButtonCell" */
+"Read history file on startup" = "Lees geschiedenisbestand in tijdens opstarten";
+
+/* Entry = "142.title"; Class = "NSButtonCell" */
+"Remove duplicate entries in history" = "Verwijder dubbele geschiedenisinvoer";
+
+/* Entry = "115.title"; Class = "NSBox" */
+"Save workspace on exit from R" = "Bewaar werkbestand bij het afsluiten van R";
+
+/* Entry = "149.title"; Class = "NSButtonCell" */
+"Select" = "Selecteer";
+
+/* Entry = "19.title"; Class = "NSButtonCell" */
+"Source input file" = "Source invoerbestand";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Strip comments in history entries" = "Wis commentaar uit geschiedenis";
+
+/* Entry = "108.gToolTip"; Class = "NSTextField" */
+"URL for the default CRAN URL. If left empty, the user will be prompted." = "URL voor de default CRAN URL. Indien leeg wordt de gebruiker gevraagd.";
+
+/* Entry = "148.title"; Class = "NSTextFieldCell" */
+"URL:" = "URL:";
+
+/* Entry = "125.title"; Class = "NSButtonCell" */
+"Yes" = "Ja";
+
+/* Entry = "134.title"; Class = "NSTextFieldCell" */
+"~" = "~";
+

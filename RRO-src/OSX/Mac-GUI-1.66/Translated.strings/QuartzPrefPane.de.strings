@@ -1,0 +1,63 @@
+/* Entry = "122.title"; Class = "NSTextFieldCell" */
+"12" = "12";
+
+/* Entry = "113.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "112.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "31.title"; Class = "NSMenuItem" */
+"Bottom Left" = "links unten";
+
+/* Entry = "32.title"; Class = "NSMenuItem" */
+"Bottom Right" = "rechts unten";
+
+/* Entry = "45.title"; Class = "NSBox" */
+"Box" = "Box";
+
+/* Entry = "37.title"; Class = "NSMenuItem" */
+"Centered" = "Zentriert";
+
+/* Entry = "120.title"; Class = "NSButtonCell" */
+"Change" = "Ändern";
+
+/* Entry = "125.title"; Class = "NSTextFieldCell" */
+"DPI:" = "DPI:";
+
+/* Entry = "117.title"; Class = "NSTextFieldCell" */
+"Location:" = "Anfangsposition:";
+
+/* Entry = "124.title"; Class = "NSTextFieldCell" */
+"Note: Change and press return" = "(Drücken Sie <Enter> nach einer Änderung)";
+
+/* Entry = "35.title"; Class = "NSMenu" */
+"OtherViews" = "Andere Ansichten";
+
+/* Entry = "111.title"; Class = "NSButtonCell" */
+"Override R Quartz width/height parameters" = "Standardeinstellungen für Quartz überschreiben";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Restore defaults" = "Zurücksetzen";
+
+/* Entry = "121.title"; Class = "NSTextFieldCell" */
+"System Font Text" = "System-Schrift";
+
+/* Entry = "36.title"; Class = "NSMenuItem" */
+"Top Left" = "links oben";
+
+/* Entry = "34.title"; Class = "NSMenuItem" */
+"Top Right" = "rechts oben";
+
+/* Entry = "118.title"; Class = "NSTextFieldCell" */
+"font family:" = "Schriftart:";
+
+/* Entry = "119.title"; Class = "NSTextFieldCell" */
+"font point size:" = "Schriftgröße:";
+
+/* Entry = "115.title"; Class = "NSTextFieldCell" */
+"height (inches):" = "Höhe (in Zoll):";
+
+/* Entry = "114.title"; Class = "NSTextFieldCell" */
+"width (inches):" = "Breite (in Zoll):";
+

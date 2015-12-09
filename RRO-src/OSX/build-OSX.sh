@@ -68,12 +68,10 @@ tar czf checkpoint.tar.tgz checkpoint
 sudo cp checkpoint.tar.tgz /Library/Frameworks/R.framework/Resources/etc
 
 ## OS X GUI
-rm -rf Mac-GUI-1.65
-tar xzf Mac-GUI-1.65.tar.gz
-cd Mac-GUI-1.65
+cd Mac-GUI
 xcodebuild -target "Revolution R Open" 
 cd ../
-sudo cp -a Mac-GUI-1.65/build/Release/Revo*.app /Applications
+sudo cp -a Mac-GUI/build/Release/Revo*.app /Applications
 ## make package
 cd $BUILD_DIR/RRO-src/OSX/project
 /usr/local/bin/packagesbuild RRO.pkgproj

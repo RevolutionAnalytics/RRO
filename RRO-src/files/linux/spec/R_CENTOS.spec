@@ -76,7 +76,8 @@ ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R 
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript /usr/bin
-%postun
+
+%preun
 if test "${revo_prefix}" = ""; then
     revo_prefix=/usr/lib64
 fi
@@ -84,6 +85,7 @@ rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
 rm -f ${revo_prefix}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 rm -f /usr/bin/R
 rm -f /usr/bin/Rscript
+
 
 # %files -f %{name}.lang
 %files

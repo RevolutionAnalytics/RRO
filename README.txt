@@ -2,8 +2,8 @@
 Microsoft R Open, version 3.2.2
 ----------------------------------------
 
-Microsoft R Open is the enhanced distribution of R, from
-Revolution Analytics.
+Microsoft R Open is the enhanced distribution of R from
+Microsoft.
 
 Microsoft R Open is based on R, Copyright (C) The R
 Foundation for Statistical Computing. Visit
@@ -12,7 +12,7 @@ the creation of many contributors, for details visit
 http://www.r-project.org/contributors.html.
 
 Components of Microsoft R Open are copyright (C)
-Revolution Analytics. Microsoft R Open also includes
+Microsoft. Microsoft R Open also includes
 components created by others. See "List of Open
 Source Components" below for details.
 
@@ -78,7 +78,7 @@ https://github.com/RevolutionAnalytics/RRO/releases
 Trademarks
 ----------
 "Revolution Analytics", "Microsoft R Open" and the monkey
-logo are trademarks of Revolution Analytics, Inc. in the
+logo are trademarks of Microsoft Corporation in the
 U.S. and/or other countries.
 
 R is a trademark of the R Foundation for Statistical
@@ -87,12 +87,8 @@ Computing.
 ------------------------------
 List of Open Source Components
 ------------------------------
-This Microsoft R Open distribution includes the following
-open source components, distributed under the terms of the
-indicated licenses:
-- R 3.2.2 (R Foundation for Statistical Computing) GPLv2
-- Microsoft R Open build and test system (Revolution
-Analytics) GPLv2
+For a list of Third-Party Open Source Components in
+Microsoft R Open, see the file ThirdPartyNotices.pdf.
 The terms of the GPLv2 license can be found in the
 accompanying file COPYING and at
 http://www.r-project.org/COPYING
@@ -102,11 +98,11 @@ Questions and Contacts
 -----------------------
 If you have questions about Microsoft R Open, please visit
 the Google Group at
-https://groups.google.com/d/forum/rropen.
+http://go.microsoft.com/fwlink/?LinkId=708536
 
 We hope you enjoy using Microsoft R Open!
 
 Please let us know how we can make Microsoft R Open
 better. You can send your comments and suggestions to the
-Microsoft R Open team at Revolution Analytics by emailing
-open@revolutionanalytics.com.
+Microsoft R Open team at Microsoft by emailing
+mropen@microsoft.com.

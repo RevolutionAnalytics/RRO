@@ -12,7 +12,7 @@ BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
-Requires: ghostscript-fonts, libgfortran, cairo-devel, curl, libicu
+Requires: ghostscript-fonts, libgfortran, cairo, curl, libicu
 Requires: pango, libSM, libXt, libXmu, zip
 AutoReqProv: No
 BuildRoot: %{_tmppath}/%{name}-%{version}-build

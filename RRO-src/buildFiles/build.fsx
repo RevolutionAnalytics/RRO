@@ -189,7 +189,10 @@ Target "Build_Linux" (fun _ ->
         finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-openSUSE-13.1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
-    let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; COMMON_FILES_DIR +/ "Rprofile.site" ]
+    let customFiles = [ BASE_DIR +/ "COPYING";
+                        BASE_DIR +/ "README.txt"; 
+                        COMMON_FILES_DIR +/ "Rprofile.site";
+                        COMMON_FILES_DIR +/ "ThirdPartyNotices.pdf" ]
 
     let tmpDir = WORKSPACE +/ "tmp"
     
@@ -322,10 +325,11 @@ Target "Build_Windows" (fun _ ->
     let installerDir = gnuWin32Dir +/ "installer"
     let packageDir = rDir +/ "src" +/ "library" +/ "Recommended"
 
-    let etcFiles = [ WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING" ]
+    let etcFiles = [ WINDOWS_FILES_DIR +/ "REV_14419_Clark_2C.ico"; BASE_DIR +/ "README.txt"; BASE_DIR +/ "COPYING"; 
+                     COMMON_FILES_DIR +/ "ThirdPartyNotices.pdf" ]
     let installerFiles = [ WINDOWS_FILES_DIR +/ "clarkSmall.bmp"; WINDOWS_FILES_DIR +/ "header1.iss";
                            WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; 
-                           WINDOWS_FILES_DIR +/ "Makefile"; ]
+                           WINDOWS_FILES_DIR +/ "Makefile";  ]
    
     
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)

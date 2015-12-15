@@ -46,6 +46,7 @@ rm -f %{buildroot}/%{_infodir}/dir
 cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
+cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
@@ -91,6 +92,7 @@ rm -f /usr/bin/Rscript
 %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/
 %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/COPYING
 %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/README.txt
+%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/ThirdPartyNotices.pdf
 #  %{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64
 #%{_bindir}/Revoscript

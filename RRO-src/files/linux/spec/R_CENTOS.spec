@@ -55,6 +55,7 @@ make install
 cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
@@ -93,6 +94,7 @@ rm -f /usr/bin/Rscript
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 %{_libdir}/%{name}-%{DIR_VERSION}/COPYING
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
+%{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
 #  %{_libdir}/%{name}-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64
 #%{_bindir}/Revoscript

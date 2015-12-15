@@ -52,6 +52,7 @@ rm -rf %{buildroot}/lib
 cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
@@ -101,11 +102,8 @@ fi
 %defattr(-, root, root)
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 %{_libdir}/%{name}-%{DIR_VERSION}/COPYING
-#%{_libdir}/%{name}-%{DIR_VERSION}/%{name}-NEWS.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
-#  %{_libdir}/%{name}-%{DIR_VERSION}/sources/
-#%{_bindir}/Revo64
-#%{_bindir}/Revoscript
+%{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
 
 # %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/%{libnn}/R/etc/repositories
 # %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/%{libnn}/R/lib/libRblas.so

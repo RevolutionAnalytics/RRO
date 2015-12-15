@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Created 2005/02/08 by Simon Urbanek
+
+# list of localizations we want to generate from English
+LANGUAGES=`cat LANGUAGES`
+
+# this is an exception - we actually merge into the english master, too
+LANGUAGES="$LANGUAGES English"
+
+# remove existing strings (if present)
+rm -f Localizable.strings
+
+# find all sources and run filterNLS on that list
+find -X . -name \*.m 2> /dev/null | awk '{print substr($1,3)}' | xargs ./filterNLS
+
+# now we have new Localized.strings in the current directory
+if [ ! -e Localizable.strings ]; then
+	echo "*** ERROR: Localizable.strings were NOT generated"
+	exit 1
+fi
+
+# we need to merge that with the available languages
+for lang in $LANGUAGES; do
+	if [ -e "$lang.lproj" ]; then
+		if [ -e "$lang.lproj/Localizable.strings" ]; then
+			echo "Updating $lang ..."
+			./mergeLS Localizable.strings "$lang.lproj/Localizable.strings"
+		else
+			echo "-- $lang has no localizable strings, creating them"
+			cp Localizable.strings "$lang.lproj/Localizable.strings"
+		fi
+	else
+		echo "** $lang is in the language list, but there is no lproj dorectory for it!"
+	fi
+done
+
+rm Localizable.strings
+echo "  Done."

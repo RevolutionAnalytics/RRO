@@ -1,0 +1,63 @@
+/* Entry = "122.title"; Class = "NSTextFieldCell" */
+"12" = "12";
+
+/* Entry = "113.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "112.title"; Class = "NSTextFieldCell" */
+"5.0" = "5.0";
+
+/* Entry = "31.title"; Class = "NSMenuItem" */
+"Bottom Left" = "Linksonder";
+
+/* Entry = "32.title"; Class = "NSMenuItem" */
+"Bottom Right" = "Rechtsonder";
+
+/* Entry = "45.title"; Class = "NSBox" */
+"Box" = "Vak";
+
+/* Entry = "37.title"; Class = "NSMenuItem" */
+"Centered" = "Gecentreerd";
+
+/* Entry = "120.title"; Class = "NSButtonCell" */
+"Change" = "Wijzig";
+
+/* Entry = "125.title"; Class = "NSTextFieldCell" */
+"DPI:" = "DPI:";
+
+/* Entry = "117.title"; Class = "NSTextFieldCell" */
+"Location:" = "Locatie:";
+
+/* Entry = "124.title"; Class = "NSTextFieldCell" */
+"Note: Change and press return" = "Opm.: Wijzig en toets enter";
+
+/* Entry = "35.title"; Class = "NSMenu" */
+"OtherViews" = "Andere weergave";
+
+/* Entry = "111.title"; Class = "NSButtonCell" */
+"Override R Quartz width/height parameters" = "Negeer R Quartz hoogte/breedte-instellingen";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Restore defaults" = "Herstel standaardinstellingen";
+
+/* Entry = "121.title"; Class = "NSTextFieldCell" */
+"System Font Text" = "Systeemlettertype";
+
+/* Entry = "36.title"; Class = "NSMenuItem" */
+"Top Left" = "Linksboven";
+
+/* Entry = "34.title"; Class = "NSMenuItem" */
+"Top Right" = "Rechtsboven";
+
+/* Entry = "118.title"; Class = "NSTextFieldCell" */
+"font family:" = "lettertypefamilie:";
+
+/* Entry = "119.title"; Class = "NSTextFieldCell" */
+"font point size:" = "lettertypegrootte:";
+
+/* Entry = "115.title"; Class = "NSTextFieldCell" */
+"height (inches):" = "hoogte (inches):\n:";
+
+/* Entry = "114.title"; Class = "NSTextFieldCell" */
+"width (inches):" = "breedte (inches):\n";
+

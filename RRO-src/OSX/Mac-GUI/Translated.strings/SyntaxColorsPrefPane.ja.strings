@@ -1,0 +1,33 @@
+/* Entry = "125.title"; Class = "NSTextFieldCell" */
+"Background" = "背景";
+
+/* Entry = "26.title"; Class = "NSBox" */
+"Colors" = "カラー";
+
+/* Entry = "119.title"; Class = "NSTextFieldCell" */
+"Comment" = "コメント";
+
+/* Entry = "127.title"; Class = "NSTextFieldCell" */
+"Current Line" = "現在行";
+
+/* Entry = "129.title"; Class = "NSTextFieldCell" */
+"Cursor" = "カーソル";
+
+/* Entry = "120.title"; Class = "NSButtonCell" */
+"Defaults" = "デフォルト";
+
+/* Entry = "118.title"; Class = "NSTextFieldCell" */
+"Identifier" = "識別子";
+
+/* Entry = "117.title"; Class = "NSTextFieldCell" */
+"Keyword" = "キーワード";
+
+/* Entry = "115.title"; Class = "NSTextFieldCell" */
+"Normal" = "ノーマル";
+
+/* Entry = "114.title"; Class = "NSTextFieldCell" */
+"Number" = "数値";
+
+/* Entry = "116.title"; Class = "NSTextFieldCell" */
+"String" = "文字列";
+

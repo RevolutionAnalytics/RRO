@@ -1,0 +1,33 @@
+/* Entry = "125.title"; Class = "NSTextFieldCell" */
+"Background" = "Background";
+
+/* Entry = "26.title"; Class = "NSBox" */
+"Colors" = "Kleuren";
+
+/* Entry = "119.title"; Class = "NSTextFieldCell" */
+"Comment" = "Opmerking";
+
+/* Entry = "127.title"; Class = "NSTextFieldCell" */
+"Current Line" = "Current Line";
+
+/* Entry = "129.title"; Class = "NSTextFieldCell" */
+"Cursor" = "Cursor";
+
+/* Entry = "120.title"; Class = "NSButtonCell" */
+"Defaults" = "Standaard";
+
+/* Entry = "118.title"; Class = "NSTextFieldCell" */
+"Identifier" = "Identificatie";
+
+/* Entry = "117.title"; Class = "NSTextFieldCell" */
+"Keyword" = "Trefwoord";
+
+/* Entry = "115.title"; Class = "NSTextFieldCell" */
+"Normal" = "Normaal";
+
+/* Entry = "114.title"; Class = "NSTextFieldCell" */
+"Number" = "Nummer";
+
+/* Entry = "116.title"; Class = "NSTextFieldCell" */
+"String" = "Tekenreeks";
+

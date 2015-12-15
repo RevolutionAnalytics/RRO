@@ -1,0 +1,1858 @@
+NEWS for R.app GUI for Mac OS X
+
+-- Release Version 1.66 (6956) - supplied with R 3.2.1 --
+
+Last-update: 2015-04-20
+*	fix HTTP help startup to use new R 3.2.0 API
+
+*	adapt to changed variable names in hsearch$match
+
+Last-update: 2015-04-23
+*	adapt to  .BioC_version_associated_with_R_version
+	now being a function
+
+-- Release Version 1.65 (6932) - supplied with R 3.2.0 --
+-- Release Version 1.65 (6912) - supplied with R 3.1.3 --
+-- Release Version 1.65 (6832) - supplied with R 3.1.2 --
+-- Release Version 1.65 (6784) - supplied with R 3.1.1 --
+
+Last-update: 2014-04-16
+*	replace defunct .find.package with find.package
+
+-- Release Version 1.64 (6734) - supplied with R 3.1.0 --
+
+Last-update: 2014-04-10
+*	enforce activity on Mavericks when busy to prevent AppNap
+
+*	change default configuration to Release which is agnostic
+	to the SDK used; auto-detect the build name
+
+-- Release Version 1.63 (6659) - supplied with R 3.0.3 --
+
+Last-update: 2013-12-11 [RG]
+*	minor fixes
+
+Last-update: 2013-11-05 [RG]
+*	history patch by Randy Lai
+
+-- Release Version 1.62 (6558) - supplied with R 3.0.2 --
+
+Last-update: 2013-06-26
+*	Compile Rinit.m with -O0 since ObjC optimizations
+	break in Mac OS X 10.9 DP
+
+-- Release Version 1.61 (6492) - supplied with R 3.0.1 --
+
+Last-update: 2013-04-05 [BDR]
+*	Custom q() function now checks for allowed inputs.
+
+-- Release Version 1.60 (6476) - supplied with R 3.0.0 --
+
+Last-update: 2013-03-04 [BDR]
+*	SVN branch as branches/MacGUI-2-x
+*	Require R >= 3.0.0 (earlier versions should use the branch).
+
+Last-update: 2013-03-04 [BDR]
+*	Remove toolbar icon to start X11 (which is often Xquartz, and
+	unneeded since 10.5).
+*	Add MLion64 configuration for 64-bit builds assuming >= 10.8
+	(will be needed once Xcode supports 10.9 since the 10.7 sdk will go)
+	and SnowLeopard64 (64-bit only, current OS)
+
+-- Release Version 1.53 (6451) - supplied with R 2.15.3 --
+
+Last-update: 2013-02-06 [HJBB]
+*	Fix crash while using block indent
+
+Last-update: 2013-01-21
+*	revert part of r6244 that moved 'odoc' proccessing to far
+	down and thus broke the documented behavior on drag&drop startup
+
+Last-update: 2013-01-20 [HJBB]
+*	Avoid superfluous lex output on stdout
+*	Treat a<-1 as a <- 1 and not a < -1
+
+Last-update: 2012-12-28 [BDR]
+*	New targets Lion and Lion64 for use with Xcode 4.5+
+*	Use hooks in Rinterface.h where possible
+*	No longer call getQuartzFunctions() since package grDevices in
+	R-devel knows if it is being called from R.app.
+
+Last-update: 2012-12-16 [BDR]
+*	Change version tests for R-devel to >= 3.0.0.
+*	More cleanup of conditional code for R < 2.10.0, 
+	including removing the residue of the pre-2.7.0 quartz() device.
+*	Private copies of R headers are no longer used.
+
+Last-update: 2012-10-26 [BDR]
+*	Add stubs for loadhistory() and savehistory() so the 
+	readline-based ones are not used.
+
+-- Release Version 1.52 (6335) - supplied with R 2.15.2 --
+
+Last-update: 2012-10-22 [BDR]
+*	Use --gui=qaua for startup.
+*	The R-MacOSX FAQ has been modernized: some parts were many years 
+	out of date.
+
+Last-update: 2012-09-19 [BDR]
+*	Set ptr_R_FlushConsole (long overdue!).
+*	REditor: represent NA strings as ' <NA> ' so they are preserved,
+	and empty strings are not mapped to NA.
+	(https://stat.ethz.ch/pipermail/r-sig-mac/2012-January/008941.html)
+*	The .Internal()s in GUI-tools.R have been replaced by .Call()s.
+*	Some long-obsolete conditional code has been removed from clarity.
+	R >= 2.10.0 is now required.
+*	options("BioC.Repos") is now set from the value in R itself.
+	This will be needed when BioC 2.11 is released on Oct 2.
+	It also respects the setting of the BioC mirror.
+
+Last-update: 2012-08-28 [HJBB]
+*	Improved handling of larger documents
+*	Fixed a crash if the R script editor has to handle
+	_very_ long lines
+
+Last-update: 2012-08-24 [HJBB]
+*	Added Code Folding of { ... } multi-line blocks
+	in R Script Editor (MacOSX >= 10.7); see gutter and/or
+	Menu > Format > Code Folding > ...
+
+Last-update: 2012-08-11 [HJBB]
+*	Fixed bug for not working code completion if in the
+	completion scope strings wrapped by '' are involved
+
+Last-update: 2012-07-31 [HJBB]
+*	Fixed broken block selection
+*	Fixed minor issue while dragging an item to RConsole or 
+	R Script editor if insertion cursor is located at an 
+	empty line
+
+-- Release Version 1.52 (6188) - supplied with R 2.15.1 --
+
+Last-update: 2012-05-16
+*	Do not execute .First twice if it is defined in .Rprofile
+	(this is done by having GUI tools save it in
+	 .__RGUI__..First and then compare with the version
+	 present after loading the workspace and preventing
+	 re-execution if it is identical)
+	
+Note that this is the initialization sequence in the GUI:
+ 1) R.app GUI preferences are loaded and the environemnt initialized
+    accordingly (LANG, R_LIBS, R_HOME, ...)
+ 2) R is started with --no-save --no-restore-data --gui=cocoa
+ 3) The GUI-tools are loaded (reporting the GUI version)
+ 4) open document requests are acquired
+    - if none are open, the workspace is loaded
+ 5) history is loaded if requested in preferences
+ 6) all open document requests are processed
+    - for directories the path is changed, .Rprofile sourced
+      (if present), .RData loaded (if present) and history loaded
+    - for files the directory is changed to the enclosing directory
+      and the file is sourced/loaded/opened (depending on type)
+ 7) .First is executed if present
+ 8) Quartz preferences are set
+ 9) auto-reopen is called for documents
+
+
+-- Release Version 1.51 (6148) - supplied with R 2.15.0 --
+
+Last-update: 2012-03-02 [HJBB]
+*	Fixes for Lion (among others drag-n-drop while R.app is not
+	running) and performance updates
+
+-- Release Version 1.50 (6126) - supplied with R 2.14.2 --
+
+Last-update: 2012-02-22 [HJBB]
+*	Added full screen mode for RConsole and script windows for Mac OSX 10.7
+	or higher.
+
+Last-update: 2012-02-18 [HJBB]
+*	Added trackpad three-finger swiping for toggling history drawer 
+	visibility in RConsole and for going back and forward in help
+	web pages
+*	Added two-finger zoom gesture support to help web pages to
+	increase and decrease resp. the text size
+
+Last-update: 2012-02-09 [HJBB]
+*	Added Rd file support:
+	- Rd file extension is now affiliated to R.app
+	- Rd documents will have a list of sections in the toolbar
+	- to create a new empty Rd doc Menu > File > New Rd Document
+	- the Rd document's toolbar contains a toolbox with the following
+	  methods:
+	  -- Insert Function/Data Template
+	  -- Check Rd Document
+	  -- HTML/PDF Preview
+	- syntax coloring is adopted from the settings for R code
+*	Enhanced R's prompt() function if called without default 
+	namespace 'utils':
+	- added function argument 'interactive = FALSE'
+	- if interactive == FALSE prompt() will call utils:::prompt()
+	- if interactive == TRUE then prompt() will open the generated
+	  Rd document in R.app
+	  -- if filename == NULL or filename == NA R.app will open
+	     an untitled Rd document with the generated Rd code
+	  -- if filename is a valid path R.app will open that Rd file
+
+Last-update: 2012-02-08 [HJBB]
+*	In Script Editor "function list" selection
+	follows cursor position.
+*	For dragging files which have not the extension *.R or *.Rdata
+	holding down the ALT key will insert the relative path only
+*	Added support for dragging *.R and *.Rdata files to
+	RConsole or Script Editor to insert template
+	"source()" and "load()" resp. For these file
+	extensions holding down CMD key while dragging
+	will use the relative file path only. By holding down the ALT 
+	key while dragging only the pure relative path will be inserted.
+	By holding down the ALT and CMD key only the full path will be
+	inserted.
+	For dragged *.R files the entire parameter setting and 
+	value(s) of the paramater 'chdir' is/are highlighted.
+	The highlighted parts of the template can be reached 
+	by press TAB (next )and SHIFT+TAB (prev). A TAB for the
+	last highlighted part will place the cursor at the end of
+	the inserted template. This mechanism is part of the new
+	implemented user-definable text macro system.
+*	"Copy" for RConsole and Script Editor will also add
+	rich text format (RTF) data to the pasteboard in order
+	to be able to paste text syntax highlighted.
+
+Last-update: 2012-02-02 [HJBB]
+*	Added under menu Format > "Format Source Code".
+	This command will format the selection or the entire
+	R document by using "deparse()". According to "deparse()" 
+	the selection or the document has to contain valid 
+	R statement(s) otherwise parsing errors will be 
+	displayed. Comments will be kept as they are but indented.
+	Empty lines will also be preserved. For a selection 
+	whose first line is indented one has also to select 
+	the beginning of first line in order to preserve the 
+	indentation level. "deparse()"'s width.cutoff argument 
+	will be set either to the preference value 
+	RScriptEditorFormatWidthCutoff or, if that value is 
+	zero, to the current windows width. 
+	One can set that value by executing the following 
+	line without quotes: 
+	"defaults write org.R-project.R 
+	RScriptEditorFormatWidthCutoff -int 50"
+	in the Terminal. If a parsing error will be displayed
+	the command will try to jump to the erroneous line.
+
+Last-update: 2012-01-30 [HJBB]
+*	In R Script editor pressing ENTER after a simple
+	if(), for(), while(), or function() clause or if
+	current line has more opened parenthesis than
+	closed will only indent the next line. This behavior
+	is active for preference setting "Indent new lines".
+	This feature is disabled by default since it's in
+	beta status. It can be enabled if you
+	execute the following command as one line and no
+	quotes in the Terminal:
+	"defaults write org.R-project.R 
+	RScriptEditorIndentNewLineAfterSimpleClause -string YES"
+
+Last-update: 2012-01-27 [HJBB]
+*	Improved "function list" for R scripts to list
+	object declarations for setMethod, setReplaceMethod,
+	setClass as "- a_method (a_class)" and "- (a_class)"
+	resp.
+
+Last-update: 2012-01-24 [HJBB]
+*	Added Format > Transformation >
+	- "Unicode Characters in R Strings to \uxxxx"
+	-- converts all non-ASCII characters inside of
+	   R strings of the selected text or current
+	   word to \uxxxx sequences
+	- "\uxxxx to Characters"
+	-- converts all \uxxxx sequences of the selected
+	   text or current word to according characters
+
+Last-update: 2012-01-19 [HJBB]
+*	In R Console ESC will only try to interrupt
+	the current task or will clear the command
+	line if no task is running [removed completion
+	invocation]
+*	Assigned standard key equivalent CMD+D for 
+	"Don't Save" button while quitting R for all
+	localized R.app GUI versions
+
+Last-update: 2012-01-18 [HJBB]
+*	Added R services to Apple's services
+	- "R – Run selection in Console"
+	-- for a text selection in any app:
+	    take the selected text and execute it
+		in the R Console
+	-- for selected R files
+	    source these selected R files in R
+		Console one by one
+	- "R – Open selection"
+	-- opens a new untitled R script document
+	   and pastes the selected text coming from
+	   any app into that new document
+	[note: these have to be enabled in Preferences >
+	Keyboard > Services after re-logging in]
+
+Last-update: 2012-01-17 [HJBB]
+*	Improved function name parsing for toolbar list:
+	- invalid function names were displayed in red
+	- trial to avoid listing of function declarations
+	  inside argument lists
+	- hierarchic indentations for function declarations
+	  inside other functions
+	- added two pragma marker for structuring the 
+	  function list:
+	  "#pragma mark -" will insert a separator line
+	  "#pragma mark foo" will insert "foo" in blue
+	  [note: both pragma marker have to be typed at
+	  the beginning of a line]
+
+Last-update: 2012-01-09 [HJBB]
+*	In RConsole pressing the ESC key will invoke
+	"completion" as in standard application if no
+	R command runs including system(..., wait=TRUE)
+	and if current console input line is not empty
+	otherwise pressing ESC key or STOP button will
+	try to terminate the running R command and, if
+	a system(..., wait=TRUE) runs, it will kill the
+	system command, or if current console input line
+	is empty it will send CTRL+D to R in order to be
+	able to jump out from uncompleted commands like
+	"3+"
+
+-- Release Version 1.43 (5989) - supplied with R 2.14.1 --
+
+Last-update: 2011-12-24 [HJBB]
+*	Font setting in RConsole will now be stored
+	persistently
+
+Last-update: 2011-12-22 [HJBB]
+*	In RConsole pressing the ESC key will invoke
+	"completion" as in standard application if no
+	R command runs including system(..., wait=TRUE)
+	otherwise pressing ESC key or STOP button will
+	try to terminate the running R command and, if
+	a system(..., wait=TRUE) runs, it will kill the
+	system command
+
+Last-update: 2011-12-17 [HJBB]
+*	Switching off syntax colouring and toggling wrap
+	text in Preferences will update all open script
+	editor documents
+*	Fixed user range for completion in a case where 
+	there's no string to complete
+*	Fixed issue for main menu commands which execute
+	R code such as "Show Workspace" etc. if user invoked
+	these commands by using the mouse only
+
+Last-update: 2011-12-16
+*	fix function argument hint not showing up for
+	the same function when used twice in sequence
+	(thanks to David Winsemius for reporting)
+
+Last-update: 2011-12-15 [HJBB]
+*	fixed issue after opening a script file or
+	creating a new empty one that the edit status
+	was set to "was edited"
+
+Last-update: 2011-11-05
+*	enable support for R framework inside the R.app
+	bundle (via @rpath), allowing for relocatable
+	self-contained R
+
+-- Release Version 1.42 (5933) - supplied with R 2.14.0 --
+-- Release Version 1.42 (5910) - supplied with R 2.13.2 --
+
+Last-update: 2011-10-03
+*	disable all automatic features in text views
+
+Last-update: 2011-07-29
+*	Work around auto-completion changes in
+	Mac OS X 10.7 (Lion)
+
+Last-update: 2011-07-14 [HJBB]
+*	R Script Editor
+	- fixed: ignore quoted brackets for highlighting
+	  balanced brackets
+
+-- Release Version 1.41 (5874) - supplied with R 2.13.1 --
+
+Last-update: 2011-07-03 [HJBB]
+*	R Data Editor
+	- added possibility to (de)select non-contiguous
+	  columns via holding down <COMMAND> key while
+	  mouse click
+	- "Copy (as CSV)" now copies selected row or column
+	  data
+
+Last-update: 2011-07-03 [HJBB]
+*	Edit Object <SHIFT+COMMAND+E>
+	- in Workspace Browser is invokes editing of selected
+	  item
+	- in any editor if something is selected it takes the
+	  selection as object name and invokes obj <- edit(obj)
+	- in any editor if nothing is selected it takes the
+	  current word due to cursor position, checks if found
+	  word is a valid object name in ls(), and if so invokes
+	  obj <- edit(obj)
+
+Last-update: 2011-06-27 [HJBB]
+*	R Data Editor
+	- after initialising resize columns due content
+	- added table context menu
+	- added key equivalents to each command (see context
+	  menu or toolbar tooltip)
+	- added chance to cancel the entire object editing
+	- added chance to edit column names (via context menu
+	  or double-click into column header - (SHIFT+)TAB for
+	  navigation, ESC for cancelling)
+	- type of added column comply with column type left
+	  of the new one (can be explicitly chosen via context
+	  menu)
+
+Last-update: 2011-06-10 [HJBB]
+*	fixed R Data Editor to display and edit strings of
+	any size
+*	R Script Editor completion now suggests var, function,
+	parameter, etc. names even if they aren't defined
+	in R's workspace (by parsing the R script buffer if
+	it is not larger the 3MB)
+
+Last-update: 2011-05-25
+*	fix: using moveLeft: or moveWordLeft: in the console
+	while there is a non-empty selection starting at the
+	beginning of the command line now correctly cancels
+	the selection.
+
+Last-update: 2011-05-03
+*	errors in the console are shown in a separate color
+
+-- Release Version 1.40 (5751) - supplied with R 2.13.0 --
+
+Last-update: 2011-04-01
+*	help view responds to <Cmd><Enter> (execute selection)
+	However, it is only supported for example sections of
+	help files and involves conversion from HTML so there
+	may be cases where some more unusual HTML entities
+	are not converted.
+
+Last-update: 2011-03-29
+*	auto-saved documents are now restored automatically
+	after a crash (even if they were unnamed)
+
+Last-update: 2011-03-28
+*	improved Data Manager
+	- made table sortable and searchable
+	- added Refresh List
+	- now one can select more than one data set to
+	  load them into the workspace
+
+Last-update: 2011-03-24
+*	auto-save is now enabled in the editor by default
+	(period is set to 3 minutes) and can be enabled
+	or disabled in the preferences
+
+Last-update: 2011-03-23 [HJBB]
+*	improved History
+	- added possibility to search in History via
+	  regular expression
+	- pressing ENTER or RETURN will insert selected
+	  item into RConsole
+	- if History will open for the first time
+	  select last item
+	- shortcut SHIFT+CMD+H activates history search
+	  field
+
+Last-update: 2011-03-22 [HJBB]
+*	Preferences for Editor and Syntax Highlighting
+	- cleaned preferences
+	- added 'Highlight current line'
+	- added 'Indent New Lines'
+	- added color setting for 'Background' (incl. 
+	  transparency)
+	- added color seting for 'Current Line'
+	- added color setting for 'Cursor'
+
+Last-update: 2011-03-21
+*	fixed crash when adding rows in a data frame
+	containing strings (PR#14434)
+
+Last update: 2011-03-19 [HJBB]
+*	Implemented Menu > Format > 
+	- Reinterpret with Encoding...
+	- Increase Indent (of current line or selection)
+	- Decrease Indent (of current line or selection)
+
+*	Added Menu > Select >
+	- All
+	- Word
+	- Line
+	- Balanced Brackets
+
+*	Fixed on runtime changing of Preference item
+	'Wrap Lines'
+
+*	RConsole and R Editor are listening at two finger
+	zoom gesture of trackpads to de/increase font size
+
+Last update: 2011-03-18 [HJBB]
+*	Enabled and implemented Main Menu > File > Revert
+
+*	If Match braces/quotes is activated and something is
+	selected in RConsole or R Editor the typing of ({"'`[
+	will wrap the selection with the typed character and
+	its complement
+
+*	Fixed MoveToLeftEndOfLine and
+	moveToLeftEndOfLineAndModifySelection in RConsole
+	to remain the cursor inside the active input line
+
+Last update: 2011-03-17 [HJBB]
+*	Improved the Save Panel for R scripts; now it offers
+	a new list of encodings which is customizable by the
+	user and displays the names of these encodings
+	localized. Any changes will be stored permanently.
+
+Last update: 2011-03-17 [HJBB]
+*	Now the Open Panel allows to open more than one file
+
+Last update: 2011-03-15
+*	R.app is now more strict about file types. It no
+	longer attempts to read any file as text. However,
+	plain text UTI is added such that the GUI can handle
+	URL and file types that are declared as text.
+
+Last update: 2011-03-14 [HJBB]
+*	Applied Deepayan Sarkar's base package 'rcompgen'
+	for code completion. This includes the ability to
+	complete $ or @ variables and function parameters.
+	It is customizable by the user via rc.settings()
+	and rc.options(). More details at the help page for
+	'rcompgen'. For the R Editor it also works in
+	multi-line mode.
+	Examples: [ | := cursor position]
+
+	.Platform$| -> will show all names
+	plot(x, xl|) -> will show 'xlab=' and 'xlim'
+	plot(|) -> show all parameter
+
+	To append e.g. a ( to all functions you can set
+	rc.settings(func=TRUE). To allow to complete installed
+	package names set rc.settings(ipck=TRUE); then the
+	behavior changes for library(|), now one gets a 
+	list of all installed packages.
+
+
+Last update: 2011-03-04 [HJBB]
+*	Overhaul of the entire R Script Editor:
+	- new line numbering including the chance to select
+	a line by clicking into the gutter or a bunch of lines
+	by dragging the mouse in the gutter
+	- improved syntax highlighting by using flex and it'll
+	be done on demand which increases the speed enormously;
+	supports multi-line strings etc.
+	- improved the declared function name parsing; show 
+	names in red if the name is invalid and grayed if the
+	function is commented out
+
+Last update: 2011-02-13 [HJBB]
+*	Implemented 'Search in Help files' (generally in each
+	WebView) via CMD+F etc. if the WebView has the focus.
+
+*	The function hint in the status bar of the RConsole
+	and R Editor tries to follow the current cursor position
+
+*	Improved the general closing behavior of windows to
+	make the last touched window the key window
+
+*	Fixed issue for 'Choose New Working Directory'; now the
+	working directory will be taken by the user's selection
+	and not the actual current directory inside the panel
+
+*	Fixed printing CMD+P of each help page and the RConsole
+
+*	Changed the behavior of SHIFT+CMD+N 'New Quartz Device
+	Window' slightly; after opening it sets the input focus
+	to RConsole for convenience
+
+Last update: 2011-02-10 [HJBB]
+*	Added menu item 'Show Help for current Function' CTRL+H
+	to context menu of RConsole and each Script Editor. It
+	parses backwards from the current cursor's position to
+	to find the current function and opens the help page.
+	If the user did select a text chunk CTRL+H will try
+	to come up with help page of the selected text.
+	If nothing was found it sets the focus to the Help 
+	Search Field.
+
+-- Release Version 1.36 (5691) - supplied with R 2.12.2 --
+
+Last update: 2011-02-03
+*	bug fix: help window no longer pops up when
+	use.external.help is enabled
+
+Last update: 2011-01-23
+*	add an option to specify the encoding of the text
+	file when saving a document.
+	
+*	add detection and support for Unicode files
+
+*	fix help type deprecation in Data Manager
+
+
+-- Release Version 1.35 (5665) - supplied with R 2.12.1 --
+--                      (5632) - supplied with R 2.12.0 --
+
+Last update: 2010-10-04
+*	Add an additional message at startup showing which 
+	history file has been used (if enabled in the history
+	section of the Startup preferences).
+
+*	Added the (all=TRUE) clause to clearing the workspace
+	(see Sep 26, 2010 email of prof. Ripley).
+
+	
+-- Release Version 1.34 (5589) - supplied with R 2.11.1 --
+
+Last update: 2010-05-23
+*	When identifying old R versions allow any size of
+	the minor version (only one character was used before)
+	
+*	Change q()/quit() to map to the Quit command of the
+	application. NOTE: the GUI still asks independently
+	about unsaved documents regardless of the `save'
+	argument, so unlike command-line R quit("yes")
+	can be cancelled by the user if there are unsaved
+	documents.
+	
+*	Change default history file name to .Rapp.history
+	temporarily until R/R.app history interaction is
+	resolved. If you are upgrading and experience R GUI
+	apparently not saving your history, go to Preferences
+	-> Startup, click on the "Default" button next to the
+	"R history file" text box and close the preferences.
+
+
+-- Release Version 1.33 (5582) - supplied with R 2.11.0 --
+
+Last update: 2010-04-26
+*	fixed bug which caused Quit -> Save to not save the
+	work space
+	
+*	when a preference pane is closed the active text
+	field's content is saved as if <Enter> was pressed
+
+	(Note: closing the application while a preference
+	pane is open still does NOT save the value)
+
+-- Release Version 1.32 (5573) - supplied with R 2.11.0 --
+
+Last update: 2010-04-12
+*	GUI redefines q()/quit() function to issue an error
+	when used unless the RGUI.base.quit option is TRUE,
+	to avoid inadvertent use of q()/quit() instead of
+	"Quit R" (<Command><Q>). The original function can
+	still be called	as base::quit() if the use is
+	deliberate (with all its consequences).
+	
+*	work around browseEnv() refusing work on an empty
+	environment which prevents updating the workspace
+	browser when all items were removed (PR#8647)
+	
+*	added a new menu item "Paste As Plain Text" which
+	corresponds to pasting + striping text attributes
+	of the pasted text (wish PR#7927)
+
+-- Release Version 1.31 (5537) - supplied with R 2.10.1 --
+
+Last-update: 2009-12-12
+*	Use dynamic help package index in Package Manager
+	(PR#14134) and Data Manager
+	
+*	Added "use.external.help" preference entry. If set to
+	YES then the configured R browser is used to display
+	help pages instead of the internal one.
+
+-- Release Version 1.30 (5511) - supplied with R 2.10.0 --
+
+Last-update: 2009-10-21
+*	Fix main help link in R 2.10+
+
+*	Fix help search in the help window in R 2.10+
+
+*	Fix a bug in edit() that would not show any files
+	(it also fixes the issue of vignette code not appearing)
+
+*	Attempt to fix a potential crash when R error handling
+	kicks in during REPL iteration.
+
+Last-update: 2009-10-15 [RG]
+*	Make sure there is a quartz document before closing the
+	Quartz window. Happened by 'remote' creation of a window,
+	e.g. Rcmdr and AppleScript, if the Quartz window was never
+	made the key window before trying to close it.
+
+Last-update: 2009-10-15
+*	Use dynamic html help system in R 2.10+
+
+Last-update: 2009-10-06
+*	Update REPL to use the official embedding API for R 2.10+
+
+Last-update: 2009-10-01
+*	PowerPC 64-bit is not longer included in the regular
+	targets, use "LeopardPPC64" to compile a ppc64 build.
+
+	SnowLeaoprd target was added as a native 32+64 Intel build
+
+-- Release Version 1.29 (5464) - supplied with R 2.9.2 --
+
+Last-update: 2009-06-26
+*	fix SET_VECTOR_ELT on characters bug in the object editor
+
+-- Release Version 1.28 (5395) - supplied with R 2.9.0 --
+   (also supplied with R 2.9.1 as revision 5442)
+
+Last-update: 2009-03-27
+*	deselect all wells before closing color preference panes
+	(fixes PR#13625)
+
+Last-update: 2009-03-24
+*	add customizable script inside R.app that is loaded
+	on startup. This allows us to phase out legacy functions
+	formerly in utils. The first step is to move them to R.app,
+	the next step is to move the C code from R aqua internals into
+	the GUI and the final step is to get rid of the R wrappers
+	where possible.
+
+*	adjust paths to BioC for R 2.10.0
+
+Last-update: 2009-02-10
+*	fix back/forward buttons in Package Manager to work again
+
+Last-update: 2009-01-09
+*	fix data editor to not crash when adding rows/columns to an
+	empty data frame.
+
+Last-update: 2009-01-06
+*	fix Package Installer to use correct target directory
+	when installing packages from local files or directories
+
+-- Release Version 1.27 (5301) - supplied with R 2.8.1 --
+
+Last-update: 2008-11-06
+*	adjust paths to BioC for R 2.9.0
+
+-- Release Version 1.26 (5253) - supplied with R 2.8.0 --
+
+Last-update: 2008-10-17 [SU]
+*	run .First() if present after (early) 'open' events have been
+	processed.
+
+*	load .Rprofile (if present) before loading .RData on
+	drag and drop to be consistent with the regular R startup.
+
+Last-update: 2008-08-28 [SU]
+*	fixes to make some of the (older) code more 64-bit robust
+
+-- Release Version 1.25 (5166) - supplied with R 2.7.1 --
+
+Last-update: 2008-06-16 [SU]
+*	fix moveToBeginningOfLineAndModifySelection: (<Cmd><Shift><Left>)
+	to behave as expected; implement deleteToBeginningOfLine:
+	Note that *BeginningOfLine*: is still implemented the same as
+	*BeginningOfParagraph*: which may lead to some confusion when
+	working with multi-line commands (but this was always the case).
+
+Last-update: 2008-05-05 [SU]
+*	bugfix: .Rprofile was loaded twice if the startup and
+	open directories were the same (PR#11380)
+
+-- Release Version 1.24 (5102) - supplied with R 2.7.0 --
+
+Last-update: 2008-04-22 [SU]
+*	work around a bug in Cocoa that caused a crash on
+	"Customize Toolbar" in the editor.
+
+*	add DPI setting to the Quartz preference pane
+	(empty means NA i.e. auto-detect from display)
+
+*	.Rprofile in the current directory is now sourced
+	on startup. Although this was always documented,
+	it was not happening in more recent versions.
+
+Last-update: 2008-04-05 [SU]
+*	add support for "\r", "\b" and "\a" in console output 
+
+*	The GUI now prints a warning if a non-UTF8 locale is used,
+	because all system and display functions rely on UTF-8.
+
+Last-update: 2008-02-20 [SU]
+*	fixes crash when an externally run script produces output on
+	stderr and takes longer than the remote call timeout (e.g. when
+	installing packages from sources that produce errors/warnings)
+	
+*	process output of the system call immediately (improved
+	visibility of package installation output etc.)
+
+*	added "Deployment64" configuration for 64-bit builds of the GUI
+
+Last-update: 2008-02-12 [SU]
+*	fixed an issue where pressing <Esc> or "Stop" would put R into
+	an infinite loop
+	
+*	fixed bold fonts not appearing on Mac OS X 10.5 (Leopard)
+
+-- Release Version 1.23 (4932) - supplied with R 2.6.2 --
+
+Last-update: 2008-02-02 [SU]
+*	reduce Quartz memory footprint substantially
+
+*	improve stability by preventing re-entrant event processing
+	(among others fixes lattice+maximize crash in Quartz)
+
+*	add comment/uncomment items
+
+Last-update: 2008-02-01 [SU]
+*	fix spurious crashes in the editor (prematurely released colors)
+	(thanks to Carolyn J Buck-Gengler for reporting)
+
+Last-update: 2007-12-31 [SU]
+*	execute (<Cmd><Enter>) in editor sends the current line if no
+	characters are selected
+
+-- Release Version 1.22 (4860) - supplied with R 2.6.1 --
+
+Last-update: 2007-11-15 [SU]
+*	fix exceptions in Quartz when trying to plot in a miniaturized
+	window (thanks to CO Taylor for reporting)
+
+Last-update: 2007-10-23 [SU]
+*	fix missing quartz.save()
+
+Last-update: 2007-10-19 [SU]
+*	minor Leopard-related fixes. It is now safe to cross-build
+	R and the GUI in Leopard for Tiger.
+
+-- Release Version 1.21 (4808) - supplied with R 2.6.0 --
+
+Last-update: 2007-08-14 [SU]
+*	Use full path in local package installation to avoid
+	tilde expansion (which causes package update to fail).
+
+Last-update: 2007-08-13 [RG]
+*	Re-enabled make keywindow line in RQuartz.m
+
+Last-update: 2007-07-28 [SU]
+*	fix encoding issue when opening a file via Open Document that
+	has non-ASCII characters in its path name
+
+Last-update: 2007-07-25 [SU]
+*	add "Clear Console" (<Cmd><Opt><L>) menu item
+
+*	fix font handling for the console: the font size toolbar is now
+	correctly initialized the value is consistently stored
+
+Last-update: 2007-07-19 [SU]
+*	fix lock-ups in the editor when brace-highlighting and auto-close
+	happen at the same time (thanks to Andrew Beckman for reporting).
+	
+*	added 'Debug all exceptions' and 'Redirect stdout/err' preferences.
+	Previously those tasks were available only in the debug build.
+	In order to debug problems with the GUI use
+	
+	defaults write org.R-project.R 'Debug all exceptions' YES
+	
+	If the crash is so bad that you can't see the output in the console,
+	also add:
+	
+	defaults write org.R-project.R 'Redirect stdout/err' NO
+	
+	and capture the output from the Console log. To reset both settings
+	back to normal, use
+	
+	defaults delete org.R-project.R 'Debug all exceptions'
+	defaults delete org.R-project.R 'Redirect stdout/err'
+
+	One more notheworthy preference is 'Disable R signal handlers' which
+	if set to YES disables the menu that handles crashes in R (disabling
+	it is a good idea for debugging, because the menu can cause a crash
+	itself as it interacts with the UI)
+	
+	Finally 'Ignore stderr' preference if set to YES:
+	
+	defaults write org.R-project.R 'Ignore stderr' YES
+			
+	suppresses forwarding of all stderr output so that it is not displayed
+	in R. This can be useful if the GUI or some 3rd party programs
+	produce noise on stderr that cannot be handled otherwise. Note, however,
+	that this will suppress all stderr including errors from programs
+	that you start via system(), so use with care. (It has no effect
+	if 'Redirect stdout/err' is set to NO)
+
+Last-update: 2007-07-18 [SU]
+*	set stderr/out timeout only after a successful connection,
+	this should eliminate "tossing reply message" errors while R starts
+
+-- Release Version 1.20 (4535) - supplied with R 2.5.1 --
+
+Last-update: 2007-07-01 [SU]
+*	add preference UI for automatic brackets/quotes matching
+
+*	include back-quotes to auto-matching
+
+*	fix a problem caused by thread timeout if R takes too
+	long to start.
+
+Last-update: 2007-05-30 [SU]
+*	add timeout to stdout/err thread to avoid deadlocks in
+	packages that abuse stdout/err
+
+Last-update: 2007-05-17 [SU]
+*	add exception handling to the outermost event loop (REngine)
+	this should catch most causes for a crash and provide detailed
+	information while recovering the session from such errors
+
+*	improve file completion (directories get a trailing / and
+	~-style paths can be completed including the initial part)
+
+*	auto.close.parens now includes string delimiters (' and ")
+
+*	deleting an initial bracket (using plain backspace or delete)
+	will also delete the closing bracket if they are linked and there is
+	no text between them (e.g. typing an opening bracket and pressing
+	backspace will delete it and the automatically generated closing one).
+
+*	improve auto-completion: it uses different tokens for file completion
+	and expression completion
+	(partially based on suggestions by Hans-Jörg Bibiko)
+
+Last-update: 2007-05-06 [RG]
+*	Window menu cleanup and a few more dangling windows. Most of the
+	windowController workaround code now resides in RDocumentController
+
+Last-update: 2007-05-01 [SU]
+*	expand tilde in quartz.save
+
+Last-update: 2007-04-26 [SU]
+*	Adjust Bioconductor repositories and get ready for 2.1
+
+-- Release Version 1.19 (4308) - supplied with R 2.5.0 --
+
+Last-update: 2007-04-25 [SU]
+*	Both R NEWS and R.app NEWS are shown for the "What's new" menu.
+
+*	local package repository is now in
+	~/Library/R/x.y/library
+	where x.y is the R version (as in R version x.y.z) to prevent
+	clashes between R versions
+	(was ~/Library/R/library)
+	It is possible to symlink x.y to .. in order to get the previous
+	behavior.
+
+Last-update: 2007-02-22 [SU]
+*	Add support for automatically closing brackets. Typing an opening
+	bracket	automatically adds a closing bracket as well (this applies
+	to round, square and curly brackets). However, the closing bracket
+	can be subsequently	overwritten.
+
+	This new feature can be disabled by setting auto.close.parens
+	preference to NO
+	
+*	New shortcuts have been added:
+	<Alt> + <-> and <Ctrl> + <=> for left assignment arrow
+	<Alt> + <=> for "!="
+
+Last-update: 2007-02-21 [SU]
+*	Cache value for working directory to prevent superfluous
+	repaints that may lead to copy/paste PDF issues. (Thanks
+	to Demitri Muna for helpful hints)
+
+
+-- Release Version 1.18 (4045) - supplied with R 2.4.1 --
+
+Last-update: 2006-12-15 [SU]
+*	Add support for 64-bit version of the GUI (both ppc64 and x86_64
+	platforms)
+
+Last-update: 2006-12-06 [SU]
+*	Adapt to API change in R-devel (R_ParseVector)
+
+Last-update: 2006-11-30 [SU]
+*	Fix errors popping up if the working directory is no longer
+	existent (reported by Demitri Muna).
+
+Last-update: 2006-10-13 [RG]
+*	Passed focus back to RConsole after ?... returns no help
+	topic found and user dismisses the alert panel
+
+
+-- Release Version 1.17 (3868) - supplied with R 2.4.0 --
+
+Last-update: 2006-10-04 [SU]
+*	Updated Bioconductor repository URL for R 2.4.0 and R-devel
+*	Changes in the Makefile (add -g even for deployment and allow
+	ppc machines to compile; other cleanups)
+
+Last-update: 2006-10-02 [SU]
+*	Implemented lazy syntax-highlighting in the editor: the syntax
+	highlighting is only updated on a limited region and if the
+	change affects further text, its update is postponed until
+	editing is done in such region. It is not perfect, but should
+	solve speed issues when typing quotes.
+*	Remove NSAlert introduced in last commit as it pops up for
+	most documents where the GUI is used as pager
+
+Last-update: 2006-09-28 [RG]
+*	Enables call to super in RDocumentController. On failure
+	will display an NSAlert message allowing the user to cancel or
+	continue anyway. Did not run ./update.strings yet but strings
+	are inside NLS(...)
+
+Last-update: 2006-09-28 [RG]
+*	Caught another dangling window (RQuartz.m)
+
+Last-update: 2006-09-28 [SU]
+*	Locales containing additional flags (e.g. en_GB@currency=EUR)
+	didn't use UTF-8. Current fix is to strip the flags, although
+	that may result in an incorrect variant of the locale to be used.
+	The underlying problem is the interpretation in R, so there is
+	not much we can do about it right now.
+*	Fix bug causing crashes when opening documents
+*	Fix GUI version defined in header files
+
+Last-update: 2006-09-13 [RG]
+*	Switch to openDocumentsToContentsOfURL:display:error
+*	R.app now recognizes a .RData file when opened with d&d
+*	Fixed a bunch of cases where 'dangling' menus occurred after
+	'do cmd', e.g. from AppleScript
+
+Last-update: 2006-09-05 [SU]
+*	Update R.app to work with current R 2.4.0 alpha and R-devel
+
+Last-update: 2006-08-27 [RG]
+*	Added pref setting for saveOnExitKey to startup prefpane
+*	Prevent loading of .RData from user home dir (if working dir
+	is different)
+*	Show which .RData is loaded on startup
+
+Last-update: 2006-08-10 [RG]
+*	Added check for quartz width/height preferences (missing in
+	newQuartzDevice: in RController.m)
+
+Last-update: 2006-07-14 [SU]
+*	Cleanup in initialization code (use Rinterface.h when
+	available)
+*	Add "Disable R signal handlers" preference which allows
+	to disable the new signal handlers introduced in R 2.3.0
+	The valid values are YES and NO. The default for deployment
+	build is NO and for development build is YES.
+
+Last-update: 2006-07-13 [SU]
+*	Added support for save.on.exit preference with possible
+	values yes/no/ask. Currently not settable via UI but e.g.:
+	defaults write org.R-project.R save.on.exit -string no
+
+Last-update: 2006-06-19 [SU]
+*	Fixed detection of previous R version for package update
+*	Add support for device name in Quartz
+
+Last-update: 2006-06-17 [SU]
+*	Fixed broken "update all" in package installer
+
+-- Release Version 1.16 (3198) - supplied with R 2.3.1 --
+
+Last-update: 2006-05-24 [SU]
+*	Update BioC repositories and add "repos" when installing
+	packages (mainly to fetch dependencies)
+
+Last-update: 2006-05-22 [SU]
+*	Add options for installing dependent packages in PI
+*	Allow .libPaths()[1] as package installation target
+*	Create user location upon installation if not present
+*	Fix default BioC repositories location
+
+Last-update: 2006-05-21 [SU]
+*	Fixed parallel open for certain files.
+*	Fixed issues with closing documents
+*	Add shortcuts for "Switch to Last Quartz Window" and
+	"Switch to Last Editor Window"
+*	Clean up in the document controller - single path for
+	all R source files
+
+Last-update: 2006-05-17 [SU]
+*	Fixed 'open' for files without extension (uses native
+	document handling again)
+
+Last-update: 2006-05-04 [SU]
+*	Fixed extension when saving Quartz Graphics
+*	Fall back to "open" in handleShowFiles: if a document
+	cannot be loaded (e.g. due to invalid encoding)
+
+Last-update: 2006-05-02 [SU]
+*	Fixed problems with incompatible libraries
+
+Last-update: 2006-04-27 [SU]
+*	Fixed missing icon in editor preferences
+*	Updated legacy R.xcode project
+
+-- Release Version 1.15 (3106) - supplied with R 2.3.0 --
+
+Last-update: 2006-04-24 [SU]
+*	Added icons for R documents, scripts and data
+*	Fixed document types and extensions
+*	Fixed workspace pollution upon startup
+*	Fix drag'n'drop: events sent while R.app was starting
+	were often lost. Loading now implies directory change
+	and all folder drops result in workspace restoration.
+
+Last-update: 2006-04-13 [SU]
+*	Added support for multi-arch build of R
+
+Last-update: 2006-03-01 [SU]
+*	Fixed crash on invalid history files
+
+Last-update: 2006-02-21 [SU]
+*	Fixes for internal header changes in R-devel
+*	Fixed script stage for R target to work with paths
+	that contain spaces (Xc2.2).
+*	Fixed Debug config to not strip debug symbols
+
+Last-update: 2006-02-10 [SU]
+*	Updated Xcode 2.0 project to produce correct Info.plist
+*	Updated Xcode 2.2 project: Deployment target is now
+	universal build using 10.4u SDK. You will need to
+	symlink /Library into the SDK before building!
+	All other configs are native.
+*	Fixed Makefile to build sush correctly and re-build
+	R.app if SVN revision changed.
+
+Last-update: 2006-02-08 [SU]
+*	Added Makefile for building universal R.app that actually
+	works. Note that Xcode build for Intel does NOT work due
+	to bugs in gcc. You must use patched gcc 4.0.3 (see
+	http://wiki.urbanek.info/index.cgi?TigerGCC ) but that
+	compiler is not supported by Xcode, that's why we need
+	the Makefile.
+
+Last-update: 2006-02-06 [SU]
+*	Added support for universal build
+*	Changed the way Info.plist and strings are updated,
+	there is no longer need for *.src.*
+*	Switched to Xcode 2.2+ project. From now on build
+	using Xcode 2.1 or older is no longer supported.
+
+Last-update: 2006-01-05 [SU]
+*	Updated Japanese localization (thanks to Masafumi Okada)
+
+-- Release Version 1.14 (2129) - supplied with R 2.2.1 --
+
+Last-update: 2006-01-02 [SU]
+*	Added dutch localization (thanks to Aaike De Wever)
+*	Minor cleanups and RC build
+
+Last-update: 2005-12-16 [SU]
+*	Fixed bug in apple script prcessing that required an event
+	to be fired (e.g. moving the mouse) before the command was
+	processed. [Thanks to Jonathan Paisley for the hint]
+
+Last-update: 2005-11-10 [SU]
+*	Fixed a memory leak in the Quartz device (font handling)
+
+Last-update: 2005-11-03 [SU]
+*	Deferred vignettes list retrieval until vignettes
+	are requested to reduce start-up time on slow
+	machines.
+
+Last-update: 2005-10-31 [SU]
+*	Replaced all remaining CStrings with UTF8Strings
+	(fixes help search topic display problem)
+
+Last-update: 2005-10-28 [SU]
+*	Fixed encoding bug in REngine parser invocation
+	(fixes Quartz saving bug reported by Denis Chabot)
+*	Added safeguards to WriteConsole callback
+*	Fixed invalid html docs link
+
+Last-update: 2005-10-19 [RG]
+*	External editor: Enabled names with embedded spaces.
+
+-- Release Version 1.13 (1915) - suppplied with R 2.2.0 --
+
+Last-update: 2005-10-07 [SU]
+*	Package installer: add search menu option to select packages
+	installed in a previous R version. This allows an easy upgrade
+	from an older R version.
+*	Work-around for a bug in browse.pkg of R 2.2.0 release
+*	Fixed bug in pkg installation from "other repository"
+
+Last-update: 2005-10-05 [SU]
+*	Fixed package installation from files/directories
+*	<ESC> is now equivalent to break (and the STOP button)
+*	Added support for vignette sources
+*	Double-clicking a vignette opens its PDF
+*	Fix application termination. It should cancel logout/shutdown
+	only if the user requested so (it always cancelled it before).
+
+Last-update: 2005-10-03 [SU]
+*	Added support for vignettes.
+
+Last-update: 2005-09-06 [RG]
+*	Fixed history file name.
+
+Last-update: 2005-07-20 [SU]
+*	Fixed RController initialization bug (responsible for random
+	segfaults at stratup)
+*	Added (undocumented) quartz.save function for saving contents
+	of Quartz devices as-is to various formats.
+
+-- Release Version 1.12 (1622) - supplied with R 2.1.1 --
+
+Last-update: 2005-07-01 [SU]
+*	Fixed Quartz live-resize bug
+*	Updated FAQ for 2.1.1
+
+Last-update: 2005-06-20 [SU]
+*	Fixed package installer to handle Bioconductor repository properly
+*	Added Xcode 2.1 project
+*	Added preference to disable function arguments hints (applies to
+	both console and editor)
+
+Last-update: 2005-05-30 [SU]
+*	Added "protected mode" to REngine which disables events for the
+	duration of short, atomic operations like arguments lookup or
+	code completion. This should fix recent crashes caused by longer
+	lookups.
+
+Last-update: 2005-05-27 [SU]
+*	Re-write of the Quartz text handling; should fix some exceptions
+	and	fix problmes with font metrics (the previous one provided
+	bogus values)
+
+Last-update: 2005-05-19 [SU]
+*	Don't run system events if ProcessEvents is called too frequently
+	(calls to the system loop will be at least 150ms apart)
+	Solves speed issues where loops were slower in the GUI than on
+	command line
+
+-- Release Version 1.11 - supplied with R 2.1.0 Patched (2005-05-12) --
+
+Last-update: 2005-05-12 [SU]
+*	Fixed crash in PI when filter (search) was on and installation failed
+
+Last-update: 2005-05-11 [SU]
+*	Added support for function arguments lookup in the console
+*	Added status line to the console (only used for the args lookup so far)
+*	Added better warnings in package installer and cleaned up previous
+*	Set cursor color to match the input/normal text
+*	Make sure the help window is key after runnig help from the console
+*	Use status line for all commands executed by REngine
+*	Added code/file completion to the editor
+*	Added global code/file completion shortcut <Ctr><.> (as in Xcode)
+	<Tab> still works in the console, but obviously not in the editor
+*	Added status line and arguments lookup in the editor
+*	Fixed buttons availability in package installer
+*	Added re-entrance tracking to the REngine. Currently CodeCompletion
+	and editor's argument lookup honor the preventReentrance flag.
+	It is disabled by default but can be enabled by:
+	defaults write org.R-project.R "REngine prevent reentrance" YES
+	We need some testing to see if reentrance at a wrong time can crash R
+
+Last-update: 2005-05-10 [SU]
+*	Added help search history to search field in editor, fixed menu issues
+*	Re-designed help browser - added support for search field history
+*	Sort packages in package installer by name (case-insensitively)
+*	Added package search/filter to package installer (with recent search
+	menu and the option to show installed packages only)
+*	Cleanup of the package installer interface - buttons are grayed
+	when busy and the list doesn't just disappear
+*	Added "Update All" functionality to the package installer (supports
+	internet repositories including custom one)
+*	Fixed custom repository source install (used binary in R 2.1 patched)
+*	Remember custom URL across sessions. Show the field only when relevant.
+*	Reload package list after instalaltion so the newly installed versions
+	are reflected in the list
+*	Change package installer to use contriburl and type parameters (to
+	make it compatible with R 2.2 - the CRAN parameter is deprecatred)
+*	Fixed bug in single-item select.list() calculating wrong list height
+
+Last-update: 2005-05-09 [SU]
+*	Fixed CPU hogging while waiting for system() to finish.
+	Calling PE too often slowed down source package installation a lot.
+
+Last-update: 2005-05-06 [SU]
+*	Fixed history handling to work with UTF-8 paths
+*	Fixed race condition in preference notification
+
+Last-update: 2005-05-05 [RG]
+*	Fixed selecting the .Rhistory file from the correct, newly
+	set working dir after drag&drop
+
+Last-update: 2005-05-02 [SU]
+*	Updated syntax highlighting to recognize identifiers containing numbers
+*	Optimized syntax highlighting - scans only one line unless quotes
+	change multi-line strings. Should yied huge speedup for large files.
+
+-- Release Version 1.10 - this revision is supplied with R 2.1.0 --
+
+Last-update: 2005-04-26 [SU]
+*	Changed version to 1.10 - release!
+*	Make sure preferences are saved before R quits
+*	Fixed crash/exception on font change in the console
+*	Added force.LANG and ignore.system.locale preference entries.
+	There is no GUI for those, but they can be set using "defaults".
+	ignore.system.locale is boolean and sets locale to en_US.UTF-8.
+	force.LANG is a string that replaces the LANG seting. If present,
+	but empty, LANG is not touched. force.LANG has higher precedence.
+	These are useful to override system's locale settings for one reason
+	or another.
+
+Last-update: 2005-04-25 [SU]
+*	Bumped up version to 1.10 (pre) - getting ready for the release
+*	Don't use syntax highlighting for show.files documents
+*	Optimized line number rendering (huge speed-up for large files)
+*	Fixed encoding in saved filed (was UTF-16 instead of UTF-8)
+*	Fixed syntax highlighting for newly opened files
+
+Last-update: 2005-04-25 [RG]
+*	Fixes in the editor preference pane
+*	Fixed document closing behavior
+*	Show R NEWS file when asked "What's new?"
+
+Last-update: 2005-04-20 [SU]
+*	Added support for default CRAN mirror (preference and check
+	in Package Installer)
+*	Fixed brace highlighting bugs that caused exceptions and crashes
+	in the editor (note to developers: NSTextField is very unhappy
+	when something changes contents inside the "edited:" callback - if
+	you wish to make changes, you must do it synchronously *after* the
+	edited:	callback is done. Our NSTextStorage subclass allows this).
+*	Use more efficient backend for editor documents
+
+Last-update: 2005-04-18 [SU, RG]
+*	Updated NIB localization script. The operation must be specified
+	on the command line, deliberately there is no default anymore
+*	Updated FAQ
+*	Fixed failing "Save" in editor on OS X 10.4 (Tiger) [RG]
+
+Last-update: 2005-04-15 [SU]
+*	Fixed bug in AMPrefs causing an attempt to release a system font
+*	Added progress indicator to package installer
+*	Fixed package installer to work with R 2.1 (it did not unless CRAN
+	mirror was set manually before)
+*	Reverted REngine back to --gui=cocoa in order to not break
+	compatibility with R 2.0 (corresponding change was made in R 2.1)
+
+Last-update: 2005-04-13 [RG]
+*	Fixed a bug in drawing on a miniaturized active Quartz window [RG]
+
+Last-update: 2005-04-12 [SU]
+*	Fixed a bug in the code completion (uncaught exception when
+	completion of the complete was attempted)
+*	Fixed R engine to use --gui=aqua (necessary for R 2.1.0)
+*	Display FAQ distributed with R.app (was: fw version of it)
+
+Last-update: 2005-04-04 [SU]
+*	Some more cleanup in the editor toolbar, added Save item
+*	Added go-to-line (<Cmd><L>) capability in editor
+
+Last-update: 2005-03-31 [SU]
+*	Added editor toolbar
+*	Added help search capability to editor
+*	Added pop-up list of functions to edtior
+*	Made editor and console use new toolbar look in OS X 10.4 
+*	Assume UTF-8 when loading documents by default
+*	Make `system' call modal even for root. This should fix
+	installation of packages when authentication is on.
+	Still, we have no way of interrupting root tasks.
+*	Add startup debugging messages (Development target only)
+
+Last update: 2005-03-07 [RG]
+*	Re-enabled width & height parms in quartz()
+*	Enabled history entry delete by button
+*	Optional removal of duplicate previous entry from history
+*	Optional (through pref pane) cleanup of history entries
+	(stripping of irrelevant chars, lines and/or comments)
+
+Last update: 2005-03-04 [SI]
+*	added callback for select.list (do_selectlist) R function,
+	the code needs some cleaning though.
+	
+Last update: 2005-02-28 [RG]
+*	Made all history files R compatible
+*	Updated relevant prefpanes
+*	Enabled double clicking on a file or dropping a file on
+	the R icon to set the working dir during start-up of R
+
+Last update: 2005-02-25 [RG]
+*	Enabled dropping dirs on the R icon to set the working dir
+*	Note: It is possible to 'open -a R.app .', which will open
+	R in the directory in which the open command is executed.
+
+Last update: 2005-02-23 [SU]
+*	Changed help file handling to use customized print method
+	(applies to R-devel only and requires change in R itself!)
+
+Last update: 2005-02-18 [SI]
+*	added French localization; changed credits
+
+Last update: 2005-02-18 [RG]
+*	Added support for .Rhistory files (import, export
+	and editing)
+*	Added support for persistent R.app history files
+
+Last update: 2005-02-16 [RG]
+*	Fixed some consistency issues with help
+*	Made the R Console searchfield initially an exact search
+*	Enabled expanded search if help topic not found
+
+Last update: 2005-02-13 [SU]
+*	Fixed crash in console after output w/o EOL
+
+Last update: 2005-02-12 [RG]
+*	Separated prefpanes for General and Editor
+*	Enabled line wrapping in editor
+
+Last update: 2005-02-10 [RG]
+*	Added pref pane for syntax highlight colors
+
+Last update: 2005-02-05 [SU]
+*	Added localization in all Obj-C code; updated l10n scripts
+*	Added scripts for localization of Obj-C code
+
+Last update: 2005-02-03 [RG]
+*	Added simple line number support in source editor.
+*	Fixed some issues around deleteBackward in editor
+*	Brace highlighting in editor re-enabled
+*	Fixed some minor issues on repositioning and resizing of Quartz
+    windows.
+
+Last update: 2005-02-01 [SU]
+*	Added forward/back buttons in help browser window
+*	Added update.localization script for automated update of
+	localized NIB files.
+*	Switched over to Cocoa API for auto-completion. Unfortunately
+	the system is somewhat limited, so it's far from perfect.
+	It seems that we need to implement our own drop-down to make
+	it behave more intuitively (so, please, hold your horses before
+	reporting bugs on this one...).
+
+Last update: 2005-01-19 [SU]
+*	Fixed typo in loc. strings (which caused an exception on start)
+*	Fixed bug in RController causing R-GUI to not compile for
+	most recent R-devel
+*	Added some more UTF-8 support
+
+Last update: 2005-01-13 [SU]
+*	Fixed compatibility issue with R-devel (2.1.0)
+*	Enable UTF-8 support for R-devel (2.1.0). This finally fixes
+	most encoding issues and allows support for many languages
+*	Changed REngine to use UTF-8
+
+Last update: 2005-01-12 [RG, SU]
+*	Fixed openRecent behaviour [RG]
+*	Fixed crash in the timer (REPL is non-delayed now) [SU]
+*	Fixed document open/save bugs [SU]
+
+Last update: 2005-01-11 [SU]
+*	Added undo checkpoint at <Enter> in the editor
+*	Remove undo stack in the console after prompt to prevent
+	entries from previous lines to mess up the console (we
+	may want to add some more sohpisticated undo policy later)
+*	Fixed R startup issue which required <ESC> to be hit sometimes
+	(introduced in 2005-01-10 commit)
+*	Fixed undo issues (the correct manager is used)
+*	Fixed NSRunStorage exceptions (pasting large chunks or
+	huge output works now) - console now uses direct text storage
+	messages for better reliability and speed
+*	This is the just the beginning in the process of dismantling
+	RController into RConsole* classes. RController should handle
+	only application-wide issues. Any console-related functionality
+	should go to one of the RConsole classes.
+*	Changed document handling to proper MVC - both the editor and
+	the console consist of three parts:
+	- the document class handling new/open/save etc.
+	- window controller handling interactions with the window
+	- text storage class handling text manipulations
+	Especially the separation of the text storage may be very
+	useful for content checking (hidden chars) and highlighting.
+*	Added Rcommand document type which represents the console
+	as a document (for now not fired at launch time). The
+	corresponding NIB file is RConsole and the RConsole* classes.
+
+Last update: 2005-01-10 [SU]
+*	Changed the way R is started to get out of the timer/notifi-
+	cation context. This is somewhat experimental, because is
+	is quite complex (using runDelayedREPL and posting <ESC>)
+
+Last update: 2004-12-30 [SU]
+*	Fixed bug in color preferences causing an exception to be
+	thrown when chenging transparency of a pure white bg
+*	Added support for transparent background to editor windows
+*	Fixed bug in RDocument (window could not be identified)
+*	Make console window key after setting up R
+*	Some Quartz cleanup [RG]
+
+Last update: 2004-12-29 [SU]
+*	Removed superfluous and wrong color handling code - should
+	fix crashes related to new documents.
+	
+Last update: 2004-12-29 [RG]
+*   Fixed 'Open With' R (opening a file from Finder with R)
+*   Fixed opening many 'New Document' windows
+*   Removed dummy NSLog statements in RDocumentController
+    (likely all 3 issues above were caused by defaultColor
+	 initialization in RDocument)
+*	Fixed RQuartz window zoom and deminiaturize (now redisplays)
+*   Improved RQuartz window location handling
+*   Fixed handling of radio buttons in Editor and Misc
+    PrefPanes (behaviour changed between OSX 10.3.6 and
+	10.3.7?) 
+
+Last update: 2004-12-27 [SU]
+*	Fixed a potentially dangerous bug in stdout/err thread code
+	(writing one byte off the end of a dynamic buffer)
+*	Fixed improper R loop start
+*	Added new target "Debug" - it should be used for deployed
+	binaries that will contain debug information. The
+	development target uses zero-link which makes it unusable
+	for any deployment.
+*	Added exception debugging code - exceptions are traced
+	and dumped on the console (Debug/Development only).
+*	Changed R loop start to happen during the AFL notification
+	instead of a timer (experimenal, see note below).
+*	Made most of the console writing code thread-safe.
+
+NOTE: there seems to be a serious issue: R's SETJMP interferes
+	with Obj-C exception handling (or vice-versa). There is now
+	some experimental code in this commit that tries to explore
+	the possibilities, but it's not a final solution yet.
+
+Last update: 2004-12-10 [RG]
+*	Quartz window location and size preferences
+	implemented. Font not done yet.
+
+Last update: 2004-12-08 [RG]
+*	(re-)enabled printing of docs in editor,
+	for now, clears and restores background color
+	before printing
+*	changed horizontalPagination from Auto to Fit
+*	enabled printing help pages with print button
+*	kept full path for editor app or script
+*	informational panel if help topic is not found
+
+Last update: 2004-12-07 [RG, SU]
+*	changed showing and changing of working directory to
+	abbreviate paths using ~ where possible [SU]
+*	fixed path handling to use NSString and NSFileManager -
+	this fixes issues with non-ASCII paths [SU]
+*	minor cleanup in preference panes (code+NIBs) [SU]
+*	added initial working directory setup in misc PP [RG]
+*	added support for the new preference system in all PPs
+	(fixes things broken in the last commit) [RG]
+
+Last update: 2004-12-05 [SU]
+*	fixed casting issues in AMPrefs
+*	added handleHelpSearch callback, moved the corresponding
+	code out of Rcallbacks, converted SearchTable to use
+	SortableDataSource
+*	moved preferences controller from Rcontroller into its
+	own class PrefWindowController - makes more sense and is now
+	handled by NIB instead of manual allocation
+*	Added proper Preferences class handling all preferences
+*	cleanup of Rcontroller and prefs handling - currently
+	only color preferences use the new system, therefore other
+	preferences don't work (yet)!
+*	moved preference keys to PreferenceKeys.h header
+*	added support for configurable working directory (but the
+	corresponding prefs pane still needs to be implemented)
+
+Last update: 2004-11-29 [RG, SU]
+*	improved structure of RDocumentController, made edit
+	default in MiscPrefPane [RG]
+*	fixed handling of file names - use NSString wherever possible
+	to avoid encoding problems [SU]
+*	fixed some occurrences of non-UTF-8 strings in the R communication
+	path (among others fixes sourcing and file-competion issues of
+	filenames containing non-ASCII characters) [SU]
+
+Last update: 2004-11-27 [RG]
+*	cleaned storing preferences EditorPrefPane and
+	added New editor selection panel
+*	fixed storing preferences MiscPrefPane
+*	fixed blanks in filename paths for openDocument
+*	fixed Save Document As for Quartz window
+
+Last update: 2004-11-24 [SU]
+*	fixed bug in UTF-8 handling; removed the use of auto-release
+	pools in Re_.. callbacks.
+	Still ToDo: R doesn't understand UTF-8 so the GUI should use
+	cString default encoding (even if we can't change it programmatically)
+
+-- Release Version 1.01 - this revision is supplied with R 2.0.1 --
+
+Last update: 2004-11-16 [SU]
+*	fixed handling of line endings: PC endings (\r\n) are now supported
+	as R console input (also fixes some problems with AppleScript)
+*	added transport buffer for ReadConsole to be logically correct.
+	this also remedies the compilation warning in RController
+*	fixed a bug in isAdmin() - uninitialized variable
+
+Last update: 2004-11-14 [SU]
+*	added isAdmin() in Tools/Authorization to query the admin status
+	of the current user (more precisely membership in the "admin" group)
+*	changed default package installation target - for admin users the
+	default is now system-wide installation
+*	clean-up of the MiscPrefPane, removed redundant code from RController
+*	added support for R_LIBS option: in MiscPrefs there is a flag that
+	can be set resulting in ~/R/Library to be added to R_LIBS. This
+	obsoletes hack in Rprofile which modified .libPaths without respecting
+	or updating R_LIBS which in turn broke some R CMD ... scripts.
+	Note that this setting has no effect if the hack is still in place
+	(most notably in the R 2.0.0 release)
+*	added R_GUI_VERSION_STR define
+*	R_GUI_APP_VERSION environment variable is set by R.app such that R
+	code can check the existence and version of the R.app
+
+Last update: 2004-11-06 [SI]
+*	added Rob Goedman (for external editor support) code.
+*	added standard copyright notes everywhere. Please check and
+	add specific credits to users contributed code if any.
+	
+Last update: 2004-11-05 [SU]
+*	fixed a small leak and early deallocation of the keywordList (this fixes
+	crash observed when editing a file dropped on R while R is initialized).
+	retain all colors, too, to make sure they don't get deallocated
+*	added SortedDataSource which provides a persistent table as data source.
+	it is used by DataManager now and should by used by all managers later.
+	the sorting part is not implemented yet, though.
+
+Last update: 2004-10-30 [SU]
+*	moved callbacks for data manager, package manager, package installer
+	and system command out to a separate handler. This means rather major
+	changes in the code and the way data is stored in those managers (removed
+	all global variables for the above managers). There are now two handlers in
+	REngine - one mandatory (REPL) and one optional (Cocoa).
+*	separated authorization code - it lives now in Authorization.c in Tools
+*	minor cleanups - the method names are now more consistent across classes
+
+Last update: 2004-10-25 [SU]
+*	added brace highlighting (partially based on code by Rob Goedman)
+*	reversed declaration order of RQuartz copy operation: PDF first,
+	TIFF second. This may help some PDF editors ... We may want to make this
+	configurable and/or have two separate copy commands.
+
+Last update: 2004-10-22 [SI]
+*	added first embrional version of R preferences using AMPreferencePane class
+	by Andreas Mayer. At the moment only color preferences are implemented.
+	Quartz and misc preferences pane are there but not yet working.
+	The preferences are still saved/loaded using NSDefaults
+	You may need to "svn update" from the shell better than from inside of XCode
+	
+Last update: 2004-10-22 [SU]
+*	newly typed text outside insertion scope is appended at the end (thanks to
+	Byron for the idea)
+*	converted InfoPlist.string to UTF-8 so it's easier to maintain and edit
+*	added SVN build information to Info.plists and strings
+*	removed BUILD_FOR_R_2_1_x flag and replaced by canonical version check
+ 
+Last update: 2004-10-22 [SI]
+*	fixed metric info problem with Quartz device. Apparently a leading pad was
+	added to the textcontainer used to acquire the metric info. Thanks to Byron
+	Ellys for this fix.
+*	saveWorkSpaceFile fixed. It was impossible to create a new file.
+*	introduced sourceOrLoadFile: in alternative to sourceFile. This is now connected to
+	Source/Load button in the R Console Window toolbar.
+*	added readFromFile method in RDocument to allow data loading with binary files. It allows
+	also for drag and drop of image data on the R Icon
+*	removed button from workspace browser window, added corresponding toolbar icon/button
+
+Last update: 2004-10-21 [SI]
+*	in data editor: the runModalForSession has been replaced by a modalForWindow
+	to remove the problem with high CPU consuming (thanks to Byron Ellys for the fix)
+*	column numbers instead of column names are used to identify columns (thanks to 
+	Byron Ellys for the fix)
+
+Last update: 2004-10-18 [SU]
+*	fixed working directory selection
+*	added sourceCurrentDocument: implementation; if the document is dirty,
+	a temporary file is created, sourced and finally deleted
+
+-- Release Version 1.00 - this revision is supplied with R 2.0.0 --
+
+Last update: 2004-10-15 [SU]
+*	code cleanups to get rid of most warnings
+*	fixed linking issues caused by run_Rmainloop conflicting with R
+*	fixed resizing behavior of the help window
+*	disable continuous spell checking by default
+
+Last update: 2004-10-14 [SU]
+*	fixed output synchronization. all console output sources eventually
+	use writeConsoleDirectly: and the insertion point is controlled by
+	outputPosition.
+*	add more flexible flush support (flushROutput and FlushStdConsole)
+*	fixed document handling to be consistent with Cocoa; this means
+	that menu items are handled implicitly by the first responder
+	(where possible) and most default actions apply to the editor.
+	Old versions of R GUI didn't have this, but mainly because there
+	was no good editor supplied.
+*	removed all global flags (IsRTF, IsREdit, ...)
+*	toolbar icons changed (new icons added, some re-worked)
+*	added menu+shortcut for "switch to console"
+*	moved some menu items to logically more suitable places
+	(e.g. "New document" is in "File" ...)
+*	changed drop-document handling; the document is loaded in the editor
+	(it can be easily executed by <Cmd><Enter> if necessary)
+*	fixed activation of Quartz to use FR dispatching (this way it's not
+	enabled in the console or editor where it doesn't make any sense)
+
+Last update: 2004-10-13 [SI]
+*	added support for activation of quartz device
+	and creation of new quartz deivce from the GUI
+	This functionality was present in the old Aqua GUI.
+	
+Last update: 2004-10-11 [SI]
+*	first svn release
+
+Last update: 2004-10-10 [SU]
+*	fixed ?/help handling removed in the last update
+*	fixed improper memory handling of external input
+*	added queue to the console input to allow multiple simultaneous
+	inputs while R is still working
+*	fixed color handling - input text has now the correct color
+*	added some constraints that prevent user from accidentally
+	leaving the prompt area
+*	fixed focus issues with the help window
+*	don't unnecessarily repeat console input before commit
+*	doProcessEvents: processes exactly one event in the blocking mode
+*	added first release of R FAQ. To build it use [SI]
+	makeinfo -D UseExternalXrefs --html --force --no-split RMacOSX-FAQ.texi
+*	added "Docs" target to automatically build above FAQ
+*	added sush dependency to R target - now it is possible to build
+	the entire project from scratch by simply typing "xcodebuild"
+	on the command line. Although it's the default, more precise
+	specification of the target and build style can be used such as:
+	xcodebuild -target R -buildstyle Deployment
+
+Last update: 2004-10-09 [SU]
+*	fixes in REngine (mem mgmt, 0 ptr fix); added executeString method
+*	fixed package loading (use executeString and check the result)
+*	huge cleanup of the R/Obj-C interface (stage 1). the interface is
+	separated from RController by REPLHandler protocol. the R-side
+	implementation is in Rcallbacks and RController implements the
+	REPL protocol
+*	changed output/console/prompt handling. this also makes sure that
+	a prompt is always printed at the beginning of the line, no matter
+	whether the previous output line is unfinished
+*	raise the line buffer size from 1k to 32k, also it's not hard-coded now,
+	but can be changed on the fly.
+*	replace all evaluateString: with executeString: if the return value is
+	not needed (ignoring the return value of eval.. causes memory leaks)
+*	after history paste make textView the first respondent
+	
+Last update: 2004-10-08 [SI]
+*	added toolbar colors icon and functionality. User can set font colors for
+	the R Console window. Settings are saved automatically on exit. Just for
+	fun: added also transparency of the R Console window.
+*	console font size saved in the preferences
+*	the color of the cursors is set to be the same as the prompt one
+
+Last update: 2004-10-04 [SI]
+*	fixed problem with applescript. Now uses scriptSuite and scriptTerminology
+*	in sendIpunt: a fake keydown event is now generate to wake the event loop
+	this is needed for both applescript and menu interaction
+*   help(topic) and ?topic	are now handled internally and the help page is
+	shown in the internal browser. 
+	This is only a temporary solution. The correct approach is to create a
+	new API to be called on each .show_help_on_topic_as_HTML call. Too late
+	for release 2.0.0 of R.
+*	Every call to Rengine evaluateString and parse causes R to be set in busy 
+	state this allows for feedback to the user at any REngine use.
+*	added support to save quartz device to PDF file. This is currently done
+	using devcopy onto the pdf device. Native Cocoa methods like 
+	[NSView dataWithPDFInsideRect] don't work at the moment because we don't
+	use NSGraphicsContext. Should probably be done for the next release.
+*	added clipboard copying into TIFF, PICT and PDF format
+*	added support for printing of the graphics device, the console and the
+	other editor windows
+*	user input is now splitted in lines terminated by '\n'. This allows for
+	copy and paste of bug documents. There's no limit to the input buffer
+	apart from free memory. The input is just splitted in lines but if lines
+	are longer than the maximum allowed by R (1024 currently) no action
+	is taken, lines are just passed to R for at most 1024 bytes.
+		
+Last update: 2004-09-28 [SU]
+*	added PLAIN_STDERR optional define flag (enabled in development style)
+*	fixed rmRows bug in data editor
+
+Last update: 2004-09-26
+*	fixed stderr/stdout problems, now using threads and correctly in synch
+*	R console window gets focus on startup
+*	changed credits
+*	implemented edit and remove functionality ot the workspac browser
+*	FIXME: the data editor still needs to be fixed for row adding
+	REQUIRES r-devel 2004-09-26
+	
+Last update: 2004-09-10
+*	Implemented edit functionality for data frames and matrix
+*	Implemented the Help system. 
+*	Splitviews in Package Manager, Data Manager and Help Search Interface
+*	Implemented help search interface
+*	Implemented the workspace browser
+*	Implemented quartz device in cocoa
+*	Fixed duplicate definition of variable IsReadConsoleTime.
+*	Adjusted to work with XCode 1.5
+	REQUIRES r-devel 2004-09-10
+
+Last update: 2004-08-28
+*	Fixed a package.manager: memory leaks and incorrect refreshing
+*   Implemented the data manager
+*   --gui=cocoa sets RGUI_TYPE to "AQUA", so now quartz is the default
+	graphics device
+*   Implemented package installer both for network and local repositories
+	and file and to global or local destinations. 
+	FIXME: need to implement authorization
+*	fixed font text windows	
+*   implemented "run X11 server" and added both menu and toolbar items.
+*   added "Check For R Updates" menu item functionality
+	REQUIRES: r-devel 2004-08-27
+	
+Last update: 2004-08-20
+*   Implemented open document both for menus and drag and drop on the R icon
+*	Opening file is either: load data or source a script whenever this is possible.
+*	Implemented the internal editor via NSDocument class. R can open plain text and
+	rtf files.
+*	Implemented  file.show/R_ShowFiles.
+*	Implemented  file.edit/R_EditFiles. FIXME: the file name is not correctly set
+	at the moment for newly created document.
+*	Implemented AppleScript support.
+*	Implemented in toolbar: font size change, load data/source script, new editor window,  
+							save R console, load file in editor
+*	Implemented options(width=???) on font size and/or Console width change.
+*	Implemented: setwd, changewd, showd and timer to show the current working directory
+	in a textview
+*	Implemented file.choose/R_ChooseFile
+*	Implemented: show, clear, load and save of workspace
+*	Implemented package manager for loading and detaching package with html help index
+	REQUIRES: r-devel 2004-08-20
+
+Last update: 2004-08-14
+*   Implemented console buffering. This make the R console output spedier.
+	This has been implemented in the same way it was for the aqua module
+	(see: src/modules/aqua/aquaconsole.c)
+*   In previous version Code Completion blocked R, now fixed.
+*   Implemented the History and Logs drawers. Stdout/Stderr are redirected
+	to the Logs drawer (still not asyncronously).
+*   Implemented load, save and clear history. Double clicking on history items
+	paste the content of the item in the console at current cursor position
+*   Implemented the tool bar for "stop", "quit", "history", "quartz" and "logs". Icons
+	are horrible though.
+*   added environment variable in info.plist
+
+First release: 2004-08-10
+
+Authors:
+SI	Stefano M Iacus
+SU	Simon Urbanek
+RG	Rob J Goedman
+HJBB	Hans-J. Bibiko
+BDR	Brian D Ripley

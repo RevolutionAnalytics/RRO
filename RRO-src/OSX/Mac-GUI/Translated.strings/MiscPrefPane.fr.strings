@@ -1,0 +1,102 @@
+/* Entry = "130.title"; Class = "NSTextFieldCell" */
+"(was default in RAqua)" = "(était par défaut dans RAqua)";
+
+/* Entry = "139.title"; Class = "NSTextFieldCell" */
+".Rhistory" = ".Rhistory";
+
+/* Entry = "144.title"; Class = "NSTextFieldCell" */
+"250" = "250";
+
+/* Entry = "129.title"; Class = "NSButtonCell" */
+"Add ~/Library/R…" = "Ajouter ~/Library/R…";
+
+/* Entry = "136.title"; Class = "NSButtonCell" */
+"Always apply" = "Appliquer toujours";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Ask" = "Demander";
+
+/* Entry = "133.title"; Class = "NSButtonCell" */
+"Change" = "Modifier";
+
+/* Entry = "145.title"; Class = "NSButtonCell" */
+"Cleanup history entries" = "Effacer les entrées de l'Historique";
+
+/* Entry = "138.title"; Class = "NSButtonCell" */
+"Default" = "Défaut";
+
+/* Entry = "106.title"; Class = "NSBox" */
+"Default CRAN mirror" = "Miroir CRAN par Défaut";
+
+/* Entry = "23.title"; Class = "NSBox" */
+"Default Library Paths" = "Chemins par Défaut pour les Librairies";
+
+/* Entry = "132.title"; Class = "NSTextFieldCell" */
+"Directory:" = "Répertoire :";
+
+/* Entry = "17.title"; Class = "NSBox" */
+"Drag & drop action during R start-up" = "Déplacement & Pose lors du Démarrage de R";
+
+/* Entry = "44.title"; Class = "NSBox" */
+"History" = "Historique";
+
+/* Entry = "34.title"; Class = "NSBox" */
+"Initial working directory" = "Répertoire de Travail Initial";
+
+/* Entry = "143.title"; Class = "NSTextFieldCell" */
+"Max number of entries in history:" = "Nombre maximum d'entrées pour l'Historique:";
+
+/* Entry = "124.title"; Class = "NSButtonCell" */
+"No" = "Non";
+
+/* Entry = "135.title"; Class = "NSTextFieldCell" */
+"Note: Enforce by selecting 'Always apply'. Otherwise used to set the working directory if not specified when R.app is started, e.g. double clicking the R icon. Drag & drop of a file or a directory on the R icon or using 'open -a R.app <dir-or-file>' will override this setting if not enforced." = "Note: Forcer en sélectionnant 'Toujours appliquer'. Sinon est utilisé pour spécifier le répertoire de Travail si ce dernier n'est pas choisi quand R.app démarre, e.g. en double cliquant sur l'icône de R. Déplacer & Poser un fichier ou un répertoire sur l'icône de R icon ou utliser 'open -a R.app <dir-ou-fichier>' annulera cette préférence si non forcée.";
+
+/* Entry = "131.title"; Class = "NSTextFieldCell" */
+"Note: This change is effective only after a restart of R.app" = "Note: Cette modification ne prendra effet qu'après re-démarrage de R.app";
+
+/* Entry = "141.title"; Class = "NSTextFieldCell" */
+"Note: Use a fixed path to always use the same history file, e.g. ~/.Rhistory" = "Note: Utiliser toujours un chemin fixe pour utiliser le même fichier Historique, par exemple ~/.Rhistory";
+
+/* Entry = "18.title"; Class = "NSButtonCell" */
+"Open file in editor" = "Ouvrir Fichier dans éditeur";
+
+/* Entry = "137.title"; Class = "NSTextFieldCell" */
+"R history file:" = "Fichier Historique R:";
+
+/* Entry = "150.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "151.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "140.title"; Class = "NSButtonCell" */
+"Read history file on startup" = "Lire l'Historique au démarrage";
+
+/* Entry = "142.title"; Class = "NSButtonCell" */
+"Remove duplicate entries in history" = "Supprimer les enregistrements dupliqués dans l'historique";
+
+/* Entry = "115.title"; Class = "NSBox" */
+"Save workspace on exit from R" = "Enregistrer l'espace de travail en quittant";
+
+/* Entry = "149.title"; Class = "NSButtonCell" */
+"Select" = "Sélectionner";
+
+/* Entry = "19.title"; Class = "NSButtonCell" */
+"Source input file" = "Sourcer le fichier d'entrée";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Strip comments in history entries" = "Enlever les commentaires des entrées de l'historique";
+
+/* Entry = "108.gToolTip"; Class = "NSTextField" */
+"URL for the default CRAN URL. If left empty, the user will be prompted." = "URL pour le CRAN par défaut. Si vide, il sera demandé à l'utilisateur.";
+
+/* Entry = "148.title"; Class = "NSTextFieldCell" */
+"URL:" = "URL:";
+
+/* Entry = "125.title"; Class = "NSButtonCell" */
+"Yes" = "Oui";
+
+/* Entry = "134.title"; Class = "NSTextFieldCell" */
+"~" = "~";
+

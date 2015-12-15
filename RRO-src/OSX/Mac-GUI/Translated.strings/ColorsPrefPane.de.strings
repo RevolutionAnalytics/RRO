@@ -1,0 +1,27 @@
+/* Entry = "76.title"; Class = "NSTextFieldCell" */
+"Background" = "Hintergrund";
+
+/* Entry = "26.title"; Class = "NSBox" */
+"Colors" = "Farben";
+
+/* Entry = "78.title"; Class = "NSButtonCell" */
+"Defaults" = "Voreinstellung";
+
+/* Entry = "73.title"; Class = "NSTextFieldCell" */
+"Input" = "Eingabe";
+
+/* Entry = "74.title"; Class = "NSTextFieldCell" */
+"Output" = "Ausgabe";
+
+/* Entry = "72.title"; Class = "NSTextFieldCell" */
+"Prompt" = "Eigabeauff.";
+
+/* Entry = "75.title"; Class = "NSTextFieldCell" */
+"Stderr" = "Fehler";
+
+/* Entry = "77.title"; Class = "NSTextFieldCell" */
+"Stdout" = "Extern";
+
+/* Entry = "71.title"; Class = "NSTextFieldCell" */
+"Transparency :" = "Durchsichtigkeit:";
+

@@ -1,0 +1,102 @@
+/* Entry = "130.title"; Class = "NSTextFieldCell" */
+"(was default in RAqua)" = "(war Voreinstellung in RAqua)";
+
+/* Entry = "139.title"; Class = "NSTextFieldCell" */
+".Rhistory" = ".Rhistory";
+
+/* Entry = "144.title"; Class = "NSTextFieldCell" */
+"250" = "250";
+
+/* Entry = "129.title"; Class = "NSButtonCell" */
+"Add ~/Library/R…" = "Füge ~/Library/R… an";
+
+/* Entry = "136.title"; Class = "NSButtonCell" */
+"Always apply" = "immer anwenden";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Ask" = "Immer nachfragen";
+
+/* Entry = "133.title"; Class = "NSButtonCell" */
+"Change" = "Ändern";
+
+/* Entry = "145.title"; Class = "NSButtonCell" */
+"Cleanup history entries" = "Verlaufseinträge aufräumen";
+
+/* Entry = "138.title"; Class = "NSButtonCell" */
+"Default" = "Voreinst.";
+
+/* Entry = "106.title"; Class = "NSBox" */
+"Default CRAN mirror" = "Bevorzugter CRAN Server";
+
+/* Entry = "23.title"; Class = "NSBox" */
+"Default Library Paths" = "Library Pfad";
+
+/* Entry = "132.title"; Class = "NSTextFieldCell" */
+"Directory:" = "Arbeitsverzeichnis nach dem Start:";
+
+/* Entry = "17.title"; Class = "NSBox" */
+"Drag & drop action during R start-up" = "R-Dateien wie folgt behandeln:";
+
+/* Entry = "44.title"; Class = "NSBox" */
+"History" = "Verlauf";
+
+/* Entry = "34.title"; Class = "NSBox" */
+"Initial working directory" = "Start";
+
+/* Entry = "143.title"; Class = "NSTextFieldCell" */
+"Max number of entries in history:" = "Maximale Anzahl der Einträge:";
+
+/* Entry = "124.title"; Class = "NSButtonCell" */
+"No" = "Nein";
+
+/* Entry = "135.title"; Class = "NSTextFieldCell" */
+"Note: Enforce by selecting 'Always apply'. Otherwise used to set the working directory if not specified when R.app is started, e.g. double clicking the R icon. Drag & drop of a file or a directory on the R icon or using 'open -a R.app <dir-or-file>' will override this setting if not enforced." = "Normalerweise kann das Startverzeichnis geändert werden, wenn ein Ordner auf das R Symbol gezogen wird. Wenn Sie dies nicht wünschen, aktivieren Sie 'immer anwenden'.";
+
+/* Entry = "131.title"; Class = "NSTextFieldCell" */
+"Note: This change is effective only after a restart of R.app" = "Bemerkung: Diese Einstellung wird erst nach dem Neustart von R aktiv";
+
+/* Entry = "141.title"; Class = "NSTextFieldCell" */
+"Note: Use a fixed path to always use the same history file, e.g. ~/.Rhistory" = "Tip: Verwenden Sie einen absoluten Pfad, um immer dieselbe Verlaufdatei zu verwenden, z.B. ~/.Rhistory";
+
+/* Entry = "18.title"; Class = "NSButtonCell" */
+"Open file in editor" = "Datei im Editor öffnen";
+
+/* Entry = "137.title"; Class = "NSTextFieldCell" */
+"R history file:" = "R Verlaufdatei:";
+
+/* Entry = "150.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "151.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "140.title"; Class = "NSButtonCell" */
+"Read history file on startup" = "Verlaufdatei beim Start laden";
+
+/* Entry = "142.title"; Class = "NSButtonCell" */
+"Remove duplicate entries in history" = "Dupletten im Verlauf löschen";
+
+/* Entry = "115.title"; Class = "NSBox" */
+"Save workspace on exit from R" = "Arbeitsbereich beim Verlassen speichern";
+
+/* Entry = "149.title"; Class = "NSButtonCell" */
+"Select" = "Auswählen";
+
+/* Entry = "19.title"; Class = "NSButtonCell" */
+"Source input file" = "Datei in R ausführen";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Strip comments in history entries" = "Kommentare im Verlauf nicht speichern";
+
+/* Entry = "108.gToolTip"; Class = "NSTextField" */
+"URL for the default CRAN URL. If left empty, the user will be prompted." = "Voreinstellung für CRAN URL. Die URL wird interaktiv erfragt wenn nicht angegeben.";
+
+/* Entry = "148.title"; Class = "NSTextFieldCell" */
+"URL:" = "URL:";
+
+/* Entry = "125.title"; Class = "NSButtonCell" */
+"Yes" = "Ja";
+
+/* Entry = "134.title"; Class = "NSTextFieldCell" */
+"~" = "~";
+

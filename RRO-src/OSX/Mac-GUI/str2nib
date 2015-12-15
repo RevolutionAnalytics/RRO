@@ -1,0 +1,110 @@
+#!/usr/bin/perl
+#
+# Options:  KEEP=1      do not dlete temporary files
+#           MODE=plain  the input is of the form "foo" = "bar"; only
+
+$td="/tmp/nib-$$";
+system "rm -rf '$td'";
+mkdir "/tmp/nib-$$" || die "cannot create temporary directory for processing";
+
+$en=shift;
+$str=shift;
+$tl=shift;
+
+if ( $en eq '' || $tl eq '' || $str eq '') {
+    print "\n Usage: $ARGV[0] <english.nib> <strings> <lang.nib>\n\n";
+    exit 1;
+}
+
+open IN, "$str" || die "cannot open strings file";
+
+system "ibtool --generate-strings-file '$td/en.uni' '$en'" || die "converting en file to strings failed";
+system "iconv -f utf-16 -t utf-8 '$td/en.uni' > '$td/en.txt'" || die "converting en strings to unicode failed";
+
+$mode=0;
+$mode=1 if ($ENV{MODE} eq 'plain');
+
+open OUT, ">$td/strings";
+while (<IN>) {
+    chomp;
+    if ($mode == 1) {
+	if ($e =~ /^\"(.*)\" = \"(.*)\";$/) {
+	    $v_en = $1;
+	    $v_tl = $2;
+	    if ($map{$v_en} ne '' && $map{$v_en} ne $v_tl) {
+		print STDERR "WARNING: different translation for the same key \"$v_en\": \"$map{$v_en}\" and \"$v_tl\"\n";
+	    } else {
+		$map{$v_en} = $v_tl;
+	    }
+	} elsif ($_ ne '') {
+	    print STDERR "WARNING: unknown line: $_\n";
+	}
+    } else {
+	if (/\/\* Entry = \"(\d+)\.([a-zA-Z0-9.]+)\"; Class = \"(.*)\"/) {
+	    $id=$1; $item=$2; $cls=$3;
+	    $e = <IN>;
+	    chomp;
+	    if ($e =~ /^\"(.*)\" = \"(.*)\";$/) {
+		$v_en = $1;
+		$v_tl = $2;
+		if ($map{$v_en} ne '' && $map{$v_en} ne $v_tl) {
+		    print STDERR "WARNING: different translation for the same key \"$v_en\": \"$map{$v_en}\" and \"$v_tl\"\n";
+		} else {
+		    $map{$v_en} = $v_tl;
+		}
+#	    print OUT "/* Class = \"$cls\"; $item = \"$2\"; ObjectID = \"$id\"; */\n\"$id.$item\" = \"$2\";\n\n";
+	    } else {
+		print STDERR "WARNING: invalid entry for $id.$item: $e\n";
+	    }
+	} elsif ($_ ne '') {
+	    print STDERR "WARNING: unknown line: $_\n";
+	}
+    }
+}
+close IN;
+
+open IN, "$td/en.txt";
+while (<IN>) {
+    chomp;
+    if (/^\"([a-zA-Z0-9.]+)\" = \"(.*)\";$/) {
+	if ($map{$2}) {
+	    print OUT "\"$1\" = \"$map{$2}\";\n";
+	    $used{$2} = 1;
+	} else {
+	    print STDERR "WARNING: translation for \"$2\" not found.\n";
+	    print OUT "$_\n";
+	}
+	if (defined $cls) { $hc{$1} = $cls; undef $cls; }
+    } elsif (/^\/\* Class = \"(.*?)\"; /) {
+	print OUT "$_\n";
+	$cls = $1;
+    } elsif ($_ eq '') {
+	print OUT "\n";
+	undef $cls;
+    } else {
+	print STDERR "WARNING: unknown line: $_\n";
+	print OUT "$_\n";
+	undef $cls;
+    }
+}
+close IN;
+
+system "iconv -f utf-8 -t utf-16 '$td/strings' > '$td/strings.uni'" || die "converting strings to unicode failed";
+
+if ($ENV{STOP} ne '') {
+    print "STOP requested, output is in $td\n";
+    exit 0;
+}
+
+# system "ibtool --previous-file '$en' --incremental-file '$lo' --strings-file '$td/strings.uni' --localize-incremental --write '$tl' '$en'" || die "converting lang file to strings failed";
+
+if ( -e "$td/strings.uni" ) {
+    system "ibtool --strings-file '$td/strings.uni' --write '$tl' '$en'" || die "generating lang nib failed";
+}
+
+if ($ENV{KEEP} ne '') {
+    print STDERR "KEEP set, leaving all files in $td\n";
+    exit 0;
+}
+
+system "rm -rf '$td'";

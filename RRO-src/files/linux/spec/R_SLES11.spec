@@ -121,7 +121,6 @@ fi
 %files
 %defattr(-, root, root)
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
-%{_libdir}/%{name}-%{DIR_VERSION}/COPYING
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
 

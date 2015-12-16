@@ -110,6 +110,7 @@ fi
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
+%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript

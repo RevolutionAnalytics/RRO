@@ -53,7 +53,7 @@ cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make -j6
 
 %install
-
+cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 make install
 
 cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc

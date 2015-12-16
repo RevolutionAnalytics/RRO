@@ -51,11 +51,6 @@ mkdir -p %{_rpmdir}/%{_arch}/
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
 ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
-if test "${CHECK_ALL}" = "YES"
-    then
-    make check-all
-fi
-make info
 
 %install
 

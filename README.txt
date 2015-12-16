@@ -88,7 +88,8 @@ Computing.
 List of Open Source Components
 ------------------------------
 For a list of Third-Party Open Source Components in
-Microsoft R Open, see the file ThirdPartyNotices.pdf.
+Microsoft R Open, see the file etc/ThirdPartyNotices.pdf.
+
 The terms of the GPLv2 license can be found in the
 accompanying file COPYING and at
 http://www.r-project.org/COPYING

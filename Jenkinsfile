@@ -19,4 +19,15 @@ mac_build: {
                 userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh 'pushd RRO-src/OSX && ./build-OSX.sh'
     }   
+},
+windows_build: {
+    node('windows') {
+        checkout([$class: 'GitSCM', 
+                branches: [[name: '*/dev']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [], 
+                submoduleCfg: [], 
+                userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
+        bat 'build.bat'
+    }   
 }

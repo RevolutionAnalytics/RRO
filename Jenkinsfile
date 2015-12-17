@@ -1,5 +1,16 @@
 parallel centos_build: {
-    node('centos') {
+    node('centos6') {
+        checkout([$class: 'GitSCM', 
+                  branches: [[name: '*/dev']],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [], 
+                  submoduleCfg: [], 
+                  userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
+        sh './build.sh'
+    }
+},
+parallel centos_build: {
+    node('suse11') {
         checkout([$class: 'GitSCM', 
                   branches: [[name: '*/dev']],
                   doGenerateSubmoduleConfigurations: false,
@@ -18,16 +29,5 @@ mac_build: {
                 submoduleCfg: [], 
                 userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh 'pushd RRO-src/OSX && ./build-OSX.sh'
-    }   
-},
-windows_build: {
-    node('windows') {
-        checkout([$class: 'GitSCM', 
-                branches: [[name: '*/dev']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [], 
-                submoduleCfg: [], 
-                userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
-        bat 'build.bat'
     }   
 }

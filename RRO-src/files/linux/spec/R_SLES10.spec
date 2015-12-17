@@ -17,7 +17,7 @@ BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline
 Requires: libtiff, ghostscript-fonts-std
 Requires: gcc, make, gcc-fortran, gcc-c++
-Requires: glibc, glibc-devel, curl 
+Requires: glibc, glibc-devel, curl, zip
 AutoReqProv: No
 
 %define libnn lib64
@@ -83,6 +83,18 @@ then
         fi
     done
     popd
+	if grep -q "release 5" /etc/redhat-release; then
+	    pushd /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+	else
+	    pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+	fi
+	if [ -d "foreach" ]; then
+	    rm -rf foreach
+	fi
+	if [ -d "iterators" ]; then
+	    rm -rf iterators
+	fi
+	popd
 fi
 
 %post

@@ -12,7 +12,8 @@ BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
 BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
-Requires: ghostscript-fonts, libgfortran, cairo-devel, curl, libicu
+Requires: ghostscript-fonts, libgfortran, cairo, curl, libicu
+Requires: pango, libSM, libXt, libXmu, zip
 AutoReqProv: No
 
 Requires(post): info
@@ -78,6 +79,18 @@ then
         fi
     done
     popd
+	if grep -q "release 5" /etc/redhat-release; then
+	    pushd /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+	else
+	    pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+	fi
+	if [ -d "foreach" ]; then
+	    rm -rf foreach
+	fi
+	if [ -d "iterators" ]; then
+	    rm -rf iterators
+	fi
+	popd
 fi
 
 

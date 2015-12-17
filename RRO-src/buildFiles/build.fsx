@@ -16,11 +16,19 @@ let mutable WINDOWS_FILES_DIR = RRO_DIR +/ "files" +/ "windows"
 let mutable COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
-let mutable FLAVOR = "RRO"
+let mutable FLAVOR = "MRO"
 let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION
-let RRC_VERSION = "7.5.0"
+let RRC_VERSION = "8.0.0"
 let mutable FLAVOR_VERSION = R_VERSION
+
+let CURL_VERSION = "7.45.0"
+let CURL_NAME = "curl-" + CURL_VERSION
+
+let mutable BUILD_ID = "dev"
+if fileExists (BASE_DIR +/ "BuildID.txt") then
+    BUILD_ID <- System.IO.File.ReadAllText(BASE_DIR +/ "BuildID.txt")
+
 
 let CONNECTOR = environVarOrNone "CONNECTOR"
 let mutable BUILD_CONNECTOR = false
@@ -31,19 +39,21 @@ match CONNECTOR with
             BUILD_CONNECTOR <- true
             WINDOWS_FILES_DIR <- RRO_DIR +/ "files" +/ "windows" +/ "connector"
             COMMON_FILES_DIR <- RRO_DIR +/ "files" +/ "common" +/ "connector"
-            FLAVOR <- "Revolution-R-Connector"
+            FLAVOR <- "MRO-for-MRS"
             FLAVOR_VERSION <- RRC_VERSION
        )
 
 let platform = RevoUtils.Platform.GetPlatform()
 let flavor = RevoUtils.Platform.GetPlatformFlavor()
 let version = RevoUtils.Platform.GetReleaseVersion()
-let mutable PKG_DIR = ""
 
+let mutable PKG_DIR = ""
 if platform = System.PlatformID.Win32NT then
     PKG_DIR <- WORKSPACE +/ "packages"
 else
     PKG_DIR <- "/tmp/rro_extra_pkgs"
+
+let BuildIdPackages = ["RevoUtils"; "RevoMods"]
 
 // HELPER FUNCTIONS
 //
@@ -179,13 +189,27 @@ Target "Build_Linux" (fun _ ->
         finalRpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-openSUSE-13.1.x86_64.rpm"
 
     let specDirs = ["BUILD"; "RPMS"; "SOURCES"; "BUILDROOT"; "SRPMS"; "SPECS"]
-    let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; RRO_DIR +/ "files/common/Rprofile.site" ]
+    let customFiles = [ BASE_DIR +/ "COPYING"; BASE_DIR +/ "README.txt"; COMMON_FILES_DIR +/ "Rprofile.site" ]
+
+    let tmpDir = WORKSPACE +/ "tmp"
     
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
+    FileUtils.mkdir(tmpDir)
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
 
+    let curlURL = "http://curl.askapache.com/download/" + CURL_NAME + ".tar.gz"
+    use curlWebClient = new System.Net.WebClient()
+    curlWebClient.DownloadFile(curlURL.ToString(), (WORKSPACE +/ "curl.tar.gz"))
+    let curlFile = System.IO.FileInfo((WORKSPACE +/ "curl.tar.gz"))
+    ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(WORKSPACE)) curlFile
+    ignore(Shell.Exec("/bin/bash", "configure --prefix=/tmp/curl-4-RRO --disable-shared", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("make", "-j8", WORKSPACE +/ CURL_NAME))
+    ignore(Shell.Exec("make", "install", WORKSPACE +/ CURL_NAME))
+
+    setProcessEnvironVar "CURL_CONFIG" ("/tmp/curl-4-RRO/bin/curl-config")
+    setProcessEnvironVar "CURL_CPPFLAGS" ("-I/tmp/curl-4-RRO/include")
 
     let mutable packageFile = "packages-linux.json"
     if BUILD_CONNECTOR then
@@ -196,13 +220,20 @@ Target "Build_Linux" (fun _ ->
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""
 
-    for package in packages do
-        
+    for package in packages do     
         //Download the package
         use webClient = new System.Net.WebClient()
         let url = package.Value("location")
         webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
         extraPackageList <- extraPackageList + " " + package.Value("destFileName")
+
+    for package in BuildIdPackages do
+        if fileExists (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") then
+            FileUtils.cp (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") WORKSPACE
+            let packageFile = System.IO.FileInfo((WORKSPACE +/ package + "_" + RRC_VERSION + ".tar.gz"))
+            ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) packageFile
+            RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ package +/ "DESCRIPTION")
+            ignore(Shell.Exec("tar", "czf " + PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz " + package + "/", tmpDir))
 
     for dir in specDirs do
         FileUtils.mkdir(homeDir +/ "rpmbuild" +/ dir)
@@ -233,6 +264,8 @@ Target "Build_Linux" (fun _ ->
         ignore(Shell.Exec("mv", BASE_DIR +/ "rro_" + R_VERSION + "-2_amd64.deb" + " " + BASE_DIR +/ finalDebName))
     else
         ignore(Shell.Exec("mv", WORKSPACE +/ rpmName + " " + WORKSPACE +/ finalRpmName))
+
+    FileUtils.rm_rf(PKG_DIR)
 )
 
 
@@ -249,8 +282,10 @@ Target "Build_Windows" (fun _ ->
     setProcessEnvironVar "PATH" (tools.["Rtools"] +/ "bin;" + tools.["Rtools"] +/ "gcc-4.6.3\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
     trace ("PATH IS " + (environVar "PATH"))
     trace ( "Build Connector set to " + BUILD_CONNECTOR.ToString())
+    let tmpDir = WORKSPACE +/ "tmp"
     FileUtils.mkdir(WORKSPACE)
     FileUtils.mkdir(PKG_DIR)
+    FileUtils.mkdir(tmpDir)
 
     let mutable packageFile = "packages-windows.json"
     if BUILD_CONNECTOR then
@@ -262,15 +297,25 @@ Target "Build_Windows" (fun _ ->
     let packages = jsonObject.GetValue("packages")
     let mutable extraPackageList = ""
 
-    for package in packages do
-        
+    for package in packages do     
         //Download the package
         use webClient = new System.Net.WebClient()
         let url = package.Value("location")
         webClient.DownloadFile(url.ToString(), (PKG_DIR +/ package.Value("destFileName")))
         System.IO.File.WriteAllText((PKG_DIR +/ package.Value("name") + ".tgz"), package.Value("destFileName"))
         extraPackageList <- extraPackageList + " " + package.Value("name")
-          
+    
+    for package in BuildIdPackages do
+        if fileExists (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") then
+            FileUtils.cp (PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz") WORKSPACE
+            let packageFile = System.IO.FileInfo((WORKSPACE +/ package + "_" + RRC_VERSION + ".tar.gz"))
+            ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(tmpDir)) packageFile
+            RegexReplaceInFileWithEncoding ":::RevoBuildID:::" BUILD_ID (System.Text.ASCIIEncoding()) (tmpDir +/ package +/ "DESCRIPTION")
+            ignore(ArchiveHelper.Tar.GZip.CompressDirWithDefaults (System.IO.DirectoryInfo(tmpDir)) (System.IO.FileInfo((PKG_DIR +/ package + "_" + RRC_VERSION + ".tar.gz"))))
+            FileUtils.rm_rf tmpDir
+            FileUtils.mkdir tmpDir
+        
+
     //Prep directories, copying over custom files
     let rDir = WORKSPACE +/ "R-" + R_VERSION
     let gnuWin32Dir = rDir +/ "src" +/ "gnuwin32"
@@ -282,7 +327,7 @@ Target "Build_Windows" (fun _ ->
                            WINDOWS_FILES_DIR +/ "reg3264.iss"; WINDOWS_FILES_DIR +/ "JRins.R"; COMMON_FILES_DIR +/ "intro.txt"; 
                            WINDOWS_FILES_DIR +/ "Makefile"; ]
    
-    FileUtils.mkdir(WORKSPACE +/ "tmp")
+    
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)
     FileUtils.cp_r ("c:\\R64\\Tcl") (WORKSPACE +/ "R-" + R_VERSION +/ "Tcl")
     FileUtils.cp (COMMON_FILES_DIR +/ "Rprofile.site") (gnuWin32Dir +/ "fixed" +/ "etc")
@@ -297,7 +342,7 @@ Target "Build_Windows" (fun _ ->
     for file in installerFiles do
         FileUtils.cp file installerDir
 
-    
+    RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirs --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
 
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
@@ -320,6 +365,18 @@ Target "Build_Windows" (fun _ ->
         Fake.ArchiveHelper.Zip.Extract target source
         FileUtils.rm_rf ( rDir +/ "library" +/ package.Value("name") +/ "libs" +/ "i386" )
         extraBinaryPackageList <- extraBinaryPackageList + " " + package.Value("name")
+
+    //Remove foreach and iterators
+    if directoryExists ( rDir +/ "library" +/ "foreach" ) then
+        FileUtils.rm_rf ( rDir +/ "library" +/ "foreach" )
+        ReplaceInFiles [ ("foreach ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
+    if directoryExists ( rDir +/ "library" +/ "iterators" ) then
+        FileUtils.rm_rf ( rDir +/ "library" +/ "iterators" )
+        ReplaceInFiles [ ("iterators ", "") ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ]
+
+    if directoryExists ( rDir +/ "library" +/ "RevoIOQ" ) then
+        let file = System.IO.File.Create( rDir +/ "library" +/ "RevoIOQ" +/ "unitTests" +/ "R" +/ "windows" +/ "win")
+        file.Dispose();
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))

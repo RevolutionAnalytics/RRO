@@ -49,17 +49,12 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
-if test "${CHECK_ALL}" = "YES"
-    then
-    make check-all
-fi
-make info
 
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-make DESTDIR=${RPM_BUILD_ROOT} install
+make install
 pushd ${RPM_BUILD_ROOT}/%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/lib
 cp /usr/local/lib64/libstdc++.so.6.0.10 .
 ln -s libstdc++.so.6.0.10 libstdc++.so.6 
@@ -76,30 +71,25 @@ cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 
+
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
-        if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
-        else
-            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
-        fi
+        %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
     done
     popd
-	if grep -q "release 5" /etc/redhat-release; then
-	    pushd /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
-	else
-	    pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
-	fi
-	if [ -d "foreach" ]; then
-	    rm -rf foreach
-	fi
-	if [ -d "iterators" ]; then
-	    rm -rf iterators
-	fi
-	popd
+    pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+
+    if [ -d "foreach" ]; then
+        rm -rf foreach
+    fi
+    if [ -d "iterators" ]; then
+        rm -rf iterators
+    fi
+    popd
 fi
+
 
 %post
 if test "${RPM_INSTALL_PREFIX0}" = ""; then
@@ -125,6 +115,7 @@ rm -f /usr/bin/Rscript
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
+%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript

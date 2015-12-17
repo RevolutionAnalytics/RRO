@@ -9,7 +9,7 @@ parallel centos_build: {
         sh './build.sh'
     }
 },
-parallel sles11_build: {
+sles11_build: {
     node('suse11') {
         checkout([$class: 'GitSCM', 
                   branches: [[name: '*/dev']],

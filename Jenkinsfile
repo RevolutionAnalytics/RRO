@@ -9,6 +9,17 @@ parallel centos_build: {
         sh './build.sh'
     }
 },
+centos5_build: {
+    node('centos5') {
+        checkout([$class: 'GitSCM', 
+                  branches: [[name: '*/dev']],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [], 
+                  submoduleCfg: [], 
+                  userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
+        sh './build.sh'
+    }
+},
 sles11_build: {
     node('suse11') {
         checkout([$class: 'GitSCM', 

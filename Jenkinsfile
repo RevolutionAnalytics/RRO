@@ -19,6 +19,7 @@ centos5_build: {
                   submoduleCfg: [], 
                   userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh './build.sh'
+        step([$class: 'ArtifactArchiver', artifacts: '**/*.rpm', fingerprint: true])
     }
 },
 sles11_build: {
@@ -30,6 +31,7 @@ sles11_build: {
                   submoduleCfg: [], 
                   userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh './build.sh'
+        step([$class: 'ArtifactArchiver', artifacts: '**/*.rpm', fingerprint: true])
     }
 },
 mac_build: {
@@ -41,5 +43,6 @@ mac_build: {
                 submoduleCfg: [], 
                 userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh 'pushd RRO-src/OSX && ./build-OSX.sh'
+        step([$class: 'ArtifactArchiver', artifacts: '**/*.pkg', fingerprint: true])
     }   
 }

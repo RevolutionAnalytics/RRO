@@ -7,6 +7,7 @@ parallel centos_build: {
                   submoduleCfg: [], 
                   userRemoteConfigs: [[url: 'git://github.com/RevolutionAnalytics/RRO.git']]])
         sh './build.sh'
+        step([$class: 'ArtifactArchiver', artifacts: '**/*.rpm', fingerprint: true])
     }
 },
 centos5_build: {

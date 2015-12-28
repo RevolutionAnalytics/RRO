@@ -43,7 +43,7 @@ make -j8
 # %find_lang %{name}
 rm -f %{buildroot}/%{_infodir}/dir
 
-cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib/R/etc
+cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib64/R/etc
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
 cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}
@@ -51,9 +51,9 @@ cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     for filename in :::EXTRA_PKGS:::; do
-            %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
+            %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL /tmp/rro_extra_pkgs/${filename}
     done
-	pushd %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/%libnn/R/library
+	pushd %{buildroot}%{_libdir}/:::RPM_NAME:::-%{DIR_VERSION}/R-%{version}/lib64/R/library
 	if [ -d "foreach" ]; then
 	    rm -rf foreach
 	fi

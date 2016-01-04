@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+
+while ($fn=shift) {
+    if ($fn eq '-i') { $ignore_oid=1; $fn=shift; }
+    open IN, "$fn";
+    open INN, "new/$fn";
+    open OUT, ">$fn.new";
+    while ($a = <INN>) {
+	$b = <IN>;
+	$an = $a; $an =~ s/oid:\d+/oid:/;
+	$bn = $b; $bn =~ s/oid:\d+/oid:/;
+	if ($an ne $bn) {
+	    if ($an =~ /^\/\* /) {
+		while ($an ne $bn) {
+		    print OUT $a;
+		    last if (!($a = <INN>));
+		    $an = $a; $an =~ s/oid:\d+/oid:/;
+		}
+		print OUT $a;
+	    } else {
+		if ($an =~ /\"(.*?)\" = \"(.*?)\"/) {
+		    $h=$1;
+		    if ($bn =~ /\"(.*?)\" = \"(.*?)\"/) {
+			if ($h eq $1) {
+			    print OUT $b;
+			} else {
+			    print STDERR "** [$fn] WARNING - different head mismatch, taking A:\nA: ${a}B: $b";
+			    print OUT $a;
+			}
+		    }
+		} else {
+		    print STDERR "** [$fn] WARNING - unknown mismatch, taking A:\nA: $an", "B: $bn";
+		    print OUT $a;
+		}
+	    }
+	} else {
+	    if ($ignore_oid) {
+		print OUT $b;
+	    } else {
+		print OUT $a;
+	    }
+	}
+    }
+    close IN;
+    close INN;
+}

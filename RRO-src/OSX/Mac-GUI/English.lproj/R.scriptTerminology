@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Classes</key>
+	<dict>
+		<key>NSApplication</key>
+		<dict>
+			<key>Description</key>
+			<string>R's top level scripting object.</string>
+			<key>Name</key>
+			<string>application</string>
+			<key>PluralName</key>
+			<string>applications</string>
+		</dict>
+	</dict>
+	<key>Commands</key>
+	<dict>
+		<key>Rcmd</key>
+		<dict>
+			<key>Description</key>
+			<string>Send a command to R</string>
+			<key>Name</key>
+			<string>cmd</string>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Description</key>
+				<string>the text to be sent to R</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Commands and classes for R Scripting</string>
+	<key>Name</key>
+	<string>R</string>
+</dict>
+</plist>

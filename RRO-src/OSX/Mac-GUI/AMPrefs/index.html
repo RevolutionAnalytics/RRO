@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+
+	<title>AMPreferencePane Classes Documentation</title>
+
+	<!-- to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp -->
+	<script type="text/javascript"></script>
+	
+	<style type="text/css" media="all">
+		@import "default.css";
+	</style>
+</head>
+<body>
+
+<h1 class="title">AMPreferencePane Classes Documentation</h1>
+<p class="subtitle"><a href="http://www.harmless.de/cocoa.html">http://www.harmless.de/cocoa.html</a></p>
+
+<div id="index">
+<h1>Index</h1>
+<p><a href="#intro">Introduction</a></p>
+<p><a href="#window">Creating a Preferences Window</a></p>
+<p><a href="#pane">Writing a Preference Pane</a></p>
+<p><a href="#plugin">Writing a Preference Plug-In</a></p>
+<p><a href="#controller">AMPreferenceWindowController Reference</a></p>
+<p><a href="#protocol">AMPrefPaneProtocol Reference</a></p>
+</div>
+
+
+<a name="intro"></a>
+<div class="section">
+<h1>Introduction</h1>
+<p>This set of classes and protocols is used to build, organise and display preference panes. The preferences window allows the same kind of display and sorting of panes as Apple's System Preferences. Preference panes may be build in to the application or provided as loadable bundles.</p>
+<p>
+If &ndash; after reading this documentation and looking at the provided sample source code &ndash; you have any other questions about these classes, send mail to <a href="mailto:andreas@harmless.de">andreas@harmless.de</a>.
+</p>
+<div class="subsection">
+<h2>Legalese</h2>
+<p>You are allowed to use the source code provided under the following conditions:</p>
+<ul>
+	<li>If you redistribute the code or substantial parts of it, you need to include this documentation. Any modifications need to be clearly marked as yours.</li>
+	<li>If you use this code or parts of it in your application, you need to give me credit in the application's About Window and in the documentation.</li>
+</ul>
+<p>In case these requirements are inconvenient to you, <a href="mailto:andreas@harmless.de">tell me</a> and we will find a solution.</p>
+</div>
+</div>
+
+
+<a name="window"></a>
+<div class="section">
+<h1>Creating a Preferences Window</h1>
+<p>Creating a Preferences Window is simply a matter of creating an instance of AMPreferenceWindowController:</p>
+<p class="code">AMPreferenceWindowController *controller = [[AMPreferenceWindowController alloc] initWithAutosaveName:@"PreferenceWindow"];</p>
+<p>After you added preference panes and set some options the preference window is displayed using:</p>
+<p class="code">[controller showWindow:self];<br />
+	[[controller window] makeKeyAndOrderFront:self];</p>
+<p>For more options see the <a href="#controller">AMPreferenceWindowController Reference</a>.</p>
+</div>
+
+
+<a name="pane"></a>
+<div class="section">
+<h1>Writing a Preference Pane</h1>
+<p>To build a preference pane you create a new class that conforms to the <a href="#protocol">AMPrefPaneProtocol</a>:</p>
+<p class="code">
+@interface MyPreferencePane : NSObject &lt;AMPrefPaneProtocol&gt; {<br />
+}<br />
+- (NSString *)identifier;<br />
+- (NSView *)mainView;<br />
+- (NSString *)label;<br />
+- (NSImage *)icon;<br />
+- (NSString *)category;<br />
+@end
+</p>
+<p>After you created an instance of this class, you add the preference pane to the preference window controller:</p>
+<p class="code">
+MyPreferencePane *myPreferencePane = [[[MyPreferencePane alloc] init] autorelease];<br />
+[controller addPane:myPreferencePane withIdentifier:@"myPrefPaneIdentifier"];
+</p>
+<p>The identifier is just a unique string that is used to distinguish between multiple panes.</p>
+<p>For more information see the <a href="#protocol">AMPrefPaneProtocol Reference</a>.</p>
+</div>
+
+<a name="plugin"></a>
+<div class="section">
+<h1>Writing a Preference Plug-In</h1>
+<p>When creating a new project for a preference plug-in, select <em>Cocoa Bundle</em> in Xcode's Project Assistant window. </p>
+<p>A preference plug-in needs to conform to the <a href="#protocol">AMPrefPaneBundleProtocol</a>:</p>
+<p class="code">
+@interface MyPreferencePlugin : NSObject &lt;AMPrefPaneBundleProtocol&gt; {<br />
+}<br />
+- (id)initWithBundle:(NSBundle *)theBundle;<br />
+- (NSBundle *)bundle;<br />
+- (NSView *)loadMainView;<br />
+- (NSView *)mainView;<br />
+@end
+</p>
+</p>
+<p>For the preference pane to appear in your preferences window you have to tell the controller where to load the plug-ins from. In this example we assume that they reside inside the application bundle's default plug-in folder:</p>
+<p class="code">
+[controller addPluginsOfType:nil fromPath:[[NSBundle mainBundle] builtInPlugInsPath]];
+</p>
+<p>The preferences window controller will only load a preference pane bundle if it is actually selected by the user. General information like the name and the icon of the preference pane is loaded separately from the bundle. For that reason the bundle's info.plist needs to contain some additional keys:</p>
+<p class="code">
+	&lt;key&gt;NSPrefPaneIconFile&lt;/key&gt;<br />
+	&lt;string&gt;IconFileName&lt;/string&gt;<br />
+	<br />
+	&lt;key&gt;NSPrefPaneIconLabel&lt;/key&gt;<br />
+	&lt;string&gt;Pref Pane Label&lt;/string&gt;<br />
+	<br />
+	&lt;key&gt;AMPrefPaneCategory&lt;/key&gt;<br />
+	&lt;string&gt;Pref Pane Category&lt;/string&gt;<br />
+</p>
+<p>Note that you will also need the standard keys for bundles:</p>
+<p class="code">
+	&lt;key&gt;CFBundleIdentifier&lt;/key&gt;<br />
+	&lt;string&gt;DoublesAsPrefPaneIdentifier&lt;/string&gt;<br />
+	<br />
+	&lt;key&gt;NSPrincipalClass&lt;/key&gt;<br />
+	&lt;string&gt;MyPreferencePlugin&lt;/string&gt;<br />
+	<br />
+	&lt;key&gt;NSMainNibFile&lt;/key&gt;<br />
+	&lt;string&gt;PrefPaneNib&lt;/string&gt;<br />
+</p>
+<p>You'll find more information in the <a href="#protocol">AMPrefPaneProtocol Reference</a>.</p>
+</div>
+
+<a name="controller"></a>
+<div class="section">
+<h1>AMPreferenceWindowController Reference</h1>
+<p>
+	The preferences window controller is reponsible for handling preference panes, loading plug-ins and displaying the preferences window. 
+</p>
+<p class="declaration">
+- (id)initWithAutosaveName:(NSString *)name;
+</p>
+<p class="abstract">
+	designated initializer
+</p>
+<p class="discussion">
+	<span class="identifier">name</span> is an identifier used to save the window's position in the standard user defaults database.
+</p>
+
+<p class="declaration">
+- (id)delegate;
+</p>
+<p class="abstract">
+	the objects delegate
+</p>
+
+<p class="declaration">
+- (void)setDelegate:(id)newDelegate;
+</p>
+<p class="abstract">
+	sets the objects delegate
+</p>
+<p class="discussion">
+	see the <a href="#delegate">AMPrefPaneDelegate informal protocol</a> for more information
+</p>
+
+<p class="declaration">
+- (BOOL)usesConfigurationPane;
+</p>
+<p class="abstract">
+	tells wether the user will be able to display a configuration pane
+</p>
+
+<p class="declaration">
+- (void)setUsesConfigurationPane:(BOOL)newUsesConfigurationPane;
+</p>
+<p class="abstract">
+	sets wether the user will be able to display a configuration pane
+</p>
+<p class="discussion">A configuration pane shows all preference panes sorted by name or by category. Enabling this option also allows reordering of selected panes in the preference window's toolbar.
+</p>
+<p class="discussion">
+	Needs to be set before actually showing the prefs window.
+</p>
+
+<p class="declaration">
+- (BOOL)sortByCategory;
+</p>
+<p class="abstract">
+	<span class="identifier">YES</span> if preference panes will be sorted by category, <span class="identifier">NO</span> else
+</p>
+
+<p class="declaration">
+- (void)setSortByCategory:(BOOL)newSortByCategory;
+</p>
+<p class="abstract">
+	Pass <span class="identifier">YES</span> as parameter if preference panes should be sorted by category, <span class="identifier">NO</span> else.
+</p>
+
+<p class="declaration">
+- (NSArray *)categorySortOrder;
+</p>
+<p class="abstract">
+	A sorted list of categories.
+</p>
+
+<p class="declaration">
+- (void)setCategorySortOrder:(NSArray *)newCategorySortOrder;
+</p>
+<p class="abstract">
+	Categories will be sorted according to the contents of this array. 
+</p>
+<p class="discussion">
+	If no sort order is given, categories will be sorted by alphabet. Also any categories not included in the sort order will be appended in alphabetical order.
+</p>
+
+<p class="declaration">
+- (NSString *)title;
+</p>
+<p class="abstract">
+	The preferences window's title.
+</p>
+
+<p class="declaration">
+- (void)setTitle:(NSString *)newTitle;
+</p>
+<p class="abstract">
+	Specify a title for the preferences window.
+</p>
+
+<p class="declaration">
+- (BOOL)addPane:(AMPreferencePane *)newPane withIdentifier:(NSString *)identifier;
+</p>
+<p class="abstract">
+	Add a single preference pane to the preferences window.
+</p>
+<p class="discussion">
+	Preference panes need to conform to the <a href="#protocol">AMPrefPaneProtocol</a>.
+</p><p class="discussion">
+	See <a href="#pane">Writing a Preference Pane</a>.
+</p>
+
+<p class="declaration">
+- (void)addPluginFromPath:(NSString *)path;
+</p>
+<p class="abstract">
+	Load a single preference pane plug-in.
+</p>
+<p class="discussion">
+	You will normally want to load all plug-ins from inside a given folder. See <a href="#addPluginsOfType:fromPath:">addPluginsOfType:fromPath:</a>
+</p>
+
+<a name="addPluginsOfType:fromPath:"></a>
+<p class="declaration">
+- (void)addPluginsOfType:(NSString *)extension fromPath:(NSString *)path;
+</p>
+<p class="abstract">
+	Load all plug-ins from <span class="identifier">path</span> with extension <span class="identifier">extension</span>.
+</p>
+<p class="discussion">
+	If you do not require a special type, pass <span class="identifier">nil</span> as pluginType (see NSBundle's pathForResource:ofType:).
+</p>
+
+<p class="declaration">
+- (BOOL)selectPaneWithIdentifier:(NSString *)identifier;
+</p>
+<p class="abstract">
+	Use this method to select a specific pane programatically.
+</p>
+<p class="discussion">
+	Returns <span class="identifier">YES</span> if pane was selected successfully.
+</p>
+
+<p class="declaration">
+- (BOOL)selectIconViewPane;
+</p>
+<p class="abstract">
+	Select the icon view pane.
+</p>
+<p class="discussion">
+	Returns <span class="identifier">YES</span> if pane was selected successfully.
+</p>
+
+<p class="declaration">
+- (void)replyToShouldUnselect:(BOOL)shouldUnselect;
+</p>
+<p class="abstract">
+	not used
+</p>
+
+<p class="declaration">
+- (NSDictionary *)prefPanes;
+</p>
+<p class="abstract">
+	A dictionary of all available preference panes.
+</p>
+<p class="discussion">
+	The key is the preference pane's identifier. The object is known to implement the <a href="#protocol">AMPrefPaneProtocol</a>.
+</p>
+
+<p class="declaration">
+- (NSString *)categoryForIdentifier:(NSString *)identifier;
+</p>
+<p class="abstract">
+	The category the preference pane with identifier <span class="identifier">identifier</span> belongs to.
+</p>
+<p class="discussion">
+	This value may have been changed by the controller's delegate. See the <a href="#delegate">AMPrefPaneDelegate informal protocol</a>.
+</p>
+<p class="declaration">
+- (NSArray *)categories;
+</p>
+<p class="abstract">
+	a list of all known categories.
+</p>
+
+<p class="declaration">
+- (NSString *)categoryDisplayNameForIdentifier:(NSString *)identifier;
+</p>
+<p class="abstract">
+	The localized display name for the category of preference pane <span class="identifier">identifier</span>.
+</p>
+<p class="discussion">
+	This value may have been changed by the controller's delegate. See the <a href="#delegate">AMPrefPaneDelegate informal protocol</a>.
+</p>
+
+
+<a name="delegate"></a>
+<div class="subsection">
+<h2>AMPrefPaneDelegate informal protocol</h2>
+<p>
+All delegate methods are optional. (As is the delegate itself.) 
+</p>
+
+<p class="declaration">
+- (NSString *)displayNameForCategory:(NSString *)category;
+</p>
+<p class="abstract">
+Return a localized display name for <span class="identifier">category</span>.
+</p>
+
+<p class="declaration">
+- (NSString *)categoryForPreferencePane:(NSString *)identifier defaultCategory:(NSString *)category;
+</p>
+<p class="abstract">
+	By implementing this method, the delegate has control over the association of preference panes to categories. 
+</p>
+<p class="discussion">
+	Return the value passed as <span class="identifier">defaultCategory</span> if you want to use the category supplied by the preference pane.
+</p>
+
+<p class="declaration">
+- (BOOL)shouldLoadPreferencePane:(NSString *)identifier;
+</p>
+<p class="abstract">
+	Return <span class="identifier">YES</span> if the preference pane with the given identifier should be loaded.
+</p>
+
+<p class="declaration">
+- (void)willSelectPreferencePane:(NSString *)identifier;
+</p>
+<p class="abstract">
+	Informs the delegate that the preference pane with the identifier <span class="identifier">identifier</span> has been selected and will be displayed in the preferences window.
+</p>
+
+<p class="declaration">
+- (void)didUnselectPreferencePane:(NSString *)identifier;
+</p>
+<p class="abstract">
+	Informs the delegate that the preference pane with the identifier <span class="identifier">identifier</span> has been deselected.
+</p>
+
+</div>
+</div>
+
+<a name="protocol"></a>
+<div class="section">
+<h1>AMPrefPaneProtocol Reference</h1>
+<div class="subsection">
+<h2>AMPrefPaneProtocol</h2>
+<p>This protocol is mandatory for all preference panes.</p>
+<p>Plug-Ins are handled by the preferences window controller and will conform to this protocol automatically. They need to implement the <a href="#bundleprotocol">AMPrefPaneBundleProtocol</a> instead.</p>
+
+<p class="declaration">
+- (NSString *)identifier;
+</p>
+<p class="abstract">
+	The preference pane's unique identifier.
+</p>
+
+<p class="declaration">
+- (NSView *)mainView;
+</p>
+<p class="abstract">
+	The preference pane's main view.
+</p>
+<p class="discussion">
+	The preferences window will automatically be resized to encompass this view when the preference pane is selected.
+</p>
+
+<p class="declaration">
+- (NSString *)label;
+</p>
+<p class="abstract">
+	A localized label for the preference pane.
+</p>
+
+<p class="declaration">
+- (NSImage *)icon;
+</p>
+<p class="abstract">
+	An icon for display in the preferences window.
+</p>
+
+<p class="declaration">
+- (NSString *)category;
+</p>
+<p class="abstract">
+	The category the preference pane belongs to.
+</p>
+<p class="discussion">
+	The category is used to sort the preference panes in the preferences window. Valid values are depending on the application.
+</p>
+
+</div>
+
+<a name="bundleprotocol"></a>
+<div class="subsection">
+<h2>AMPrefPaneBundleProtocol</h2>
+<p>This is the protocol preference pane plug-ins have to conform to.</p> 
+
+<p class="declaration">
+- (id)initWithBundle:(NSBundle *)theBundle;
+</p>
+<p class="abstract">
+	Called when the bundle is loaded.
+</p>
+<p class="discussion">
+	You may want to store the bundle reference for later use.
+</p>
+
+<p class="declaration">
+- (NSBundle *)bundle;
+</p>
+<p class="abstract">
+	The plug-in's bundle.
+</p>
+
+<p class="declaration">
+- (NSView *)loadMainView;
+</p>
+<p class="abstract">
+	This is gueranteed to be called before the main view is used for the first time.
+</p>
+
+<p class="declaration">
+- (NSView *)mainView;
+</p>
+<p class="abstract">
+	The main view.
+</p>
+
+</div>
+
+<div class="subsection">
+<h2>AMPrefPaneInformalProtocol</h2>
+<p>These are optional methods that any preference pane class &ndash; plug-in or not &ndash; may implement.</p> 
+
+<p class="declaration">
+- (void)willSelect;
+</p>
+<p class="abstract">
+	The preference pane has been selected and will be shown after this call. 
+</p>
+
+<p class="declaration">
+- (void)didSelect;
+</p>
+<p class="abstract">
+	The preference pane has been selected and displayed. 
+</p>
+
+<p class="declaration">
+- (int)shouldUnselect;
+</p>
+<p class="abstract">
+	The preferences window controller wants to show a different preference pane or close the window.
+</p>
+<p class="discussion">
+	Result should be of type NSPreferencePaneUnselectReply.
+</p>
+<p class="discussion">
+	Not used at this time.
+</p>
+
+<p class="declaration">
+- (void)willUnselect;
+</p>
+<p class="abstract">
+	The preference pane has been unselected and will be hidden after this call.  
+</p>
+
+<p class="declaration">
+- (void)didUnselect;
+</p>
+<p class="abstract">
+	The preference pane has been unselected and hidden.  
+</p>
+
+<p class="declaration">
+- (NSString *)categoryDisplayName;
+</p>
+<p class="abstract">
+	The localized category name.
+</p>
+
+<p class="declaration">
+- (NSString *)version;
+</p>
+<p class="abstract">
+	Version information - e.g. "1.0"
+</p>
+<p class="discussion">
+	This is not used by default. Applications may choose to use this information for their own purposes.
+</p>
+
+</div>
+</div>
+
+</body>
+</html>

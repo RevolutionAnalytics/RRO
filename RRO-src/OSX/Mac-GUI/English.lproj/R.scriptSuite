@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleEventCode</key>
+	<string>0FFF</string>
+	<key>Classes</key>
+	<dict>
+		<key>NSApplication</key>
+		<dict>
+			<key>AppleEventCode</key>
+			<string>capp</string>
+			<key>Superclass</key>
+			<string>NSCoreSuite.NSApplication</string>
+			<key>SupportedCommands</key>
+			<dict>
+				<key>Rcmd</key>
+				<string>handleDCMDCommand:</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>Commands</key>
+	<dict>
+		<key>Rcmd</key>
+		<dict>
+			<key>AppleEventClassCode</key>
+			<string>DCMD</string>
+			<key>AppleEventCode</key>
+			<string>DCMD</string>
+			<key>CommandClass</key>
+			<string>NSScriptCommand</string>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Type</key>
+				<string>NSString</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>Name</key>
+	<string>R</string>
+	<key>UsedFeatures</key>
+	<array>
+		<string>UnnamedArguments</string>
+	</array>
+</dict>
+</plist>

@@ -15,9 +15,9 @@ BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: xorg-x11-libSM-devel, xorg-x11-libX11-devel, xorg-x11-libICE-devel, 
 BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
 BuildRequires: cairo-devel, ncurses-devel
-Requires: libpng, libjpeg, readline, cairo-devel, libgfortran43
+Requires: libpng, libjpeg, readline, cairo, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
-Requires: gcc, make, gcc-fortran, gcc-c++, curl
+Requires: gcc, make, gcc-fortran, gcc-c++, curl, zip
 AutoReqProv: Yes
 
 %define libnn lib64
@@ -49,30 +49,34 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
-if test "${CHECK_ALL}" = "YES"
-    then
-    make check-all
-fi
-make info
 
 %install
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-make DESTDIR=${RPM_BUILD_ROOT} install
-rm -f %{buildroot}/%{_infodir}/dir
-rm -rf %{buildroot}/lib
+make install
+
 cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/etc
+cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
+cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+
+
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
     pushd /tmp/rro_extra_pkgs
     for filename in :::EXTRA_PKGS:::; do
-        if grep -q "release 5" /etc/redhat-release; then
-            /usr/lib64/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla CMD INSTALL ${filename}
-        else
-            %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
-        fi
+        %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/bin/R --vanilla --install-tests CMD INSTALL ${filename}
     done
+    popd
+    pushd %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/lib64/R/library
+
+    if [ -d "foreach" ]; then
+        rm -rf foreach
+    fi
+    if [ -d "iterators" ]; then
+        rm -rf iterators
+    fi
     popd
 fi
 
@@ -104,6 +108,9 @@ fi
 %files
 %defattr(-, root, root)
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
+%{_libdir}/%{name}-%{DIR_VERSION}/README.txt
+%{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
+%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript

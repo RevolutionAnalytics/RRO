@@ -1,0 +1,102 @@
+/* Entry = "130.title"; Class = "NSTextFieldCell" */
+"(was default in RAqua)" = "(RAquaのデフォルト)";
+
+/* Entry = "139.title"; Class = "NSTextFieldCell" */
+".Rhistory" = ".Rhistory";
+
+/* Entry = "144.title"; Class = "NSTextFieldCell" */
+"250" = "250";
+
+/* Entry = "129.title"; Class = "NSButtonCell" */
+"Add ~/Library/R…" = "~/Library/R… を追加";
+
+/* Entry = "136.title"; Class = "NSButtonCell" */
+"Always apply" = "常に適用";
+
+/* Entry = "123.title"; Class = "NSButtonCell" */
+"Ask" = "毎回確認する";
+
+/* Entry = "133.title"; Class = "NSButtonCell" */
+"Change" = "変更";
+
+/* Entry = "145.title"; Class = "NSButtonCell" */
+"Cleanup history entries" = "履歴を消去";
+
+/* Entry = "138.title"; Class = "NSButtonCell" */
+"Default" = "デフォルト";
+
+/* Entry = "106.title"; Class = "NSBox" */
+"Default CRAN mirror" = "デフォルトのCRANミラー";
+
+/* Entry = "23.title"; Class = "NSBox" */
+"Default Library Paths" = "デフォルトのライブラリパス";
+
+/* Entry = "132.title"; Class = "NSTextFieldCell" */
+"Directory:" = "ディレクトリ:";
+
+/* Entry = "17.title"; Class = "NSBox" */
+"Drag & drop action during R start-up" = "R起動中のドラッグ&ドロップ動作";
+
+/* Entry = "44.title"; Class = "NSBox" */
+"History" = "履歴";
+
+/* Entry = "34.title"; Class = "NSBox" */
+"Initial working directory" = "初期作業ディレクトリ";
+
+/* Entry = "143.title"; Class = "NSTextFieldCell" */
+"Max number of entries in history:" = "履歴の最大数:";
+
+/* Entry = "124.title"; Class = "NSButtonCell" */
+"No" = "いいえ";
+
+/* Entry = "135.title"; Class = "NSTextFieldCell" */
+"Note: Enforce by selecting 'Always apply'. Otherwise used to set the working directory if not specified when R.app is started, e.g. double clicking the R icon. Drag & drop of a file or a directory on the R icon or using 'open -a R.app <dir-or-file>' will override this setting if not enforced." = "注: '常に適用'を選択するとこの値が常に強制されます. そうでない場合は, R.app の起動時に明示的に指定されていない場合(RアプリアイコンをダブルクリックしてRを起動した場合など)にこの値が使われます. すなわち, Rアプリアイコンにファイルやディレクトリをドラッグ&ドロップして起動したり, 'open -a R.app <ディレクトリやファイル>'としてRを起動した場合はこの値は使われません. ";
+
+/* Entry = "131.title"; Class = "NSTextFieldCell" */
+"Note: This change is effective only after a restart of R.app" = "注: 変更はR.appを再起動した後に有効になります";
+
+/* Entry = "141.title"; Class = "NSTextFieldCell" */
+"Note: Use a fixed path to always use the same history file, e.g. ~/.Rhistory" = "注: 常に同じ履歴ファイルを使いたい場合は, 固定パスを指定して下さい. ( ~/.Rhistory など )";
+
+/* Entry = "18.title"; Class = "NSButtonCell" */
+"Open file in editor" = "エディタでファイルを開く";
+
+/* Entry = "137.title"; Class = "NSTextFieldCell" */
+"R history file:" = "R履歴ファイル:";
+
+/* Entry = "150.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "151.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "140.title"; Class = "NSButtonCell" */
+"Read history file on startup" = "起動時に履歴ファイルを読み込む";
+
+/* Entry = "142.title"; Class = "NSButtonCell" */
+"Remove duplicate entries in history" = "履歴中の重複を除去";
+
+/* Entry = "115.title"; Class = "NSBox" */
+"Save workspace on exit from R" = "Rの終了時にワークスペースを保存";
+
+/* Entry = "149.title"; Class = "NSButtonCell" */
+"Select" = "選択";
+
+/* Entry = "19.title"; Class = "NSButtonCell" */
+"Source input file" = "ソースとして読み込む";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Strip comments in history entries" = "履歴中のコメントを除去";
+
+/* Entry = "108.gToolTip"; Class = "NSTextField" */
+"URL for the default CRAN URL. If left empty, the user will be prompted." = "デフォルトとして使われるCRANのURLです. 空白の場合はユーザに質問します.";
+
+/* Entry = "148.title"; Class = "NSTextFieldCell" */
+"URL:" = "URL:";
+
+/* Entry = "125.title"; Class = "NSButtonCell" */
+"Yes" = "はい";
+
+/* Entry = "134.title"; Class = "NSTextFieldCell" */
+"~" = "~";
+

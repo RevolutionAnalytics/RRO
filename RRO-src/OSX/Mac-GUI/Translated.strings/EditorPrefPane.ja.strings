@@ -1,0 +1,78 @@
+/* Entry = "150.title"; Class = "NSTextFieldCell" */
+"0.2" = "0.2";
+
+/* Entry = "49.title"; Class = "NSButtonCell" */
+"Application" = "アプリケーション";
+
+/* Entry = "229.title"; Class = "NSButtonCell" */
+"Auto-save documents" = "文書を自動的に保存する";
+
+/* Entry = "181.title"; Class = "NSBox" */
+"Box" = "Box";
+
+/* Entry = "96.title"; Class = "NSButtonCell" */
+"Built-in editor" = "内蔵エディタ";
+
+/* Entry = "35.title"; Class = "NSBox" */
+"Built-in editor preferences" = "内蔵エディタの設定";
+
+/* Entry = "47.title"; Class = "NSButtonCell" */
+"Command" = "コマンド";
+
+/* Entry = "97.title"; Class = "NSButtonCell" */
+"External Editor" = "外部エディタ";
+
+/* Entry = "37.title"; Class = "NSBox" */
+"External editor settings" = "外部エディタの設定";
+
+/* Entry = "177.title"; Class = "NSTextFieldCell" */
+"Font:" = "フォント:";
+
+/* Entry = "147.title"; Class = "NSButtonCell" */
+"Highlight bracket pairs" = "対応する括弧をハイライト";
+
+/* Entry = "171.title"; Class = "NSButtonCell" */
+"Highlight current line" = "現在の行をハイライト";
+
+/* Entry = "149.title"; Class = "NSTextFieldCell" */
+"Highlight interval:" = "ハイライトの間隔:";
+
+/* Entry = "173.title"; Class = "NSButtonCell" */
+"Indent new lines" = "新しい行をインデント";
+
+/* Entry = "159.title"; Class = "NSButtonCell" */
+"Match brackets/quotes" = "括弧/引用符の対応表示";
+
+/* Entry = "161.title"; Class = "NSTextFieldCell" */
+"Note:\nCommand is executed in a shell" = "注:\nコマンドはシェル内で実行されます";
+
+/* Entry = "165.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "164.title"; Class = "NSButtonCell" */
+"Radio" = "Radio";
+
+/* Entry = "179.title"; Class = "NSButtonCell" */
+"Select…" = "選択…";
+
+/* Entry = "162.title"; Class = "NSButtonCell" */
+"Set Editor" = "エディタを設定";
+
+/* Entry = "158.title"; Class = "NSButtonCell" */
+"Show function hints" = "関数ヒントを表示";
+
+/* Entry = "148.title"; Class = "NSButtonCell" */
+"Show line numbers" = "行番号の表示";
+
+/* Entry = "146.title"; Class = "NSButtonCell" */
+"Show syntax coloring" = "構文を色分け";
+
+/* Entry = "163.title"; Class = "NSTextFieldCell" */
+"SubEthaEdit" = "SubEthaEdit";
+
+/* Entry = "153.title"; Class = "NSButtonCell" */
+"Wrap lines" = "行をラップする";
+
+/* Entry = "226.title"; Class = "NSTextFieldCell" */
+"s" = "s";
+

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+cwd=`pwd`
+echo " Cleaning old checkout ..."
+rm -rf Mac-GUI
+echo " Checking out Mac-GUI ..."
+svn co "$@" https://svn.r-project.org/R-packages/trunk/Mac-GUI
+echo " Replacing updateSVN ..."
+cd Mac-GUI
+REV=`svn info|sed -n 's/^Revision: //p'`
+sed "s:^SVNREV=.*:SVNREV=$REV:" updateSVN > updateSVN.tmp
+if [ -e updateSVN.tmp ]; then
+    chmod a+x updateSVN.tmp
+    mv updateSVN.tmp updateSVN
+fi
+echo " Removing .svn ..."
+GUIVER=`sed -n 's:.*R_GUI_VERSION_STR "\(.*\)".*:\1:p' RGUI.h`
+for i in `find . -name .svn`; do rm -rf $i; done
+cd ..
+echo " Packaging ..."
+tar fcz Mac-GUI-$GUIVER.tar.gz Mac-GUI
+rm -rf Mac-GUI
+ls -l Mac-GUI-$GUIVER.tar.gz

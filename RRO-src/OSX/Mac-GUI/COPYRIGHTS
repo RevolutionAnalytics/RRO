@@ -1,0 +1,28 @@
+GENERAL COPYRIGHT NOTES
+=======================
+
+Unless otherwise specified in the header of single files, everything in here is
+
+* R.APP:		Copyright (C) 2004-13  The R Foundation
+				written by  Stefano M. Iacus and Simon Urbanek
+
+
+
+SPECIFIC COPYRIGHT NOTES
+========================
+
+* RENGINE:
+	REngine.*	: Copyright (c) 2003-4 Simon Urbanek. All rights reserved.
+	RSEXP.*		: Copyright (c) 2003-4 Simon Urbanek. All rights reserved.	
+
+* AMPREFS:
+
+	AMPrefs/*.*	: Copyright (c) 2003 Andreas Mayer. All rights reserved.
+
+	Adreas, kindly write this not to us:
+	"I, Andreas Mayer, grant the R for Mac OS X project a license to redistribute my 
+	AMPreferencePane classes (<http://www.harmless.de/cocoa.html#prefpane>) along with 
+	the R.app source code, provided that my name is mentioned in the about box or 
+	documentation and that any documentation files within the AMPreferencePane 
+	classes package remain intact."
+

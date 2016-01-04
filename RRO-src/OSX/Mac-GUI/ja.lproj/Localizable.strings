@@ -1,0 +1,557 @@
+/* From: Quartz/QuartzDevice.m (setDefaultSyntaxColors) */
+"%@ - Active" = "%@ - アクティブ";
+
+/* From: Quartz/QuartzDevice.m (setDefaultSyntaxColors) */
+"%@ - Inactive" = "%@ - インアクティブ";
+
+/* From: RController.m (hintForFunction)
+   From: RDocumentWinCtrl.m (hintForFunction) */
+"(arguments lookup is disabled while R is busy)" = "(引数検索はRがビジーの間は無効になります)";
+
+/* From: RController.m (showWorkingDir) */
+"<deleted>" = "<削除済み>";
+
+/* From: RDocumentWinCtrl.m (functionReset) */
+"<functions>" = "<関数>";
+
+/* From: RDocumentWinCtrl.m (functionReset) */
+"<sections>" = "<セクション>";
+
+/* From: SearchTable.m (show) */
+"<unknown>" = "<不明>";
+
+/* From: RController.m (applicationDidFinishLaunching) */
+"[History restored from " = "[履歴が次のファイルから読み込まれました ";
+
+/* From: RController.m (application)
+   From: RController.m (applicationDidFinishLaunching) */
+"[Workspace restored from " = "[ワークスペースが次のファイルから読み込まれました ";
+
+/* Add column - label for a toolbar, keep short! */
+"Add Col" = "列追加";
+
+/* From: REditor.m (toolbar) */
+"Add Column" = "列を追加";
+
+/* From: REditor.m (toolbar) */
+"Add New Row" = "新しい行を追加";
+
+/* Add row - label for a toolbar, keep short! */
+"Add Row" = "行を追加";
+
+/* From: REditor.m (toolbar) */
+"Adds a new column to the right of a group of selected columns or just at the end of the data. The new column type complies with that column left of it.\n\n(%@)\tAdd column of type ‘CHARACTER’\n(%@)\tAdd column of type ‘NUMERIC’" = "選択された列の右端もしくはデータの末尾に列を追加します。列の型はその左の列と同じになります。\n\n(%@)\t'CHARACTER'型の列を追加します\n(%@)\t'NUMERIC'型の列を追加します";
+
+/* From: REditor.m (toolbar) */
+"Adds a row below a group of selected rows or at the bottom of the data" = "選択中の行の下あるいはデータの最後に行を追加";
+
+/* From: RController.m (clearWorkSpace) */
+"All objects in the workspace will be removed. Are you sure you want to proceed?" = "ワークスペースのオブジェクトはすべて削除されます。続けてよろしいですか？";
+
+/* From: WSBrowser.m (remObject) */
+"Are you sure you want to remove object '%@' from the workspace? You cannot undo this action!" = "オブジェクト'%@'を本当に削除してよろしいですか？この操作は取り消しできません！";
+
+/* From: RController.m (toolbar) */
+"Authentication" = "認証";
+
+/* From: RController.m (toolbar) */
+"Authorize R to run system commands as root" = "root権限でシステムコマンドを実行するために認証を行う";
+
+/* From: HelpManager.m (showHelpFor) */
+"Can't find help for topic, would you like to expand the search?" = "ヘルプが見つかりませんでした。検索対象を拡大しますか？";
+
+/* From: RController.m (doLoadHistory) */
+"Can't open history file %@" = "履歴ファイル %@ を開けません";
+
+/* From: RController.m (didCloseAll) */
+"Cancel" = "キャンセル";
+
+/* Cancel Editing - label for a toolbar, keep short!
+   From: REditor.m (toolbar) */
+"Cancel Editing" = "編集をキャンセル";
+
+/* From: REditor.m (toolbar) */
+"Cancels object editing without passing data back to R and closes the editor window" = "オブジェクトの編集をキャンセルし、Rに変更内容を反映せずにウィンドウを閉じます";
+
+/* From: RDocumentWinCtrl.m (goHelpSearch) */
+"Cannot determine package for the topic." = "このトピックに関するパッケージを決定できません.";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Cannot start HTML help server." = "HTMLヘルプサーバを開始できません.";
+
+/* From: main.m (sheetDidEnd) */
+"Cannot start R" = "Rを起動できません";
+
+/* From: RController.m (toolbar) */
+"Change the size of R console font" = "コンソールのフォントサイズを変更";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Check Rd document…" = "Rdドキュメントをチェック…";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Check was successful." = "チェックは成功しました";
+
+/* From: RController.m (handleChooseFile)
+   From: RController.m (openDocument) */
+"Choose File" = "ファイルを選択";
+
+/* From: RController.m (doLoadHistory) */
+"Choose history File" = "履歴ファイルを選択";
+
+/* From: PrefPanes/MiscPrefPane.m (chooseWorkingDir) */
+"Choose Initial Working Directory" = "初期作業ディレクトリを選択";
+
+/* From: RController.m (handleChooseFile) */
+"Choose New File Name" = "新しいファイル名を選択";
+
+/* From: RController.m (setWorkingDir) */
+"Choose New Working Directory" = "新しい作業ディレクトリを選択";
+
+/* From: RController.m (clearWorkSpace) */
+"Clear Workspace" = "ワークスペースを消去";
+
+/* From: RController.m (didCloseAll) */
+"Closing R session" = "Rセッションを終了";
+
+/* From: RDocument.m (reinterpretInEncoding) */
+"Convertion Error" = "変換失敗";
+
+/* From: RDocument.m (reinterpretInEncoding) */
+"Couldn't reinterpret the text by using the encoding" = "テキストをこのエンコーディングで再読み込みできませんでした";
+
+/* From: RDocument.m (revertToContentsOfURL) */
+"Couldn't revert to saved document" = "保存された文書に戻すことができませんでした";
+
+/* From: RController.m (toolbar) */
+"Create a new, empty document in the editor" = "新しい空ファイルをエディタで開く";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Currently it is not possible to install binary packages from a remote repository as root.\nPlease use the CRAN binary of R to allow admin users to install system-wide packages without becoming root. Alternatively you can either use command-line version of R as root or install the packages from local files." = "現在のところ, リモートリポジトリからroot権限でバイナリパッケージをインストールすることはできません. \n管理者ユーザで, rootにならずにシステム全体向けのパッケージをインストールするためには, CRANのRバイナリを使用して下さい. あるいは, root権限でコマンドライン版のRを使ったり, ローカルファイルからパッケージをインストールする方法もあります. ";
+
+/* From: RChooseEncodingPopupAccessory.m (setupPopUpCell)
+   From: RController.m (updateReInterpretEncodingMenu) */
+"Customize List…" = "一覧を編集…";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"DATA_NAME" = "DATA_NAME";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Do you want me to remember the mirror you selected for future sessions?" = "以後のセッションのために選択されたミラーを記憶しますか?";
+
+/* From: RController.m (didCloseAll) */
+"Don't Save" = "保存しない";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit" = "編集";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit Object" = "オブジェクトを編集";
+
+/* From: WSBrowser.m (toolbar) */
+"Edit the selected object" = "選択されたオブジェクトを編集";
+
+/* From: REditor.m (startDataEntry) */
+"editing cancelled" = "編集をキャンセルしました";
+
+/* From: RDocumentController.m (encodingAccessory) */
+"Encoding" = "エンコーディング";
+
+/* From: RController.m (applicationDidFinishLaunching)
+   From: RController.m (windowDidExitFullScreen) */
+"Enter Full Screen" = "フルスクリーンにする";
+
+/* From: RController.m (sheetDidEnd)
+   From: RDocument.m (convertRd2PDF) */
+"Error" = "エラー";
+
+/* From: REngine/REngine.m (RKL_METHOD_PREPEND) */
+"executing" = "実行中";
+
+/* From: RController.m (applicationDidFinishLaunching)
+   From: RController.m (windowDidEnterFullScreen) */
+"Exit Full Screen" = "フルスクリーンを解除";
+
+/* From: PackageInstaller.m (reloadURL) */
+"Fetching Package List Failed" = "パッケージ一覧の読み込みに失敗しました";
+
+/* From: RController.m (toolbar) */
+"Font Size" = "フォントサイズ";
+
+/* From: RDocumentWinCtrl.m (tidyRCode) */
+"Formatting…" = "整形中…";
+
+/* From: RDocument.m (insertRdFunctionTemplate) */
+"FUNCTION_NAME" = "FUNCTION_NAME";
+
+/* From: REditorToolbar.m (updatePreferences) */
+"Functions" = "関数一覧";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Help" = "ヘルプ";
+
+/* From: RController.m (handleCustomPrint) */
+"Help for the topic \"%@\" was not found." = "トピック \"%@\" に関するヘルプは見つかりません.";
+
+/* From: RController.m (handleCustomPrint) */
+"Help topic not found" = "ヘルプトピックが見つかりません";
+
+/* From: RController.m (toolbar) */
+"History" = "履歴";
+
+/* From: PackageInstaller.m (setURL) */
+"Install Selected" = "選択をインストール";
+
+/* From: PackageInstaller.m (setURL) */
+"Install…" = "インストール...";
+
+/* From: RController.m (toolbar) */
+"Interrupt current R computation" = "実行中の処理を中断";
+
+/* From: PackageInstaller.m (reloadURL)
+   From: PackageInstaller.m (updateAll) */
+"Invalid Repository URL" = "リポジトリURLが不正です";
+
+/* From: RDocumentWinCtrl.m (functionReset)
+   From: REditorToolbar.m (updatePreferences) */
+"List of Functions" = "関数の一覧";
+
+/* From: RdEditorToolbar.m (textView)
+   From: RDocumentWinCtrl.m (functionReset) */
+"List of Sections" = "セクションの一覧";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Never" = "決してしない";
+
+/* From: RController.m (toolbar) */
+"New Document" = "新規文書";
+
+/* From: Quartz/RQuartz.m (changeDocumentTitle) */
+"New Quartz Device" = "新規Quartzデバイス";
+
+/* Global string @ */
+"No" = "いいえ";
+
+/* From: PackageInstaller.m (checkOptions) */
+"No CRAN Mirror Found" = "CRANミラーが見つかりません";
+
+/* From: PackageInstaller.m (installSelected) */
+"No packages selected, nothing to do." = "パッケージが選択されていないので, 何も実行しません.";
+
+/* From: PackageInstaller.m (checkOptions) */
+"No valid CRAN mirror was selected.\nYou won't be able to install any CRAN packages unless you set the CRAN option to a valid mirror URL." = "正しいCRANミラーが選択されていません.\nCRANオプションを正しいミラー先URLに設定しなければ, CRANパッケージをインストールすることはできません.";
+
+/* From: RDocument.m (displayName) */
+"Object Editor" = "オブジェクトエディタ";
+
+/* Global string @ */
+"OK" = "OK";
+
+/* From: DataManager.m (showHelp)
+   From: HelpManager.m (showHelpUsingFile)
+   From: PackageManager.m (showInfo)
+   From: RDocumentWinCtrl.m (goHelpSearch) */
+"Ok" = "Ok";
+
+/* From: RController.m (toolbar) */
+"Open a new Quartz device window" = "新しいQuartzデバイスのウィンドウを開く";
+
+/* From: RController.m (toolbar) */
+"Open document in editor" = "文書をエディタで開く";
+
+/* From: RController.m (toolbar) */
+"Open In Editor" = "エディタで開く";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package installation failed" = "パッケージのインストールに失敗しました";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package installation was not successful. Please see the R Console for details." = "パッケージのインストールに失敗しました. 詳細についてはRコンソールを参照して下さい.";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Package installer" = "パッケージインストーラ";
+
+/* From: PackageInstaller.m (installSelected) */
+"Package Installer" = "パッケージインストーラ";
+
+/* From: PackageInstaller.m (updateAll) */
+"Package update failed" = "パッケージのアップデートに失敗しました";
+
+/* From: PackageInstaller.m (updateAll) */
+"Package update was not successful. Please see the R Console for details." = "パッケージのアップデートに失敗しました. 詳細についてはRコンソールを参照して下さい.";
+
+/* From: RDocumentWinCtrl.m (tidyRCode) */
+"Parsing Error" = "構文解析エラー";
+
+/* From: PackageInstaller.m (reloadURL) */
+"Please consult  R Console output for details." = "詳細についてはRコンソールを参照して下さい.";
+
+/* From: PackageInstaller.m (reloadURL)
+   From: PackageInstaller.m (updateAll) */
+"Please specify a valid URL first." = "まず正しいURLを指定して下さい。";
+
+/* From: AMPrefs/AMPreferenceWindowController.m (initWithAutosaveName) */
+"Preferences" = "環境設定";
+
+/* Editor preference group */
+"PrefG-Editor" = "ソースエディタ";
+
+/* General preference group */
+"PrefG-General" = "一般";
+
+/* Views preference group */
+"PrefG-Views" = "ビュー";
+
+/* Colors preference pane */
+"PrefP-Colors" = "コンソール\nカラー";
+
+/* Editor preference pane */
+"PrefP-Editor" = "エディタ";
+
+/* Quartz preference pane */
+"PrefP-Quartz" = "Quartz";
+
+/* Startup preference pane */
+"PrefP-Startup" = "起動";
+
+/* Syntax colors preference pane */
+"PrefP-Syntax" = "構文カラー";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath)
+   From: RDocument.m (convertRd2HTML)
+   From: RDocument.m (convertRd2PDF)
+   From: RDocument.m (insertRdDataTemplate)
+   From: RDocument.m (insertRdFunctionTemplate)
+   From: RDocumentWinCtrl.m (tidyRCode)
+   From: RTextView.m (performDragOperation) */
+"press ⌘. to cancel" = "⌘. を押してキャンセル";
+
+/* From: RController.m (toolbarWillAddItem) */
+"Print this document" = "この文書を印刷";
+
+/* From: RController.m (toolbar) */
+"Quartz" = "Quartz";
+
+/* From: RController.m (toolbar) */
+"Quit" = "終了";
+
+/* From: RController.m (toolbar) */
+"Quit R" = "Rを終了";
+
+/* From: RConsoleController.m (windowTitleForDocumentDisplayName) */
+"R Console" = "Rコンソール";
+
+/* From: REditor.m (initData) */
+"R Data Editor - error while reading object data" = "Rデータエディタ - オブジェクトの読み込みエラー";
+
+/* From: REditor.m (windowShouldClose) */
+"R Data Editor couldn't write object data" = "Rデータエディタはオブジェクトを書き込めません";
+
+/* From: RController.m (sourceFile) */
+"R File to Source" = "ソースとして読み込むRファイル";
+
+/* From: RController.m (sourceOrLoadFile) */
+"R File to Source/Load" = "読み込むRファイル";
+
+/* From: RController.m (handleShowMessage) */
+"R Message" = "Rメッセージ";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath) */
+"Rd Check" = "Rdチェック";
+
+/* From: RDocument.m (checkRdDocumentWithFilePath)
+   From: RDocument.m (convertRd2PDF) */
+"Rd file" = "Rdファイル";
+
+/* From: RdEditorToolbar.m (textView) */
+"Rd Toolbox" = "Rdツールボックス";
+
+/* From: RDocument.m (convertRd2HTML) */
+"Rd → HTML…" = "Rd → HTML…";
+
+/* From: RDocument.m (convertRd2PDF) */
+"Rd → PDF…" = "Rd → PDF…";
+
+/* From: WSBrowser.m (toolbar) */
+"Refresh" = "更新";
+
+/* From: WSBrowser.m (toolbar) */
+"Refresh Objects List" = "オブジェクト一覧を更新";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove" = "削除";
+
+/* From: REditor.m (toolbar) */
+"Remove Columns" = "列を削除";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove Object" = "オブジェクトを削除";
+
+/* From: WSBrowser.m (remObject) */
+"Remove Object from Workspace" = "ワークスペースからオブジェクトを削除";
+
+/* Remove row - label for a toolbar, keep short! */
+"Remove Row" = "行削除";
+
+/* From: REditor.m (toolbar) */
+"Remove Rows" = "行を削除";
+
+/* From: REditor.m (toolbar) */
+"Remove selected columns" = "選択された列を削除";
+
+/* From: WSBrowser.m (toolbar) */
+"Remove Selected Object" = "選択されたオブジェクトを削除";
+
+/* From: REditor.m (toolbar) */
+"Removes selected rows" = "選択された行を削除";
+
+/* From: Quartz/RDeviceView.m (drawRect) */
+"Resizing to %g x %g" = "%g x %g　にリサイズ";
+
+/* From: RDocument.m (revertToContentsOfURL) */
+"Reverting Document" = "文書を元に戻す";
+
+/* Global string @ */
+"Save" = "保存";
+
+/* From: RController.m (toolbar) */
+"Save Console Window" = "コンソールウィンドウを保存";
+
+/* From: Quartz/RQuartz.m (saveDocument) */
+"Save Content of Quartz Device to PDF file" = "Quartzデバイスの内容をPDFとして保存";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Save current document" = "現在の文書を保存";
+
+/* From: RController.m (doSaveHistory) */
+"Save history File" = "履歴ファイルの保存";
+
+/* From: RController.m (saveDocumentAs) */
+"Save R Console To File" = "Rコンソールの内容をファイルに保存";
+
+/* From: RController.m (toolbar) */
+"Save R console window" = "Rコンソールウィンドウを保存";
+
+/* From: RController.m (didCloseAll) */
+"Save workspace image?" = "ワークスペースのイメージファイルを保存しますか？";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search" = "検索";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search Help" = "ヘルプを検索";
+
+/* From: RdEditorToolbar.m (textView)
+   From: REditorToolbar.m (updatePreferences) */
+"Search Panel" = "パネルを検索";
+
+/* From: RdEditorToolbar.m (textView) */
+"Sections" = "セクション";
+
+/* From: PrefPanes/EditorPrefPane.m (changeEditor) */
+"Select editor application" = "エディタアプリケーションを選択";
+
+/* From: PackageInstaller.m (installSelected)
+   From: PackageInstaller.m (updateAll) */
+"Select Installation Directory" = "インストールディレクトリを選択";
+
+/* From: REngine/Rcallbacks.m (RKL_METHOD_PREPEND) */
+"Select one" = "１つ選択";
+
+/* From: REngine/Rcallbacks.m (RKL_METHOD_PREPEND) */
+"Select one or more" = "１つ以上を選択";
+
+/* From: PackageInstaller.m (installSelected)
+   From: RController.m (installFromDir) */
+"Select Package Directory" = "パッケージディレクトリを選択";
+
+/* From: PackageInstaller.m (awakeFromNib) */
+"Select packages from R %@" = "R %@ からパッケージを選択";
+
+/* From: PackageInstaller.m (checkOptions) */
+"Set as default?" = "デフォルトに設定しますか?";
+
+/* From: RController.m (toolbar) */
+"Set Colors" = "色を設定";
+
+/* From: RController.m (toolbar) */
+"Set R Colors" = "Rの色を設定";
+
+/* From: RController.m (toolbar) */
+"Set R console colors" = "Rコンソールの色を設定";
+
+/* From: AMPrefs/AMPreferenceWindowController.m (toolbar)
+   From: PackageInstaller.m (toggleShowInstalled) */
+"Show All" = "すべてを表示";
+
+/* From: RController.m (textView)
+   From: RDocumentWinCtrl.m (textView) */
+"Show Help for current Function" = "現在位置の関数のヘルプを表示";
+
+/* From: PackageInstaller.m (toggleShowInstalled) */
+"Show Installed Only" = "インストール済みのみを表示";
+
+/* From: RController.m (toolbar) */
+"Show/Hide R command history" = "Rコマンドの履歴を表示/非表示";
+
+/* From: RTextView.m (performDragOperation) */
+"Snippet Error" = "スニペットのエラー";
+
+/* From: RController.m (toolbar) */
+"Source or Load in R" = "ソースまたはイメージをRに読み込み";
+
+/* From: RController.m (toolbar) */
+"Source script or load data in R" = "スクリプトのソースあるいはオブジェクトイメージをRに読み込み";
+
+/* From: RController.m (toolbar) */
+"Source/Load" = "ソース読み込み/オブジェクトイメージのロード";
+
+/* From: RController.m (toolbar) */
+"Start the X11 window server to allow R using X11 device and Tcl/Tk" = "X11およびTcl/TkデバイスをRから利用するために、X11サーバを起動して下さい";
+
+/* From: RController.m (toolbar) */
+"Start X11" = "X11を起動";
+
+/* From: RController.m (toolbar) */
+"Start X11 Server" = "X11サーバを起動";
+
+/* From: RController.m (toolbar) */
+"Stop" = "中断";
+
+/* From: PackageInstaller.m (installSelected) */
+"The installation location doesn't exist." = "インストール場所が存在しません。";
+
+/* From: PackageInstaller.m (installSelected) */
+"The package has not been installed." = "パッケージはインストールされていません。";
+
+/* From: main.m (sheetDidEnd) */
+"Unable to start R: %@" = "Rを起動できません: %@";
+
+/* From: NSString_RAdditions.m (evaluateAsBashCommandWithEnvironment) */
+"User Termination" = "ユーザによる中断";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"VAR_NAME_1" = "VAR_NAME_1";
+
+/* From: RDocument.m (insertRdDataTemplate) */
+"VAR_NAME_2" = "VAR_NAME_2";
+
+/* From: RController.m (applicationDidFinishLaunching) */
+"WARNING: You're using a non-UTF8 locale, therefore only ASCII characters will work.\nPlease read R for Mac OS X FAQ (see Help) section 9 and adjust your system preferences accordingly.\n" = "警告: UTF-8以外のロケールでは、ASCII文字のみが利用可能です. \nヘルプから MacOS X版RのFAQ のセクション9を参照し, システム環境設定を変更してください.\n";
+
+/* Global string @ */
+"Yes" = "はい";
+
+/* From: RController.m (searchInHistory) */
+"…invalid regular expression" = "…誤った正規表現です";
+

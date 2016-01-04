@@ -1,29 +1,29 @@
 ----------------------------------------
-Revolution R Open, version 3.2.2
+Microsoft R Open, version 3.2.2
 ----------------------------------------
 
-Revolution R Open is the enhanced distribution of R, from
-Revolution Analytics.
+Microsoft R Open is the enhanced distribution of R from
+Microsoft.
 
-Revolution R Open is based on R, Copyright (C) The R
+Microsoft R Open is based on R, Copyright (C) The R
 Foundation for Statistical Computing. Visit
 www.r-project.org for information about the R Project. R is
 the creation of many contributors, for details visit
 http://www.r-project.org/contributors.html.
 
-Components of Revolution R Open are copyright (C)
-Revolution Analytics. Revolution R Open also includes
+Components of Microsoft R Open are copyright (C)
+Microsoft. Microsoft R Open also includes
 components created by others. See "List of Open
 Source Components" below for details.
 
-Revolution R Open is free software and comes with
+Microsoft R Open is free software and comes with
 ABSOLUTELY NO WARRANTY. You are welcome to redistribute it
 under certain conditions. For information about
-Revolution R Open, visit mran.revolutionanalytics.com/open.
+Microsoft R Open, visit mran.revolutionanalytics.com/open.
 
 
 --------------------------------------------------
-Revolution R Open is Free and Open Source Software
+Microsoft R Open is Free and Open Source Software
 --------------------------------------------------
 This software is distributed under the terms of the GNU
 General Public License, either Version 2, June 1991 or
@@ -37,19 +37,19 @@ GNU GENERAL PUBLIC LICENSE, version 2.1 or later. This can
 be displayed by RShowDoc("LGPL-2.1"), or obtained
 http://www.R-project.org/Licenses/.
 
-A copy of the Revolution R Open source code is available
+A copy of the Microsoft R Open source code is available
 for download from
 http://mran.revolutionanalytics.com/download/#download.
 
 
 -----------------------
-About Revolution R Open
+About Microsoft R Open
 -----------------------
-Revolution R Open builds on R 3.2.2 by making the following
+Microsoft R Open builds on R 3.2.2 by making the following
 additions and changes:
 
 The default CRAN repository for this version of
-Revolution R Open is
+Microsoft R Open is
 http://mran.revolutionanalytics.com/snapshot/2015-08-27/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
@@ -58,7 +58,7 @@ not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.
 
-Revolution R Open installs the `checkpoint` package (part 
+Microsoft R Open installs the `checkpoint` package (part 
 of the Reproducible R Toolkit). You can use the checkpoint
 package to access recent package versions and to share
 reproducible R code with others. Visit
@@ -77,8 +77,8 @@ https://github.com/RevolutionAnalytics/RRO/releases
 ----------
 Trademarks
 ----------
-"Revolution Analytics", "Revolution R Open" and the monkey
-logo are trademarks of Revolution Analytics, Inc. in the
+"Revolution Analytics", "Microsoft R Open" and the monkey
+logo are trademarks of Microsoft Corporation in the
 U.S. and/or other countries.
 
 R is a trademark of the R Foundation for Statistical
@@ -87,12 +87,9 @@ Computing.
 ------------------------------
 List of Open Source Components
 ------------------------------
-This Revolution R Open distribution includes the following
-open source components, distributed under the terms of the
-indicated licenses:
-- R 3.2.2 (R Foundation for Statistical Computing) GPLv2
-- Revolution R Open build and test system (Revolution
-Analytics) GPLv2
+For a list of Third-Party Open Source Components in
+Microsoft R Open, see the file etc/ThirdPartyNotices.pdf.
+
 The terms of the GPLv2 license can be found in the
 accompanying file COPYING and at
 http://www.r-project.org/COPYING
@@ -100,13 +97,13 @@ http://www.r-project.org/COPYING
 -----------------------
 Questions and Contacts
 -----------------------
-If you have questions about Revolution R Open, please visit
+If you have questions about Microsoft R Open, please visit
 the Google Group at
-https://groups.google.com/d/forum/rropen.
+http://go.microsoft.com/fwlink/?LinkId=708536
 
-We hope you enjoy using Revolution R Open!
+We hope you enjoy using Microsoft R Open!
 
-Please let us know how we can make Revolution R Open
+Please let us know how we can make Microsoft R Open
 better. You can send your comments and suggestions to the
-Revolution R Open team at Revolution Analytics by emailing
-open@revolutionanalytics.com.
+Microsoft R Open team at Microsoft by emailing
+mropen@microsoft.com.

@@ -1,0 +1,117 @@
+/* special sections by id */
+
+#index {
+	margin-top: 1em;
+	margin-bottom: 4em;
+}
+
+/* common tags */
+
+body {
+	font-family: "Lucida Grande", sans-serif;
+	color: rgb(30, 30, 30);
+	background-image: url(stripes.png);
+	margin-left: 1em;
+}
+
+h1 {
+	font-family: gadget;
+	font-size: 1.2em;
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(50,50,50);
+	text-decoration: none;
+	margin: 1em 1 0 0;
+}
+
+h2 {
+	font-family: gadget;
+	font-size: 1em;
+	font-style: normal;
+	font-weight: normal;
+	color: rgb(50,50,50);
+	text-decoration: none;
+	margin: 1em 0 0 0;
+}
+
+h1.title {
+	font-size: 1.5em;
+	text-align: center;
+	margin: 1em 0 0 0;
+}
+
+a:link {
+	color: rgb(111,72,57);
+	text-decoration: none;
+	border-bottom: 1px dashed black;
+}
+
+a:visited {
+	color: rgb(126,102,93);
+	text-decoration: none;
+	border-bottom: 1px dashed black;
+}
+
+a:hover {
+	color: rgb(90,58,46);
+	background-color: rgb(200, 200, 200);
+	background-image: none;
+	text-decoration: none;
+	border-bottom: 1px dashed black;
+}
+
+a:active {
+	color: white;
+	background-color: rgb(111, 72, 57);
+	background-image: none;
+	text-decoration: none;
+	border: none;
+}
+
+div.section {
+	margin-top: 1em;
+	margin-bottom: 4em;
+}
+
+div.subsection {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+/* subclasses */
+
+.subtitle {
+	margin: 0;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+.code {
+	font-family: "Monaco Mono", monospace;
+	font-size: 0.9em;
+	background-color: rgb(240, 240, 240);
+	padding: 0.5em;
+}
+
+.identifier {
+	font-family: "Monaco Mono", monospace;
+}
+
+.declaration {
+	font-family: "Monaco Mono", monospace;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.abstract {
+	font-style: italic;
+	margin-left: 2em;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.discussion {
+	margin-left: 2em;
+	margin-top: 0;
+	margin-bottom: 1em;
+}

@@ -1,0 +1,108 @@
+/* Entry = "45.title"; Class = "NSMenuItem" */
+"<functions>" = "<fonctions>";
+
+/* Entry = "87.title"; Class = "NSBox" */
+"Box" = "Boite";
+
+/* Entry = "115.title"; Class = "NSMenuItem" */
+"CP1250" = "CP1250";
+
+/* Entry = "113.title"; Class = "NSMenuItem" */
+"CP1251" = "CP1251";
+
+/* Entry = "114.title"; Class = "NSMenuItem" */
+"CP1252" = "CP1252";
+
+/* Entry = "117.title"; Class = "NSMenuItem" */
+"CP1253" = "CP1253";
+
+/* Entry = "116.title"; Class = "NSMenuItem" */
+"CP1254" = "CP1254";
+
+/* Entry = "94.title"; Class = "NSButtonCell" */
+"Cancel" = "Cancel";
+
+/* Entry = "161.title"; Class = "NSMenuItem" */
+"Check Rd Document" = "Check Rd Document";
+
+/* Entry = "83.title"; Class = "NSMenuItem" */
+"Clear" = "Effacer";
+
+/* Entry = "110.title"; Class = "NSMenuItem" */
+"EUC (jp)" = "EUC (jp)";
+
+/* Entry = "82.title"; Class = "NSMenuItem" */
+"Empty" = "Vide";
+
+/* Entry = "108.title"; Class = "NSTextFieldCell" */
+"Encoding:" = "Encodage:";
+
+/* Entry = "59.title"; Class = "NSMenuItem" */
+"Exact Search" = "Recherche exacte";
+
+/* Entry = "60.title"; Class = "NSMenuItem" */
+"Fuzzy Search" = "Recherche floue";
+
+/* Entry = "96.title"; Class = "NSTextFieldCell" */
+"Go to line:" = "Aller à la ligne:";
+
+/* Entry = "153.title"; Class = "NSMenuItem" */
+"HTML Preview" = "Insert Function Rd Template";
+
+/* Entry = "92.placeholderString"; Class = "NSSearchFieldCell" */
+"Help search" = "Recherche d'aide";
+
+/* Entry = "120.title"; Class = "NSMenuItem" */
+"ISO2022-JP" = "ISO2022-JP";
+
+/* Entry = "165.title"; Class = "NSMenuItem" */
+"Insert Data Rd Template" = "Insert Data Rd Template";
+
+/* Entry = "164.title"; Class = "NSMenuItem" */
+"Insert Function Rd Template" = "Insert Function Rd Template";
+
+/* Entry = "81.title"; Class = "NSMenuItem" */
+"Item" = "Item";
+
+/* Entry = "106.title"; Class = "NSMenuItem" */
+"Latin1" = "Latin1";
+
+/* Entry = "112.title"; Class = "NSMenuItem" */
+"Latin2" = "Latin2";
+
+/* Entry = "105.title"; Class = "NSMenuItem" */
+"MacRoman" = "MacRoman";
+
+/* Entry = "58.title"; Class = "NSMenu" */
+"Menu" = "Menu";
+
+/* Entry = "95.title"; Class = "NSButtonCell" */
+"OK" = "OK";
+
+/* Entry = "44.title"; Class = "NSMenu" */
+"OtherViews" = "AutreVues";
+
+/* Entry = "150.title"; Class = "NSMenu" */
+"OtherViews" = "AutreVues";
+
+/* Entry = "103.title"; Class = "NSMenu" */
+"OtherViews" = "AutreVues";
+
+/* Entry = "159.title"; Class = "NSMenuItem" */
+"PDF Preview" = "PDF Preview";
+
+/* Entry = "68.title"; Class = "NSPanel" */
+"Panel" = "Panel";
+
+/* Entry = "111.title"; Class = "NSMenuItem" */
+"Shift-JIS" = "Shift-JIS";
+
+/* Entry = "104.title"; Class = "NSMenuItem" */
+"UTF-8" = "UTF-8";
+
+/* Entry = "109.title"; Class = "NSMenuItem" */
+"Unicode" = "Unicode";
+
+/* Entry = "5.title"; Class = "NSWindow" */
+"Window" = "Fenêtre";
+

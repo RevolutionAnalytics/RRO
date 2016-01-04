@@ -1,0 +1,18 @@
+/* Entry = "23.title"; Class = "NSButtonCell" */
+"Clear all" = "Alle abwählen";
+
+/* Entry = "5.title"; Class = "NSPanel" */
+"Customize Encodings List" = "Kodierungsliste bearbeiten";
+
+/* Entry = "21.title"; Class = "NSTextFieldCell" */
+"Enable the text encodings you would like to be able to use." = "Markieren Sie die Kodierungen, die Sie verwenden möchten.";
+
+/* Entry = "24.title"; Class = "NSButtonCell" */
+"Revert to default" = "Standard";
+
+/* Entry = "22.title"; Class = "NSButtonCell" */
+"Select all" = "Alle auswählen";
+
+/* Entry = "25.title"; Class = "NSButtonCell" */
+"Switch" = "Umschalten";
+

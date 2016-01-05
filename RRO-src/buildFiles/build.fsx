@@ -202,18 +202,6 @@ Target "Build_Linux" (fun _ ->
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
 
-    let curlURL = "http://curl.askapache.com/download/" + CURL_NAME + ".tar.gz"
-    use curlWebClient = new System.Net.WebClient()
-    curlWebClient.DownloadFile(curlURL.ToString(), (WORKSPACE +/ "curl.tar.gz"))
-    let curlFile = System.IO.FileInfo((WORKSPACE +/ "curl.tar.gz"))
-    ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(WORKSPACE)) curlFile
-    ignore(Shell.Exec("/bin/bash", "configure --prefix=/tmp/curl-4-RRO --disable-shared", WORKSPACE +/ CURL_NAME))
-    ignore(Shell.Exec("make", "-j8", WORKSPACE +/ CURL_NAME))
-    ignore(Shell.Exec("make", "install", WORKSPACE +/ CURL_NAME))
-
-    setProcessEnvironVar "CURL_CONFIG" ("/tmp/curl-4-RRO/bin/curl-config")
-    setProcessEnvironVar "CURL_CPPFLAGS" ("-I/tmp/curl-4-RRO/include")
-
     let mutable packageFile = "packages-linux.json"
     if BUILD_CONNECTOR then
         packageFile <- "packages-linux-connector.json"

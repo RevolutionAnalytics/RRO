@@ -48,15 +48,15 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", "RRO", "-", Rver, "-", suffix, sep = ""),
-        paste("AppName=RRO for Windows ", Rver, sep = ""),
-        paste("AppVerName=RRO for Windows ", Rver, sep = ""),
+    cat(paste("OutputBaseFilename=", "MRO", "-", Rver, "-", suffix, sep = ""),
+        paste("AppName=MRO for Windows ", Rver, sep = ""),
+        paste("AppVerName=MRO for Windows ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\RRO\\", RW, sep = ""),
+        paste("DefaultDirName={code:UserPF}\\Microsoft\\MRO\\", RW, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
-        if(Producer == "R-core") "AppPublisher=Revolution Analytics"
+        if(Producer == "R-core") "AppPublisher=Microsoft"
         else paste("AppPublisher=", Producer, sep = ""),
         file = con, sep = "\n")
 

@@ -1,9 +1,9 @@
 { ->
     println(commit)
-	parallel linux_build: {
-		node('centos7') {
-			checkout(repoConfig)
-			sleep(5)
-		}
+    parallel linux_build: {
+	node('centos7') {
+	    checkout(repoConfig)
+	    sleep(5)
 	}
+    }
 }

@@ -1,7 +1,9 @@
-parallel centos_build: {
-    node('centos7') {
-        checkout scm
-        sh './docker-build.sh'
-        step([$class: 'ArtifactArchiver', artifacts: '**/r-*.tar.gz', fingerprint: true])
-    }
+{ ->
+    println(commit)
+	parallel linux_build: {
+		node('centos7') {
+			checkout(repoConfig)
+			sleep(5)
+		}
+	}
 }

@@ -1,0 +1,11 @@
+{
+    "nodes": [ "centos7" ],
+    "linux": {
+        "cmd": "build.sh",
+        "artifactList": [ "**/r-*.tar.gz" ]
+    },
+    "windows": {
+        "cmd": "build.bat",
+        "artifactList": [ "" ]
+    }
+}

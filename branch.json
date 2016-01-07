@@ -1,7 +1,7 @@
 {
     "nodes": [ "centos7" ],
     "linux": {
-        "cmd": "build.sh",
+        "cmd": "docker-build.sh",
         "artifactList": [ "**/r-*.tar.gz" ]
     },
     "windows": {

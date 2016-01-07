@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+using Microsoft.Win32;
 
 namespace RevoUtils
 {
@@ -11,189 +12,78 @@ namespace RevoUtils
     {
         public static Version GetRToolsVersion()
         {
-            if (Platform.GetPlatform() != System.PlatformID.Win32NT)
-                return null;
-
-            string rToolsName = null;
-            
-            string programRegKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
-            using(Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(programRegKey))
-            {
-                foreach(string subKey_name in key.GetSubKeyNames())
-                {
-                    using(Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                    {
-                        if (subKey.GetValueNames().Contains("DisplayName") && subKey.GetValue("DisplayName").ToString().Contains("Rtools"))
-                            rToolsName = subKey.GetValue("DisplayName").ToString();
-                    }
-                }
-            }
-            
-            if (rToolsName == null)
-            {
-                using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(programRegKey))
-                {
-                    if (key != null)
-                    {
-                        foreach (string subKey_name in key.GetSubKeyNames())
-                        {
-                            using (Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                            {
-                                if (subKey.GetValueNames().Contains("DisplayName") && subKey.GetValue("DisplayName").ToString().Contains("Rtools"))
-                                    rToolsName = subKey.GetValue("DisplayName").ToString();
-                            }
-                        }
-                    }
-                }
-
-            }
-
-            if (rToolsName == null)
-                return null;
-
-            var version = System.Text.RegularExpressions.Regex.Match(rToolsName, "[0-9].[0-9]");
-            if (version.Success)
-                return new System.Version(version.ToString());
-            else
-                return null;
+            return GetProgramVersionByName("Rtools");
         }
+
         public static string GetRToolsPath(Version rToolsVersion)
         {
-            if (Platform.GetPlatform() != System.PlatformID.Win32NT)
-                return null;
-
-            if (rToolsVersion == null)
-                return null;
-
-            string rToolsPath = null;
-
-            string programRegKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
-            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(programRegKey))
-            {
-                foreach (string subKey_name in key.GetSubKeyNames())
-                {
-                    using (Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                    {
-                        if (subKey.GetValueNames().Contains("DisplayName") && subKey.GetValue("DisplayName").ToString().Contains("Rtools " + rToolsVersion.ToString()))
-                        {
-                            if (subKey.GetValueNames().Contains("InstallLocation"))
-                                rToolsPath = subKey.GetValue("InstallLocation").ToString();
-                        }
-                    }
-                }
-            }
-
-            return rToolsPath;
+            return GetProgramPathByNameAndVersion("Rtools", rToolsVersion);
         }
+
         public static string GetProgramPathByNameAndVersion(string name, Version version)
         {
-            if (Platform.GetPlatform() != System.PlatformID.Win32NT)
-                return null;
-
-            if (version == null)
-                return null;
-
-            string rToolsPath = null;
-
-            string programRegKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
-            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(programRegKey))
-            {
-                foreach (string subKey_name in key.GetSubKeyNames())
-                {
-                    using (Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                    {
-                        if (subKey.GetValueNames().Contains("DisplayName") && 
-                            subKey.GetValue("DisplayName").ToString().Contains(name) &&
-                            subKey.GetValue("DisplayName").ToString().Contains(version.ToString()))
-                        {
-                            if (subKey.GetValueNames().Contains("InstallLocation"))
-                                rToolsPath = subKey.GetValue("InstallLocation").ToString();
-                        }
-                        else if (subKey.GetValueNames().Contains("DisplayName") && 
-                                 subKey.GetValueNames().Contains("DisplayVersion") &&
-                                 subKey.GetValue("DisplayName").ToString().Contains(name))
-                        {
-                            if (subKey.GetValueNames().Contains("InstallLocation"))
-                                rToolsPath = subKey.GetValue("InstallLocation").ToString();
-                        }
-                    }
-                }
-            }
-
-            return rToolsPath;
+            return GetProgram(name, version)?.InstallPath;
         }
+
         public static Version GetProgramVersionByName(string name)
         {
-            if (Platform.GetPlatform() != System.PlatformID.Win32NT)
-                return null;
-
-            string rToolsName = null;
-            string progVersion = null;
-
-            string programRegKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
-            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(programRegKey))
-            {
-                foreach (string subKey_name in key.GetSubKeyNames())
-                {
-                    
-                    using (Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                    {
-                        if (subKey.GetValueNames().Contains("DisplayName") && subKey.GetValue("DisplayName").ToString().Contains(name))
-                        {
-                            rToolsName = subKey.GetValue("DisplayName").ToString();
-                            if(subKey.GetValueNames().Contains("DisplayVersion"))
-                            {
-                                progVersion = subKey.GetValue("DisplayVersion").ToString();
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (rToolsName == null)
-            {
-                using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(programRegKey))
-                {
-                    if (key != null)
-                    {
-                        foreach (string subKey_name in key.GetSubKeyNames())
-                        {
-                            using (Microsoft.Win32.RegistryKey subKey = key.OpenSubKey(subKey_name))
-                            {
-                                if (subKey.GetValueNames().Contains("DisplayName") && subKey.GetValue("DisplayName").ToString().Contains(name))
-                                    rToolsName = subKey.GetValue("DisplayName").ToString();
-                            }
-                        }
-                    }
-                }
-
-            }
-
-            if (rToolsName == null)
-                return null;
-
-
-            if(progVersion == null)
-            {
-                var version = System.Text.RegularExpressions.Regex.Match(rToolsName, "[0-9]+.[0-9]+");
-                if (version.Success)
-                    return new System.Version(version.ToString());
-                else
-                    return new System.Version("0.0");
-            }
-            else
-            {
-                var version = System.Text.RegularExpressions.Regex.Match(progVersion, "[0-9]+.[0-9]+");
-                if (version.Success)
-                    return new System.Version(version.ToString());
-                else
-                    return new System.Version("0.0");
-            }
-
-
+            return GetPrograms(name).FirstOrDefault()?.Version;
         }
 
-    }
+        private static ProgramData GetProgram(string name, Version version)
+        {
+            return GetPrograms(name).FirstOrDefault(pd => pd.Version == version);
+        }
 
-    
+        private static IEnumerable<ProgramData> GetPrograms(string name)
+        {
+            string[] paths = { @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall", @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" };
+            RegistryKey[] hives = { Registry.LocalMachine, Registry.CurrentUser };
+
+            return from path in paths from hive in hives from program in GetPrograms(hive, path, name) select program;
+        }
+
+        private static IEnumerable<ProgramData> GetPrograms(RegistryKey hive, string path, string name)
+        {
+            if (Platform.GetPlatform() == PlatformID.Win32NT)
+            {
+                using (RegistryKey key = hive.OpenSubKey(path))
+                {
+                    foreach (RegistryKey subKey in key.GetSubKeyNames().Select(key.OpenSubKey))
+                    {
+                        using (subKey)
+                        {
+                            string displayName = subKey.GetValue("DisplayName")?.ToString();
+                            if (displayName?.Contains(name) ?? false)
+                            {
+                                yield return
+                                    new ProgramData
+                                    {
+                                        Name = name,
+                                        Version = GetVersion(displayName, subKey.GetValue("DisplayVersion")?.ToString()),
+                                        InstallPath = subKey.GetValue("InstallLocation")?.ToString()
+                                    };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static Version GetVersion(string name, string version)
+        {
+            Match ret = Regex.Match(version ?? name, "[0-9]+.[0-9]+");
+
+            return new Version(ret.Success ? ret.ToString() : "0.0");
+        }
+
+        private class ProgramData
+        {
+            public string Name { get; set; }
+
+            public Version Version { get; set; }
+
+            public string InstallPath { get; set; }
+        }
+    }
 }

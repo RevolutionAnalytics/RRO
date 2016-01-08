@@ -37,33 +37,46 @@ namespace RevoUtils
 
         private static IEnumerable<ProgramData> GetPrograms(string name)
         {
-            string[] paths = { @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall", @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" };
-            RegistryKey[] hives = { Registry.LocalMachine, Registry.CurrentUser };
+            using (RegistryKey hklm32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+            using (RegistryKey hkcu32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))
+            using (RegistryKey hklm64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (RegistryKey hkcu64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+            {
+                string[] paths = { @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" };
+                RegistryKey[] hives = { hklm32, hkcu32, hklm64, hkcu64 };
 
-            return from path in paths from hive in hives from program in GetPrograms(hive, path, name) select program;
+                return from path in paths from hive in hives from program in GetPrograms(hive, path, name) select program;
+            }
         }
 
         private static IEnumerable<ProgramData> GetPrograms(RegistryKey hive, string path, string name)
         {
-            if (Platform.GetPlatform() == PlatformID.Win32NT)
+            if (Platform.GetPlatform() != PlatformID.Win32NT)
             {
-                using (RegistryKey key = hive.OpenSubKey(path))
+                yield break;
+            }
+
+            using (RegistryKey key = hive.OpenSubKey(path))
+            {
+                if (key == null)
                 {
-                    foreach (RegistryKey subKey in key.GetSubKeyNames().Select(key.OpenSubKey))
+                    yield break;
+                }
+
+                foreach (RegistryKey subKey in key.GetSubKeyNames().Select(key.OpenSubKey))
+                {
+                    using (subKey)
                     {
-                        using (subKey)
+                        string displayName = subKey.GetValue("DisplayName")?.ToString();
+                        if (displayName?.Contains(name) ?? false)
                         {
-                            string displayName = subKey.GetValue("DisplayName")?.ToString();
-                            if (displayName?.Contains(name) ?? false)
-                            {
-                                yield return
-                                    new ProgramData
-                                    {
-                                        Name = name,
-                                        Version = GetVersion(displayName, subKey.GetValue("DisplayVersion")?.ToString()),
-                                        InstallPath = subKey.GetValue("InstallLocation")?.ToString()
-                                    };
-                            }
+                            yield return
+                                new ProgramData
+                                {
+                                    Name = name,
+                                    Version = GetVersion(displayName, subKey.GetValue("DisplayVersion")?.ToString()),
+                                    InstallPath = subKey.GetValue("InstallLocation")?.ToString()
+                                };
                         }
                     }
                 }

@@ -18,8 +18,7 @@ nuget restore RRO-src/buildFiles/RRO_Build.sln
 
 Push-Location RRO-src/buildFiles
 
-$frameworkDir = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
-$msbuild = Join-Path $frameworkDir 'msbuild.exe'
+$msbuild = Join-Path ${env:ProgramFiles(x86)} "msbuild\14.0\bin\msbuild.exe"
 & $msbuild /p:Configuration=Release
 
 packages/FAKE.4.0.3/tools/fake.exe

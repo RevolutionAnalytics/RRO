@@ -56,14 +56,14 @@ if(Sys.info()["sysname"] == "Darwin"){
     hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
     ncores <- sub("hw.ncpu: ", "", hw.ncpu)
     msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
-    message(sprintf(msg, ncores))
+    if (!quiet) message(sprintf(msg, ncores))
     invisible(NULL)
   })
 } else if(load_if_installed("RevoUtilsMath")){
   local({
     ncores <- RevoUtilsMath::getMKLthreads()
     msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
-    message(sprintf(msg, ncores))
+    if (!quiet) message(sprintf(msg, ncores))
     invisible(NULL)
   })
 }

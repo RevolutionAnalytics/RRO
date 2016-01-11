@@ -491,7 +491,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.mygreatcompany.pkg.untitled_package</string>
+				<string>com.microsoft.pkg.untitled_package</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -978,7 +978,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.mygreatcompany.pkg.untitled_package_1</string>
+				<string>com.microsoft.rservices.mro2</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1676,7 +1676,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.mygreatcompany.pkg.untitled-package</string>
+				<string>com.microsoft.rservices.mro1</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>

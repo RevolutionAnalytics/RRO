@@ -971,6 +971,11 @@
 				<key>VERSION</key>
 				<integer>2</integer>
 			</dict>
+			<key>PACKAGE_SCRIPTS</key>
+			<dict>
+				<key>RESOURCES</key>
+				<array/>
+			</dict>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
 				<key>AUTHENTICATION</key>
@@ -982,7 +987,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>RRO.app</string>
+				<string>MRO.app</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
@@ -2123,7 +2128,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>RRO</string>
+			<string>MRO</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>

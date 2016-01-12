@@ -1,5 +1,5 @@
-Revo.version <- structure(list(major = "3", minor = "2.2", "BuildID" = :::BUILDID:::), class = "simple.list")
-repos.date <- "2015-08-27"
+Revo.version <- structure(list(major = "3", minor = "2.3", "BuildID" = :::BUILDID:::), class = "simple.list")
+repos.date <- "2016-01-01"
 
 if  (identical(.Platform$OS.type, "windows")) {
 	options(download.file.method = "wininet")
@@ -46,24 +46,40 @@ load_if_installed <- function(package) {
   if (!identical(system.file(package="RevoUtilsMath"), "")) {
     do.call('library', list(package))
     return(TRUE)
-  } else
+  } else {
     return(FALSE)
+  } 
 }
 
 if(Sys.info()["sysname"] == "Darwin"){
   local({
     options(download.file.method = "libcurl")
-    hw.ncpu <- system('sysctl hw.ncpu', intern = TRUE)
-    ncores <- sub("hw.ncpu: ", "", hw.ncpu)
-    msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
-    message(sprintf(msg, ncores))
+    hw.ncpu <- try(system('sysctl hw.physicalcpu', intern = TRUE))
+	if (!inherits(hw.ncpu, "try-error")){
+		ncores <- sub("hw.physicalcpu: ", "", hw.ncpu)
+		msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %s cores for math algorithms."
+		if (!quiet){	
+		    message(sprintf(msg, ncores))
+		}
+	}
     invisible(NULL)
   })
-} else if(load_if_installed("RevoUtilsMath")){
+} else {
+if(load_if_installed("RevoUtilsMath")){
   local({
     ncores <- RevoUtilsMath::getMKLthreads()
     msg <- "Multithreaded BLAS/LAPACK libraries detected. Using %d cores for math algorithms."
-    message(sprintf(msg, ncores))
+	if (!quiet){
+        message(sprintf(msg, ncores))
+	}
     invisible(NULL)
   })
+} else {
+    MROversion <- paste(Revo.version$major, Revo.version$minor, sep=".")
+	msg <- "No performance acceleration libraries detected. To take advantage of the \navailable processing power, install MKL for MRO %s. Visit \nhttp://go.microsoft.com/fwlink/?LinkID=698301 "
+	if (!quiet){
+        message(sprintf(msg, MROversion))
+	}
+    invisible(NULL)
+}
 }

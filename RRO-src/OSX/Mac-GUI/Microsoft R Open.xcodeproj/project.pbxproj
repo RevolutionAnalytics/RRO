@@ -462,7 +462,7 @@
 		68DEAEE6083271CA00C5D76C /* RTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTextView.h; sourceTree = "<group>"; };
 		68DEAEE7083271CA00C5D76C /* RTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTextView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Revolution R Open.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Revolution R Open.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Microsoft R Open.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Microsoft R Open.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC03E661133AA8E100456B01 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BC0D31981334B1410071B76A /* NSTextView_RAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTextView_RAdditions.h; sourceTree = "<group>"; };
 		BC0D31991334B1410071B76A /* NSTextView_RAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTextView_RAdditions.m; sourceTree = "<group>"; };
@@ -800,7 +800,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* Revolution R Open.app */,
+				8D1107320486CEB800E47090 /* Microsoft R Open.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1077,9 +1077,9 @@
 			productReference = 1C34E61006F9EC7D00211ACC /* sush */;
 			productType = "com.apple.product-type.tool";
 		};
-		8D1107260486CEB800E47090 /* Revolution R Open */ = {
+		8D1107260486CEB800E47090 /* Microsoft R Open */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 680F0B350997CE66009CDBE8 /* Build configuration list for PBXNativeTarget "Revolution R Open" */;
+			buildConfigurationList = 680F0B350997CE66009CDBE8 /* Build configuration list for PBXNativeTarget "Microsoft R Open" */;
 			buildPhases = (
 				8D1107270486CEB800E47090 /* Headers */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -1093,10 +1093,10 @@
 				1CF110900719797100121801 /* PBXTargetDependency */,
 				689B3D3B07F4B01D006F6F37 /* PBXTargetDependency */,
 			);
-			name = "Revolution R Open";
+			name = "Microsoft R Open";
 			productInstallPath = "$(HOME)/Applications";
 			productName = R;
-			productReference = 8D1107320486CEB800E47090 /* Revolution R Open.app */;
+			productReference = 8D1107320486CEB800E47090 /* Microsoft R Open.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1107,7 +1107,7 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 			};
-			buildConfigurationList = 680F0B3A0997CE66009CDBE8 /* Build configuration list for PBXProject "Revolution R Open" */;
+			buildConfigurationList = 680F0B3A0997CE66009CDBE8 /* Build configuration list for PBXProject "Microsoft R Open" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1127,7 +1127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Revolution R Open */,
+				8D1107260486CEB800E47090 /* Microsoft R Open */,
 				1C34E60F06F9EC7D00211ACC /* sush */,
 				1C54CDAE0719742A00176826 /* Docs */,
 			);
@@ -1596,7 +1596,7 @@
 					R,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
-				PRODUCT_NAME = "Revolution R Open";
+				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1664,7 +1664,7 @@
 					R,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
-				PRODUCT_NAME = "Revolution R Open";
+				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1755,7 +1755,7 @@
 					R,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
-				PRODUCT_NAME = "Revolution R Open";
+				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1846,7 +1846,7 @@
 					R,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
-				PRODUCT_NAME = "Revolution R Open";
+				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1923,7 +1923,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		680F0B350997CE66009CDBE8 /* Build configuration list for PBXNativeTarget "Revolution R Open" */ = {
+		680F0B350997CE66009CDBE8 /* Build configuration list for PBXNativeTarget "Microsoft R Open" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D97F77CB168E24F600EB58E7 /* Lion64 */,
@@ -1934,7 +1934,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		680F0B3A0997CE66009CDBE8 /* Build configuration list for PBXProject "Revolution R Open" */ = {
+		680F0B3A0997CE66009CDBE8 /* Build configuration list for PBXProject "Microsoft R Open" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D97F77CA168E24F600EB58E7 /* Lion64 */,

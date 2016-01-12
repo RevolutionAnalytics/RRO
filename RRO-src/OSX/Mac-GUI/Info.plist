@@ -132,7 +132,7 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>Revolution R Open</string>
+	<string>Microsoft R Open</string>
 	<key>CFBundleIconFile</key>
 	<string>Revolution R OpenLogo.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -169,19 +169,19 @@
 			</dict>
 			<key>NSMenuItem</key>
 			<dict>
-				<key>default</key>
-				<string>R/R – Run selection in Console</string>
 				<key>English</key>
 				<string>R/R – Run selection in Console</string>
 				<key>de</key>
 				<string>R/R – Führe Auswahl in der Konsole aus</string>
-				<key>nl</key>
+				<key>default</key>
+				<string>R/R – Run selection in Console</string>
+				<key>fr</key>
 				<string>R/R – Run selection in Console</string>
 				<key>it</key>
 				<string>R/R – Run selection in Console</string>
 				<key>ja</key>
 				<string>R/R – Run selection in Console</string>
-				<key>fr</key>
+				<key>nl</key>
 				<string>R/R – Run selection in Console</string>
 			</dict>
 			<key>NSMessage</key>
@@ -202,19 +202,19 @@
 			</dict>
 			<key>NSMenuItem</key>
 			<dict>
-				<key>default</key>
-				<string>R/R – Open selection</string>
 				<key>English</key>
 				<string>R/R – Open selection</string>
 				<key>de</key>
 				<string>R/R – Öffne Auswahl</string>
-				<key>nl</key>
+				<key>default</key>
+				<string>R/R – Open selection</string>
+				<key>fr</key>
 				<string>R/R – Open selection</string>
 				<key>it</key>
 				<string>R/R – Open selection</string>
 				<key>ja</key>
 				<string>R/R – Open selection</string>
-				<key>fr</key>
+				<key>nl</key>
 				<string>R/R – Open selection</string>
 			</dict>
 			<key>NSMessage</key>

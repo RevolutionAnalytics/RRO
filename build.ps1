@@ -1,4 +1,6 @@
 $NUGET_URL = 'https://nuget.org/nuget.exe'
+$REVO_NUGET_FEED = 'https://msdata.pkgs.visualstudio.com/DefaultCollection/_packaging/MRS_Vendor/nuget/v3/index.json'
+
 
 if (-Not (Get-Command nuget.exe -ErrorAction SilentlyContinue))
 {
@@ -14,7 +16,19 @@ if (-Not (Get-Command nuget.exe -ErrorAction SilentlyContinue))
     [Environment]::SetEnvironmentVariable('PATH', $env:Path, 'Machine')
 }
 
+nuget update -self
 nuget restore RRO-src/buildFiles/RRO_Build.sln
+
+if($env:NUGET_PASSWORD)
+{
+    nuget sources add -Name mro -UserName token -Password $env:NUGET_PASSWORD -Source $REVO_NUGET_FEED
+    if($LastExitCode -ne 0)
+    {
+        nuget sources update -Name mro -UserName token -Password $env:NUGET_PASSWORD -Source $REVO_NUGET_FEED
+    }
+}
+
+nuget install packages.config -ExcludeVersion -OutputDirectory .\vendor
 
 Push-Location RRO-src/buildFiles
 

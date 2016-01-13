@@ -328,7 +328,8 @@ Target "Build_Windows" (fun _ ->
     FileUtils.cp_r (PKG_DIR +/ ".") (packageDir)
     ReplaceInFiles [ (":::BUILDID:::", "\"1\"") ] [ (gnuWin32Dir +/ "fixed" +/ "etc" +/ "Rprofile.site") ]
     ReplaceInFiles [ (":::EXTRA_PACKAGES:::", extraPackageList) ] [ rDir +/ "share" +/ "make" +/ "vars.mk" ] 
-
+    ReplaceInFiles [ (":::VENDOR_DIR:::", (BASE_DIR +/ "vendor").Replace("\\", "/")) ] [ gnuWin32Dir +/ "MkRules.local" ]
+    
     for file in etcFiles do
         FileUtils.cp file (rDir +/ "etc")
     for file in installerFiles do

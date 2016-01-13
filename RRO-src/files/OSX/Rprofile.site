@@ -1,4 +1,4 @@
-Revo.version <- structure(list(major = "3", minor = "2.3", "BuildID" = :::BUILDID:::), class = "simple.list")
+Revo.version <- structure(list(major = "3", minor = "2.3", "BuildID" = "BUILD_ID"), class = "simple.list")
 repos.date <- "2016-01-01"
 
 if  (identical(.Platform$OS.type, "windows")) {

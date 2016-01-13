@@ -2,6 +2,8 @@
 
 issue=`cat /etc/issue`
 
+echo $NUGET_PASSWORD
+
 if [ ! -f nuget.exe ]; then
     wget http://nuget.org/nuget.exe --no-check-certificate
 fi

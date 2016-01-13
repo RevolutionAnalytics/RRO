@@ -1,5 +1,5 @@
 {
-    "nodes": [ "centos7" ],
+    "nodes": [ "centos7", "windows" ],
     "linux": {
         "cmd": "./docker-build.sh",
         "artifactList": [ "**/r-*.tar.gz" ]

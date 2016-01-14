@@ -6,6 +6,6 @@
     },
     "windows": {
         "cmd": "PowerShell.exe -NoProfile -ExecutionPolicy Bypass -file build.ps1",
-        "artifactList": [ "" ]
+        "artifactList": [ ]
     }
 }

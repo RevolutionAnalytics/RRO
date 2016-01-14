@@ -5,7 +5,7 @@
         "artifactList": [ "**/r-*.tar.gz" ]
     },
     "windows": {
-        "cmd": "PowerShell.exe -NoProfile -ExecutionPolicy Bypass -file build.ps1",
+        "cmd": "PowerShell.exe -NoProfile -NoNewWindow -ExecutionPolicy Bypass -file build.ps1",
         "artifactList": [ ]
     }
 }

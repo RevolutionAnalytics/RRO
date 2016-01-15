@@ -1,6 +1,6 @@
 $NUGET_URL = 'https://nuget.org/nuget.exe'
 $REVO_NUGET_FEED = 'https://msdata.pkgs.visualstudio.com/DefaultCollection/_packaging/MRS_Vendor/nuget/v3/index.json'
-
+takeown /r /f .
 
 if (-Not (Get-Command nuget.exe -ErrorAction SilentlyContinue))
 {

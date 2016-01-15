@@ -373,6 +373,7 @@ Target "Build_Windows" (fun _ ->
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
+    FileUtils.cp ( installerDir +/ FLAVOR + "-" + FLAVOR_VERSION + "-win.exe") ( BASE_DIR +/ FLAVOR + "-win.exe" )
     ()
 )
 

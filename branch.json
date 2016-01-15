@@ -6,6 +6,6 @@
     },
     "windows": {
         "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
-        "artifactList": [ ]
+        "artifactList": [ "MRO-win.exe" ]
     }
 }

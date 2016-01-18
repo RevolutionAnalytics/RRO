@@ -43,26 +43,24 @@ http://mran.revolutionanalytics.com/download/#download.
 
 
 -----------------------
-About Microsoft R Open
+About Microsoft R Open (MRO)
 -----------------------
 Microsoft R Open builds on R 3.2.3 by making the following
 additions and changes:
 
-The default CRAN repository for this version of
-Microsoft R Open is
+The default CRAN repository for this version of MRO is
 http://mran.revolutionanalytics.com/snapshot/2016-01-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on 2015-08-27. Newer versions of packages will
+created on 2016-01-01. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.
 
-Microsoft R Open installs the `checkpoint` package (part 
-of the Reproducible R Toolkit). You can use the checkpoint
-package to access recent package versions and to share
-reproducible R code with others. Visit
-http://projects.revolutionanalytics.com/rrt/
+Microsoft R Open installs the `checkpoint` package. You 
+can use the checkpoint package to access recent package
+versions and to share reproducible R code with others. 
+See https://mran.revolutionanalytics.com/package/checkpoint
 for information about how to use the checkpoint package to
 manage R package versions.
 
@@ -97,9 +95,8 @@ http://www.r-project.org/COPYING
 -----------------------
 Questions and Contacts
 -----------------------
-If you have questions about Microsoft R Open, please visit
-the Google Group at
-http://go.microsoft.com/fwlink/?LinkId=708536
+Have questions about Microsoft R Open? Please visit the 
+MRO forum at http://go.microsoft.com/fwlink/?LinkId=708536
 
 We hope you enjoy using Microsoft R Open!
 

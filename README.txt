@@ -1,5 +1,5 @@
 ----------------------------------------
-Microsoft R Open, version 3.2.2
+Microsoft R Open, version 3.2.3
 ----------------------------------------
 
 Microsoft R Open is the enhanced distribution of R from
@@ -45,7 +45,7 @@ http://mran.revolutionanalytics.com/download/#download.
 -----------------------
 About Microsoft R Open
 -----------------------
-Microsoft R Open builds on R 3.2.2 by making the following
+Microsoft R Open builds on R 3.2.3 by making the following
 additions and changes:
 
 The default CRAN repository for this version of

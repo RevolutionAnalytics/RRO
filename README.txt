@@ -50,7 +50,7 @@ additions and changes:
 
 The default CRAN repository for this version of
 Microsoft R Open is
-http://mran.revolutionanalytics.com/snapshot/2015-08-27/.
+http://mran.revolutionanalytics.com/snapshot/2016-01-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
 created on 2015-08-27. Newer versions of packages will

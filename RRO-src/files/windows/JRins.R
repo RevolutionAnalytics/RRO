@@ -32,7 +32,7 @@
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
-    Rver <- "3.2.2"
+    Rver <- "3.2.3"
 
 
     con <- file("R.iss", "w")
@@ -48,15 +48,15 @@
     }
     suffix <- "win"
 
-    cat(paste("OutputBaseFilename=", "RRO", "-", Rver, "-", suffix, sep = ""),
-        paste("AppName=RRO for Windows ", Rver, sep = ""),
-        paste("AppVerName=RRO for Windows ", Rver, sep = ""),
+    cat(paste("OutputBaseFilename=", "MRO", "-", Rver, "-", suffix, sep = ""),
+        paste("AppName=MRO for Windows ", Rver, sep = ""),
+        paste("AppVerName=MRO for Windows ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
-        paste("DefaultDirName={code:UserPF}\\RRO\\", RW, sep = ""),
+        paste("DefaultDirName={code:UserPF}\\Microsoft\\MRO\\", RW, sep = ""),
         ## paste("InfoBeforeFile=", srcdir, "\\doc\\COPYING", sep = ""),
         paste("InfoBeforeFile=intro.txt", sep=""),
-        if(Producer == "R-core") "AppPublisher=Revolution Analytics"
+        if(Producer == "R-core") "AppPublisher=Microsoft"
         else paste("AppPublisher=", Producer, sep = ""),
         file = con, sep = "\n")
 
@@ -92,7 +92,7 @@
 
     writeLines(c("", "", "[Files]"), con)
 	
-	cat('Source: "R-3.2.2\\etc\\README.txt', '"; ',
+	cat('Source: "R-3.2.3\\etc\\README.txt', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

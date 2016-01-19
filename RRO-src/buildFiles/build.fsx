@@ -17,7 +17,7 @@ let mutable COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
 let mutable FLAVOR = "MRO"
-let R_VERSION = "3.2.2"
+let R_VERSION = "3.2.3"
 let RRO_VERSION = R_VERSION
 let RRC_VERSION = "8.0.0"
 let mutable FLAVOR_VERSION = R_VERSION
@@ -201,18 +201,6 @@ Target "Build_Linux" (fun _ ->
     FileUtils.mkdir(tmpDir)
 
     setProcessEnvironVar "QA_SKIP_BUILD_ROOT" "1"
-
-    let curlURL = "http://curl.askapache.com/download/" + CURL_NAME + ".tar.gz"
-    use curlWebClient = new System.Net.WebClient()
-    curlWebClient.DownloadFile(curlURL.ToString(), (WORKSPACE +/ "curl.tar.gz"))
-    let curlFile = System.IO.FileInfo((WORKSPACE +/ "curl.tar.gz"))
-    ArchiveHelper.Tar.GZip.Extract (System.IO.DirectoryInfo(WORKSPACE)) curlFile
-    ignore(Shell.Exec("/bin/bash", "configure --prefix=/tmp/curl-4-RRO --disable-shared", WORKSPACE +/ CURL_NAME))
-    ignore(Shell.Exec("make", "-j8", WORKSPACE +/ CURL_NAME))
-    ignore(Shell.Exec("make", "install", WORKSPACE +/ CURL_NAME))
-
-    setProcessEnvironVar "CURL_CONFIG" ("/tmp/curl-4-RRO/bin/curl-config")
-    setProcessEnvironVar "CURL_CPPFLAGS" ("-I/tmp/curl-4-RRO/include")
 
     let mutable packageFile = "packages-linux.json"
     if BUILD_CONNECTOR then

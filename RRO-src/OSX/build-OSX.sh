@@ -62,16 +62,16 @@ cd $BUILD_DIR/RRO-src/OSX
 ## add checkpoint package
 git clone https://github.com/RevolutionAnalytics/checkpoint.git
 cd checkpoint
-git checkout 0.3.13
+git checkout 0.3.15
 cd ../
 tar czf checkpoint.tar.tgz checkpoint
 sudo cp checkpoint.tar.tgz /Library/Frameworks/R.framework/Resources/etc
 
 ## OS X GUI
 cd Mac-GUI
-xcodebuild -target "Revolution R Open" 
+xcodebuild -target "Microsoft R Open" 
 cd ../
-sudo cp -a Mac-GUI/build/Release/Revo*.app /Applications
+sudo cp -a Mac-GUI/build/Release/Microsoft*.app /Applications
 ## make package
 cd $BUILD_DIR/RRO-src/OSX/project
 /usr/local/bin/packagesbuild RRO.pkgproj

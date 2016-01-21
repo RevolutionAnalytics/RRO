@@ -4,12 +4,11 @@
 
 # create convenience links to R and Rscript
 pwd
-cd /usr/bin
+cd /usr/local/bin
 rm -f R Rscript
 ln -s /Library/Frameworks/R.framework/Resources/bin/R .
 ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .
 cd /Library/Frameworks/R.framework/Resources/etc
-/Library/Frameworks/R.framework/Resources/bin/R CMD INSTALL checkpoint.tar.tgz
 
 # update font cache (if this R includes fontconfig)
 if [ -e /Library/Frameworks/R.framework/Resources/bin/fc-cache ]; then

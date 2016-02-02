@@ -1,6 +1,18 @@
 $NUGET_URL = 'https://nuget.org/nuget.exe'
 $REVO_NUGET_FEED = 'https://msdata.pkgs.visualstudio.com/DefaultCollection/_packaging/MRS_Vendor/nuget/v3/index.json'
-takeown /r /f .
+$output = takeown /r /f .
+
+if ($LastExitCode -ne 0)
+{
+    Write-Error "Take ownership failed"
+    Write-Output $output
+    
+    exit -1
+}
+else
+{
+    Write-Output "Successfully took ownership of all items in the `"$PWD`" directory"
+}
 
 if (-Not (Get-Command nuget.exe -ErrorAction SilentlyContinue))
 {
@@ -28,7 +40,26 @@ if($env:NUGET_PASSWORD)
     }
 }
 
-nuget install packages.config -ExcludeVersion -OutputDirectory .\vendor
+$retries = 0
+do
+{
+    $output = nuget install packages.config -ExcludeVersion -OutputDirectory .\vendor
+    
+    $needsRetry = ($LastExitCode -ne 0) -or ($output -cmatch 'WARNING:')
+    
+    if ($needsRetry)
+    {
+        Write-Warning "Failed to retrieve all nuget packages for vendor directory"
+    }
+
+    Write-Output $output
+} while ($needsRetry -and ($retries++ -lt 5))
+
+if ($needsRetry)
+{
+    Write-Error "Failed to restore the vendor directory"
+    exit -1
+}
 
 Push-Location RRO-src/buildFiles
 

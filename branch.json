@@ -1,11 +1,46 @@
 {
-    "nodes": [ "windows", "centos7" ],
-    "linux": {
-        "cmd": "./docker-build.sh",
-        "artifactList": [ "**/r-*.tar.gz" ]
-    },
-    "windows": {
-        "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
-        "artifactList": [ "MRO-win.exe" ]
+    "version": 1.0,
+    "ci": {
+        "nodes": [
+            "windows",
+            "centos7"
+        ],
+        "alias": {
+            "linux": [
+                "centos7"
+            ]
+        },
+        "gates": {
+            "checkin": [
+                "build"
+            ],
+            "rolling": [
+                "build"
+            ]
+        },
+        "workflow": {
+            "build": {
+                "nodes": {
+                    "linux": [
+                        {
+                            "cmd": "bash ./docker-build.sh",
+                            "artifactList": [
+                                "**/r-*.tar.gz"
+                            ],
+                            "recycle": false
+                        }
+                    ],
+                    "windows": [
+                        {
+                            "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
+                            "artifactList": [
+                                "MRO-win.exe"
+                            ],
+                            "recycle": false
+                        }
+                    ]
+                }
+            }
+        }
     }
 }

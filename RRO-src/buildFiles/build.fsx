@@ -323,6 +323,7 @@ Target "Build_Windows" (fun _ ->
     FileUtils.cp_r (BASE_DIR +/ "R-src") (WORKSPACE +/ "R-" + R_VERSION)
     FileUtils.cp_r ("c:\\R64\\Tcl") (WORKSPACE +/ "R-" + R_VERSION +/ "Tcl")
     FileUtils.cp (COMMON_FILES_DIR +/ "Rprofile.site") (gnuWin32Dir +/ "fixed" +/ "etc")
+    FileUtils.cp (WINDOWS_FILES_DIR +/ "Rconsole" ) (gnuWin32Dir +/ "fixed" +/ "etc")
     FileUtils.cp (COMMON_FILES_DIR +/ "vars.mk") (rDir +/ "share" +/ "make")
     FileUtils.cp (WINDOWS_FILES_DIR +/ "MkRules_64.local") (gnuWin32Dir +/ "MkRules.local")
     FileUtils.cp_r (PKG_DIR +/ ".") (packageDir)

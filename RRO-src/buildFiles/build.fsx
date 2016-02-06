@@ -19,7 +19,7 @@ let WORKSPACE = BASE_DIR +/ "workspace"
 let mutable FLAVOR = "MRO"
 let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION
-let RRC_VERSION = "8.0.0"
+let RRC_VERSION = "8.0.1"
 let mutable FLAVOR_VERSION = R_VERSION
 
 let CURL_VERSION = "7.45.0"
@@ -338,11 +338,11 @@ Target "Build_Windows" (fun _ ->
 
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
-    ignore(Shell.Exec("make", "-j8 all", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j8 cairodevices", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j8 recommended", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j8 vignettes", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j8 manuals", gnuWin32Dir))
+    ignore(Shell.Exec("make", "-j all", gnuWin32Dir))
+    ignore(Shell.Exec("make", "-j cairodevices", gnuWin32Dir))
+    ignore(Shell.Exec("make", "-j recommended", gnuWin32Dir))
+    ignore(Shell.Exec("make", "-j vignettes", gnuWin32Dir))
+    ignore(Shell.Exec("make", "-j manuals", gnuWin32Dir))
 
     //Stage binary packages
     let binaryPackages = jsonObject.GetValue("binary_packages")

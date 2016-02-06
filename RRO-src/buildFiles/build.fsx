@@ -340,7 +340,7 @@ Target "Build_Windows" (fun _ ->
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
     ignore(Shell.Exec("make", "-j all", gnuWin32Dir))
     ignore(Shell.Exec("make", "-j cairodevices", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j recommended", gnuWin32Dir))
+    ignore(Shell.Exec("make", "recommended", gnuWin32Dir))
     ignore(Shell.Exec("make", "-j vignettes", gnuWin32Dir))
     ignore(Shell.Exec("make", "-j manuals", gnuWin32Dir))
 

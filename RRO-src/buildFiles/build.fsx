@@ -1,11 +1,13 @@
 ﻿#r "./packages/FAKE.4.0.3/tools/FakeLib.dll"
 #r "./packages/FAKE.4.0.3/tools/Newtonsoft.Json.dll"
 #r "./RevoUtils/bin/Release/RevoUtils.dll"
+#r "./packages/WiX.3.9.2.1/tools/Microsoft.Deployment.Compression.dll"
+#r "./packages/WiX.3.9.2.1/tools/Microsoft.Deployment.Compression.Cab.dll"
 
 open Fake
 open RevoUtils
 open Newtonsoft
-
+open Microsoft.Deployment.Compression.Cab
 
 let (+/) path1 path2 = System.IO.Path.Combine(path1, path2)
 
@@ -372,6 +374,8 @@ Target "Build_Windows" (fun _ ->
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
+    let cabInfo = new CabInfo(WORKSPACE +/ "MRO.cab")
+    cabInfo.Pack((installerDir +/ "R-" + R_VERSION), true, Microsoft.Deployment.Compression.CompressionLevel.Min, null);
     ()
 )
 

@@ -1,0 +1,10 @@
+Package: IOQR
+Version: 0.0.2
+Date: 2016-02-02
+Title: Installation and Operation Qualifier for R
+Author: Microsoft Corporation
+Maintainer: Microsoft Corporation <mrspack@microsoft.com>
+Depends: R (>= 2.6.2), RUnit (>= 0.4.26), tools
+Description: Test suite for R, used to verify major functionality
+License: GPL-2
+Copyright: Copyright 2016 Microsoft Corporation

@@ -28,6 +28,20 @@
                                 "**/r-*.tar.gz"
                             ],
                             "recycle": false
+                        },
+                        {
+                            "cmd": "tar -zxf ./r-linux.tar.gz",
+                            "artifactList": [ ],
+                            "recycle": false
+                        },
+                        {
+                            "cmd": "bash ./test/utils/runAllTests.sh",
+                            "artifactList": [
+                                "*.html",
+                                "*.txt",
+                                "*.log"
+                            ],
+                            "recycle": false
                         }
                     ],
                     "windows": [
@@ -41,6 +55,6 @@
                     ]
                 }
             }
-        }
+		}
     }
 }

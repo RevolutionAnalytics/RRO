@@ -374,7 +374,7 @@ Target "Build_Windows" (fun _ ->
 
     //Create the installer
     ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
-    let cabInfo = new CabInfo(WORKSPACE +/ "MRO.cab")
+    let cabInfo = new CabInfo(WORKSPACE +/ "Microsoft-R-Open_" + R_VERSION + ".0_ENU.cab")
     cabInfo.Pack((installerDir +/ "R-" + R_VERSION), true, Microsoft.Deployment.Compression.CompressionLevel.Min, null);
     ()
 )

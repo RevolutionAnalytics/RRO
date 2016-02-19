@@ -194,7 +194,6 @@ $(RPREFIX)-$(SUFF).msi: R.wxs License.rtf
 ## too often this fails to empty directories.
 clean:
 	rm -rf R.iss *.log R.wxs files.wxs R.wixobj uuidgen.o uuidgen.exe uuids
-	-rm -rf $(RPREFIX)
 
 distclean: clean
 	rm -f R*-win*.exe R*-win*.msi

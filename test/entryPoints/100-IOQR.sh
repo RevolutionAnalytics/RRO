@@ -13,7 +13,6 @@
 # Side effects: Produces html, txt, and xml test reports in the folder from which the script command was issued.
 # These reports are used as input to the test reporting system.
 #
-# http://www.davidpashley.com/articles/writing-robust-shell-scripts/
 set -o errexit
 
 # exit on uninitialized variable

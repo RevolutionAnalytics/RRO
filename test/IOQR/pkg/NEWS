@@ -1,0 +1,16 @@
+
+ NEWS/ChangeLog for IOQR Package
+-----------------------------------------
+
+0.0.2   2016-02-02
+    o Added testFuncRegexp to make wuicker testing of package
+
+0.0.1   2016-01-30-09-01
+    o   Forked from RevoIOQ
+		- Removed unitTests/Revo
+		- Renamed IOQR: Thinking that name is better than MROIOQ
+		  because it is not tied to marketing name.
+		- Removed "Suggests RevoUtils", copied totalSystemMemory into this package.
+		- Removed check for RevoScaleR Tests
+		- Removed checks for if MKL libs installed in runit.package.examples.R to get rid of RevoUtilsMath dependency.
+        - Removed the Renctest stuff.

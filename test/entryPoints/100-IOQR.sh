@@ -13,6 +13,8 @@
 # Side effects: Produces html, txt, and xml test reports in the folder from which the script command was issued.
 # These reports are used as input to the test reporting system.
 #
+
+# Exit if anything returns non zero
 set -o errexit
 
 # exit on uninitialized variable
@@ -44,9 +46,9 @@ RDIR="build-output/lib64/R"
 export PATH=${ORIGDIR}/${RDIR}/bin:${PATH}
 echo PATH=${PATH}
 WORKINGDIR=${ORIGDIR}/IOQR.workingdir
-rm -rf $WORKINGDIR
+rm -rf ${WORKINGDIR}
 mkdir ${WORKINGDIR}
-echo WORKINGDIR: $WORKINGDIR
+echo WORKINGDIR: ${WORKINGDIR}
 
 cd ${WORKINGDIR}
 
@@ -90,11 +92,7 @@ EOF
 echo
 echo Run IOQR
 Rscript RunIOQR.R 2>&1 | tee ${BASENAME}.log
-RETVAL=$?
 
 cp -v *.[Hh][Tt][Mm][Ll] *.[Tt][Xx][Tt] *.[Ll][Oo][Gg] ${ORIGDIR}
 
 cd ${ORIGDIR}
-rm -rf ${WORKINGDIR}
-
-exit ${RETVAL}

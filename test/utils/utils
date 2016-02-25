@@ -1,7 +1,0 @@
-  d:/MRO-Test-Harness/RRO/test/utils:
-  total used in directory 9 available 155846264
-  drwxrwxrwx  1 derbrown Domain Users 4096 02-09 11:56 .
-  drwxrwxrwx  1 derbrown Domain Users 4096 02-09 11:40 ..
-  -rw-rw-rw-  1 derbrown Domain Users   83 02-09 11:40 installRforTest.sh
-  -rw-rw-rw-  1 derbrown Domain Users  249 02-09 11:56 runAllTests.sh
-  -rw-rw-rw-  1 derbrown Domain Users   83 02-09 11:41 runAllTests.sh~

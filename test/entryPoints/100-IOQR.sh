@@ -55,6 +55,7 @@ echo Check to see if IOQR package is installed, remove it if so
 Rscript -e "if('IOQR' %in% rownames(installed.packages()) == TRUE) {remove.packages('IOQR')}"
 
 ##
+## TODO:  Get RUnit from newget rather than cran
 echo Install RUnit
 Rscript -e "install.packages('http://cran.revolutionanalytics.com/src/contrib/Archive/RUnit/RUnit_0.4.26.tar.gz')"
 

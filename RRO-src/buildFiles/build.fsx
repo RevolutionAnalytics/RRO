@@ -21,7 +21,7 @@ let WORKSPACE = BASE_DIR +/ "workspace"
 let mutable FLAVOR = "MRO"
 let R_VERSION = "3.2.2"
 let RRO_VERSION = R_VERSION
-let RRC_VERSION = "8.0.1"
+let RRC_VERSION = "8.0.2"
 let mutable FLAVOR_VERSION = R_VERSION
 
 let CURL_VERSION = "7.45.0"

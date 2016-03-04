@@ -1,10 +1,6 @@
 {
     "version": 1.0,
     "ci": {
-        "nodes": [
-            "windows",
-            "centos7"
-        ],
         "alias": {
             "linux": [
                 "centos7"
@@ -24,31 +20,29 @@
                     "linux": [
                         {
                             "cmd": "bash ./docker-build.sh",
-                            "artifactList": [
-                                "**/r-*.tar.gz"
+                            "archiveList": [
                             ],
                             "recycle": false
                         },
                         {
                             "cmd": "tar -zxf ./r-linux.tar.gz",
-                            "artifactList": [ ],
+                            "archiveList": [
+                             ],
                             "recycle": false
                         },
                         {
                             "cmd": "bash ./test/utils/runAllTests.sh",
-                            "artifactList": [
-                                "*.html",
-                                "*.txt",
-                                "*.log"
+                            "archiveList": [
+                                "**/r-*.tar.gz"
                             ],
                             "recycle": false
                         }
                     ],
-                    "windows": [
+                    "vs2015": [
                         {
                             "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
-                            "artifactList": [
-                                "MRO-win.exe"
+                            "archiveList": [
+                                "**/MRO-*win.exe"
                             ],
                             "recycle": false
                         }

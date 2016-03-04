@@ -49,3 +49,23 @@ foreach ($package in $packages)
 }
 
 Write-Host "Done verifying mpm packages"
+
+Write-Host "Fixing miktex"
+
+$initexmf = Join-Path $mpmDir 'initexmf.exe'
+
+if (-not (Test-Path $initexmf))
+{
+    Throw "The initexmf.exe utility was not found in the expected location $mpmDir"
+}
+
+& $initexmf --update-fndb
+$success = $miktexDir -match 'miktex-([0-9]\.[0-9])'
+
+$profileConfig = Join-Path $env:APPDATA "MiKTeX\$($matches[1])\miktex\config\updmap"
+
+Set-Content $profileConfig "Map zi4.map"
+
+& $initexmf --mkmaps 
+
+Write-Host "Done fixing miktex"

@@ -4,7 +4,7 @@ $output = takeown /r /f .
 
 md c:\temp
 $env:temp='c:\temp'
-$env:tmp='c:temp'
+$env:tmp='c:\temp'
 
 Write-Host Dumping environment variables
 gci env:

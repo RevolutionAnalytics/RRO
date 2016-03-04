@@ -337,6 +337,9 @@ Target "Build_Windows" (fun _ ->
 
     RegexReplaceInFileWithEncoding "INSTALL_OPTS=--pkglock --install-tests --data-compress=xz" "INSTALL_OPTS=--pkglock --install-tests --keep-empty-dirs --data-compress=xz" (System.Text.ASCIIEncoding()) (packageDir +/ "Makefile.win")
 
+    //Ensure required miktex packages are installed properly
+    ignore(Shell.Exec("powershell", TEX_PATH, gnuWin32Dir))
+    
     //invoke build
     setProcessEnvironVar "tmpdir" (WORKSPACE +/ "tmp")
     ignore(Shell.Exec("make", "-j all", gnuWin32Dir))

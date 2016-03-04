@@ -27,14 +27,14 @@ if (-not (Test-Path $miktexDir))
     Throw "The specified miktex directory $miktexDir does not exist."
 }
 
-$mpmDir = Combine-Path $miktexDir 'miktex\bin\x64'
+$mpmDir = Join-Path $miktexDir 'miktex\bin\x64'
 
 if (-not (Test-Path $mpmDir)) 
 {
     Throw "The path to mpm.exe ($mpmDir) was not found in the miktex install directory $miktexDir"
 }
 
-$mpm = Combine-Path $mpmDir 'mpm.exe'
+$mpm = Join-Path $mpmDir 'mpm.exe'
 
 if (-not (Test-Path $mpm)) 
 {

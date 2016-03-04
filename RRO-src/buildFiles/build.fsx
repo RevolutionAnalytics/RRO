@@ -372,7 +372,7 @@ Target "Build_Windows" (fun _ ->
         file.Dispose();
 
     //Create the installer
-    ignore(Shell.Exec("takeown", "/r /f " + WORKSPACE, BASE_DIR)) 
+    ignore(Shell.Exec("powershell", SCRIPT_DIR +/ "Own-Files.ps1", BASE_DIR)) 
     ignore(Shell.Exec("make", "-j rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
     FileUtils.cp ( installerDir +/ FLAVOR + "-" + FLAVOR_VERSION + "-win.exe") ( BASE_DIR +/ FLAVOR + "-win.exe" )
     ()

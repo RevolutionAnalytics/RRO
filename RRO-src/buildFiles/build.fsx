@@ -376,7 +376,7 @@ Target "Build_Windows" (fun _ ->
 
     //Create the installer
     ignore(Shell.Exec("powershell", SCRIPT_DIR +/ "Own-Files.ps1", BASE_DIR)) 
-    ignore(Shell.Exec("make", "-j rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
+    ignore(Shell.Exec("make", "rinstaller EXTRA_PKGS=\'" + extraBinaryPackageList + "\'", gnuWin32Dir))
     FileUtils.cp ( installerDir +/ FLAVOR + "-" + FLAVOR_VERSION + "-win.exe") ( BASE_DIR +/ FLAVOR + "-win.exe" )
     ()
 )

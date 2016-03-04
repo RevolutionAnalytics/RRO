@@ -62,7 +62,10 @@ if (-not (Test-Path $initexmf))
 & $initexmf --update-fndb
 $success = $miktexDir -match 'miktex-([0-9]\.[0-9])'
 
-$profileConfig = Join-Path $env:APPDATA "MiKTeX\$($matches[1])\miktex\config\updmap"
+$profileConfigDir = Join-Path $env:APPDATA "MiKTeX\$($matches[1])\miktex\config"
+New-Item $profileConfigDir -ItemType Directory
+
+$profileConfig = Join-Path $profileConfigDir "updmap.cfg"
 
 Set-Content $profileConfig "Map zi4.map"
 

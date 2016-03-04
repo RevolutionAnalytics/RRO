@@ -2,6 +2,9 @@ $NUGET_URL = 'https://nuget.org/nuget.exe'
 $REVO_NUGET_FEED = 'https://msdata.pkgs.visualstudio.com/DefaultCollection/_packaging/MRS_Vendor/nuget/v3/index.json'
 $output = takeown /r /f .
 
+Write-Host Dumping environment variables
+gci env:
+
 if ($LastExitCode -ne 0)
 {
     Write-Error "Take ownership failed"

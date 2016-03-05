@@ -18,7 +18,7 @@ BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, cairo, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
 Requires: gcc, make, gcc-fortran, gcc-c++, curl, zip
-AutoReqProv: Yes
+AutoReqProv: No
 
 %define libnn lib64
 %define DIR_VERSION :::RPM_VERSION:::

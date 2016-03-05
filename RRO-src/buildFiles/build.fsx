@@ -166,6 +166,7 @@ Target "Build_Linux" (fun _ ->
         specName <- "R_SUSE.spec"
 
     let mutable rpmName = ""
+    let mutable debName = ""
     if (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 5) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.CentOS && version.Major = 6) then
@@ -176,6 +177,7 @@ Target "Build_Linux" (fun _ ->
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
+        debName <- FLAVOR.ToLower() + "_" + FLAVOR_VERSION + "-2_amd64.deb"
     elif (flavor = RevoUtils.Platform.PlatformFlavor.OpenSUSE) then
         rpmName <- FLAVOR + "-" + FLAVOR_VERSION + "-1.x86_64.rpm"
 
@@ -254,7 +256,7 @@ Target "Build_Linux" (fun _ ->
 
     if(flavor = RevoUtils.Platform.PlatformFlavor.Ubuntu) then
         ignore(Shell.Exec("fakeroot", "alien --scripts --to-deb " + WORKSPACE +/ rpmName, BASE_DIR))
-        ignore(Shell.Exec("mv", BASE_DIR +/ "rro_" + R_VERSION + "-2_amd64.deb" + " " + BASE_DIR +/ finalDebName))
+        ignore(Shell.Exec("mv", BASE_DIR +/ debName + " " + BASE_DIR +/ finalDebName))
     else
         ignore(Shell.Exec("mv", WORKSPACE +/ rpmName + " " + WORKSPACE +/ finalRpmName))
 

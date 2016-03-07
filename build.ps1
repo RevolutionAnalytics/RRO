@@ -1,6 +1,13 @@
 $NUGET_URL = 'https://nuget.org/nuget.exe'
 $REVO_NUGET_FEED = 'https://msdata.pkgs.visualstudio.com/DefaultCollection/_packaging/MRS_Vendor/nuget/v3/index.json'
-$output = takeown /r /f .
+$output = takeown /d y /r /f .
+
+md c:\temp
+$env:temp='c:\temp'
+$env:tmp='c:\temp'
+
+Write-Host Dumping environment variables
+gci env:
 
 if ($LastExitCode -ne 0)
 {

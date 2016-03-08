@@ -32,9 +32,9 @@
                         {
                             "cmd": "bash ./test/utils/runAllTests.sh",
                             "artifactList": [
-                                "*.html",
-                                "*.txt",
-                                "*.log"
+                                "**/*.html",
+                                "**/*.txt",
+                                "**/*.log"
                             ],
                             "recycle": false
                         }

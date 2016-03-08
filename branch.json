@@ -33,7 +33,9 @@
                         {
                             "cmd": "bash ./test/utils/runAllTests.sh",
                             "archiveList": [
-                                "**/r-*.tar.gz"
+                                "**/*.html",
+                                "**/*.txt",
+                                "**/*.log"
                             ],
                             "recycle": false
                         }

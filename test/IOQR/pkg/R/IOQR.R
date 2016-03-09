@@ -9,7 +9,7 @@
 "IOQR" <- function(printText=TRUE, printHTML=TRUE, printJUnit=TRUE,
    outdir=if (file.access(getwd(), mode=2)) file.path(tempdir(),"IOQR") else file.path(getwd(),"IOQR"),
    basename=paste("IOQR-Report", format(Sys.time(), "%m-%d-%Y-%H-%M-%S"), sep="-"),
-   testFileRegexp="^runut.+\\.[rR]$",
+   testFileRegexp="^runit.+\\.[rR]$",
    testFuncRegexp="^test.+",
    view=TRUE, clean=TRUE, runTestFileInOwnProcess=TRUE, testLocal=FALSE )
 {
@@ -72,6 +72,7 @@
     if (is.null(testSuiteName)) {
 		testSuiteName <- tempfile()
 	}
+
 
     testSuite <- defineTestSuite(name=testSuiteName, dirs=testDirs,
                                  testFileRegexp=testFileRegexp, testFuncRegexp=testFuncRegexp)

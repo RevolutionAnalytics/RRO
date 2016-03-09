@@ -19,7 +19,7 @@ set -o errexit
 
 # exit on uninitialized variable
 set -u
-
+# set -x
 echo ================================
 echo running IOQR
 echo ################
@@ -78,7 +78,7 @@ library("IOQR")
 ret <- IOQR( outdir=getwd(),
      basename="${BASENAME}",
 #     testFileRegexp="runit.package.loadability.R",
-#     testFuncRegexp="test.recommended.package.rpart.loadability",
+#     testFuncRegexp="test.reg.plot.stress",
      printJUnit=FALSE,
      view=FALSE )
 if (ret) {

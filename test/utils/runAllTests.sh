@@ -10,6 +10,7 @@ ${DIR}/../entryPoints/setup.sh != 0 || exit 1
 
 let RETVAL=0
 for FILE in ${DIR}/../entryPoints/[1234567890]*.sh; do
+    echo Running ${FILE} ...
     ${FILE}
     let RETVAL=${RETVAL}+$?
 done

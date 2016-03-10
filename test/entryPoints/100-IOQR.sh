@@ -82,9 +82,9 @@ ret <- IOQR( outdir=getwd(),
      printJUnit=FALSE,
      view=FALSE )
 if (ret) {
- cat( "All tests passed\n" )
+    cat( "All tests passed\n" )
 } else {
- cat( "One or more test FAILED!!\n" )
+    cat( "One or more test FAILED!!\n" )
 }
 quit(status=0)
 EOF
@@ -93,6 +93,9 @@ echo
 echo Run IOQR
 Rscript RunIOQR.R 2>&1 | tee ${BASENAME}.log
 
+retval=`grep -s -c 'FAILED!!' ${BASENAME}.log || true`
+echo IOQR.sh retval: $retval
 cp -v *.[Hh][Tt][Mm][Ll] *.[Tt][Xx][Tt] *.[Ll][Oo][Gg] ${ORIGDIR}
 
 cd ${ORIGDIR}
+exit $retval

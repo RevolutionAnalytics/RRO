@@ -42,6 +42,15 @@
                                 "**/MRO-*win.exe"
                             ],
                             "recycle": false
+                        },
+                        {
+                            "cmd": "bash ./test/utils/runAllTests.sh",
+                            "archiveList": [
+                                "**/*.html",
+                                "**/*.txt",
+                                "**/*.log"
+                            ],
+                            "recycle": false
                         }
                     ]
                 }

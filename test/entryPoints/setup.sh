@@ -7,6 +7,7 @@ uname=`uname`
 case ${uname} in
 	Linux)  PLATFORM=Linux ;;
 	MINGW*) PLATFORM=Windows;;
+	MSYS_NT*) PLATFORM=Windows;;
 	*)
 		echo ERROR: Unknown platform: ${uname}
 		exit 1
@@ -25,7 +26,7 @@ case ${PLATFORM} in
 		installDir="${PWD}/MRO-win" 
 		rm -rf ${installDir}
 		echo Installing MRO-win.exe to ${installDir}
-#        MRO-win.exe /Silent /DIR="${installDir}"
+        MRO-win.exe /Silent /DIR="${installDir}"
 		wait
 		RDIR="${PWD}/MRO-win"
 		export PATH=${RDIR}/bin:${PATH}

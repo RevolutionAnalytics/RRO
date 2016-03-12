@@ -27,24 +27,13 @@ set
 echo ################
 
 
-# TODO: Need to have a standard way of getting platform.
-# TODO: need to distinguish between different distros of Windows and Linux.
-uname=`uname`
-case ${uname} in
-	Linux)  PLATFORM=Linux ;;
-	MINGW*) PLATFORM=Windows;;
-	*)      PLATFORM=UnknownPlatform;;
-esac
-echo PLATFORM=$PLATFORM
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo DIR: $DIR
 
 ORIGDIR=`pwd`
 
 # TODO Need a definitive way of determining what R version we should be picking up
-RDIR="build-output/lib64/R"
-export PATH=${ORIGDIR}/${RDIR}/bin:${PATH}
-echo PATH=${PATH}
+
 WORKINGDIR=${ORIGDIR}/IOQR.workingdir
 rm -rf ${WORKINGDIR}
 mkdir ${WORKINGDIR}

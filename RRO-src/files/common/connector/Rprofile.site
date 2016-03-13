@@ -56,7 +56,7 @@ local(
 	}
 	quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
 	if (!quiet){
-        cat(.RevoVersionShort, ifelse(nchar(.RevoVersionShort) > 45, ":\n", ": "), "an enhanced distribution of R\n", sep="")
+        cat(.RevoVersionShort, ":\n",  sep="")
         cat("Microsoft packages Copyright (C)", Revo.version$year, "Microsoft Corporation\n\n")
         cat("Type 'readme()' for release notes.\n\n")
     } 

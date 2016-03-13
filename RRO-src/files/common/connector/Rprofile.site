@@ -16,7 +16,7 @@ local(
 	r <- getOption("repos")
     if (!identical(system.file(package="RevoScaleR"),"")) {
     	if (.Platform$OS.type == "windows"){
-            r["CRAN"] <- RevoUtils::getRevoRepos(CRANmirror=TRUE)
+            r["CRAN"] <- "https://mran.microsoft.com/snapshot/2015-11-30"
         } else {
             r["CRAN"] <- RevoUtils::getRevoRepos(MRANmirror=TRUE)
         }

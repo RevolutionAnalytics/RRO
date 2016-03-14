@@ -10,7 +10,7 @@ source ${REPOROOT}/test/entryPoints/setup.sh
 set +e
 
 let RETVAL=0
-for FILE in ${REPOROOT}/entryPoints/[1234567890]*.sh; do
+for FILE in ${REPOROOT}/test/entryPoints/[1234567890]*.sh; do
     echo Running ${FILE} ...
     ${FILE}
     let RETVAL=${RETVAL}+$?
@@ -18,7 +18,7 @@ done
 
 set -e
 
-${REPOROOT}/entryPoints/cleanup.sh
+${REPOROOT}/test/entryPoints/cleanup.sh
 
 exit ${RETVAL}
 

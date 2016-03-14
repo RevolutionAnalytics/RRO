@@ -25,12 +25,6 @@
                             "recycle": false
                         },
                         {
-                            "cmd": "tar -zxf ./r-linux.tar.gz",
-                            "archiveList": [
-                             ],
-                            "recycle": false
-                        },
-                        {
                             "cmd": "bash ./test/utils/runAllTests.sh",
                             "archiveList": [
                                 "**/r-*.tar.gz"

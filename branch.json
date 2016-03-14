@@ -26,8 +26,10 @@
                         },
                         {
                             "cmd": "bash ./test/utils/runAllTests.sh",
-                            "archiveList": [
-                                "**/r-*.tar.gz"
+                            "artifactList": [
+                                "**/*.html",
+                                "**/*.txt",
+                                "**/*.log"
                             ],
                             "recycle": false
                         }

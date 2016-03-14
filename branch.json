@@ -25,8 +25,7 @@
                             "recycle": false
                         },
                         {
-                            "cmd": "bash ./test/utils/runAllTests.sh",
-
+                            "cmd": "bash ./test/runAllTests.sh",
                             "archiveList": [
                                 "**/r-*.tar.gz",
                                 "**/*.html",
@@ -45,7 +44,7 @@
                             "recycle": false
                         },
                         {
-                            "cmd": "bash ./test/utils/runAllTests.sh",
+                            "cmd": "bash ./test/runAllTests.sh",
                             "archiveList": [
                                 "**/*.html",
                                 "**/*.txt",

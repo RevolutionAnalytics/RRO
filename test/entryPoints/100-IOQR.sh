@@ -67,7 +67,7 @@ library("IOQR")
 ret <- IOQR( outdir=getwd(),
      basename="${BASENAME}",
 #     testFileRegexp="runit.package.loadability.R",
-#     testFuncRegexp="test.reg.plot.stress",
+     testFuncRegexp="test.reg.plot.stress",
      printJUnit=FALSE,
      view=FALSE )
 if (ret) {

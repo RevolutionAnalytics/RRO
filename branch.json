@@ -26,7 +26,8 @@
                         },
                         {
                             "cmd": "bash ./test/utils/runAllTests.sh",
-                            "artifactList": [
+
+                            "archiveList": [
                                 "**/*.html",
                                 "**/*.txt",
                                 "**/*.log"

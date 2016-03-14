@@ -14,11 +14,10 @@ case ${uname} in
 		exit 1
 		;;
 esac
-
+export PLATFORM
 echo PLATFORM=$PLATFORM
 case ${PLATFORM} in
 	Linux)
-		exit 0
 		tar zvxf r-linux.tar.gz
 		RDIR="${PWD}/build-output/lib64/R"
 		export PATH=${RDIR}/bin:${PATH}

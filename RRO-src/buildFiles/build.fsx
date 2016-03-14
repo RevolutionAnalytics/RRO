@@ -346,7 +346,7 @@ Target "Build_Windows" (fun _ ->
     ignore(Shell.Exec("make", "-j cairodevices", gnuWin32Dir))
     ignore(Shell.Exec("make", "recommended", gnuWin32Dir))
     ignore(Shell.Exec("make", "-j vignettes", gnuWin32Dir))
-    ignore(Shell.Exec("make", "-j manuals", gnuWin32Dir))
+    ignore(Shell.Exec("make", "manuals", gnuWin32Dir))
 
     //Stage binary packages
     let binaryPackages = jsonObject.GetValue("binary_packages")

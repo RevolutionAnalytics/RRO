@@ -24,17 +24,17 @@ case ${PLATFORM} in
 		export PATH=${RDIR}/bin:${PATH}
 		;;
 	Windows)
-		installDir="${PWD}/MRO-win"
+		installDir="$(pwd -W)/MRO-win"
 		rm -rf ${installDir}
 		echo Installing MRO-win.exe to ${installDir}
-        ./MRO-win.exe /Silent /DIR="${installDir}"
+        cmd.exe /c ".\MRO-win.exe /Silent /DIR=${installDir}"
 		wait
 		RDIR="${PWD}/MRO-win"
 		export PATH=${RDIR}/bin:${PATH}
 		;;
 esac
 
-echo PATH=${PATH}
+echo End Setup.sh
 
 
 

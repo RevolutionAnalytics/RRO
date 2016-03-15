@@ -13,7 +13,7 @@ if ($LastExitCode -ne 0)
 {
     Write-Error "Take ownership failed"
     Write-Output $output
-    
+
     exit -1
 }
 else
@@ -25,10 +25,10 @@ if (-Not (Get-Command nuget.exe -ErrorAction SilentlyContinue))
 {
     $nugetPath = '\nuget'
     md $nugetPath -Force
-    
+
     $nugetPath = Convert-Path $nugetPath
     Write-Host $nugetPath
-    
+
 	Invoke-WebRequest -Uri $NUGET_URL -OutFile \nuget\nuget.exe
 
     $env:Path = $env:Path + ';' + $nugetPath
@@ -51,9 +51,9 @@ $retries = 0
 do
 {
     $output = nuget install packages.config -ExcludeVersion -OutputDirectory .\vendor
-    
+
     $needsRetry = ($LastExitCode -ne 0) -or ($output -cmatch 'WARNING:')
-    
+
     if ($needsRetry)
     {
         Write-Warning "Failed to retrieve all nuget packages for vendor directory"
@@ -72,8 +72,10 @@ Push-Location RRO-src/buildFiles
 
 $msbuild = Join-Path ${env:ProgramFiles(x86)} "msbuild\14.0\bin\msbuild.exe"
 & $msbuild /p:Configuration=Release
+Write-Output "Completed msbuild: $LastExitCode"
 
 packages/FAKE.4.0.3/tools/fake.exe
+Write-Output "Compleated fake: $LastExitCode"
 
 Pop-Location
-
+get-childitem *

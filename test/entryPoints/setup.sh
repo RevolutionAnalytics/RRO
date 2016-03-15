@@ -27,7 +27,7 @@ case ${PLATFORM} in
 		rm -rf ${installDir}
 		echo Installing MRO-win.exe to ${installDir}
 		ls
-        cmd.exe /c "./MRO-win.exe /Silent /DIR=${installDir}"
+        cmd.exe /c ".\MRO-win.exe /Silent /DIR=${installDir}"
 		wait
 		RDIR="${PWD}/MRO-win"
 		export PATH=${RDIR}/bin:${PATH}

@@ -23,7 +23,7 @@ case ${PLATFORM} in
 		export PATH=${RDIR}/bin:${PATH}
 		;;
 	Windows)
-		basedir=$(dirname $(pwd -W))
+		basedir=$(pwd -W)
 		echo basedir: $basedir
 		installDir="$(pwd -W)/MRO-win"
 		rm -rf ${installDir}

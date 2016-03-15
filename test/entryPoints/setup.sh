@@ -30,7 +30,7 @@ case ${PLATFORM} in
 		echo Installing MRO-win.exe to ${installDir}
 		ls ..
 		ls $basedir
-        cmd.exe /c "${basedir}\MRO-win.exe /Silent /DIR=${installDir}"
+        cmd.exe /c "${basedir}\workspace\R-3.2.3\src\gnuwin32\MRO-3.2.3-win.exe /Silent /DIR=${installDir}"
 		wait
 		RDIR="${PWD}/MRO-win"
 		export PATH=${RDIR}/bin:${PATH}

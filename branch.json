@@ -35,7 +35,7 @@
                             "recycle": false
                         }
                     ],
-                    "windows": [
+                    "vs2015": [
                         {
                             "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
                             "archiveList": [

@@ -26,15 +26,14 @@ case ${PLATFORM} in
 		basedir=$(pwd -W)
         ls ${basedir}
 		echo basedir: $basedir
-		installDir="$(pwd -W)/MRO-win"
-		rm -vrf ${installDir}
-		echo Installing MRO-win.exe to ${installDir}
+		RDIR="$(pwd -W)/R"
+		rm -vrf ${RDIR}
+		echo Installing MRO-win.exe to ${RDIR}
 		ls ..
 		ls $basedir
-        cmd.exe /c "${basedir}\MRO-win.exe /Silent /DIR=${installDir}"
+        cmd.exe /c "${basedir}\MRO-win.exe /Silent /DIR=${RDIR"
 		wait
-		RDIR="${PWD}/MRO-win"
-		export PATH=${RDIR}/bin:${PATH}
+		export PATH=${RDIR}\bin:${PATH}
 		;;
 esac
 

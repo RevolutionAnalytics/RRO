@@ -24,14 +24,14 @@ case ${PLATFORM} in
 		;;
 	Windows)
 		basedir=$(pwd -W)
+        ls ${basedir}
 		echo basedir: $basedir
 		installDir="$(pwd -W)/MRO-win"
-		rm -rf ${installDir}
+		rm -vrf ${installDir}
 		echo Installing MRO-win.exe to ${installDir}
 		ls ..
 		ls $basedir
-        ls ./workspace/R-3.2.3/src/gnuwin32
-        cmd.exe /c "${basedir}\workspace\R-3.2.3\src\gnuwin32\MRO-3.2.3-win.exe /Silent /DIR=${installDir}"
+        cmd.exe /c "${basedir}\MRO-win.exe /Silent /DIR=${installDir}"
 		wait
 		RDIR="${PWD}/MRO-win"
 		export PATH=${RDIR}/bin:${PATH}

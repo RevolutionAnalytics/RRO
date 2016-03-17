@@ -78,4 +78,8 @@ packages/FAKE.4.0.3/tools/fake.exe
 Write-Output "Compleated fake: $LastExitCode"
 
 Pop-Location
-get-childitem *
+
+if ( -not (Test-Path "MRO-win.exe")) {
+    Write-Error "Failed to produce MRO-win.exe"
+    exit -1
+}

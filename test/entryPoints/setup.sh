@@ -24,14 +24,11 @@ case ${PLATFORM} in
 		;;
 	Windows)
 		basedir=$(pwd -W)
-        ls ${basedir}
-		echo basedir: $basedir
-		RDIR="$(pwd -W)/R"
-		rm -vrf ${RDIR}
-		echo Installing MRO-win.exe to ${RDIR}
-		ls ..
-		ls $basedir
-        cmd.exe /c "${basedir}/MRO-win.exe /Silent /DIR=${RDIR}"
+		RDIRW="$(pwd -W)/R"
+        RDIR="${PWD}/R"
+		rm -rf ${RDIRW}
+		echo Installing MRO-win.exe to ${RDIRW}
+        cmd.exe /c "${basedir}/MRO-win.exe /Silent /DIR=${RDIRW}"
 		wait
 		export PATH=${RDIR}/bin:${PATH}
 		;;

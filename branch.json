@@ -28,9 +28,7 @@
                             "cmd": "bash ./test/runAllTests.sh",
                             "archiveList": [
                                 "**/r-*.tar.gz",
-                                "**/*.html",
-                                "**/*.txt",
-                                "**/*.log"
+                                "IOQR_*"
                             ],
                             "recycle": false
                         }
@@ -39,16 +37,14 @@
                         {
                             "cmd": "powerShell.exe -ExecutionPolicy Bypass -file build.ps1",
                             "archiveList": [
-                                "**/MRO-*win.exe"
                             ],
                             "recycle": false
                         },
                         {
                             "cmd": "bash ./test/runAllTests.sh",
                             "archiveList": [
-                                "**/*.html",
-                                "**/*.txt",
-                                "**/*.log"
+                                "**/MRO-*win.exe"
+                                "IOQR_*"
                             ],
                             "recycle": false
                         }

@@ -1,7 +1,5 @@
 
-set -x
-ls .
-ls * 
+# set -x
 
 # stop if setup fails
 set -e

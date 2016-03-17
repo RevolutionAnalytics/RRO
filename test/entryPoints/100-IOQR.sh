@@ -28,30 +28,19 @@ echo ################
 
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo DIR: $DIR
 
-ORIGDIR=`pwd`
-
-# TODO Need a definitive way of determining what R version we should be picking up
-
-WORKINGDIR=${ORIGDIR}/IOQR.workingdir
-rm -rf ${WORKINGDIR}
-mkdir ${WORKINGDIR}
-echo WORKINGDIR: ${WORKINGDIR}
-
-cd ${WORKINGDIR}
-
+## TODO Need a definitive way of determining what R version we should be picking up
 ##
 echo Check to see if IOQR package is installed, remove it if so
 Rscript -e "if('IOQR' %in% rownames(installed.packages()) == TRUE) {remove.packages('IOQR')}"
 
 ##
-## TODO:  Get RUnit from newget rather than cran
+## TODO:  Get RUnit from nuget rather than cran
 echo Install RUnit
 Rscript -e "install.packages('http://cran.revolutionanalytics.com/src/contrib/Archive/RUnit/RUnit_0.4.26.tar.gz')"
 
 ##
-rm -f *.tar.gz
+rm -f IOQR_*.tar.gz
 echo Build IOQR package
 R CMD build ${DIR}/../IOQR/pkg
 
@@ -84,7 +73,4 @@ Rscript RunIOQR.R 2>&1 | tee ${BASENAME}.log
 
 retval=`grep -s -c 'FAILED!!' ${BASENAME}.log || true`
 echo IOQR.sh retval: $retval
-cp -v *.[Hh][Tt][Mm][Ll] *.[Tt][Xx][Tt] *.[Ll][Oo][Gg] ${ORIGDIR}
-
-cd ${ORIGDIR}
 exit $retval

@@ -43,7 +43,7 @@
                         {
                             "cmd": "bash ./test/runAllTests.sh",
                             "archiveList": [
-                                "**/MRO-*win.exe"
+                                "**/MRO-*win.exe",
                                 "IOQR_*"
                             ],
                             "recycle": false

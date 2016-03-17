@@ -22,10 +22,9 @@ set -u
 # set -x
 echo ================================
 echo running IOQR
-echo ################
+echo =========================
 set
-echo ################
-
+echo =========================
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 

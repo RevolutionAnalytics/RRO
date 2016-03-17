@@ -31,9 +31,9 @@ case ${PLATFORM} in
 		echo Installing MRO-win.exe to ${RDIR}
 		ls ..
 		ls $basedir
-        cmd.exe /c "${basedir}\MRO-win.exe /Silent /DIR=${RDIR"
+        cmd.exe /c "${basedir}/MRO-win.exe /Silent /DIR=${RDIR}"
 		wait
-		export PATH=${RDIR}\bin:${PATH}
+		export PATH=${RDIR}/bin:${PATH}
 		;;
 esac
 

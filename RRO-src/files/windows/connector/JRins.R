@@ -29,7 +29,7 @@
     #Rver <- readLines("../../../VERSION")[1L]
     #Rver <- sub("Under .*$", "Pre-release", Rver)
     ## This is now over 2^16, so truncate
-    Rver <- "8.0.2"
+    Rver <- "8.0.3"
     Rver_base <- "8.0"
     RROver <- "3.2.2"
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]

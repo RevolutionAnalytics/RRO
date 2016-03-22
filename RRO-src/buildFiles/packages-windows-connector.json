@@ -4,11 +4,11 @@
         { "name": "foreach", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/foreach_1.4.3.tar.gz", "destFileName": "foreach_1.4.3.tar.gz" },
         { "name": "doParallel", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/doParallel_1.0.10.tar.gz", "destFileName": "doParallel_1.0.10.tar.gz" },
         { "name": "RUnit", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RUnit_0.4.26.tar.gz", "destFileName": "RUnit_0.4.26.tar.gz" },
-        { "name": "RevoMods", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoMods_8.0.2.tar.gz", "destFileName": "RevoMods_8.0.2.tar.gz" },
-        { "name": "RevoUtils", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoUtils_8.0.2.tar.gz", "destFileName": "RevoUtils_8.0.2.tar.gz" },
-        { "name": "RevoIOQ", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoIOQ_8.0.2.tar.gz", "destFileName": "RevoIOQ_8.0.2.tar.gz" },
-        { "name": "RevoRsrConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRsrConnector_8.0.2_win.tar.gz", "destFileName": "RevoRsrConnector_8.0.2_win.tar.gz" },
-        { "name": "RevoRpeConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRpeConnector_8.0.2.tar.gz", "destFileName": "RevoRpeConnector_8.0.2.tar.gz" }
+        { "name": "RevoMods", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoMods_8.0.3.tar.gz", "destFileName": "RevoMods_8.0.3.tar.gz" },
+        { "name": "RevoUtils", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoUtils_8.0.3.tar.gz", "destFileName": "RevoUtils_8.0.3.tar.gz" },
+        { "name": "RevoIOQ", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoIOQ_8.0.3.tar.gz", "destFileName": "RevoIOQ_8.0.3.tar.gz" },
+        { "name": "RevoRsrConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRsrConnector_8.0.3_win.tar.gz", "destFileName": "RevoRsrConnector_8.0.3_win.tar.gz" },
+        { "name": "RevoRpeConnector", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/RevoRpeConnector_8.0.3.tar.gz", "destFileName": "RevoRpeConnector_8.0.3.tar.gz" }
     ],
 
     "binary_packages": [

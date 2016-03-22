@@ -499,7 +499,7 @@
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>3.2.1</string>
+				<string>3.2.3</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -971,6 +971,11 @@
 				<key>VERSION</key>
 				<integer>2</integer>
 			</dict>
+			<key>PACKAGE_SCRIPTS</key>
+			<dict>
+				<key>RESOURCES</key>
+				<array/>
+			</dict>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
 				<key>AUTHENTICATION</key>
@@ -982,11 +987,11 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>RRO.app</string>
+				<string>MRO.app</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>3.2.1</string>
+				<string>3.2.3</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1923,7 +1928,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>Revolution R Open</string>
+						<string>Microsoft R Open</string>
 					</dict>
 				</array>
 			</dict>
@@ -2123,7 +2128,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>RRO</string>
+			<string>MRO</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>

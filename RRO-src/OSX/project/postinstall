@@ -4,7 +4,7 @@
 
 # create convenience links to R and Rscript
 pwd
-cd /usr/bin
+cd /usr/local/bin
 rm -f R Rscript
 ln -s /Library/Frameworks/R.framework/Resources/bin/R .
 ln -s /Library/Frameworks/R.framework/Resources/bin/Rscript .

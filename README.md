@@ -1,6 +1,6 @@
 # Microsoft R Open
 
-This is the build system for Microsoft R Open. It starts with the unmodified R-3.2.2 distribution, and incorporates the Microsoft R Open modifications, and then builds executables on various platforms.
+This is the build system for Microsoft R Open. It starts with the unmodified R-3.2.3 distribution, and incorporates the Microsoft R Open modifications, and then builds executables on various platforms.
 
 ## To build Microsoft R Open
 

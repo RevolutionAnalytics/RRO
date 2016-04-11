@@ -3,10 +3,10 @@
 @setfilename RMacOSX-FAQ.info
 @settitle R for Mac OS X FAQ
 @setchapternewpage on
-@set FAQ-YEAR 2015
-@set FAQ-VERSION 3.2.1 @value{FAQ-YEAR}-06-18
-@set REL-VERSION 3.2.1
-@set GUI-VERSION 1.66
+@set FAQ-YEAR 2016
+@set FAQ-VERSION 3.2.4 @value{FAQ-YEAR}-03-10
+@set REL-VERSION 3.2.4
+@set GUI-VERSION 1.67
 @documentlanguage en
 @documentencoding ISO-8859-1
 @c %**end of header

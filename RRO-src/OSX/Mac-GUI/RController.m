@@ -26,7 +26,7 @@
  *  writing to the Free Software Foundation, Inc., 59 Temple Place,
  *  Suite 330, Boston, MA  02111-1307  USA.
  *
- *  $Id: RController.m 6933 2015-04-20 20:07:35Z urbaneks $
+ *  $Id: RController.m 7107 2016-01-18 17:31:28Z urbaneks $
  */
 
 
@@ -3080,8 +3080,16 @@ outputType: 0 = stdout, 1 = stderr, 2 = stdout/err as root
 #endif
 	}
 	@catch (NSException *foo) {
+        // annoyingly, R_SVN_REVISION has changed from string to int in R 3.0.0 - perfect for causing segfaults ...
+#if R_VERSION < R_Version(3, 0, 0)
+#define R_REV_FMT "%s"
+#else
+#define R_REV_FMT "%d"
+#endif
+        const char *arch = getenv("R_ARCH");
+        if (!arch) arch = "";
 		NSBeep();
-		NSLog(@"*** RController: caught ObjC exception while processing system events. Update to the latest GUI version and consider reporting this properly (see FAQ) if it persists and is not known. \n*** reason: %@\n*** name: %@, info: %@\n*** Version: R %s.%s (%s) R.app %@%s\nConsider saving your work soon in case this develops into a problem.", [foo reason], [foo name], [foo userInfo], R_MAJOR, R_MINOR, R_SVN_REVISION, [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], getenv("R_ARCH"));
+		NSLog(@"*** RController: caught ObjC exception while processing system events. Update to the latest GUI version and consider reporting this properly (see FAQ) if it persists and is not known. \n*** reason: %@\n*** name: %@, info: %@\n*** Version: R %s.%s (" R_REV_FMT ") R.app %@%s\nConsider saving your work soon in case this develops into a problem.", [foo reason], [foo name], [foo userInfo], R_MAJOR, R_MINOR, R_SVN_REVISION, [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], arch);
 	}
 	processingEvents = NO;
 	if (breakPending) {

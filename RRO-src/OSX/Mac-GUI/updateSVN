@@ -9,7 +9,14 @@ fi
 
 OWD=`pwd`
 cd "$1"
-SVNREV=6956
+SVNREV=7152
+if [ -z "$SVNREV" -a -f .svn/entries ]; then
+  SVNREV=`sed -n 's/.*revision="\(.*\)".*/\1/p' .svn/entries|head -n 1`
+  if [ -z "$SVNREV" ]; then
+     # SVN 1.4 changed the format - this is a pure guess!! (line 4 = revision)
+     SVNREV=`sed -n -e '4 p' .svn/entries`
+  fi
+fi
 echo "Revision: $SVNREV"
 
 if [ -z "$SVNREV" ]; then

@@ -19,7 +19,7 @@ Source Components" below for details.
 Microsoft R Open is free software and comes with
 ABSOLUTELY NO WARRANTY. You are welcome to redistribute it
 under certain conditions. For information about
-Microsoft R Open, visit mran.revolutionanalytics.com/open.
+Microsoft R Open, visit mran.microsoft.com/open.
 
 
 --------------------------------------------------
@@ -39,7 +39,7 @@ http://www.R-project.org/Licenses/.
 
 A copy of the Microsoft R Open source code is available
 for download from
-http://mran.revolutionanalytics.com/download/#download.
+http://mran.microsoft.com/download.
 
 
 -----------------------
@@ -49,7 +49,7 @@ Microsoft R Open builds on R 3.2.4 by making the following
 additions and changes:
 
 The default CRAN repository for this version of MRO is
-http://mran.revolutionanalytics.com/snapshot/2016-04-01/.
+http://mran.microsoft.com/snapshot/2016-04-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
 created on 2016-04-01. Newer versions of packages will
@@ -60,7 +60,7 @@ package described below.
 Microsoft R Open installs the `checkpoint` package. You 
 can use the checkpoint package to access recent package
 versions and to share reproducible R code with others. 
-See https://mran.revolutionanalytics.com/package/checkpoint
+See https://mran.microsoft.com/package/checkpoint
 for information about how to use the checkpoint package to
 manage R package versions.
 
@@ -96,7 +96,8 @@ http://www.r-project.org/COPYING
 Questions and Contacts
 -----------------------
 Have questions about Microsoft R Open? Please visit the 
-MRO forum at http://go.microsoft.com/fwlink/?LinkId=708536
+MRO forum at:
+https://social.technet.microsoft.com/Forums/en-US/home?forum=ropen
 
 We hope you enjoy using Microsoft R Open!
 

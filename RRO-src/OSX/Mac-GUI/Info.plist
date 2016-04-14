@@ -154,7 +154,7 @@
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>R.app GUI GUI_VER (%SVN% CFG_NAME), S. Urbanek &amp; H.-J. Bibiko, © R Foundation for Statistical Computing, 2014</string>
+	<string>R.app GUI GUI_VER (%SVN% CFG_NAME), S. Urbanek &amp; H.-J. Bibiko, © R Foundation for Statistical Computing, 2016</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -169,19 +169,19 @@
 			</dict>
 			<key>NSMenuItem</key>
 			<dict>
+				<key>default</key>
+				<string>R/R – Run selection in Console</string>
 				<key>English</key>
 				<string>R/R – Run selection in Console</string>
 				<key>de</key>
 				<string>R/R – Führe Auswahl in der Konsole aus</string>
-				<key>default</key>
-				<string>R/R – Run selection in Console</string>
-				<key>fr</key>
+				<key>nl</key>
 				<string>R/R – Run selection in Console</string>
 				<key>it</key>
 				<string>R/R – Run selection in Console</string>
 				<key>ja</key>
 				<string>R/R – Run selection in Console</string>
-				<key>nl</key>
+				<key>fr</key>
 				<string>R/R – Run selection in Console</string>
 			</dict>
 			<key>NSMessage</key>
@@ -202,19 +202,19 @@
 			</dict>
 			<key>NSMenuItem</key>
 			<dict>
+				<key>default</key>
+				<string>R/R – Open selection</string>
 				<key>English</key>
 				<string>R/R – Open selection</string>
 				<key>de</key>
 				<string>R/R – Öffne Auswahl</string>
-				<key>default</key>
-				<string>R/R – Open selection</string>
-				<key>fr</key>
+				<key>nl</key>
 				<string>R/R – Open selection</string>
 				<key>it</key>
 				<string>R/R – Open selection</string>
 				<key>ja</key>
 				<string>R/R – Open selection</string>
-				<key>nl</key>
+				<key>fr</key>
 				<string>R/R – Open selection</string>
 			</dict>
 			<key>NSMessage</key>

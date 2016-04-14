@@ -1,5 +1,28 @@
 NEWS for R.app GUI for Mac OS X
 
+-- Release Version 1.67 (7152) - supplied with R 3.2.4 --
+
+Last-update: 2016-03-02
+*	Added RLogoNew.icns based on the 2015/6 R logo and containing
+        'x2' PNGs for use on retina screens.
+        (The PNGs were made with Photoshop and converted to .icns by
+	iconutil -c icns.)
+	This logo should be used with R >= 3.3.0.
+
+
+Last-update: 2016-01-18
+*	fix segfault on exceptions in the event loop due to
+	changes in R which caused the construction of the error
+	string to segfault as the GUI tried to assemble all
+	information on the error.
+
+*	fix exception in the data entry in case the OS has requested
+	data from the table after the data has been already
+	released. Apparently it can happen in more recent OS X
+	versions where the UI is released lazily. (PR#16561)
+
+-- Release Version 1.66 (7061) - supplied with R 3.2.3 --
+-- Release Version 1.66 (6996) - supplied with R 3.2.2 --
 -- Release Version 1.66 (6956) - supplied with R 3.2.1 --
 
 Last-update: 2015-04-20

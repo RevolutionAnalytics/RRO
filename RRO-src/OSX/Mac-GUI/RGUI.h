@@ -2,7 +2,7 @@
  *  R.app : a Cocoa front end to: "R A Computer Language for Statistical Data Analysis"
  *  
  *  R.app Copyright notes:
- *                     Copyright (C) 2004-13  The R Foundation
+ *                     Copyright (C) 2004-16  The R Foundation
  *                     written by Stefano M. Iacus and Simon Urbanek
  *
  *                  
@@ -34,7 +34,7 @@
 #define __RGUI_H__
 
 /* GUI version */
-#define R_GUI_VERSION_STR "1.66" /* it must be a string, but should parse to a valid real number - also change in InfoPlist.h */
+#define R_GUI_VERSION_STR "1.67" /* it must be a string, but should parse to a valid real number - also change in InfoPlist.h */
 
 /* macros for translatable strings */
 #define NLS(S) NSLocalizedString(S,@"")

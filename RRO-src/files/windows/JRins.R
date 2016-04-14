@@ -49,8 +49,8 @@
     suffix <- "win"
 
     cat(paste("OutputBaseFilename=", "MRO", "-", Rver, "-", suffix, sep = ""),
-        paste("AppName=MRO for Windows ", Rver, sep = ""),
-        paste("AppVerName=MRO for Windows ", Rver, sep = ""),
+        paste("AppName=Microsoft R Open for Windows ", Rver, sep = ""),
+        paste("AppVerName=Microsoft R Open for Windows ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
         paste("DefaultDirName={code:UserPF}\\Microsoft\\MRO\\", RW, sep = ""),

@@ -32,7 +32,7 @@
     SVN <- sub("Revision: ", "", readLines("../../../SVN-REVISION"))[1L]
     SVN <- as.character(as.numeric(SVN) - 50000L)
     Rver0 <- paste(sub(" .*$", "", Rver), SVN, sep = ".")
-    Rver <- "3.2.3"
+    Rver <- "3.2.4"
 
 
     con <- file("R.iss", "w")
@@ -49,8 +49,8 @@
     suffix <- "win"
 
     cat(paste("OutputBaseFilename=", "MRO", "-", Rver, "-", suffix, sep = ""),
-        paste("AppName=MRO for Windows ", Rver, sep = ""),
-        paste("AppVerName=MRO for Windows ", Rver, sep = ""),
+        paste("AppName=Microsoft R Open for Windows ", Rver, sep = ""),
+        paste("AppVerName=Microsoft R Open for Windows ", Rver, sep = ""),
         paste("AppVersion=", Rver, sep = ""),
         paste("VersionInfoVersion=", Rver0, sep = ""),
         paste("DefaultDirName={code:UserPF}\\Microsoft\\MRO\\", RW, sep = ""),
@@ -92,7 +92,7 @@
 
     writeLines(c("", "", "[Files]"), con)
 	
-	cat('Source: "R-3.2.3\\etc\\README.txt', '"; ',
+	cat('Source: "R-3.2.4\\etc\\README.txt', '"; ',
             'DestDir: "{app}', '"; ',
             'Flags: ignoreversion; ',
             'Components: main', 

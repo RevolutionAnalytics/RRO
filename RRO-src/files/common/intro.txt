@@ -1,11 +1,11 @@
 Welcome to the Microsoft R Open Installer
 
 Microsoft R Open is an enhanced distribution of R from Microsoft. 
-For information about Microsoft R Open, visit https://mran.revolutionanalytics.com.
+For information about Microsoft R Open, visit https://mran.microsoft.com.
 
 Microsoft R Open is based on R, Copyright (C) The R Foundation for Statistical Computing. 
 Visit https://www.r-project.org for information about the R Project. 
 R is the creation of many contributors, for details visit https://www.r-project.org/contributors.html.
 
-Click Continue to begin installing Microsoft R Open 3.2.3.
+Click Continue to begin installing Microsoft R Open 3.2.4.
 

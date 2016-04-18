@@ -17,9 +17,9 @@ let mutable COMMON_FILES_DIR = RRO_DIR +/ "files" +/ "common"
 let WORKSPACE = BASE_DIR +/ "workspace"
 
 let mutable FLAVOR = "MRO"
-let R_VERSION = "3.2.3"
+let R_VERSION = "3.2.4"
 let RRO_VERSION = R_VERSION
-let RRC_VERSION = "8.0.0"
+let RRC_VERSION = "8.0.3"
 let mutable FLAVOR_VERSION = R_VERSION
 
 let CURL_VERSION = "7.45.0"

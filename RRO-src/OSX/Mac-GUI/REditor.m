@@ -476,10 +476,12 @@ void printelt(SEXP invec, int vrow, char *strp)
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-
 	if(row < 0) return @"…";
-	return NSArrayObjectAtIndex(NSArrayObjectAtIndex(objectData, [[tableColumn identifier] intValue]), row);
-
+	int col = (int) [[tableColumn identifier] intValue];
+	if (col >= [objectData count]) return @"…";
+	NSArray *a = NSArrayObjectAtIndex(objectData, col);
+	if (!a || row >= [a count]) return @"…";
+	return NSArrayObjectAtIndex(a, row);
 }
 
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row

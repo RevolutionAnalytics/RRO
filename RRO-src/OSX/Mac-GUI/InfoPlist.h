@@ -3,14 +3,14 @@
  *  R
  *
  *  Created by Simon Urbanek on 10/23/08.
- *  Copyright 2008-2014 R Foundation for Statistical Computing. All rights reserved.
+ *  Copyright 2008-2016 R Foundation for Statistical Computing. All rights reserved.
  *
  */
 
 /* GUI version as shown in infos e.g. 1.27-devel */
-#define GUI_VER 1.66
+#define GUI_VER 1.67
 /* R postfix used to denote release versions of GUI - set to R release version (e.g. 2.8.0) or to anything that will be shown in between R and GUI (e.g. - or for Mac) */
-#define R_RELEASE 3.2.3
+#define R_RELEASE 3.2.4
 
 #if RELEASE_CFG
 /* for release config just auto-detect the SDK used */

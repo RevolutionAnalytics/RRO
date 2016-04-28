@@ -1,5 +1,5 @@
 ----------------------------------------
-Microsoft R Open, version 3.2.4
+Microsoft R Open, version 3.2.5
 ----------------------------------------
 
 Microsoft R Open is the enhanced distribution of R from
@@ -39,17 +39,17 @@ http://www.R-project.org/Licenses/.
 
 A copy of the Microsoft R Open source code is available
 for download from
-http://mran.revolutionanalytics.com/download/#download.
+http://mran.microsoft.com/download/#download.
 
 
 -----------------------
-About Microsoft R Open (MRO)
+About Microsoft R Open 
 -----------------------
-Microsoft R Open builds on R 3.2.4 by making the following
+Microsoft R Open builds on R 3.2.5 by making the following
 additions and changes:
 
-The default CRAN repository for this version of MRO is
-http://mran.revolutionanalytics.com/snapshot/2016-04-01/.
+The default CRAN repository for this version of R Open is
+http://mran.microsoft.com/snapshot/2016-05-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
 created on 2016-04-01. Newer versions of packages will
@@ -60,7 +60,7 @@ package described below.
 Microsoft R Open installs the `checkpoint` package. You 
 can use the checkpoint package to access recent package
 versions and to share reproducible R code with others. 
-See https://mran.revolutionanalytics.com/package/checkpoint
+See https://mran.microsoft.com/package/checkpoint
 for information about how to use the checkpoint package to
 manage R package versions.
 

@@ -7,5 +7,5 @@ Microsoft R Open is based on R, Copyright (C) The R Foundation for Statistical C
 Visit https://www.r-project.org for information about the R Project. 
 R is the creation of many contributors, for details visit https://www.r-project.org/contributors.html.
 
-Click Continue to begin installing Microsoft R Open 3.2.4.
+Click Continue to begin installing Microsoft R Open 3.2.5.
 

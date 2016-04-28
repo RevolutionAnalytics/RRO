@@ -12,15 +12,15 @@ if  (identical(.Platform$OS.type, "windows")) {
 }
 
 if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("CentOS release 5", readLines("/etc/issue")[1]))) {
-    warning("Warning: Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
     options(download.file.method = "wget")
     options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep=""))) 
 } else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[1]))) {
-    warning("Warning: Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
     options(download.file.method = "wget")
     options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
 } else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[2]))) {
-    warning("Warning: Packages will be downloaded using HTTP. See mran.revolutionanalytics.com/faq/#https for information on enabling secure package downloads.\n")
+    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
     options(download.file.method = "wget")
     options(repos = c(CRAN = paste("http://mran.revolutionanalytics.com/snapshot/",repos.date,sep="")))
 } else {
@@ -35,7 +35,7 @@ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na
                 cat( paste("Microsoft R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
                 cat( paste("Default CRAN mirror snapshot taken on ",repos.date,"\n",sep=""))
                 cat("The enhanced R distribution from Microsoft\n",sep="")
-                cat("Visit http://go.microsoft.com/fwlink/?LinkID=722555 for information\n",sep="")
+                cat("Visit https://mran.microsoft.com/ for information\n",sep="")
                 cat("about additional features.\n\n",sep="")
 
 	}

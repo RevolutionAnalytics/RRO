@@ -35,7 +35,7 @@ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na
                 cat( paste("Microsoft R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
                 cat( paste("Default CRAN mirror snapshot taken on ",repos.date,"\n",sep=""))
                 cat("The enhanced R distribution from Microsoft\n",sep="")
-                cat("Visit http://go.microsoft.com/fwlink/?LinkID=722555 for information\n",sep="")
+                cat("Visit https://mran.microsoft.com/ for information\n",sep="")
                 cat("about additional features.\n\n",sep="")
 
 	}

@@ -52,7 +52,7 @@ The default CRAN repository for this version of R Open is
 http://mran.microsoft.com/snapshot/2016-05-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on 2016-04-01. Newer versions of packages will
+created on 2016-05-01. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.

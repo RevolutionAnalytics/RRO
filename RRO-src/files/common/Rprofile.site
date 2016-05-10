@@ -9,7 +9,7 @@ if  (identical(.Platform$OS.type, "windows")) {
     } else {
 		dmethAvail <- Sys.which(c("curl", "wget"))
 		if (any(dmethAvail != "")) {
-			options(download.file.method = dmethAvail[which(dmethAvail != "")[1]])
+			options(download.file.method = names(dmethAvail[which(dmethAvail != "")[1]]))
 		}
     }
 }

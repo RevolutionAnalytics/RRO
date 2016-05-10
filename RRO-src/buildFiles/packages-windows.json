@@ -1,6 +1,6 @@
 {
     "packages": [
-        { "name": "checkpoint", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/checkpoint_0.3.15.tar.gz", "destFileName": "checkpoint_0.3.16.tar.gz" }
+        { "name": "checkpoint", "source": "url", "location": "http://packages.revolutionanalytics.com/RRO/checkpoint_0.3.16.tar.gz", "destFileName": "checkpoint_0.3.16.tar.gz" }
     ],
 
         "binary_packages": []

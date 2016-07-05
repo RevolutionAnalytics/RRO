@@ -270,7 +270,7 @@ Target "Build_Windows" (fun _ ->
     trace ( "Inno Setup found at " + tools.["Inno Setup"])
     trace ( "Strawberry Perl found at " + tools.["Perl"])
     let path = environVar "PATH"
-    setProcessEnvironVar "PATH" (tools.["Rtools-3.3"] +/ "bin;" + tools.["Rtools-3.3"] +/ "mingw_64\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
+    setProcessEnvironVar "PATH" (tools.["Rtools"] +/ "bin;" + tools.["Rtools"] +/ "mingw_64\\bin;" + tools.["MiKTeX"] +/ "miktex\\bin;" + tools.["Perl"] +/ "perl\\bin;" + tools.["Inno Setup"] + ";" + path)
     trace ("PATH IS " + (environVar "PATH"))
     trace ( "Build Connector set to " + BUILD_CONNECTOR.ToString())
     let tmpDir = WORKSPACE +/ "tmp"

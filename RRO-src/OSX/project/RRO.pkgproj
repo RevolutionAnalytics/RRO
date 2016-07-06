@@ -491,7 +491,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.microsoft.pkg.untitled_package</string>
+				<string>com.microsoft.rservices.mro2</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -499,7 +499,7 @@
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>3.2.4</string>
+				<string>3.3.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -991,7 +991,7 @@
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>3.2.4</string>
+				<string>3.3.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>

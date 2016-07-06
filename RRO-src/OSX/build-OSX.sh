@@ -23,7 +23,7 @@ cp -a ../../R-src R-3.2.2
 cp Makefile.fw R-3.2.2
 mkdir rd64_LIBS
 cd rd64_LIBS
-../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
+../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' '--enable-R-framework' '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
 mkdir lib
 make -j8
 ls -l lib
@@ -41,7 +41,7 @@ cp -a ../../R-src R-3.2.2
 cp Makefile.fw R-3.2.2
 mkdir rd64
 cd rd64
-../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
+../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--enable-R-framework' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' 'LDFLAGS=-L/opt/X11/lib -L/usr/local/lib /usr/local/lib/libcairo.a /usr/local/lib/libpixman-1.a /usr/local/lib/libfreetype.a /usr/local/lib/libfontconfig.a -lxml2 /usr/local/lib/libreadline.a'
 ##../R-3.2.2/configure 'CC=clang' 'CXX=clang++' 'OBJC=clang' 'CFLAGS=-Wall -mtune=core2 -g -O2' 'CXXFLAGS=-Wall -mtune=core2 -g -O2' 'OBJCFLAGS=-Wall -mtune=core2 -g -O2' --with-blas="-framework Accelerate" '--with-lapack' '--with-system-zlib' '--enable-memory-profiling' "CPPFLAGS=-I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -DPLATFORM_PKGTYPE='\"mac.binary.mavericks\"'" '--x-libraries=/opt/X11/lib' '--x-includes=/opt/X11/include/' '--with-libtiff=yes'
 mkdir lib
 make -j8

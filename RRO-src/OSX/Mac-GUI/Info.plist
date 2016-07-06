@@ -132,11 +132,11 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>Microsoft R Open</string>
+	<string>R</string>
 	<key>CFBundleIconFile</key>
-	<string>Revolution R OpenLogo.icns</string>
+	<string>RLogo.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>org.R-project.R</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

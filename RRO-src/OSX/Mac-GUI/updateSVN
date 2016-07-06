@@ -9,7 +9,7 @@ fi
 
 OWD=`pwd`
 cd "$1"
-SVNREV=7152
+SVNREV=7203
 if [ -z "$SVNREV" -a -f .svn/entries ]; then
   SVNREV=`sed -n 's/.*revision="\(.*\)".*/\1/p' .svn/entries|head -n 1`
   if [ -z "$SVNREV" ]; then

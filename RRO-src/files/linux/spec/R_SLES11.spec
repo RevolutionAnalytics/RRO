@@ -14,7 +14,8 @@ BuildRequires: gcc-fortran, perl, texinfo
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: xorg-x11-libSM-devel, xorg-x11-libX11-devel, xorg-x11-libICE-devel, 
 BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
-BuildRequires: cairo-devel, ncurses-devel
+BuildRequires: cairo-devel, ncurses-devel, bzip2-devel, xz-devel
+BuildRequires: zlib-devel, pcre-devel
 Requires: libpng, libjpeg, readline, cairo, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
 Requires: gcc, make, gcc-fortran, gcc-c++, curl, zip

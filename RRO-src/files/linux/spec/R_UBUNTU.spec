@@ -6,7 +6,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPLv3+
 Group: Development/Tools
 Requires: gcc, make, gfortran, g++, liblzma-dev, tk, tk-dev, tcl, tcl-dev, libcairo2, libjpeg8, libreadline6, curl
-Requires: libtiff5
+Requires: libtiff5, libbz2-dev, xz-utils, libpcre3-dev
 
 Requires(post): info
 Requires(preun): info

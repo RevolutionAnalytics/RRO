@@ -4,7 +4,7 @@ uname -a
 ## clean up previous installs
 sudo rm -rf /Library/Frameworks/R.framework
 sudo rm -rf /Library/Frameworks/RRO.framework
-sudo rm -rf /Applications/Revo*.app
+sudo rm -rf "/Applications/Microsoft R Open.app"
 cd ../../
 
 BUILD_MATH_LIBRARIES=1

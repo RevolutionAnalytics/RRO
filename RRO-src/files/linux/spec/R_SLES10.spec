@@ -12,8 +12,8 @@ Prefix: /usr/lib64
 BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-fortran, perl, texinfo
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
-BuildRequires: xorg-x11-devel, pango-devel
-BuildRequires: cairo-devel, ncurses-devel
+BuildRequires: xorg-x11-devel, pango-devel, bzip2-devel, zlib-devel
+BuildRequires: cairo-devel, ncurses-devel, xz-devel, pcre-devel
 Requires: libpng, libjpeg, readline
 Requires: libtiff, ghostscript-fonts-std
 Requires: gcc, make, gcc-fortran, gcc-c++

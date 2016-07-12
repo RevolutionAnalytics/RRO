@@ -422,7 +422,7 @@ static inline const char* NSStringUTF8String(NSString* self)
 	
 	SLog(@" - set R home");
 	if (!getenv("R_HOME")) {
-		NSBundle *rfb = [NSBundle bundleWithIdentifier:@"com.microsoft.R-framework"];
+		NSBundle *rfb = [NSBundle bundleWithIdentifier:@"org.r-project.R-framework"];
 		if (!rfb) {
 			SLog(@" * problem: R_HOME is not set and I can't find the framework bundle");
 			if ([fm fileExistsAtPath:@"/Library/Frameworks/R.framework/Resources/bin/R"]) {

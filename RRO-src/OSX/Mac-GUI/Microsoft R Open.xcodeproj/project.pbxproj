@@ -1595,7 +1595,7 @@
 					"-framework",
 					R,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.rservices.mro2";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
 				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -1663,7 +1663,7 @@
 					"-framework",
 					R,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.rservices.mro2";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
 				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -1754,7 +1754,7 @@
 					"-framework",
 					R,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.rservices.mro2";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
 				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -1845,7 +1845,7 @@
 					"-framework",
 					R,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microsoft.rservices.mro2";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.R-project.R";
 				PRODUCT_NAME = "Microsoft R Open";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (

@@ -14,11 +14,10 @@ BuildRequires: gcc-fortran, perl, texinfo
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: xorg-x11-libSM-devel, xorg-x11-libX11-devel, xorg-x11-libICE-devel, 
 BuildRequires: xorg-x11-libXt-devel, xorg-x11-libXmu-devel, pango-devel
-BuildRequires: cairo-devel, ncurses-devel, libbz2-devel, xz-devel
-BuildRequires: zlib-devel, pcre-devel
+BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, cairo, libgfortran43
 Requires: libtiff, ghostscript-fonts-std
-Requires: gcc, make, gcc-fortran, gcc-c++, curl, zip
+Requires: gcc, make, gcc-fortran, gcc-c++
 AutoReqProv: Yes
 
 %define libnn lib64
@@ -50,7 +49,7 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+env LDFLAGS='-L/opt/build/build/lib' CPPFLAGS='-I/opt/build/build/include' CFLAGS='-I/opt/build/build/include' CURL_LIBS='-lcurl -ldl -lssl -lcrypto -lz -lrt' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
 
 %install
@@ -61,6 +60,7 @@ cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+cp %{_topdir}/microsoft-r-cacert.pem /etc
 
 
 if [ -d "/tmp/rro_extra_pkgs" ]

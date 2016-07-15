@@ -49,10 +49,10 @@ Microsoft R Open builds on R 3.3.0 by making the following
 additions and changes:
 
 The default CRAN repository for this version of R Open is
-http://mran.microsoft.com/snapshot/2016-07-01/.
+http://mran.microsoft.com/snapshot/2016-06-01/.
 
 Unlike a CRAN mirror, this is a static copy of CRAN,
-created on 2016-07-01. Newer versions of packages will
+created on 2016-06-01. Newer versions of packages will
 not appear in this repository. To access newer versions of
 packages, choose a CRAN mirror or use the checkpoint
 package described below.

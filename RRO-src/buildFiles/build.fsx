@@ -192,6 +192,7 @@ Target "Build_Linux" (fun _ ->
     let customFiles = [ BASE_DIR +/ "COPYING";
                         BASE_DIR +/ "README.txt"; 
                         COMMON_FILES_DIR +/ "Rprofile.site";
+						COMMON_FILES_DIR +/ "microsoft-r-cacert.pem";
                         COMMON_FILES_DIR +/ "ThirdPartyNotices.pdf" ]
 
     let tmpDir = WORKSPACE +/ "tmp"

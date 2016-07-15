@@ -1,5 +1,5 @@
 Revo.version <- structure(list(major = "3", minor = "3.0", "BuildID" = :::BUILDID:::), class = "simple.list")
-repos.date <- "2016-07-01"
+repos.date <- "2016-06-01"
 
 if  (identical(.Platform$OS.type, "windows")) {
 	options(download.file.method = "wininet")

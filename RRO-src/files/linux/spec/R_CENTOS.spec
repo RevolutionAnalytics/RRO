@@ -10,10 +10,10 @@ BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
-BuildRequires: cairo-devel, ncurses-devel, bzip2-devel, xz-devel, pcre-devel, zlib-devel
+BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
 Requires: ghostscript-fonts, libgfortran, cairo, curl, libicu
-Requires: pango, libSM, libXt, libXmu, zip, bzip2, xz, pcre, zlib
+Requires: pango, libSM, libXt, libXmu, zip
 AutoReqProv: No
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Prefix: /usr/lib64

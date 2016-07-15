@@ -43,7 +43,7 @@ and called at run time.
 
 %build
 
-env LDFLAGS='-L/opt/build/build/lib' CPPFLAGS='-I/opt/build/build/include' CFLAGS='-I/opt/build/build/include' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
+env LDFLAGS='-L/opt/build/build/lib' CPPFLAGS='-I/opt/build/build/include' CFLAGS='-I/opt/build/build/include' CURL_LIBS='-lcurl -ldl -lssl -lcrypto -lz -lrt' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
 make -j8
 
 %install

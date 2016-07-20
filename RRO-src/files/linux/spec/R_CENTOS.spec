@@ -56,7 +56,7 @@ cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
-cp %{_topdir}/microsoft-r-cacert.pem /etc
+cp %{_topdir}/microsoft-r-cacert.pem %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
@@ -78,6 +78,7 @@ ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R 
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript /usr/bin
+cp $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/microsoft-r-cacert.pem /etc
 
 %preun
 if test "${revo_prefix}" = ""; then

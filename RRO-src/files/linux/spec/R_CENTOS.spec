@@ -10,10 +10,10 @@ BuildRequires: ed, gcc, gcc-c++, gcc-objc
 BuildRequires: gcc-gfortran, perl
 BuildRequires: libpng-devel, libjpeg-devel, readline-devel, libtiff-devel
 BuildRequires: pango-devel, libXt-devel, libICE-devel, libX11-devel, libSM-devel
-BuildRequires: cairo-devel, ncurses-devel, bzip2-devel, xz-devel, pcre-devel, zlib-devel
+BuildRequires: cairo-devel, ncurses-devel
 Requires: libpng, libjpeg, readline, libtiff, gcc, make, gcc-gfortran 
 Requires: ghostscript-fonts, libgfortran, cairo, curl, libicu
-Requires: pango, libSM, libXt, libXmu, zip, bzip2, xz, pcre, zlib
+Requires: pango, libSM, libXt, libXmu, zip
 AutoReqProv: No
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Prefix: /usr/lib64
@@ -43,7 +43,7 @@ and called at run time.
 
 %build
 
-./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
+env LDFLAGS='-L/opt/build/build/lib' LIBS='-licui18n -licuuc -licudata -lstdc++' CPPFLAGS='-I/opt/build/build/include -DU_STATIC_IMPLEMENTATION' CFLAGS='-I/opt/build/build/include -DU_STATIC_IMPLEMENTATION' CURL_LIBS='-lcurl -ldl -lssl -lcrypto -lz -lrt' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-ICU --with-jpeglib --with-libtiff --with-x=yes --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling 
 make -j8
 
 %install
@@ -56,6 +56,7 @@ cp %{_topdir}/Rprofile.site %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_
 cp %{_topdir}/README.txt %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/COPYING %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 cp %{_topdir}/ThirdPartyNotices.pdf %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
+cp %{_topdir}/microsoft-r-cacert.pem %{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}
 
 if [ -d "/tmp/rro_extra_pkgs" ]
 then
@@ -77,6 +78,7 @@ ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R 
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/R /usr/bin
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/Rscript
 ln -s $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/R-%{r_version}/%libnn/R/bin/Rscript /usr/bin
+cp $RPM_INSTALL_PREFIX0/%{name}-%{DIR_VERSION}/microsoft-r-cacert.pem /etc
 
 %preun
 if test "${revo_prefix}" = ""; then
@@ -95,6 +97,7 @@ rm -f /usr/bin/Rscript
 %{_libdir}/%{name}-%{DIR_VERSION}/COPYING
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
+%{_libdir}/%{name}-%{DIR_VERSION}/microsoft-r-cacert.pem
 #  %{_libdir}/%{name}-%{DIR_VERSION}/sources/
 #%{_bindir}/Revo64
 #%{_bindir}/Revoscript

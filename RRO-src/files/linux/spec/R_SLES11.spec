@@ -49,7 +49,7 @@ mkdir -p %{_rpmdir}/%{_arch}/
 
 %build
 cd ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}
-env LDFLAGS='-L/opt/build/build/lib' CPPFLAGS='-I/opt/build/build/include' CFLAGS='-I/opt/build/build/include' CURL_LIBS='-lcurl -ldl -lssl -lcrypto -lz -lrt' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
+env LDFLAGS='-L/opt/build/build/lib' LIBS='-licui18n -licuuc -licudata -lstdc++' CPPFLAGS='-I/opt/build/build/include -DU_STATIC_IMPLEMENTATION' CFLAGS='-I/opt/build/build/include -DU_STATIC_IMPLEMENTATION' CURL_LIBS='-lcurl -ldl -lssl -lcrypto -lz -lrt' ./configure --prefix=%{buildroot}%{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version} --enable-R-shlib --with-tcltk --with-cairo --with-libpng --with-libtiff --with-ICU --with-jpeglib --with-x=no --with-lapack --enable-BLAS-shlib LIBR="-lpthread" --enable-memory-profiling
 make -j6
 
 %install
@@ -112,6 +112,7 @@ fi
 %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/
 %{_libdir}/%{name}-%{DIR_VERSION}/README.txt
 %{_libdir}/%{name}-%{DIR_VERSION}/ThirdPartyNotices.pdf
+%{_libdir}/%{name}-%{DIR_VERSION}/microsoft-r-cacert.pem
 %{_libdir}/%{name}-%{DIR_VERSION}/zCOPYING
 
 %exclude %{_libdir}/%{name}-%{DIR_VERSION}/R-%{r_version}/bin/R
